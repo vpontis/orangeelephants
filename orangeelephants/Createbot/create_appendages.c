@@ -1,10 +1,10 @@
 #include "create_constants.h"
 #include "create_appendages.h"
-
+#include "boolean.h"
 /**brief Second to highest arm position
  */
 void arm_up()	{
-	mtp(ARM_MOTOR, ARM_NORMAL_SPEED, ARM_UP+ARM_OFFSET);
+	mtp(ARM_MOTOR, ARM_FAST_SPEED, ARM_UP+ARM_OFFSET);
 }
 
 void arm_up_fast()	{
@@ -14,12 +14,12 @@ void arm_up_fast()	{
 /**brief Arm position for first scrape
  */
 void arm_scrape()	{
-	mtp(ARM_MOTOR, ARM_NORMAL_SPEED, ARM_SCRAPE+ARM_OFFSET);
+	mtp(ARM_MOTOR, ARM_FAST_SPEED, ARM_SCRAPE+ARM_OFFSET);
 }
 /**brief Highest arm position
 */
 void arm_uppest()	{
-	mtp(ARM_MOTOR, ARM_SLOW_SPEED, ARM_UPPEST+ARM_OFFSET);
+	mtp(ARM_MOTOR, ARM_FAST_SPEED, ARM_UPPEST+ARM_OFFSET);
 }
 
 
@@ -65,6 +65,12 @@ void dozer_scrape()	{
  */
 void dozer_high_scrape()	{
 	moveServos(DOZERL_SERVO,DOZERR_SERVO,DOZERL_HIGH_SCRAPE,DOZERR_HIGH_SCRAPE,100);
+}
+
+/**brief Pushes dozer against ground for best scraping
+ */
+void dozer_timeout()	{
+	moveServos(DOZERL_SERVO,DOZERR_SERVO,DOZERL_TIMEOUT,DOZERR_TIMEOUT,100);
 }
 
 /**brief Moves a servo to a position at a speed
@@ -172,6 +178,33 @@ int drive_wall(int speed)	{
 	create_drive_direct(-speed,-speed);
 	while((gc_lbump==0) || (gc_rbump==0))	{
 		create_sensor_update();
+	}
+	createStop();
+}
+
+/**brief Drives to wall until either bump sensor is hit.
+   /param speed The desired speed to go to wall. POSITIVE = FORWARD!!!
+ */
+int drive_wall_timeout(int speed)	{
+	int init_time = seconds();
+	create_sensor_update();
+	create_drive_direct(-speed,-speed);
+	int timeout_one_flag = false; 
+	
+	while((gc_lbump==0) || (gc_rbump==0))	{
+		create_sensor_update();
+		if(((seconds()-init_time) >= 10) && !timeout_one_flag)
+		{
+			dozer_timeout();
+			moveStraight(NORM_SPEED);
+			sleep(.5);
+			dozer_timeout();
+			moveStraight(-NORM_SPEED);
+			sleep(.75);		
+			dozer_scrape();
+			moveStraight(speed);
+			timeout_one_flag = true;
+		}
 	}
 	createStop();
 }
