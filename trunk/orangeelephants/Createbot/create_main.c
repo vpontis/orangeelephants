@@ -92,7 +92,7 @@ void create_main()
 	dozer_neutral();
 	move_to_distance(40,150);
 	dozer_scrape();
-	drive_wall(-NORM_SPEED);//Pulls back frogs
+	drive_wall_timeout(-NORM_SPEED);//Pulls back frogs
 	/**************************************************************/
 	
 
