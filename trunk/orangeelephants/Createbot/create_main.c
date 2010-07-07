@@ -33,7 +33,7 @@ void create_main()
 	//Bearings: 0 -> 90 -> 0 -> 90
 	/**************************************************************/
 	turn(93,100);//Turns create bearing 90 to face Island
-	move_to_distance(450, NORM_SPEED); //Create heads towards Karel Island, 520
+	move_to_distance(420, NORM_SPEED); //Create heads towards Karel Island, 520
 	turn(-90,100);//Turns create bearing 0
 	move_to_distance(190,NORM_SPEED);
 	dozer_up();//Puts dozer up so it can align on PVC by Karel Island
