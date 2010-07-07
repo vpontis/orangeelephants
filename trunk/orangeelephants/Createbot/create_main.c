@@ -35,10 +35,10 @@ void create_main()
 	turn(-90,100);//Turns create bearing 0
 	move_to_distance(190,NORM_SPEED);
 	dozer_up();//Puts dozer up so it can align on PVC by Karel Island
-	//moveStraight(NORM_SPEED);
-	//sleep(.5);	
-	//moveStraight(-NORM_SPEED);
-	//sleep(.5);
+	moveStraight(NORM_SPEED);
+	sleep(.5);	
+	moveStraight(-NORM_SPEED);
+	sleep(.7);
 	turn(91.5,100);
 	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
