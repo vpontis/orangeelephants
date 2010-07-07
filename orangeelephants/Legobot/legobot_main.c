@@ -146,7 +146,7 @@ void appPart2() {
 	//Drives forward and drops off ducks
 	//Bearings: 90 -> 0
 	/***************************************************************/
-    moveToDistance(-17.5, SLOW_SPEED);//Backs up with ducks
+    moveToDistance(-15.5, SLOW_SPEED);//Backs up with ducks, -17.5, -16.5
 	turnSlow(-80); //Turns to allow backup into PVC
 	//moveToDistance(-32, SLOW_SPEED);
 	moveStraight(-SLOW_SPEED);//Backs up into PVC
