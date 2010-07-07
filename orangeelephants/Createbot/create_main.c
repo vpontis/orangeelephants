@@ -35,10 +35,10 @@ void create_main()
 	turn(-90,100);//Turns create bearing 0
 	move_to_distance(190,NORM_SPEED);
 	dozer_up();//Puts dozer up so it can align on PVC by Karel Island
-	moveStraight(NORM_SPEED);
-	sleep(.5);	
-	moveStraight(-NORM_SPEED);
-	sleep(.5);
+	//moveStraight(NORM_SPEED);
+	//sleep(.5);	
+	//moveStraight(-NORM_SPEED);
+	//sleep(.5);
 	turn(91.5,100);
 	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
@@ -141,7 +141,7 @@ void create_main()
 	while(gc_rbump == 0){
 		create_sensor_update();
 	}
-	turn(-40, 50);//Realigns with the wall, old val 53, 46
+	turn(-35, 50);//Realigns with the wall, old val 53, 46
 	//Keeps moving back.
 	moveStraight(-NORM_SPEED);
 	sleep(1);
