@@ -173,7 +173,7 @@ float inchToMm(int inch) {
 /**brief Drives to wall until either bump sensor is hit.
    /param speed The desired speed to go to wall. POSITIVE = FORWARD!!!
  */
-int drive_wall(int speed)	{
+void drive_wall(int speed)	{
 	create_sensor_update();
 	create_drive_direct(-speed,-speed);
 	while((gc_lbump==0) || (gc_rbump==0))	{
