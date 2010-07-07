@@ -14,14 +14,16 @@ void create_main()
 	arm_up();//Puts arm up so it will not catch on Karel island
 	dozer_high_scrape();//Puts the dozer down so it can push off oily ducks
 	move_to_distance(910, NORM_SPEED); //Moves the create out past the oily duck center, old value 890
-	sleep(1);//REMOVE AFTER, JUST FOR TESTING DIAG!!!!
 	/***************************************************************/
+	
+	turn(45, 100);
+	move_to_distance(864, NORM_SPEED)
 	
 	//Moved in drop_off_sorbs(). Drops off sorbents from pushed into 
 	//dozer
 	//Bearings: 0
 	/***************************************************************/
-	move_to_distance(390,NORM_SPEED);
+	/*move_to_distance(390,NORM_SPEED);
 	dozer_up();
 	move_to_distance(-150,NORM_SPEED);
 	/***************************************************************/
@@ -30,15 +32,15 @@ void create_main()
 	//island. 
 	//Bearings: 0 -> 90 -> 0 -> 90
 	/**************************************************************/
-	turn(93,100);//Turns create bearing 90 to face Island
+	/*turn(93,100);//Turns create bearing 90 to face Island
 	move_to_distance(450, NORM_SPEED); //Create heads towards Karel Island, 520
 	turn(-90,100);//Turns create bearing 0
 	move_to_distance(190,NORM_SPEED);
 	dozer_up();//Puts dozer up so it can align on PVC by Karel Island
 	moveStraight(NORM_SPEED);
-	sleep(.5);	
+	sleep(.25);	
 	moveStraight(-NORM_SPEED);
-	sleep(.5);
+	sleep(.25);
 	turn(91.5,100);
 	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
@@ -67,8 +69,8 @@ void create_main()
 	/**************************************************************/
 	sleep(.2);//Pause to prevent uneven backups
 	//move_to_distance(5,SLOW_SPEED);//Pulls back to allow turn
-	moveStraight(-80);//-80
-	sleep(.7);//1.2
+	moveStraight(-80);
+	sleep(1.2);
 	createStop();
 	turn(96,100);//Turns create to bearing 360.
 	drive_wall(-NORM_SPEED);
@@ -115,7 +117,7 @@ void create_main()
 	turn(180,50);//U-turn so bearing 90, this allows bump sensor utilization
 	drive_wall(-NORM_SPEED);//Drive into PVC until bump sensors triggered
 	moveStraight(-NORM_SPEED);//To allow more alignment
-	sleep(2.5);	
+	sleep(.50);	
 	//create_drive_direct(NORM_SPEED,NORM_SPEED);
 	//sleep(.4);
 	//create_drive_direct(-NORM_SPEED,-NORM_SPEED);
@@ -141,7 +143,7 @@ void create_main()
 	while(gc_rbump == 0){
 		create_sensor_update();
 	}
-	turn(-40, 50);//Realigns with the wall, old val 53, 46
+	turn(-53, 50);//Realigns with the wall
 	//Keeps moving back.
 	moveStraight(-NORM_SPEED);
 	sleep(1);
@@ -154,10 +156,8 @@ void create_main()
 	create_drive_direct(NORM_SPEED-arcValue,NORM_SPEED+arcValue);
 	sleep(7);*/
 	createStop();
-	sleep(9);
-	//moveStraight(-SLOW_SPEED);
-	const int arcValue = 10;
-	create_drive_direct(NORM_SPEED-arcValue,NORM_SPEED+arcValue);
+	sleep(7);
+	moveStraight(-SLOW_SPEED);
 	while(1){
 		create_sensor_update();
 		if(gc_rbump == 1){

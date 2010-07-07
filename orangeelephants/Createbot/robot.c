@@ -6,7 +6,7 @@
 
 int main()
 {
-	printf("Press A button for competition mode. \n Press B button for testing mode \n");
+	printf("Press A button for competition mode. \n Press B button for testing mode \n Press UP Button for Calibration. \n");
 	while(1)
 	{
 		if(a_button())

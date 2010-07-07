@@ -7,6 +7,10 @@ void arm_up()	{
 	mtp(ARM_MOTOR, ARM_NORMAL_SPEED, ARM_UP+ARM_OFFSET);
 }
 
+void arm_up_fast()	{
+	mtp(ARM_MOTOR, ARM_FAST_SPEED, ARM_UP+ARM_OFFSET);
+}
+
 /**brief Arm position for first scrape
  */
 void arm_scrape()	{
