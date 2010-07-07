@@ -1,0 +1,12 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Version=1.0
+Name=Createbot
+Comment=Open '/home/buggs/Botball/trunk/2010_Nationals/Createbot'
+Icon=inode-directory
+Name[en_US]=Createbot
+Comment[en_US]=Open '/home/buggs/Botball/trunk/2010_Nationals/Createbot'
+Icon[en_US]=inode-directory
+URL=file:///home/buggs/Botball/trunk/2010_Nationals/Createbot
+Type=Link
