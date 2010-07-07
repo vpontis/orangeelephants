@@ -29,7 +29,7 @@ const int DOZERR_SCRAPE = 1049; //1024+25
 const int ARM_UP = -1800;//-800,-437 
 const int ARM_SCRAPE = -425; 
 const int ARM_UPPEST= -1600;//-1600
-const int ARM_OFFSET = -525;//-1239, -1439, -1300, -1100, -800
+const int ARM_OFFSET = -475;//-1239, -1439, -1300, -1100, -800, -525
 
 //sensor ports
 const int LIGHT_SENSOR_PORT=0;
