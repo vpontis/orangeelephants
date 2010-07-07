@@ -100,7 +100,7 @@ void appPart1() {
 	//Drive forwards to drop off ducks
 	//Bearings: 90-> 0
 	/***************************************************************/
-	moveToDistance(-7.5, SLOW_SPEED); //Back up, old val -8
+	moveToDistance(-6.5, SLOW_SPEED); //Back up, old val -8, -7.5
 	turnSlow(-83); //Turn to allow back up into wall
 	//moveToDistance(-32, SLOW_SPEED);
 	moveStraight(-SLOW_SPEED);//Back up into wall
