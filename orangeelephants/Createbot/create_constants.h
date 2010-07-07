@@ -10,8 +10,8 @@ const int ARM_MOTOR = 0;
 
 //servo consts
 
-const int DOZERL_HIGH_SCRAPE = 1100;
-const int DOZERR_HIGH_SCRAPE = 900;
+const int DOZERL_HIGH_SCRAPE = 1050;
+const int DOZERR_HIGH_SCRAPE = 950;
 
 const int DOZERL_TIMEOUT = 1200;
 const int DOZERR_TIMEOUT = 800;
