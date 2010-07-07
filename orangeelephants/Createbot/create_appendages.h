@@ -20,8 +20,8 @@ int arm_speed(int target_pos);
 void move_to_distance(int distance, int speed);
 int competitionRunner(int(*func)(), int lightPort);
 void arm_up_fast();
-void drive_wall(int speed)
+void drive_wall(int speed);
 void drive_wall_timeout(int speed);
-
+void moveStraight(int speed);
 
 #endif
