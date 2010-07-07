@@ -141,7 +141,7 @@ void create_main()
 	while(gc_rbump == 0){
 		create_sensor_update();
 	}
-	turn(-35, 50);//Realigns with the wall, old val 53, 46
+	turn(-32, 50);//Realigns with the wall, old val 53, 46
 	//Keeps moving back.
 	moveStraight(-NORM_SPEED);
 	sleep(1);
@@ -156,7 +156,7 @@ void create_main()
 	createStop();
 	sleep(9);
 	//moveStraight(-SLOW_SPEED);
-	const int arcValue = 7;
+	const int arcValue = 12;
 	create_drive_direct(NORM_SPEED-arcValue,NORM_SPEED+arcValue);
 	while(1){
 		create_sensor_update();
