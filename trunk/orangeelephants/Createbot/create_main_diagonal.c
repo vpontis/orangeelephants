@@ -16,7 +16,7 @@ void create_main()
 	move_to_distance(910, NORM_SPEED); //Moves the create out past the oily duck center, old value 890
 	/***************************************************************/
 	
-	turn(45, 100);
+	turn(59, 100);
 	move_to_distance(864, NORM_SPEED)
 	
 	//Moved in drop_off_sorbs(). Drops off sorbents from pushed into 
