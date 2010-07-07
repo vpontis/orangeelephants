@@ -100,7 +100,7 @@ void appPart1() {
 	//Drive forwards to drop off ducks
 	//Bearings: 90-> 0
 	/***************************************************************/
-	moveToDistance(-8, SLOW_SPEED); //Back up
+	moveToDistance(-7.5, SLOW_SPEED); //Back up, old val -8
 	turnSlow(-83); //Turn to allow back up into wall
 	//moveToDistance(-32, SLOW_SPEED);
 	moveStraight(-SLOW_SPEED);//Back up into wall
@@ -146,7 +146,7 @@ void appPart2() {
 	//Drives forward and drops off ducks
 	//Bearings: 90 -> 0
 	/***************************************************************/
-    	moveToDistance(-17.5, SLOW_SPEED);//Backs up with ducks
+    moveToDistance(-17.5, SLOW_SPEED);//Backs up with ducks
 	turnSlow(-80); //Turns to allow backup into PVC
 	//moveToDistance(-32, SLOW_SPEED);
 	moveStraight(-SLOW_SPEED);//Backs up into PVC
@@ -171,18 +171,18 @@ void appPart2() {
 
 	//Getting away option 1
 	/***************************************************************/
-	/*moveToDistance(14, NORMAL_SPEED);//Goes forwards a little bit to avoid turning into no-fly zone 
-	turn(90);
+	moveToDistance(14, NORMAL_SPEED);//Goes forwards a little bit to avoid turning into no-fly zone 
+	turn(63);
 	moveToDistance(36, NORMAL_SPEED); //Drives into PVC at clean duck center
 	ao();
 	/***************************************************************/
 
 	//Getting away option 2
 	/***************************************************************/
-	moveToDistance(12, NORMAL_SPEED);
-	turn(90);
+	/*moveToDistance(12, NORMAL_SPEED);
+	turn(63);
 	moveToDistance(14, NORMAL_SPEED);
-	turn(90);
+	turn(63);
 	moveToDistance(14, NORMAL_SPEED);
 	ao();
 	/***************************************************************/
