@@ -32,7 +32,7 @@ const int DOZERR_SCRAPE = 1049; //1024+25
 
 //motor consts, positive is low & negative is high
 const int ARM_UP = -1800;//-800,-437 
-const int ARM_SCRAPE = -425; 
+const int ARM_SCRAPE = -350; //-425
 const int ARM_UPPEST= -1600;//-1600
 const int ARM_OFFSET = -475;//-1239, -1439, -1300, -1100, -800, -525
 
