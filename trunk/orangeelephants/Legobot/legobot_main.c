@@ -81,7 +81,7 @@ void appPart1() {
 	//Bearings: 0 -> 90 
 	/***************************************************************/
 	sleep(4.0); //To wait for the Create to move
-	moveToDistance(24, NORMAL_SPEED);//Drive forward
+	moveToDistance(26, NORMAL_SPEED);//Drive forward, old val 24
 	turnSlow(83);//Turn towards PVC
 	moveToDistance(11, NORMAL_SPEED);//Drive into PVC of clean duck center
 	sleep(.5);
@@ -100,7 +100,7 @@ void appPart1() {
 	//Drive forwards to drop off ducks
 	//Bearings: 90-> 0
 	/***************************************************************/
-	moveToDistance(-6, SLOW_SPEED); //Back up, old val -8, -7.5, -6.5
+	moveToDistance(-7, SLOW_SPEED); //Back up, old val -8, -7.5, -6.5, -6
 	turnSlow(-83); //Turn to allow back up into wall
 	//moveToDistance(-32, SLOW_SPEED);
 	moveStraight(-SLOW_SPEED);//Back up into wall
@@ -146,7 +146,7 @@ void appPart2() {
 	//Drives forward and drops off ducks
 	//Bearings: 90 -> 0
 	/***************************************************************/
-  	  moveToDistance(-15, SLOW_SPEED);//Backs up with ducks, -17.5, -16.5
+  	  moveToDistance(-15.5, SLOW_SPEED);//Backs up with ducks, -17.5, -16.5
 	turnSlow(-80); //Turns to allow backup into PVC
 	//moveToDistance(-32, SLOW_SPEED);
 	moveStraight(-SLOW_SPEED);//Backs up into PVC
@@ -175,27 +175,6 @@ void appPart2() {
 	turn(63);
 	moveToDistance(36, NORMAL_SPEED); //Drives into PVC at clean duck center
 	/***************************************************************/
-	
-	clawOpen(); 
-	duckGrabArm(); //Lower Arm
-	bmd(ARM_MOTOR); 
-	clawClose(); //Grab ducks
-	sleep(.5);
-	neutralArmSlow(); //Raises arm to pick ducks up across PVC
-	bmd(ARM_MOTOR);
-	sleep(.5);
-
-	moveToDistance(-6, SLOW_SPEED); //Back up, old val -8, -7.5, -6.5
-	turnSlow(-83); //Turn to allow back up into wall
-	//moveToDistance(-32, SLOW_SPEED);
-	moveStraight(-SLOW_SPEED);//Back up into wall
-	sleep(8); //Prevents twitches
-	//lookForColor(2, SLOW_SPEED, 3, 50, 50); For Camera, not being used
-	//moveToDistance(-32, SLOW_SPEED);	
-	//moveToDistance(10, SLOW_SPEED); //Drive forwards to drop off ducks
-	//sleep(.5);
-	//duckGrabArm(); //Lower Claw 
-	//bmd(ARM_MOTOR); 
 	ao();
 }
 
