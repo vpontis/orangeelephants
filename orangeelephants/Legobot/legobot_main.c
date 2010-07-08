@@ -33,7 +33,6 @@ int main() {
 					printf("Running competition mode");
 					competitionRunner(runApp, LIGHT_SENSOR_PORT); 
 					//waitForTouch();//For waiting for either slot sensor or touch. 
-					runApp();
 					break;
 				}
 				sleep(.05);
