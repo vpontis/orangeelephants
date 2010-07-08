@@ -192,10 +192,10 @@ void appPart2() {
 	sleep(8); //Prevents twitches
 	//lookForColor(2, SLOW_SPEED, 3, 50, 50); For Camera, not being used
 	//moveToDistance(-32, SLOW_SPEED);	
-	moveToDistance(10, SLOW_SPEED); //Drive forwards to drop off ducks
-	sleep(.5);
-	duckGrabArm(); //Lower Claw 
-	bmd(ARM_MOTOR); 
+	//moveToDistance(10, SLOW_SPEED); //Drive forwards to drop off ducks
+	//sleep(.5);
+	//duckGrabArm(); //Lower Claw 
+	//bmd(ARM_MOTOR); 
 	ao();
 }
 
