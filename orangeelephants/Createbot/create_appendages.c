@@ -279,7 +279,7 @@ int competitionRunner(int(*func)(), int lightPort)
     printf("Competition Runner Initiated\n");
     printf("Waiting for light port: %d\n", lightPort);
     wait_for_light(lightPort);
-    shut_down_in(115.0);
+    shut_down_in(130);
     printf("Light Found, Running Func\n");
 	return func();
 }
