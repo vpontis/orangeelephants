@@ -177,22 +177,6 @@ void appPart2() {
 	ao();
 	/***************************************************************/
 
-	//Getting away option 2
-	/***************************************************************/
-	/*moveToDistance(12, NORMAL_SPEED);
-	turn(63);
-	moveToDistance(14, NORMAL_SPEED);
-	turn(63);
-	moveToDistance(14, NORMAL_SPEED);
-	ao();
-	/***************************************************************/
-	
-	//Getting away option 3
-	/***************************************************************/
-	/*turn(180);
-	moveToDistance(25, NORMAL_SPEED);
-	ao();
-	/***************************************************************/
 }
 
 /** \brief Runs a method after waiting for light. 
