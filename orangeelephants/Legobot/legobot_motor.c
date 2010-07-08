@@ -201,6 +201,7 @@ void moveServoPosition(int servo, int pos, int speed)
 	sleep(.05);
 }
 
+
 /** \brief Converts centimeters to ticks, used for mrp or mtp commands
 	\param cmDistance input cm distance that needs to be converted to ticks
 */
@@ -228,7 +229,8 @@ void clawOpen()	{
 /** \brief Close the duck frabbing claw
 */
 void clawClose()	{
-	moveServoPosition(CLAW_SERVO, 1, 100);
+	set_servo_position(CLAW_SERVO, 1);	
+	//moveServoPosition(CLAW_SERVO, 1, 100);
 }
 
 /**  \brief Lowers arm to lowest position to pull back ducks from the 
