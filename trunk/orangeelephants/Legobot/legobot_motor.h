@@ -22,7 +22,7 @@ A header file for the legobot_motor.c file
 
 /** \brief tick value used to compensate for motor dislocation
 */
-#define MOTOR_OFFSET -2679
+#define MOTOR_OFFSET -2829
 
 /** \brief tick speed to move arm motor at.
 */
