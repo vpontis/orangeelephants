@@ -196,7 +196,6 @@ void appPart2() {
 	sleep(.5);
 	duckGrabArm(); //Lower Claw 
 	bmd(ARM_MOTOR); 
-	clawOpen(); //Drop off ducks
 	ao();
 }
 
