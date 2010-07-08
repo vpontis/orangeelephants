@@ -123,7 +123,7 @@ void create_main()
 	moveStraight(NORM_SPEED);
 	sleep(.1); 
 	createStop();
-	sleep(9);
+	sleep(15);
 	printf("Wall sensed now beginning to turn. \n");
 	//move_to_distance(-1,-150);//Gets Create off wall to allow turn (may not be necessary)
 	/*create_drive_direct(-100,-100);
