@@ -15,8 +15,6 @@ void create_main()
 	dozer_high_scrape();//Puts the dozer down so it can push off oily ducks
 	move_to_distance(910, NORM_SPEED); //Moves the create out past the oily duck center, old value 890
 	sleep(1);//
-	create_stop();
-	sleep(1);
 	/***************************************************************/
 	
 	//Moved in drop_off_sorbs(). Drops off sorbents from pushed into 
