@@ -23,5 +23,6 @@ void arm_up_fast();
 void drive_wall(int speed);
 void drive_wall_timeout(int speed);
 void moveStraight(int speed);
+void arm_high_scrape();
 
 #endif

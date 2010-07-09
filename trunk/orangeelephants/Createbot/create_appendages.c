@@ -22,6 +22,10 @@ void arm_uppest()	{
 	mtp(ARM_MOTOR, ARM_FAST_SPEED, ARM_UPPEST+ARM_OFFSET);
 }
 
+void arm_high_scrape()	{
+	mtp(ARM_MOTOR, ARM_NORMAL_SPEED, ARM_HIGH_SCRAPE);
+}
+
 
 /**brief Derive arm speed
  /param target_pos the position the arm will be at.

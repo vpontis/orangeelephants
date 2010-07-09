@@ -10,40 +10,54 @@ void create_main_offensive()
 	/***************************************************************/
 	moveStraight(NORM_SPEED);
 	sleep(.35);
-	turn(-50,100);//Turns to bearing 0.
+	turn(-35,200);//Turns to bearing 0.
 	arm_up();//Puts arm up so it will not catch on Karel island
 	dozer_high_scrape();//Puts the dozer down so it can push off oily ducks
-	move_to_distance(910, NORM_SPEED); //Moves the create out past the oily duck center, old value 890
+	move_to_distance(1220, 700); //Moves the create out past the oily duck center, old value 890, 850
 	/***************************************************************/
-	
-	turn(59, 100);
-	move_to_distance(864, NORM_SPEED);
-	
-	//Moved in drop_off_sorbs(). Drops off sorbents from pushed into 
-	//dozer
-	//Bearings: 0
-	/***************************************************************/
-	/*move_to_distance(390,NORM_SPEED);
+	create_stop();
 	dozer_up();
-	move_to_distance(-150,NORM_SPEED);
-	/***************************************************************/
+	move_to_distance(-50,700);
+	turn(75,200);
+	move_to_distance(250,700);
+	dozer_down();
+	turn(-75,200);
+	dozer_up();
+	move_to_distance(170,700);
+	turn(75,200);
+	bmd(ARM_MOTOR);
+	move_to_distance(200,700);
+	move_to_distance(200,300);
+	turn(130,100);
+	
+	
+	/*move_to_distance(-300, 700);
+	arm_high_scrape();
+	turn(35, 100);
+	move_to_distance(380, 500);
+	create_stop(); 
+	turn(40,100);
+	bmd(ARM_MOTOR);
+	move_to_distance(290, 500);
+	turn(5, 100);
+	move_to_distance(140, 500);
+	turn(130,100);*/
 	
 	//Goes to Karel Island. Aligns with PVC piece next to the 
 	//island. 
 	//Bearings: 0 -> 90 -> 0 -> 90
 	/**************************************************************/
-	/*turn(93,100);//Turns create bearing 90 to face Island
-	move_to_distance(450, NORM_SPEED); //Create heads towards Karel Island, 520
-	turn(-90,100);//Turns create bearing 0
-	move_to_distance(190,NORM_SPEED);
-	dozer_up();//Puts dozer up so it can align on PVC by Karel Island
-	moveStraight(NORM_SPEED);
-	sleep(.25);	
-	moveStraight(-NORM_SPEED);
-	sleep(.25);
-	turn(91.5,100);
-	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
-	createStop();
+	/*create_stop();
+	dozer_up();
+	move_to_distance(-25, 700);
+	arm_high_scrape();
+	turn(49, 100);
+	move_to_distance(625, 500);
+	create_stop(); 
+	turn(30,100);
+	move_to_distance(230, 500);
+	bmd(ARM_MOTOR);
+	turn(130,100);
 	/**************************************************************/
 	
 	//Lowers Arm for the scrape. Turns CW ~90 degrees to scrape.
@@ -52,10 +66,10 @@ void create_main_offensive()
 	//Optional second scrape.
 	//Bearings: 270 -> 360 -> 270
 	/**************************************************************/
-	turn(10,50);//Split up turn in order to prevent arm from catching
-	arm_scrape();//Lower arm onto Karel Island to scrape frogs and Botguy
-	bmd(ARM_MOTOR);
-	turn(100,50);//Scraping turn 
+	//turn(10,50);//Split up turn in order to prevent arm from catching
+	//arm_scrape();//Lower arm onto Karel Island to scrape frogs and Botguy
+	//bmd(ARM_MOTOR);
+	//turn(100,50);//Scraping turn 
 	arm_up();//Puts arm back up to pass over Karel Island w/o catching
 	bmd(ARM_MOTOR);
 	turn(-90,100);//Turns back to align w/ PVC again
@@ -72,7 +86,7 @@ void create_main_offensive()
 	moveStraight(-80);
 	sleep(1.2);
 	createStop();
-	turn(96,100);//Turns create to bearing 360.
+	turn(85,100);//Turns create to bearing 360.
 	drive_wall(-NORM_SPEED);
 	moveStraight(-NORM_SPEED);
 	sleep(.25); 
