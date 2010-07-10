@@ -229,7 +229,7 @@ void clawOpen()	{
 /** \brief Close the duck frabbing claw
 */
 void clawClose()	{
-	set_servo_position(CLAW_SERVO, 1);	
+	set_servo_position(CLAW_SERVO, 5);	
 	//moveServoPosition(CLAW_SERVO, 1, 100);
 }
 

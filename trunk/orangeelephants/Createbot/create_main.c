@@ -13,7 +13,7 @@ void create_main()
 	sleep(.35);
 	turn(-53,100);//Turns to bearing 0.
 	arm_up();//Puts arm up so it will not catch on Karel island
-	dozer_scrape();//Puts the dozer down so it can push off oily ducks
+	dozer_high_scrape();//Puts the dozer down so it can push off oily ducks
 	move_to_distance(910, NORM_SPEED); //Moves the create out past the oily duck center, old value 890
 	sleep(1);//
 	/***************************************************************/
