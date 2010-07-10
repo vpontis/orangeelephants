@@ -42,7 +42,7 @@ void create_main()
 	sleep(.7);
 	turn(91.5,100);
 	
-	move_to_distance(390, NORM_SPEED);
+	move_to_distance(400, NORM_SPEED);
 	move_to_distance(30,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	//move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
