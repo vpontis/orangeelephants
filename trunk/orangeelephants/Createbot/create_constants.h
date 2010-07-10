@@ -35,7 +35,7 @@ const int ARM_UP = -1800;//-800,-437
 const int ARM_SCRAPE = -200; //-425, -300
 const int ARM_UPPEST= -1600;//-1600
 const int ARM_OFFSET = -475;//-1239, -1439, -1300, -1100, -800, -525
-const int ARM_HIGH_SCRAPE = -1750; 
+const int ARM_HIGH_SCRAPE = -1275; 
 
 //sensor ports
 const int LIGHT_SENSOR_PORT=0;

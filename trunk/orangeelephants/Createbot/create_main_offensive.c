@@ -32,7 +32,6 @@ void create_main_offensive()
 	sleep(.75);
 	createStop();
 	move_to_distance(140,100);
-	bmd(ARM_MOTOR);
 	turn(130,100);
 	
 	
