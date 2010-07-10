@@ -41,7 +41,8 @@ void create_main()
 	moveStraight(-NORM_SPEED);
 	sleep(.7);
 	turn(91.5,100);
-	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
+	move_to_distance(380, NORM_SPEED);
+	move_to_distance(430,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
 	const int islandTime = (seconds() - initTime);
 	printf("Time to island is %d \n", initTime);
