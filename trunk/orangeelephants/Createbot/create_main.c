@@ -8,6 +8,7 @@ void create_main()
 	//Moves forward 96 cm. 
 	//Bearings: 50 -> 0
 	/***************************************************************/
+	const int initTime = seconds();
 	moveStraight(NORM_SPEED);
 	sleep(.35);
 	turn(-53,100);//Turns to bearing 0.
@@ -42,6 +43,8 @@ void create_main()
 	turn(91.5,100);
 	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
+	const int islandTime = (seconds() - initTime);
+	printf("Time to island is %d \n, intTime");
 	/**************************************************************/
 	
 	//Lowers Arm for the scrape. Turns CW ~90 degrees to scrape.
