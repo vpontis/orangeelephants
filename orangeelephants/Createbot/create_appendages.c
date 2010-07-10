@@ -23,7 +23,7 @@ void arm_uppest()	{
 }
 
 void arm_high_scrape()	{
-	mtp(ARM_MOTOR, ARM_NORMAL_SPEED, ARM_HIGH_SCRAPE);
+	mtp(ARM_MOTOR, ARM_NORMAL_SPEED, ARM_HIGH_SCRAPE+ARM_OFFSET);
 }
 
 
