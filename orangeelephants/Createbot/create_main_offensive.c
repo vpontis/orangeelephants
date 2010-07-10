@@ -31,7 +31,9 @@ void create_main_offensive()
 	moveStraight(700);
 	sleep(.75);
 	createStop();
-	move_to_distance(140,100);
+	move_to_distance(170,100);
+	const int islandtime = seconds();
+	printf("Time to island is %d \n, islandtime");
 	turn(130,100);
 	
 	
