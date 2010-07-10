@@ -13,7 +13,7 @@ void create_main_offensive()
 	sleep(.35);
 	turn(-34.5,200);//Turns to bearing 0.
 	arm_up();//Puts arm up so it will not catch on Karel island
-	dozer_high_scrape();//Puts the dozer down so it can push off oily ducks
+	dozer_scrape();//Puts the dozer down so it can push off oily ducks
 	move_to_distance(1220, 700); //Moves the create out past the oily duck center, old value 890, 850
 	/***************************************************************/
 	create_stop();
@@ -34,7 +34,7 @@ void create_main_offensive()
 	createStop();
 	move_to_distance(140,100);
 	int islandtime = seconds() - init_time;
-	printf("Time to island is %d \n, islandtime");
+	printf("Time to island is %d \n", islandtime);
 	turn(130,100);
 	
 	

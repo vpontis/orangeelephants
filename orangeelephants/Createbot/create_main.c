@@ -44,7 +44,7 @@ void create_main()
 	move_to_distance(450,SLOW_SPEED);//Aligns with PVC piece on Karel Island
 	createStop();
 	const int islandTime = (seconds() - initTime);
-	printf("Time to island is %d \n, intTime");
+	printf("Time to island is %d \n", initTime);
 	/**************************************************************/
 	
 	//Lowers Arm for the scrape. Turns CW ~90 degrees to scrape.
