@@ -10,24 +10,29 @@ void create_main_offensive()
 	/***************************************************************/
 	moveStraight(NORM_SPEED);
 	sleep(.35);
-	turn(-35,200);//Turns to bearing 0.
+	turn(-34.5,200);//Turns to bearing 0.
 	arm_up();//Puts arm up so it will not catch on Karel island
 	dozer_high_scrape();//Puts the dozer down so it can push off oily ducks
 	move_to_distance(1220, 700); //Moves the create out past the oily duck center, old value 890, 850
 	/***************************************************************/
 	create_stop();
 	dozer_up();
-	move_to_distance(-50,700);
+	move_to_distance(-35,700);
 	turn(75,200);
-	move_to_distance(250,700);
+	move_to_distance(140,700);//250
 	dozer_down();
 	turn(-75,200);
 	dozer_up();
+	arm_high_scrape();
 	move_to_distance(170,700);
 	turn(75,200);
 	bmd(ARM_MOTOR);
-	move_to_distance(200,700);
-	move_to_distance(200,300);
+	//move_to_distance(150,700);
+	moveStraight(700);
+	sleep(.75);
+	createStop();
+	move_to_distance(140,100);
+	bmd(ARM_MOTOR);
 	turn(130,100);
 	
 	
@@ -187,6 +192,10 @@ void create_main_offensive()
 			}
 		}
 	}
+	moveStraight(100);
+	sleep(2.5);
+	dozer_high_scrape();
+	drive_wall(-NORM_SPEED);
 	createStop();
 	ao();
 	/**********************************************************/
