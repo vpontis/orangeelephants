@@ -1,0 +1,12 @@
+copy legobotcode\boolean.h i:
+copy legobotcode\color_line.c i:
+copy legobotcode\legobot_main.c i:
+copy legobotcode\legobot_main.h i:
+copy legobotcode\legobot_motor.c i:
+copy legobotcode\legobot_motor.h i:
+copy legobotcode\legobot_sensor.c i:
+copy legobotcode\legobot_sensor.h i:
+copy legobotcode\legobot_combine.c i:
+copy legobotcode\legobot_combine.h i:
+copy legobotcode\move-arm-middle.c i:
+copy legobotcode\robot.c i:
