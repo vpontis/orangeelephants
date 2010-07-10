@@ -25,9 +25,8 @@ const int DOZERR_NEUTRAL = 500;
 const int DOZERL_UP = 2000;
 const int DOZERR_UP = 0; 
 
-const int DOZERL_SCRAPE = 999; //1024-25
-const int DOZERR_SCRAPE = 1049; //1024+25
-
+const int DOZERL_SCRAPE = 984; //1024-25, 1024-40
+const int DOZERR_SCRAPE = 1064; //1024+25, 1024+40
 
 
 //motor consts, positive is low & negative is high
