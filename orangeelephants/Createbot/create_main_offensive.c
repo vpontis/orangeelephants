@@ -3,6 +3,7 @@
 
 void create_main_offensive()
 {
+	int init_time = seconds();
 	//Initializes Create to face bearing 0.
 	//Puts the dozer up and starts moving the arm up. 
 	//Moves forward 96 cm. 
@@ -31,8 +32,8 @@ void create_main_offensive()
 	moveStraight(700);
 	sleep(.75);
 	createStop();
-	move_to_distance(170,100);
-	const int islandtime = seconds();
+	move_to_distance(140,100);
+	int islandtime = seconds() - init_time;
 	printf("Time to island is %d \n, islandtime");
 	turn(130,100);
 	
