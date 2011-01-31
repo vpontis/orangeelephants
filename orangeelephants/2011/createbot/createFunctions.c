@@ -53,11 +53,14 @@ Does not work well for very short distances.
 */
 void moveToDistance(int distance, int speed) 
 { 
+	int slowDownDist = speed*.535; 
+	
 	set_create_distance(0); 
 	if(get_create_distance(.1) < distance) {      
 		createDrive(speed);
-        while (get_create_distance(.1) < distance) {
+        while (get_create_distance(.1) < (distance-slowDownDist)) {
                 sleep(0.05);
         }
+		createDrive(0);
      }
 }
