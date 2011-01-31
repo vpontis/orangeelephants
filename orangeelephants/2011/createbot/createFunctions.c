@@ -43,6 +43,12 @@ void createDrive(int finalSpeed)
 void createInitialize()
 {
 	int conVal = create_connect();
+	if(conVal == 0){
+		printf("Connection success. Setting to full mode...");
+	}
+	else{
+		printf("Connection failed.");
+	}
 	create_full();
 }
 
