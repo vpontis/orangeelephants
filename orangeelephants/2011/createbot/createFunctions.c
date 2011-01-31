@@ -1,6 +1,4 @@
-void accel(int initSpeed, int finalSpeed);
-void createDrive(int finalSpeed);
-void initializeCreate();
+#include "createFunctions.h"
 
 /**
 accel(int initSpeed, int finalSpeed)
@@ -42,8 +40,24 @@ void createDrive(int finalSpeed)
 	accel(initSpeed, finalSpeed);
 }
 
-void initializeCreate()
+void createInitialize()
 {
 	int conVal = create_connect();
 	create_full();
+}
+
+/**
+void moveToDistance(int distance, int speed) 
+Moves the robot a distance at a speed. 
+Does not work well for very short distances.
+*/
+void moveToDistance(int distance, int speed) 
+{ 
+	set_create_distance(0); 
+	if(get_create_distance(.1) < distance) {      
+		createDrive(speed);
+        while (get_create_distance(.1) < distance) {
+                sleep(0.05);
+        }
+     }
 }
