@@ -1,4 +1,5 @@
 #include "createFunctions.h"
+#include "createConstants.h"
 
 /**
 accel(int initSpeed, int finalSpeed)
@@ -52,21 +53,42 @@ void createInitialize()
 	create_full();
 }
 
-/**
-void moveToDistance(int distance, int speed) 
-Moves the robot a distance at a speed. 
-Does not work well for very short distances.
+/** \brief Moves the robot a distance at a constant speed
+
+	Does not work well for very short distances.
+	\param distance Desired distance in mm
+	\param speed Desired speed in ??
 */
 void moveToDistance(int distance, int speed) 
 { 
-	int slowDownDist = speed*.535; 
+	int slowDownDist = speed*stopDistanceRatio; //Calculates the stopping distance based on speed
+	
+	//so it doesn't go in the wrong way with a short distance and fast speed
+	//Needs testing/refinement
+	if((slowDownDist > abs(distance))){ 
+		slowDownDist = 0;
+	}
 	
 	set_create_distance(0); 
-	if(get_create_distance(.1) < distance) {      
+	
+	//Testing Code
+	printf("The total distance is %2.2d \n", distance - slowDownDist);
+	printf("The slowDownDist is %2.2d \n", slowDownDist);
+	
+	if(get_create_distance(.1) < distance) {   
 		createDrive(speed);
         while (get_create_distance(.1) < (distance-slowDownDist)) {
                 sleep(0.05);
         }
-		createDrive(0);
+		create_stop();
      }
+	 else{ 
+		 //backwards
+		 createDrive(-speed);
+		 while (get_create_distance(.1) > (distance+slowDownDist)) {
+                sleep(0.05);
+        }
+		create_stop();
+	}
+		 
 }
