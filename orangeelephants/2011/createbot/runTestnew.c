@@ -1,13 +1,14 @@
-
+#include "createConstants.h"
+#include "runTestnew.h"
 
 int main()
 {
-	clenchClaw(2,240);
+	pickUpDropOff();
 }
 
 void moveArmUp(){
 	
-	mav(armMotorPort, ArmUpVelocity);
+	mav(armMotorPort, armUpVelocity);
 	while (digital(15) == 0) // port 15 is sensor number
 	{
 		sleep(0.1);
