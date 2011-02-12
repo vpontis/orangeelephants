@@ -9,7 +9,7 @@ int main()
 		if(a_button())
 		{
 			createInitialize();
-			moveToDistance(500, 100);
+			moveToDistance(500, 250);
 		/*	int speed=500;
 			
 			while(speed>0)
