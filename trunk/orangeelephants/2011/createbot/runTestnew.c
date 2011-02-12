@@ -40,7 +40,7 @@ void pickUpDropOff() {
 	sleep(1); //pause in between moving and clench
 	
 	moveArmUp();
-	moveArmDown(-300);
+	moveArmDown(dropHeight);
 	
 	sleep(1); 
 	slowReleaseClench();
