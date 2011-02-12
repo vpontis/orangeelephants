@@ -3,12 +3,12 @@
 
 //moveToDistance(int distance, int speed)
 const double stopDistanceRatio = 0.4; //needs callibration
-const int armDownVelocity = -200; //needs callibration
+const int armDownVelocity = -400; //needs callibration
 const int armUpVelocity = 750; //needs callibration
 const int armMotorPort = 0; 
-const int clawServoPort = 2; 
+const int clawPort = 2; 
 const int clawOpenPos = 790; 
-const int armPosDown = -8000;
-const int armPartialDown = -500;
+const int armPosDown = -8500;
+const int armPartialDown = -600;
 
 #endif
