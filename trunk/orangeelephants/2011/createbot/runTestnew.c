@@ -1,11 +1,29 @@
 #include "createConstants.h"
 #include "runTestnew.h"
 
-int increment = 79; // maxClawRelease divided by 10
-int x = 0; 
 int main()
 {
-	pickUpDropOff();
+	printf("Press A button to run program \n");
+	printf("Press UP to raise arm. Press DOWN to callibrate and to lower arm \n");
+	while(1)
+	{
+		if(a_button())//Gives prompts to run code.
+		{
+			pickUpDropOff();
+			sleep(1);
+			break;
+		}
+		else if(up_button())
+		{
+			moveArmUp();
+		}
+		else if(down_button())
+		{
+			moveArmUp();
+			moveArmDown(armPosDown);
+		}        
+	}
+	
 }
 
 void moveArmUp(){
@@ -32,7 +50,7 @@ void moveArmDown(int nDistance) {
 
 void pickUpDropOff() { 
 
-	set_servo_position(clawServoPort,maxClawRelease); //790 = default value to clench
+	set_servo_position(clawServoPort,clawOpenPos); //790 = default value to clench
 	sleep(.5);  //pause before clench 
 	
 	
@@ -40,21 +58,22 @@ void pickUpDropOff() {
 	sleep(1); //pause in between moving and clench
 	
 	moveArmUp();
-	moveArmDown(dropHeight);
+	moveArmDown(armPartialDown); //goes down -8300+7800
 	
 	sleep(1); 
-	slowReleaseClench();
+	slowReleaseClaw();
 	sleep(1); 
 
-	
-	moveArmDown(-7700); //Test this value. needs to go all the awy down. 
+	moveArmDown(armPosDown - armPartialDown); //Test this value. needs to go all the awy down. 
 }
-void slowReleaseClench()
-{
-	while (x < maxClawRelease) {
-		set_servo_position(clawServoPort, x); 
-
-		x += increment; 
+void slowReleaseClaw()
+{	
+	int clawPos = get_servo_position(clawServoPort); 
+	int clawPosIncrement = clawOpenPos/10; 
+	
+	while (clawPos < clawOpenPos) {
+		set_servo_position(clawServoPort, clawPos); 
+		clawPos += clawPosIncrement; 
 		sleep(.05); 
 	}
 }
