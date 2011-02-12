@@ -61,7 +61,7 @@ void createInitialize()
 */
 void moveToDistance(int distance, int speed) 
 { 
-	int slowDownDist = speed*stopDistanceRatio; //Calculates the stopping distance based on speed
+	int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
 	
 	//so it doesn't go in the wrong way with a short distance and fast speed
 	//Needs testing/refinement
@@ -95,31 +95,31 @@ void moveToDistance(int distance, int speed)
 
 void moveArmUp(){
 	
-	mav(armMotorPort, armUpVelocity);
+	mav(ARM_MOTOR_PORT, ARM_UP_VELOCITY);
 	while (digital(15) == 0) // port 15 is sensor number
 	{
 		sleep(0.1);
 	}
-	mav(armMotorPort,0);
+	mav(ARM_MOTOR_PORT,0);
 	clear_motor_position_counter(0);
 	sleep(0.5);  //removable??
 }
 
 void moveArmDown(int nDistance) {
 	clear_motor_position_counter(0);
-	mav(armMotorPort, armDownVelocity);
+	mav(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY);
 	
 	while(get_motor_position_counter(0) >= nDistance) {
 		sleep(0.1);
 	}
-	mav(armMotorPort,0);	
+	mav(ARM_MOTOR_PORT,0);	
 }
 
 
 
 void pickUpDropOff() { 
 
-	set_servo_position(clawPort,clawOpenPos); //790 = default value to clench
+	set_servo_position(CLAW_PORT,CLAW_OPEN_POS); //790 = default value to clench
 	sleep(.5);  //pause before clench 
 	
 	
@@ -127,24 +127,24 @@ void pickUpDropOff() {
 	sleep(1); //pause in between moving and clench
 	
 	moveArmUp();
-	moveArmDown(armPartialDown);
+	moveArmDown(ARM_PARTIAL_DOWN);
 	
 	sleep(1); 
 	slowReleaseClaw();
 	sleep(1); 
 
-	moveArmDown(armPosDown - armPartialDown); //Test this value. needs to go all the awy down. 
+	moveArmDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
 }
 
 
 
 void slowReleaseClaw()
 {	
-	int clawPos = get_servo_position(clawPort); 
-	int clawPosIncrement = clawOpenPos/10; 
+	int clawPos = get_servo_position(CLAW_PORT); 
+	int clawPosIncrement = CLAW_OPEN_POS/10; 
 	
-	while (clawPos < clawOpenPos) {
-		set_servo_position(clawPort, clawPos); 
+	while (clawPos < CLAW_OPEN_POS) {
+		set_servo_position(CLAW_PORT, clawPos); 
 		clawPos += clawPosIncrement; 
 		sleep(.05); 
 	}
@@ -152,11 +152,11 @@ void slowReleaseClaw()
 
 void slowCloseClaw()
 {	
-	int clawPos = get_servo_position(clawPort); 
-	int clawPosIncrement = clawOpenPos/10; 
+	int clawPos = get_servo_position(CLAW_PORT); 
+	int clawPosIncrement = CLAW_OPEN_POS/10; 
 	
 	while (clawPos >= 0 || clawPos < 0) {
-		set_servo_position(clawPort, clawPos); 
+		set_servo_position(CLAW_PORT, clawPos); 
 		clawPos -= clawPosIncrement; 
 		sleep(.1); 
 	}
