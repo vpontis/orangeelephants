@@ -4,6 +4,6 @@
 void moveArmUp();
 void moveArmDown(int nDistance);
 void pickUpDropOff();
-void slowReleaseClench();
+void slowReleaseClaw();
 
 #endif
