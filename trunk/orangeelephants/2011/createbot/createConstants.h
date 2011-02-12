@@ -8,4 +8,5 @@ const int armUpVelocity = 750; //needs callibration
 const int armMotorPort = 0; 
 const int clawServoPort = 2; 
 const int maxClawRelease = 790; //needs callibration
+const int dropHeight = -300; //needs callibration
 #endif
