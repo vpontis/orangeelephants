@@ -1,41 +1,41 @@
-void moveArm(int nPosVel, int nNegVel, int nDistance, int nMotor) {
-	while ( digital(15) == 0 ) // port 15 is sensor number
-	{
-		mav(nMotor,nPosVel);
-		if ( digital(15) == 1 )
-		{mav(nMotor,0);break;}
-	}
-	
-	
-	sleep(1.5);  
-	disable_servos(); 
-	clear_motor_position_counter(0);
-	while( get_motor_position_counter(0) >= nDistance ) {
-		mav(0,nNegVel);
-		if ( get_motor_position_counter(0) == nDistance )
-		{mav(nMotor,0);break;}
-	}
-	//8500
-}
 
-void clenchClaw(int nServo, int nClench) { 
-
-	set_servo_position(nServo,1174); //1174 = default value to clench
-	
-	enable_servos();
-	disable_servos();
-	sleep(1);  //pause inbetween clench 
-	set_servo_position(nServo,nClench); 
-	enable_servos();
-	while (1) {
-		set_servo_position(nServo,nClench);
-		sleep(.5); 
-		moveArm(750,-300,-8000,0); 
-		break;
-	}
-}
 
 int main()
 {
 	clenchClaw(2,240);
+}
+
+void moveArmUp(){
+	
+	mav(armMotorPort, ArmUpVelocity);
+	while (digital(15) == 0) // port 15 is sensor number
+	{
+		sleep(0.1);
+	}
+	mav(armMotorPort,0);
+	clear_motor_position_counter(0);
+	sleep(0.5);  //removable??
+}
+
+void moveArmDown(int nDistance) {
+	clear_motor_position_counter(0);
+	mav(armMotorPort, armDownVelocity);
+	
+	while(get_motor_position_counter(0) <= nDistance) {
+		sleep(0.1);
+	}
+	mav(armMotorPort,0);	
+}
+
+void pickUpDropOff() { 
+
+	set_servo_position(clawServoPort,1174); //1174 = default value to clench
+	sleep(1);  //pause inbetween clench 
+	
+	moveArmUp();
+	moveArmDown(300);
+	
+	set_servo_position(clawServoPort,0); 
+	
+	moveArmDown(7700); //Value may be wrong 
 }
