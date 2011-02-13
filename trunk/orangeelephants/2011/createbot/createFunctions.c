@@ -93,19 +93,20 @@ void moveToDistance(int distance, int speed)
 		 
 }
 
-void moveArmUp(){
+//Moves the claw to pinch the blocks up until it hits the sensor
+void moveClawUp(){
 	
 	mav(ARM_MOTOR_PORT, ARM_UP_VELOCITY);
-	while (digital(15) == 0) // port 15 is sensor number
+	while (digital(ARM_TOUCH_PORT) == 0) //keep moving up until the touch sensor is triggered
 	{
 		sleep(0.1);
 	}
 	mav(ARM_MOTOR_PORT,0);
 	clear_motor_position_counter(0);
-	sleep(0.5);  //removable??
 }
 
-void moveArmDown(int nDistance) {
+//Moves the claw down a certain distance
+void moveClawDown(int nDistance) {
 	clear_motor_position_counter(0);
 	mav(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY);
 	
@@ -116,8 +117,8 @@ void moveArmDown(int nDistance) {
 }
 
 
-
-void pickUpDropOff() { 
+//picks up two blocks and lifts them to a height of two blocks then lets them go and puts the claw back down
+void stackBlocks() { 
 
 	set_servo_position(CLAW_PORT,CLAW_OPEN_POS); //790 = default value to clench
 	sleep(.5);  //pause before clench 
@@ -126,14 +127,14 @@ void pickUpDropOff() {
 	slowCloseClaw();
 	sleep(1); //pause in between moving and clench
 	
-	moveArmUp();
-	moveArmDown(ARM_PARTIAL_DOWN);
+	moveClawUp();
+	moveClawDown(ARM_PARTIAL_DOWN);
 	
 	sleep(1); 
 	slowReleaseClaw();
 	sleep(1); 
 
-	moveArmDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
+	moveClawDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
 }
 
 

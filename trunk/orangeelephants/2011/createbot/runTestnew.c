@@ -11,18 +11,18 @@ int main()
 	{
 		if(a_button())//Gives prompts to run code.
 		{
-			pickUpDropOff();
+			stackBlocks();
 			sleep(1);
 			break;
 		}
 		else if(up_button())
 		{
-			moveArmUp();
+			moveClawUp();
 		}
 		else if(down_button())
 		{
-			moveArmUp();
-			moveArmDown(ARM_POS_DOWN);
+			moveClawUp();
+			moveClawDown(ARM_POS_DOWN);
 		}        
 	}
 	
