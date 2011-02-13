@@ -157,11 +157,12 @@ void slowCloseClaw()
 	int clawPos = get_servo_position(CLAW_PORT); 
 	int clawPosIncrement = CLAW_OPEN_POS/10; 
 	
-	while (clawPos >= 0 || clawPos < 0) {
+	while (clawPos >= 100) {
 		set_servo_position(CLAW_PORT, clawPos); 
 		clawPos -= clawPosIncrement; 
 		sleep(.1); 
 	}
+	set_servo_position(CLAW_PORT, 0);
 }
 
 void pickUpBlocks()
