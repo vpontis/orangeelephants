@@ -73,8 +73,8 @@ void moveToDistance(int distance, int speed)
 	set_create_distance(0); 
 	
 	//Testing Code
-	printf("The total distance is %2.2d \n", distance - slowDownDist);
-	printf("The slowDownDist is %2.2d \n", slowDownDist);
+	//printf("The total distance is %2.2d \n", distance - slowDownDist);
+	//printf("The slowDownDist is %2.2d \n", slowDownDist);
 	
 	if(get_create_distance(.1) < distance) {   
 		createDrive(speed);
@@ -145,24 +145,26 @@ void slowReleaseClaw()
 	int clawPos = get_servo_position(CLAW_PORT); 
 	int clawPosIncrement = CLAW_OPEN_POS/10; 
 	
-	while (clawPos < CLAW_OPEN_POS) {
+	while (clawPos < (CLAW_OPEN_POS - clawPosIncrement)) {//to prevent the claw from going too far
 		set_servo_position(CLAW_PORT, clawPos); 
 		clawPos += clawPosIncrement; 
 		sleep(.05); 
 	}
+	
+	set_servo_position(CLAW_PORT, CLAW_OPEN_POS);
 }
 
 void slowCloseClaw()
 {	
 	int clawPos = get_servo_position(CLAW_PORT); 
-	int clawPosIncrement = CLAW_OPEN_POS/10; 
+	int clawPosIncrement = clawPos/10; 
 	
-	while (clawPos >= 100) {
-		set_servo_position(CLAW_PORT, clawPos); 
-		clawPos -= clawPosIncrement; 
-		sleep(.1); 
-	}
-	set_servo_position(CLAW_PORT, 0);
+	while (clawPos >= clawPosIncrement) {//so to stop it from giving a negative servo value
+                set_servo_position(CLAW_PORT, clawPos); 
+                clawPos -= clawPosIncrement; 
+                sleep(.1); 
+    }
+    set_servo_position(CLAW_PORT, 0);
 }
 
 void pickUpBlocks()
