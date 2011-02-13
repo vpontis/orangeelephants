@@ -8,8 +8,8 @@ Robot continues on driving straight at finalSpeed.
 */
 void accel(int initSpeed, int finalSpeed)
 {
-	int increm = (finalSpeed-initSpeed)/20;
 	int speed = initSpeed;
+	int increm = (finalSpeed-initSpeed)/20;
 	
 	float time = abs((finalSpeed-initSpeed)/2500);//delay is .1 sec for accel from 0-500
 	
@@ -38,6 +38,7 @@ void accel(int initSpeed, int finalSpeed)
 void createDrive(int finalSpeed)
 {
 	int initSpeed = get_create_requested_velocity(.1);
+	
 	accel(initSpeed, finalSpeed);
 }
 
@@ -161,4 +162,30 @@ void slowCloseClaw()
 		clawPos -= clawPosIncrement; 
 		sleep(.1); 
 	}
+}
+
+void pickUpBlocks()
+{
+	slowCloseClaw();
+	moveClawUp();
+}
+
+void turn(float deg, int vel)   {//turn a given amout using gc_angle
+        deg = -1 * deg;
+        float a=(float)(deg+(deg*0.09/360.0 - 0.14)*deg/2);
+		sleep(.05);
+        set_create_total_angle(0);
+        if (a > 0) {
+                create_spin_CCW(vel);
+                while(get_create_total_angle(.1) < a) {
+                        sleep(.05);
+                }
+        }
+        else {
+                create_spin_CW(vel);
+                while(get_create_total_angle(.1) > a) {
+                        sleep(.05);
+                }
+        }
+        create_stop();  
 }
