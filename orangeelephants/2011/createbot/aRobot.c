@@ -2,7 +2,7 @@
 
 int main()
 {
-	printf("Press the A button to createDrive.\n");
+	printf("Press the A button to test stacking blocks..\n");
 	printf("Press the B button to moveToDistance.\n");
 	while(1)
 	{
@@ -13,16 +13,22 @@ int main()
 			set_servo_position(CLAW_PORT,CLAW_OPEN_POS);
 			sleep(.5);
 			
-			moveToDistance(-500, -250);
+			moveToDistance(-500, 250);
 			pickUpBlocks();
 			
 			sleep(.5);
 			turn(180, 200);
+			printf("Turn completed.\n");
 			
 			sleep(.5);	
-			moveToDistance(500, 250);
+			moveToDistance(-500, 250);
+			printf("Moved back to original blocks. \n");
+			
 			slowReleaseClaw();
-			moveToDistance(-200, 250);
+			printf("Claw opened.\n");
+			
+			moveToDistance(200, 250);
+			printf("Backed away, program done. \n");
 		}
 		
 		if(b_button())
