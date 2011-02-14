@@ -157,7 +157,7 @@ void slowReleaseClaw()
 void slowCloseClaw()
 {	
 	int clawPos = get_servo_position(CLAW_PORT); 
-	int clawPosIncrement = clawPos/10; 
+	int clawPosIncrement = clawPos/20; 
 	
 	while (clawPos >= clawPosIncrement) {//so to stop it from giving a negative servo value
                 set_servo_position(CLAW_PORT, clawPos); 
@@ -173,22 +173,52 @@ void pickUpBlocks()
 	moveClawUp();
 }
 
-void turn(float deg, int vel)   {//turn a given amout using gc_angle
-        deg = -1 * deg;
-        float a=(float)(deg+(deg*0.09/360.0 - 0.14)*deg/2);
-		sleep(.05);
-        set_create_total_angle(0);
-        if (a > 0) {
-                create_spin_CCW(vel);
-                while(get_create_total_angle(.1) < a) {
-                        sleep(.05);
-                }
+void turn(float deg, int vel)	{
+	deg = - deg;
+	set_create_total_angle(0);
+	if(deg > 0)	{
+		create_spin_CCW(vel);
+		while(get_create_total_angle(.1) < deg)	{
+			sleep(.05);
+		}
+	}
+	else	{
+		create_spin_CW(vel);
+		while(get_create_total_angle(.1) > deg)	{
+			sleep(.05);
         }
-        else {
-                create_spin_CW(vel);
-                while(get_create_total_angle(.1) > a) {
-                        sleep(.05);
-                }
-        }
-        create_stop();  
+	}
+	create_stop();
+}
+
+void accelTurn(float deg, int vel)	{
+	deg = -deg
+	set_create_total_angle(0);
+	int finalVel = vel;
+	int increment = vel/10;
+	if(deg > 0)	{
+		while(get_create_total_angle(.1) < deg)	{
+			while(increment < (vel-increment))
+			{
+				create_spin_CCW(increment);
+				increment += increment;
+				sleep(.05);
+			}
+			create_spin_CW(vel);
+			sleep(.05);
+		}
+	}
+	else	{
+		while(get_create_total_angle(.1) > deg)	{
+			while(increment < (vel-increment))
+			{
+				create_spin_CW(increment);
+				increment += increment;
+				sleep(.05);
+			}
+			create_spin_CCW(vel);
+			sleep(.05);
+		}
+	}
+	create_stop();
 }

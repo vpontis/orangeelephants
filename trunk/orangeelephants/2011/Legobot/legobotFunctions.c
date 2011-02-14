@@ -87,14 +87,14 @@ void turn(int speed, int degree){
 	//right turn
 	if(degree > 0){
 		while(1){
-			mav(3,speed);
-			mav(0,-speed);
+			mav(R_MOTOR,speed);
+			mav(L_MOTOR,-speed);
 			
 			if(get_motor_position_counter(3) >= ticks){
 				clear_motor_position_counter(3);
 				clear_motor_position_counter(0);
-				mav(3,0);
-				mav(0,0);
+				mav(R_MOTOR,0);
+				mav(L_MOTOR,0);
 				break;
 			}
 		}
@@ -103,14 +103,14 @@ void turn(int speed, int degree){
 	//left turn
 	if(degree < 0){
 		while(1){
-			mav(0,speed);
-			mav(3,-speed);
+			mav(L_MOTOR,speed);
+			mav(R_MOTOR,-speed);
 			//neg. ticks so that the motor_position remains positive
 			if(get_motor_position_counter(0) >= -ticks){
 				clear_motor_position_counter(3);
 				clear_motor_position_counter(0);
-				mav(3,0);
-				mav(0,0);
+				mav(L_MOTOR,0);
+				mav(R_MOTOR,0);
 				break;
 			}
 		}
