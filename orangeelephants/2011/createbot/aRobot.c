@@ -2,8 +2,10 @@
 
 int main()
 {
+	printf("JESSE!!!! Tomorrow is Valentine's Day! ;) <3 <3\n");
+	printf("I think you should do something for your fave robot...\n");
 	printf("Press the A button to test stacking blocks..\n");
-	printf("Press the B button to moveToDistance.\n");
+	printf("Press the down button to calibrate the claw.\n");
 	while(1)
 	{
 		if(a_button())
@@ -24,6 +26,11 @@ int main()
 			moveToDistance(-500, 250);
 			printf("Moved back to original blocks. \n");
 			
+			moveToDistance(-200, 100);
+			moveToDistance(25, 100);
+			
+			moveClawDown(ARM_PARTIAL_DOWN);
+			
 			slowReleaseClaw();
 			printf("Claw opened.\n");
 			
@@ -34,16 +41,17 @@ int main()
 		if(b_button())
 		{
 			createInitialize();
-		/*	int distance = 500;
-			while( distance > 0)
-			{
-				moveToDistance(distance,500);
-				printf("The distance moved is %d.\n", get_create_distance(.1));
-				
-				distance -= 100;
-			}
-		*/
+			moveToDistance(-100,300);
+			accelTurn(180, 300);
+			moveToDistance(200, 300);
+			accelTurn(-180, 500);
 		}
+		
+		if(down_button())
+		{
+			moveClawUp();
+			moveClawDown(ARM_POS_DOWN);
+		}   
 	}
 }
 		

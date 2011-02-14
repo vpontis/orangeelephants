@@ -12,7 +12,10 @@ void slowReleaseClaw();
 void slowCloseClaw();
 void pickUpBlocks();
 
+
 void turn(float deg, int vel);
+void accelTurn(float deg, int vel);
+
 
 
 
