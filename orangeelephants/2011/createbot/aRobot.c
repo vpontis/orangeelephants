@@ -12,22 +12,22 @@ int main()
 		{
 			createInitialize();
 			enable_servos();
-			set_servo_position(CLAW_PORT,CLAW_OPEN_POS);
+			set_servo_position(CLAW_PORT,400);
 			sleep(.5);
 			
 			moveToDistance(-500, 250);
+			
 			pickUpBlocks();
 			
 			sleep(.5);
-			turn(180, 200);
+			turn(170, 100);
 			printf("Turn completed.\n");
 			
 			sleep(.5);	
-			moveToDistance(-500, 250);
+			moveToDistance(-530, 250);
 			printf("Moved back to original blocks. \n");
 			
-			moveToDistance(-200, 100);
-			moveToDistance(25, 100);
+			moveToDistance(130, 100);
 			
 			moveClawDown(ARM_PARTIAL_DOWN);
 			
