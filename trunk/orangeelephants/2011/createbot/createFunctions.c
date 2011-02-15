@@ -143,12 +143,12 @@ void stackBlocks() {
 void slowReleaseClaw()
 {	
 	int clawPos = get_servo_position(CLAW_PORT); 
-	int clawPosIncrement = CLAW_OPEN_POS/10; 
+	int clawPosIncrement = CLAW_OPEN_POS/50; 
 	
 	while (clawPos < (CLAW_OPEN_POS - clawPosIncrement)) {//to prevent the claw from going too far
 		set_servo_position(CLAW_PORT, clawPos); 
 		clawPos += clawPosIncrement; 
-		sleep(.05); 
+		sleep(.15); 
 	}
 	
 	set_servo_position(CLAW_PORT, CLAW_OPEN_POS);
@@ -192,7 +192,7 @@ void turn(float deg, int vel)	{
 }
 
 void accelTurn(float deg, int vel)	{
-	deg = -deg
+	deg = -deg;
 	set_create_total_angle(0);
 	int finalVel = vel;
 	int increment = vel/10;
