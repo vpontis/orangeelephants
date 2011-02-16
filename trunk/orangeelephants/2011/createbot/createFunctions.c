@@ -62,14 +62,14 @@ void createInitialize()
 */
 void moveToDistance(int distance, int speed) 
 { 
-	int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
+	//int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
 	
 	//so it doesn't go in the wrong way with a short distance and fast speed
 	//Needs testing/refinement
-	if((slowDownDist > abs(distance))){ 
+	/*if((slowDownDist > abs(distance))){ 
 		slowDownDist = 0;
 	}
-	
+	*/
 	set_create_distance(0); 
 	
 	//Testing Code
@@ -78,7 +78,7 @@ void moveToDistance(int distance, int speed)
 	
 	if(get_create_distance(.1) < distance) {   
 		createDrive(speed);
-        while (get_create_distance(.1) < (distance-slowDownDist)) {
+        while (get_create_distance(.1) < (distance/*-slowDownDist*/)) {
                 sleep(0.05);
         }
 		create_stop();
@@ -86,13 +86,74 @@ void moveToDistance(int distance, int speed)
 	 else{ 
 		 //backwards
 		 createDrive(-speed);
-		 while (get_create_distance(.1) > (distance+slowDownDist)) {
+		 while (get_create_distance(.1) > (distance/*+slowDownDist*/)) {
                 sleep(0.05);
         }
 		create_stop();
 	}
 		 
 }
+
+
+/** \brief Moves the robot a distance at a changing speed
+
+	Does not work well for very short distances.
+	\param distance Desired distance in mm
+	\param initSpeed 
+	\param finalSpeed 
+*/
+
+void moveToDistanceAccel(int distance, int initSpeed, int finalSpeed) 
+{ 
+	set_create_distance(0); 
+	double numIncrements = 5.;
+	double increment = (finalSpeed - initSpeed)/numIncrements;
+	int currSpeed = initSpeed;
+	int distFragsCounter = 0;
+	createDrive(currSpeed);
+	if(distance > 0) {
+		while(distFragsCounter < (int) (numIncrements/2)) {   
+			set_create_distance(0);
+			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			currSpeed += increment;
+			createDrive(currSpeed);
+			distFragsCounter++;
+		}
+		
+		distFragsCounter = 0;
+		while(distFragsCounter < (int) (numIncrements/2)) {   
+			set_create_distance(0);
+			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			currSpeed -= increment;
+			createDrive(currSpeed);
+			distFragsCounter++;
+		}
+	}
+	else{
+		while(distFragsCounter > (int) (numIncrements/2)) {   
+			set_create_distance(0);
+			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			currSpeed -= increment;
+			createDrive(currSpeed);
+			distFragsCounter++;
+		}
+		
+		distFragsCounter = 0;
+		while(distFragsCounter > (int) (numIncrements/2)) {   
+			set_create_distance(0);
+			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			currSpeed += increment;
+			createDrive(currSpeed);
+			distFragsCounter++;
+		}
+	}
+		
+	create_stop();
+		 
+}
+
+
+
 
 //Moves the claw to pinch the blocks up until it hits the sensor
 void moveClawUp(){

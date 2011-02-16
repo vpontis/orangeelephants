@@ -5,6 +5,7 @@ void accel(int initSpeed, int finalSpeed);
 void createDrive(int finalSpeed);
 void createInitialize();
 void moveToDistance(int distance, int speed);
+void moveToDistanceAccel(int distance, int initSpeed, int finalSpeed);
 void moveClawUp();
 void moveClawDown(int nDistance);
 void pickUpDropOff();
