@@ -8,7 +8,7 @@ const int  ARM_DOWN_VELOCITY = -400; //needs callibration
 const int  ARM_UP_VELOCITY = 750; //needs callibration
 
 
-const int  CLAW_OPEN_POS = 790; 
+const int  CLAW_OPEN_POS = 700; 
 const int  ARM_POS_DOWN = -8500;
 const int  ARM_PARTIAL_DOWN  = -600;
 
