@@ -2,8 +2,14 @@
 #include "legobotConstants.h"
 
 int main() {
-	moveToDistance(80,500);
-	//sleep(3);
-	//lowerBlockerLeft();
-	legobotAccel(0,1000);
+	
+	turn(500,-90);
+	moveToDistance(20,500);
+	turn(500,-90);
+	moveToDistance(20,500);
+	turn(500,-90);
+	moveToDistance(20,500);
+	turn(500,-90);
+	moveToDistance(20,500);
+	
 }
