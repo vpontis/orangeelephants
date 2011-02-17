@@ -37,8 +37,10 @@ void legobotAccel(int initSpeed,int finalSpeed){
 
 
 void moveToDistance(float distance, int speed) {
-	mrp(0, speed, cmToTicks(distance)); //left wheel
-	mrp(3, speed, cmToTicks(distance)); //right wheel
+	mrp(L_MOTOR, speed, cmToTicks(distance)); //left wheel
+	mrp(R_MOTOR, speed, cmToTicks(distance)); //right wheel
+	clear_motor_position_counter(L_MOTOR);
+	clear_motor_position_counter(R_MOTOR);
 	bmdMotors();
 }
 
@@ -52,21 +54,33 @@ void bmdMotors() {     //wait until driving motors finish moving
 }
 
 void lowerBlockerLeft(){ //lower left blocker and move forward 20 cm (subject to change)
-	set_servo_position(2,1100);
+	//for the left motor
+	//requires callibration of motors in beginning
+	clear_motor_position_counter(L_BLOCKER_MOTOR);
+	mrp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, L_BLOCKER_MOTOR_DISTANCE);
 	sleep(1);
-	moveToDistance(20,200);
-	sleep(1);
-	//when blocker is vertical: position 1800 
-	//when blocker hits the ground and is horizontal: position 650 
+	off(L_BLOCKER_MOTOR);
 }
 
 void lowerBlockerRight(){ //lower right blocker and move forward 20 cm (subject to change)
-	set_servo_position(0,650);
-	sleep(1);
-	moveToDistance(20,200);
+	set_servo_position(0,R_BLOCKER_SERVO_POSITION);
 	sleep(1);
 	//when blocker is vertical: position 50
 	//when blocker hits the ground and is horizontal: position 1100
+}
+
+void calibrateBlockerLeft(){
+	while(1){
+		if(up_button() == 1){
+			mrp(L_BLOCKER_MOTOR, 10, 10);
+		}
+		else if(down_button() == 1){
+			mrp(L_BLOCKER_MOTOR, 10, -10);
+		}
+		else if(b_button() == 1){
+			break;
+		}
+	}
 }
 
 /*Turns the Legobot a certain degree, a negative degree will result in a left turn
@@ -87,33 +101,33 @@ void turn(int speed, int degree){
 	//right turn
 	if(degree > 0){
 		while(1){
-			mav(R_MOTOR,speed);
-			mav(L_MOTOR,-speed);
-			
-			if(get_motor_position_counter(3) >= ticks){
+			mav(L_MOTOR,speed);
+			mav(R_MOTOR,-speed);
+
+			if(get_motor_position_counter(0) >= ticks){
 				clear_motor_position_counter(3);
 				clear_motor_position_counter(0);
-				mav(R_MOTOR,0);
 				mav(L_MOTOR,0);
+				mav(R_MOTOR,0);
 				break;
 			}
 		}
+		
 	}
 	
 	//left turn
 	if(degree < 0){
 		while(1){
-			mav(L_MOTOR,speed);
-			mav(R_MOTOR,-speed);
-			//neg. ticks so that the motor_position remains positive
-			if(get_motor_position_counter(0) >= -ticks){
+			mav(R_MOTOR,speed);
+			mav(L_MOTOR,-speed);
+			
+			if(get_motor_position_counter(3) >= -ticks){
 				clear_motor_position_counter(3);
 				clear_motor_position_counter(0);
-				mav(L_MOTOR,0);
 				mav(R_MOTOR,0);
+				mav(L_MOTOR,0);
 				break;
 			}
-		}
 	}	
 }
-
+}
