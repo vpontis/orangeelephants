@@ -106,48 +106,56 @@ void moveToDistance(int distance, int speed)
 void moveToDistanceAccel(int distance, int initSpeed, int finalSpeed) 
 { 
 	set_create_distance(0); 
-	double numIncrements = 5.;
+	if(initSpeed == 0){
+		if(distance < 0){
+			initSpeed = -50;
+		}
+		else{
+			initSpeed = 50;
+		}
+	}
+	double numIncrements = 4.;
 	double increment = (finalSpeed - initSpeed)/numIncrements;
 	int currSpeed = initSpeed;
-	int distFragsCounter = 0;
+	double totalDistance = 0;
 	createDrive(currSpeed);
 	if(distance > 0) {
-		while(distFragsCounter < (int) (numIncrements/2)) {   
+		while((totalDistance) < (distance/numIncrements)) {   // WHY divide by 4? DONT FUCKING KNOW.
 			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			while(get_create_distance(.1) < (distance/(numIncrements))){}
+			totalDistance += (distance/(numIncrements));
 			currSpeed += increment;
 			createDrive(currSpeed);
-			distFragsCounter++;
 		}
 		
-		distFragsCounter = 0;
-		while(distFragsCounter < (int) (numIncrements/2)) {   
+		totalDistance = 0;
+		while((totalDistance) < (distance/numIncrements)) {   
 			set_create_distance(0);
 			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			totalDistance += (distance/(numIncrements));
 			currSpeed -= increment;
 			createDrive(currSpeed);
-			distFragsCounter++;
 		}
+		
 	}
 	else{
-		while(distFragsCounter > (int) (numIncrements/2)) {   
+		while((totalDistance) > (distance/numIncrements)) { // WHY divide by 4? DONT FUCKING KNOW.
+			//WTF I DON'T KNOW WHY THIS WORKS BUT IT DOES.
 			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/numIncrements)) {}
-			currSpeed -= increment;
-			createDrive(currSpeed);
-			distFragsCounter++;
-		}
-		
-		distFragsCounter = 0;
-		while(distFragsCounter > (int) (numIncrements/2)) {   
-			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			while(get_create_distance(.1) > (distance/numIncrements)) {}
+			totalDistance += (distance/numIncrements);
 			currSpeed += increment;
 			createDrive(currSpeed);
-			distFragsCounter++;
+		}
+		totalDistance = 0;
+		while((totalDistance) > (distance/numIncrements)) {   //WTF I DON'T KNOW WHY THIS WORKS BUT IT DOES
+			set_create_distance(0);
+			while(get_create_distance(.1) > (distance/numIncrements)) {}
+			totalDistance += (distance/numIncrements);
+			currSpeed -= increment;
+			createDrive(currSpeed);
 		}
 	}
-		
 	create_stop();
 		 
 }
@@ -209,7 +217,7 @@ void slowReleaseClaw()
 	while (clawPos < (CLAW_OPEN_POS - clawPosIncrement)) {//to prevent the claw from going too far
 		set_servo_position(CLAW_PORT, clawPos); 
 		clawPos += clawPosIncrement; 
-		sleep(.15); 
+		sleep(.1); 
 	}
 	
 	set_servo_position(CLAW_PORT, CLAW_OPEN_POS);
