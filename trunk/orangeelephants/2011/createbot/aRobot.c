@@ -15,7 +15,7 @@ int main()
 			set_servo_position(CLAW_PORT,500);
 			sleep(.5);
 			
-			moveToDistanceAccel(-500, 10, 200);
+			moveToDistanceAccel(-30, -100, -400);
 			
 			pickUpBlocks();
 			
@@ -24,10 +24,11 @@ int main()
 			printf("Turn completed.\n");
 			
 			sleep(.5);	
-			moveToDistanceAccel(-530, 10, 275);
+			moveToDistanceAccel(-55, -100, -400);
+			moveToDistance(-5, 100);
 			printf("Moved back to original blocks. \n");
 			
-			moveToDistanceAccel(70, 10, 100);
+			moveToDistance(80, 100);
 			
 			moveClawDown(ARM_PARTIAL_DOWN);
 			
@@ -41,9 +42,8 @@ int main()
 		if(b_button())
 		{
 			createInitialize();
-			moveToDistance(50, 300);
-			moveToDistanceAccel(600, 100, 400);
-			moveToDistanceAccel(-600, 0, 400);
+			moveToDistanceAccel(100, 50, 300);
+			moveToDistanceAccel(-100, -50, -300);
 		}
 		
 		if(down_button())
