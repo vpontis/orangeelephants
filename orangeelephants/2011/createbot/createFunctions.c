@@ -183,7 +183,12 @@ void moveClawDown(int nDistance) {
 	while(get_motor_position_counter(0) >= nDistance) {
 		sleep(0.1);
 	}
-	mav(ARM_MOTOR_PORT,0);	
+	mav(ARM_MOTOR_PORT,0);
+}
+
+void moveClaw(int position)	{
+	mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, position);
+	bmd(ARM_MOTOR_PORT);
 }
 
 
@@ -234,6 +239,28 @@ void slowCloseClaw()
                 sleep(.1); 
     }
     set_servo_position(CLAW_PORT, 0);
+}
+
+void setClaw(int position)
+{	
+	int clawPos = get_servo_position(CLAW_PORT); 
+	int clawPosIncrement = abs((position-clawPos)/10); 
+	
+	if(clawPos > position)	{
+		while (clawPos >= clawPosIncrement) {//so to stop it from giving a negative servo value
+				set_servo_position(CLAW_PORT, clawPos); 
+                clawPos -= clawPosIncrement; 
+                sleep(.1); 
+		}
+	}
+	else	{
+		while (clawPos < (CLAW_OPEN_POS - clawPosIncrement)) {//to prevent the claw from going too far
+			set_servo_position(CLAW_PORT, clawPos); 
+			clawPos += clawPosIncrement; 
+			sleep(.1); 
+		}
+	}
+    set_servo_position(CLAW_PORT, position);
 }
 
 void pickUpBlocks()
@@ -290,4 +317,33 @@ void accelTurn(float deg, int vel)	{
 		}
 	}
 	create_stop();
+}
+
+void moveToVictor(int distance, int speed) 
+{ 
+        int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
+        
+        //so it doesn't go in the wrong way with a short distance and fast speed
+        //Needs testing/refinement
+        if((slowDownDist > abs(distance))){ 
+                slowDownDist = 0;
+        }
+        
+        set_create_distance(0); 
+							
+        if(get_create_distance(.1) < distance) {   
+                createDrive(speed);
+			while (get_create_distance(.1) < (distance-slowDownDist)) {
+                sleep(0.05);
+			}
+			createDrive(0);
+		}
+        else	{ //backwards
+			createDrive(-speed);
+			while (get_create_distance(.1) > (distance+slowDownDist)) {
+				sleep(0.05);
+			}
+            createDrive(0);
+        }
+                 
 }
