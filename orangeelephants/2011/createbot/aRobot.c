@@ -1,5 +1,8 @@
 #include "createFunctions.c"
 
+void openClaw(int position);
+void closeClaw(int position);
+
 int main()
 {
 	printf("Press the A to test from runway to pick up blocks.\n");
@@ -14,42 +17,80 @@ int main()
 			enable_servos();
 			set_servo_position(CLAW_PORT,950);
 			
-			moveToDistance(-150, 200);
+			moveToDist(-150, 200);
 			turn(-73, 200);
-			moveToDistance(-1000, 400);
+			moveToDist(-930, 400);
 			turn(-78, 200);
 			
 			moveClaw(ARM_POS_DOWN);
 			
-			moveToDistance(-150, 100);
-			setClaw(280);
-			moveToDistance(150, 100);
+			moveToShort(-50, 100);
+			setClaw(0);
+			moveToDist(150, 100);
 			
 			setClaw(400);
-			moveToDistance(-100, 100);
+			moveToDist(-100, 100);
 
 			setClaw(0);
 			
-			moveClaw(-500);
+			moveClaw(ARM_POS_START+1000);//picked up blocks
+			
+			moveToDist(120, 200);
+			turn(80, 200);
+			
+			moveToDist(-850, 400);
+			moveToShort(50, 100);
+			turn(74, 200);
+			
+			moveToDist(-350, 300);
+			moveToDist(120, 200);
+			
+			moveClaw(ARM_POS_START);
+			setClaw(800);
+			moveToDist(500, 300);
+						
+		}
+		
+		if(right_button())
+		{
+			enable_servos();
+			printf("Servos enabled.\n");
+			sleep(3);
+			
+			set_servo_position(CLAW_PORT,500);
+			printf("Set servo position 500.\n");
+			sleep(3);
+			
+			closeClaw(0);
+			printf("Set servo position 0.\n");
+			sleep(3);
+	
+			closeClaw(500);
+			printf("Set servo position 500.\n");
+			sleep(3);
+	
+			closeClaw(900);
+			printf("Set servo position 900.\n");
+			sleep(3);
 			
 		}
 		
 		if(b_button())
 		{
 			sleep(.5);
-			moveToDistance(50, 200);
+			moveToDist(50, 200);
 			moveClaw(ARM_POS_DOWN+20);
 			slowCloseClaw(600);
-			moveToDistance(90, 200);
-			moveToDistance(180, 200);
+			moveToDist(90, 200);
+			moveToDist(180, 200);
 			moveClaw(ARM_POS_START+500);
 			turn(-85, 100);
-			moveToDistance(-50, 200);//align with wall
-			moveToDistance(1700, 400);
+			moveToDist(-50, 200);//align with wall
+			moveToDist(1700, 400);
 			turn(-80, 200);
-			moveToDistance(-350, 200);
+			moveToDist(-350, 200);
 			set_servo_position(CLAW_PORT,CLAW_OPEN_POS);
-			moveToDistance(200,200);
+			moveToDist(200,200);
 		}
 				
 		if(up_button())//calibrates arm and opens claw
@@ -63,6 +104,51 @@ int main()
 	}
 }
 		
+void openClaw(int position)	{
+	int currPos = get_servo_position(CLAW_PORT);
+	printf("Init servo position is %d.\n", currPos);
+	int increment = abs(position-currPos)/10;
+	
+	int counter = 1;
+	
+	while( counter <= 10){
+		currPos += increment;
+		set_servo_position(CLAW_PORT, currPos);
+		sleep(.1);
+		counter += 1;
+	}
+	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
+}
+
+void closeClaw(int position)	{
+	int currPos = get_servo_position(CLAW_PORT);
+	printf("Init servo position is %d.\n", currPos);
+	int increment = abs(position-currPos)/10;
+	printf("The increment is %d.\n", increment);
+	
+	int counter = 1;
+	
+	if(position < currPos)	{//to close the claw
+		while(counter <= 10)	{
+			currPos-=increment;
+			set_servo_position(CLAW_PORT, currPos);
+			sleep(.1);
+			counter += 1;
+		}
+	}
+	else if(position > currPos)	{//to open the claw
+		while( counter <= 10){
+			currPos += increment;
+			set_servo_position(CLAW_PORT, currPos);
+			sleep(.1);
+			counter += 1;
+		}
+	}
+	
+	set_servo_position(CLAW_PORT, position);
+
+	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
+}
 
 //decel test
 /*	int speed=500;
@@ -91,12 +177,12 @@ int main()
 			printf("Turn completed.\n");
 			sleep(.5);	
 			moveToDistanceAccel(-55, -100, -400);
-			moveToDistance(-5, 100);
+			moveToDist(-5, 100);
 			printf("Moved back to original blocks. \n");
-			moveToDistance(80, 100);
+			moveToDist(80, 100);
 			moveClawDown(ARM_PARTIAL_DOWN);
 			slowReleaseClaw();
 			printf("Claw opened.\n");
-			moveToDistance(200, 250);
+			moveToDist(200, 250);
 			printf("Backed away, program done. \n");
 */
