@@ -60,7 +60,7 @@ void createInitialize()
 	\param distance Desired distance in mm
 	\param speed Desired speed in ??
 */
-void moveToDistance(int distance, int speed) 
+void moveToDist(int distance, int speed) 
 { 
 	int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
 	
@@ -73,16 +73,12 @@ void moveToDistance(int distance, int speed)
 	
 	if(get_create_distance(.1) < distance) {   
 		createDrive(speed);
-		while (get_create_distance(.1) < (distance-slowDownDist)) {
-			sleep(0.05);
-		}
+		while (get_create_distance(.1) < (distance-slowDownDist)) {		}
 		createDrive(0);
 	}
 	else	{ //backwards
 		createDrive(-speed);
-		while (get_create_distance(.1) > (distance+slowDownDist)) {
-			sleep(0.05);
-		}
+		while (get_create_distance(.1) > (distance+slowDownDist)) {		}
 		createDrive(0);
 	}
 }
@@ -236,26 +232,33 @@ void slowCloseClaw()
 
 void setClaw(int position)
 {		
-	int clawPos = get_servo_position(CLAW_PORT); 
-	printf("Got servo position as %d.\n", clawPos);
-
-	int clawPosIncrement = abs((position-clawPos)/10); 
+	int currPos = get_servo_position(CLAW_PORT);
+	printf("Init servo position is %d.\n", currPos);
+	int increment = abs(position-currPos)/10;
+	printf("The increment is %d.\n", increment);
 	
-	if(clawPos > position)	{
-		while (clawPos >= clawPosIncrement) {//so to stop it from giving a negative servo value
-			set_servo_position(CLAW_PORT, clawPos); 
-			clawPos -= clawPosIncrement; 
-			sleep(.1); 
+	int counter = 1;
+	
+	if(position < currPos)	{//to close the claw
+		while(counter <= 10)	{
+			currPos-=increment;
+			set_servo_position(CLAW_PORT, currPos);
+			sleep(.1);
+			counter += 1;
 		}
 	}
-	else	{
-		while (clawPos < (CLAW_OPEN_POS - clawPosIncrement)) {//to prevent the claw from going too far
-			set_servo_position(CLAW_PORT, clawPos); 
-			clawPos += clawPosIncrement; 
-			sleep(.1); 
+	else if(position > currPos)	{//to open the claw
+		while( counter <= 10){
+			currPos += increment;
+			set_servo_position(CLAW_PORT, currPos);
+			sleep(.1);
+			counter += 1;
 		}
 	}
+	
 	set_servo_position(CLAW_PORT, position);
+
+	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
 }
 
 void pickUpBlocks()
@@ -268,16 +271,14 @@ void turn(float deg, int vel)	{
 	deg = - deg;
 	set_create_total_angle(0);
 	if(deg > 0)	{
-		create_spin_CCW(vel);
-		while(get_create_total_angle(.1) < deg)	{
-			sleep(.05);
-		}
+		//create_spin_CCW(vel);
+		create_drive_direct(vel, -vel);
+		while(get_create_total_angle(.1) < deg)	{		}
 	}
 	else	{
-		create_spin_CW(vel);
-		while(get_create_total_angle(.1) > deg)	{
-			sleep(.05);
-		}
+		//create_spin_CW(vel);
+		create_drive_direct(-vel, vel);
+		while(get_create_total_angle(.1) > deg)	{	}
 	}
 	create_stop();
 }
@@ -313,3 +314,22 @@ void accelTurn(float deg, int vel)	{
 	}
 	create_stop();
 }
+
+void moveToShort(int distance, int speed) 
+{ 
+	set_create_distance(0); 
+	
+	if(get_create_distance(.1) < distance) {   
+		create_drive_direct(speed,speed);
+		while (get_create_distance(.1) < (distance)) {		}
+		create_stop();
+	}
+	else	{ //backwards
+		create_drive_direct(-speed,-speed);
+		while (get_create_distance(.1) > (distance)) {		}
+		create_stop();
+	}
+}
+
+
+
