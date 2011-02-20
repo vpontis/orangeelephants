@@ -2,30 +2,35 @@
 
 int main()
 {
-	printf("Press the A button to test stacking blocks..\n");
-	printf("Press the down button to calibrate the claw.\n");
+	printf("Press the A to test from runway to pick up blocks.\n");
+	printf("Press the up button to calibrate the claw.\n");
+	
 	createInitialize();
+	
 	while(1)
 	{
-		if(a_button())//function to test moveToDistance values
-		{			
-			int speed = 500;
-			while(speed>=100)	{
-				set_create_distance(0);
-				moveToDistance(700, speed);
-				printf("%d  ", get_create_distance(.1)-700);
-				
-				sleep(1);
-				
-				set_create_distance(0);
-				moveToDistance(-700, speed);
-				printf("%d  ", -get_create_distance(.1)-700);
-				
-				sleep(1);
-				speed-=100;
-			}			
-		
-			printf("\n");
+		if(a_button())
+		{
+			enable_servos();
+			set_servo_position(CLAW_PORT,950);
+			
+			moveToDistance(-150, 200);
+			turn(-73, 200);
+			moveToDistance(-1000, 400);
+			turn(-78, 200);
+			
+			moveClaw(ARM_POS_DOWN);
+			
+			moveToDistance(-150, 100);
+			setClaw(280);
+			moveToDistance(150, 100);
+			
+			setClaw(400);
+			moveToDistance(-100, 100);
+
+			setClaw(0);
+			
+			moveClaw(-500);
 			
 		}
 		
@@ -53,7 +58,7 @@ int main()
 			moveClaw(ARM_POS_START);
 					
 			enable_servos();
-			set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
+			set_servo_position(CLAW_PORT, 1200);
 		}  
 	}
 }
