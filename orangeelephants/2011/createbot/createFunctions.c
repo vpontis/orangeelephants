@@ -62,36 +62,29 @@ void createInitialize()
 */
 void moveToDistance(int distance, int speed) 
 { 
-	//int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
+	int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
 	
 	//so it doesn't go in the wrong way with a short distance and fast speed
-	//Needs testing/refinement
-	/*if((slowDownDist > abs(distance))){ 
+	if( slowDownDist > abs(distance)/2 ){ 
 		slowDownDist = 0;
 	}
-	*/
-	set_create_distance(0); 
 	
-	//Testing Code
-	//printf("The total distance is %2.2d \n", distance - slowDownDist);
-	//printf("The slowDownDist is %2.2d \n", slowDownDist);
+	set_create_distance(0); 
 	
 	if(get_create_distance(.1) < distance) {   
 		createDrive(speed);
-        while (get_create_distance(.1) < (distance/*-slowDownDist*/)) {
-                sleep(0.05);
-        }
-		create_stop();
-     }
-	 else{ 
-		 //backwards
-		 createDrive(-speed);
-		 while (get_create_distance(.1) > (distance/*+slowDownDist*/)) {
-                sleep(0.05);
-        }
-		create_stop();
+		while (get_create_distance(.1) < (distance-slowDownDist)) {
+			sleep(0.05);
+		}
+		createDrive(0);
 	}
-		 
+	else	{ //backwards
+		createDrive(-speed);
+		while (get_create_distance(.1) > (distance+slowDownDist)) {
+			sleep(0.05);
+		}
+		createDrive(0);
+	}
 }
 
 
@@ -157,7 +150,7 @@ void moveToDistanceAccel(int distance, int initSpeed, int finalSpeed)
 		}
 	}
 	create_stop();
-		 
+	
 }
 
 
@@ -194,7 +187,7 @@ void moveClaw(int position)	{
 
 //picks up two blocks and lifts them to a height of two blocks then lets them go and puts the claw back down
 void stackBlocks() { 
-
+	
 	set_servo_position(CLAW_PORT,CLAW_OPEN_POS); //790 = default value to clench
 	sleep(.5);  //pause before clench 
 	
@@ -208,7 +201,7 @@ void stackBlocks() {
 	sleep(1); 
 	slowReleaseClaw();
 	sleep(1); 
-
+	
 	moveClawDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
 }
 
@@ -234,23 +227,25 @@ void slowCloseClaw()
 	int clawPosIncrement = clawPos/20; 
 	
 	while (clawPos >= clawPosIncrement) {//so to stop it from giving a negative servo value
-                set_servo_position(CLAW_PORT, clawPos); 
-                clawPos -= clawPosIncrement; 
-                sleep(.1); 
-    }
-    set_servo_position(CLAW_PORT, 0);
+		set_servo_position(CLAW_PORT, clawPos); 
+		clawPos -= clawPosIncrement; 
+		sleep(.1); 
+	}
+	set_servo_position(CLAW_PORT, 0);
 }
 
 void setClaw(int position)
-{	
+{		
 	int clawPos = get_servo_position(CLAW_PORT); 
+	printf("Got servo position as %d.\n", clawPos);
+
 	int clawPosIncrement = abs((position-clawPos)/10); 
 	
 	if(clawPos > position)	{
 		while (clawPos >= clawPosIncrement) {//so to stop it from giving a negative servo value
-				set_servo_position(CLAW_PORT, clawPos); 
-                clawPos -= clawPosIncrement; 
-                sleep(.1); 
+			set_servo_position(CLAW_PORT, clawPos); 
+			clawPos -= clawPosIncrement; 
+			sleep(.1); 
 		}
 	}
 	else	{
@@ -260,7 +255,7 @@ void setClaw(int position)
 			sleep(.1); 
 		}
 	}
-    set_servo_position(CLAW_PORT, position);
+	set_servo_position(CLAW_PORT, position);
 }
 
 void pickUpBlocks()
@@ -282,7 +277,7 @@ void turn(float deg, int vel)	{
 		create_spin_CW(vel);
 		while(get_create_total_angle(.1) > deg)	{
 			sleep(.05);
-        }
+		}
 	}
 	create_stop();
 }
@@ -317,33 +312,4 @@ void accelTurn(float deg, int vel)	{
 		}
 	}
 	create_stop();
-}
-
-void moveToVictor(int distance, int speed) 
-{ 
-        int slowDownDist = speed*STOP_DISTANCE_RATIO; //Calculates the stopping distance based on speed
-        
-        //so it doesn't go in the wrong way with a short distance and fast speed
-        //Needs testing/refinement
-        if((slowDownDist > abs(distance))){ 
-                slowDownDist = 0;
-        }
-        
-        set_create_distance(0); 
-							
-        if(get_create_distance(.1) < distance) {   
-                createDrive(speed);
-			while (get_create_distance(.1) < (distance-slowDownDist)) {
-                sleep(0.05);
-			}
-			createDrive(0);
-		}
-        else	{ //backwards
-			createDrive(-speed);
-			while (get_create_distance(.1) > (distance+slowDownDist)) {
-				sleep(0.05);
-			}
-            createDrive(0);
-        }
-                 
 }
