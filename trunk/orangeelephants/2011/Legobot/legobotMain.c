@@ -17,6 +17,27 @@ int main() {
 	//THIS IS THE START OF THE ROUTINE... DONT DELETE IT
 	calibrateGate();
 	setStartingBlockers();
+<<<<<<< .mine
+	printf("press a button to start \n ");
+	while(1) {
+			if(a_button() == 1) {
+					break;
+			}
+	}
+	moveToDistance(23,700);
+	raiseBlockers();
+	moveToDistance(25.5,700);
+	sleep(0.5);
+	moveToDistance(3.5,700);
+	moveToDistance(-25,1000);
+	turnArc(0,26,700,65);
+	moveToDistance(120,1000);
+	moveToDistance(-8,300);
+	mrp(3, 1000, 1722);
+	moveToDistance(45,1000);
+	gateOpen();
+	
+=======
 	printf("press a button to start \n ");
 	while(1) {
 			if(a_button() == 1) {
@@ -35,4 +56,5 @@ int main() {
 	moveToDistance(55,500);
 	gateOpen();
 	
+>>>>>>> .r120
 }
