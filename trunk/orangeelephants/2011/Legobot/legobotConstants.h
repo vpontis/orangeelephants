@@ -22,7 +22,8 @@ const int R_BLOCKER_SERVO_POSITION = 1575; //servo
 const float TICK_PER_CM = 79.7;
 const int L_BLOCKER_MOTOR_DISTANCE = 270;
 const int L_BLOCKER_MOTOR_START = 160; 
-const int GATE_DOWN_POS = 2750; 
+const int GATE_MOTOR_SPEED = 350;
+const int GATE_OPEN_POS = -500; 
 const float TICKS_PER_DEGREE = 9.564; 
 const float AXLE_LENGTH = 137.5;
 
