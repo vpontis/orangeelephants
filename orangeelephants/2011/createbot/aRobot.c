@@ -77,20 +77,11 @@ int main()
 		
 		if(b_button())
 		{
-			sleep(.5);
-			moveToDist(50, 200);
-			moveClaw(ARM_POS_DOWN+20);
-			slowCloseClaw(600);
-			moveToDist(90, 200);
-			moveToDist(180, 200);
-			moveClaw(ARM_POS_START+500);
-			turn(-85, 100);
-			moveToDist(-50, 200);//align with wall
-			moveToDist(1700, 400);
-			turn(-80, 200);
-			moveToDist(-350, 200);
-			set_servo_position(CLAW_PORT,CLAW_OPEN_POS);
-			moveToDist(200,200);
+			
+			smoothTurn(80, 200);
+			sleep(2);
+			smoothTurn(-80, 200);
+			
 		}
 				
 		if(up_button())//calibrates arm and opens claw
