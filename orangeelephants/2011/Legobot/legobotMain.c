@@ -17,27 +17,6 @@ int main() {
 	//THIS IS THE START OF THE ROUTINE... DONT DELETE IT
 	calibrateGate();
 	setStartingBlockers();
-
-	printf("press a button to start \n ");
-	while(1) {
-			if(a_button() == 1) {
-					break;
-			}
-	}
-	moveToDistance(23,700);
-	raiseBlockers();
-	moveToDistance(25.5,700);
-	sleep(0.5);
-	moveToDistance(3.5,700);
-	moveToDistance(-25,1000);
-	turnArc(0,26,700,65);
-	moveToDistance(120,1000);
-	moveToDistance(-8,300);
-	mrp(3, 1000, 1722);
-	moveToDistance(45,1000);
-	gateOpen();
-	
-
 	printf("press a button to start \n ");
 	while(1) {
 			if(a_button() == 1) {
@@ -45,16 +24,18 @@ int main() {
 			}
 	}
 	moveToDistance(23,500);
-	raiseBlockers();
-	moveToDistance(26.5,500);
-	sleep(2);
-	moveToDistance(-25,500);
-	turnArc(0,28,500,72);
-	moveToDistance(120,500);
-	moveToDistance(-8,300);
-	turn(-90,300);
-	moveToDistance(55,500);
-	gateOpen();
-	
-
+    raiseBlockers();
+    moveToDistance(25.5,500);
+    sleep(0.5);
+    moveToDistance(3.5,500);
+    moveToDistance(-20,1000);
+    turnArc(0,26,700,60);
+    turnArc(1,28,700,55);
+	moveToDistance(105,1000);
+	moveToDistance(-22,1000);
+	turn(-90,500);
+	moveToDistance(20,1000);
+	moveToDistance(-6,1000); //tested: moving back 6 lines up with the wall best
+	turn(-90,500);
+	moveToDistance(40,500);
 }
