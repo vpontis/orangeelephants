@@ -354,8 +354,7 @@ void smoothTurn(float deg, int finalVel)	{
 			currVel = finalVel;
 			create_drive_direct(-currVel, currVel);
 		}
-		set_create_total_angle(0);
-		while(get_create_total_angle(.1) > (0.5*deg)){
+		while(get_create_total_angle(.1) > deg){
 			while(currVel > increment)
 			{
 				create_drive_direct(-currVel, currVel);
