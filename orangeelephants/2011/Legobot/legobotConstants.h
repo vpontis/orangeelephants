@@ -5,8 +5,8 @@
 from looking from the back*/
 
 //Motor ports
-const int L_MOTOR = 0;
-const int R_MOTOR = 3;
+const int L_MOTOR = 3;
+const int R_MOTOR = 0;
 const int L_BLOCKER_MOTOR = 2;
 const int GATE_MOTOR = 1;
 
@@ -24,5 +24,11 @@ const int L_BLOCKER_MOTOR_DISTANCE = 270;
 const int L_BLOCKER_MOTOR_START = 160; 
 const int GATE_DOWN_POS = 2750; 
 const float TICKS_PER_DEGREE = 9.564; 
+const float AXLE_LENGTH = 137.5;
+
+//misc
+const float PI = 3.141592654;
+
+
 
 #endif
