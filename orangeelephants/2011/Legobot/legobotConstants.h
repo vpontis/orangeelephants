@@ -17,11 +17,11 @@ const int R_BLOCKER_SERVO = 0;
 //Blocker speed(motor) and position(servo)
 const int L_BLOCKER_MOTOR_SPEED = 100; //motor
 const int R_BLOCKER_SERVO_POSITION = 1575; //servo
+const int L_BLOCKER_MOTOR_DISTANCE = 190;
+const int L_BLOCKER_MOTOR_START = 160; 
 
 //Distances
 const float TICK_PER_CM = 79.7;
-const int L_BLOCKER_MOTOR_DISTANCE = 270;
-const int L_BLOCKER_MOTOR_START = 160; 
 const int GATE_MOTOR_SPEED = 350;
 const int GATE_OPEN_POS = -500; 
 const float TICKS_PER_DEGREE = 9.564; 
