@@ -20,6 +20,7 @@ void setClaw(int position);
 
 void turn(float deg, int vel);
 void accelTurn(float deg, int vel);
+void smoothTurn(float deg, int finalVel);
 
 void moveToShort(int distance, int speed);
 

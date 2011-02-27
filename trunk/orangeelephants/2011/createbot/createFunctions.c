@@ -268,17 +268,17 @@ void pickUpBlocks()
 }
 
 void turn(float deg, int vel)	{
-	deg = - deg;
+	deg = -deg; 
 	set_create_total_angle(0);
 	if(deg > 0)	{
 		//create_spin_CCW(vel);
-		create_drive_direct(vel, -vel);
-		while(get_create_total_angle(.1) < deg)	{		}
+		create_drive_direct(vel, -vel); //turns CCW
+		while(get_create_total_angle(.05) < deg){}
 	}
-	else	{
+	else{	
 		//create_spin_CW(vel);
 		create_drive_direct(-vel, vel);
-		while(get_create_total_angle(.1) > deg)	{	}
+		while(get_create_total_angle(.05) > deg){}
 	}
 	create_stop();
 }
@@ -288,31 +288,86 @@ void accelTurn(float deg, int vel)	{
 	set_create_total_angle(0);
 	int finalVel = vel;
 	int increment = vel/10;
+	int currVel = 0;
 	if(deg > 0)	{
-		while(get_create_total_angle(.1) < deg)	{
-			while(increment < (vel-increment))
+		while(get_create_total_angle(.1) < (deg/2))	{
+			while(currVel < (vel-increment))
 			{
 				create_spin_CCW(increment);
 				increment += increment;
 				sleep(.05);
 			}
 			create_spin_CW(vel);
-			sleep(.05);
 		}
 	}
 	else	{
 		while(get_create_total_angle(.1) > deg)	{
-			while(increment < (vel-increment))
+			while(currVel < (vel-increment))
 			{
 				create_spin_CW(increment);
 				increment += increment;
 				sleep(.05);
 			}
 			create_spin_CCW(vel);
-			sleep(.05);
 		}
 	}
 	create_stop();
+}
+
+void smoothTurn(float deg, int finalVel)	{
+	deg = -deg;
+	set_create_total_angle(0);
+	
+	int increment = finalVel/10;
+	int currVel = 40;
+	if(deg > 0){
+		//CCW: +deg, +vel
+		while(get_create_total_angle(.1) < (0.5*deg))	{
+			while(currVel < (finalVel-increment))
+			{
+				create_drive_direct(currVel, -currVel);
+				currVel += increment;
+				sleep(.2);
+			}
+			currVel = finalVel;
+			create_drive_direct(currVel, -currVel);
+		}
+		while(get_create_total_angle(.1) < deg){
+			while(currVel > increment)
+			{
+				create_drive_direct(currVel, -currVel);
+				currVel -= increment;
+				sleep(.2);
+			}
+			currVel = 0;
+			create_drive_direct(currVel, -currVel);
+		}
+	}
+	else{
+		while(get_create_total_angle(.1) > (0.5*deg))	{
+			while(currVel < (finalVel-increment))
+			{
+				create_drive_direct(-currVel, currVel);
+				currVel += increment;
+				sleep(.05);
+			}
+			currVel = finalVel;
+			create_drive_direct(-currVel, currVel);
+		}
+		set_create_total_angle(0);
+		while(get_create_total_angle(.1) > (0.5*deg)){
+			while(currVel > increment)
+			{
+				create_drive_direct(-currVel, currVel);
+				currVel -= increment;
+				sleep(.05);
+			}
+			currVel = 0;
+			create_drive_direct(-currVel, currVel);
+		}
+	}
+	create_stop();
+		
 }
 
 void moveToShort(int distance, int speed) 
