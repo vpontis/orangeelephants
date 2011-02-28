@@ -29,7 +29,8 @@ const float AXLE_LENGTH = 137.5;
 
 //misc
 const float PI = 3.141592654;
-
-
+const float CIRCUMFERENCE = 3.141592654 * 2 * 13.75; 
 
 #endif
+
+// 13.571 = cirumference of wheel

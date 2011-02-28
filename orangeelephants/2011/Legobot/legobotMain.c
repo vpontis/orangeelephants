@@ -23,19 +23,55 @@ int main() {
 					break;
 			}
 	}
+	//code for right side
+	moveToDistance(23,500);
+        raiseBlockers();
+        moveToDistance(25.5,700);
+        sleep(0.5);
+        moveToDistance(3.5,500);
+        moveToDistance(-20,1000);
+        turnArc(0,26,500,60);
+        turnArc(1,30,500,52); //52 is compensation
+	moveToDistance(105,1000);
+	moveToDistance(-20,1000);
+	turn(-90,500);
+	moveToDistance(20,1000);
+	moveToDistance(-6,1000); //tested: moving back 6cm lines up with the wall best
+	turn(-90,500);
+	moveToDistance(30,700);
+	sleep(0.5);
+	moveToDistance(-20,700);
+	turnArc(1,26,500,100); //100 is compensation
+	moveToDistance(80,1000);
+	moveToDistance(-6,500);
+	turn(-90,500);
+	moveToDistance(50,1000);
+	gateOpen();
+	
+	//code for left side
+	/*
 	moveToDistance(23,500);
     raiseBlockers();
-    moveToDistance(25.5,500);
+    moveToDistance(25.5,700);
     sleep(0.5);
     moveToDistance(3.5,500);
     moveToDistance(-20,1000);
-    turnArc(0,26,700,60);
-    turnArc(1,28,700,55);
+    turnArc(1,26,500,60);
+    turnArc(0,30,500,52);
 	moveToDistance(105,1000);
-	moveToDistance(-22,1000);
-	turn(-90,500);
-	moveToDistance(20,1000);
+	moveToDistance(-20,1000);
+	turn(90,500);
+	moveToDistance(22,1000);
 	moveToDistance(-6,1000); //tested: moving back 6 lines up with the wall best
-	turn(-90,500);
-	moveToDistance(40,500);
+	turn(90,500);
+	moveToDistance(30,700);
+	sleep(0.5);
+	moveToDistance(-20,700);
+	turnArc(0,26,500,100);
+	moveToDistance(80,1000);
+	moveToDistance(-6,500);
+	turn(90,500);
+	moveToDistance(50,1000);
+	gateOpen();
+	*/
 }
