@@ -1,6 +1,5 @@
 #include "legobotConstants.h"
 #include "legobotFunctions.h"
-
 #include "boolean.h"
 // *******************USE CENTIMETERS*********************
 // **************Blockers start on ground, then call setStartingBlockers() ************************
@@ -81,7 +80,7 @@ void lowerBlockerRight(){		//lower right blocker and move forward 20 cm (subject
 }
 
 
-void setStartingBlockers() {             //angle the blockers to fit in the starting box
+void setStartingBlockers() {         //angle the blockers to fit in the starting box
 	set_servo_position(0,930);       //angled value
 	mrp(L_BLOCKER_MOTOR,260,165);    //angled value
 }
@@ -156,6 +155,7 @@ void turn(int degree, int speed){
         -param amountDegrees Tells the robot how much of the circle to turn in degrees
 */
 
+
 void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountDegrees) 
 {
     float ratio = (outerRadius - AXLE_LENGTH/10)/(outerRadius);
@@ -174,3 +174,25 @@ void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountD
     }
     bmdMotors();
 }
+
+
+/*  diameter of a wheel = 4.32
+	circumference = pi * 4.32 = 13.571
+	length of whole rotation with one wheel at center = 3.14159* 2 * 13.75 <- dist btw center of two wheels
+	revs/circle = 6.33 */
+
+void pivot(boolean aroundLeftWheel, float degrees, int speed) 
+{
+	int ticks = degrees /360 * 6646.166464987; // fraction of circle's circumference / ticks for a whole circle
+											   // 1 circle = circle with radius distance between middle of the wheels
+	if(aroundLeftWheel == 1) {
+		mrp(R_MOTOR, speed, ticks);
+	}
+	else {
+		mrp(L_MOTOR, speed, ticks);
+	}
+}	
+
+
+//6.366 = revs per big circle
+

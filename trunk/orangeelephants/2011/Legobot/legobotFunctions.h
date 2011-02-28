@@ -1,7 +1,7 @@
 #ifndef legobotFunctions_h
 #define legobotFunctions_h
-
 #include "boolean.h"
+
 void moveToDistance(float distance, int speed);    //move to distance distance and at speed speed
 void legobotAccel(int initSpeed,int finalSpeed);
 void moveStraight(int speed);
@@ -20,6 +20,6 @@ void moveGate(int speed);
 
 void turn(int degree, int speed); 
 void turnArc(boolean leftArc, float outerRadius,float outerSpeed, float amountDegrees);
-
+void pivot(boolean aroundLeftWheel, float degrees, int speed);
 
 #endif
