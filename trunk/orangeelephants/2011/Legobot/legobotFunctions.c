@@ -58,7 +58,7 @@ void stopMotors()
 }
 
 float cmToTicks(float cmDistance) {                // return ticks the motors need to turn to go that distance
-        return (float) (cmDistance * TICK_PER_CM);        
+        return (float) (cmDistance * TICKS_PER_CM);        
 }
 
 void bmdMotors() {                                 //wait until driving motors finish moving
@@ -120,19 +120,7 @@ void gateClose()
 	bmd(GATE_MOTOR);
 }
 
-/*Turns the Legobot a certain degree, a negative degree will result in a left turn
-  while a positive degree will result in a right turn.
-  The turn also pivots the robot.
-  
-        axle is 13.75 cm
-        3.14159c * 2 * 13.75 = circumference
-        1/4 of circumference = 21.60
-        21.60 * 79.7ticks = 1721.52    		 CAUSED A 180 DEG TURN
-     			    860.76               CAUSED A 90 DEG TURN
-        
-        /*************** 9.564 ticks per degree **************
-                                LEFT/RIGHT FROM THE BACK OF THE ROBOT   */                      
-
+//        axle is 13.75 cm
 
 void turn(int degree, int speed){ 
     clear_motor_position_counter(L_MOTOR); 
@@ -158,24 +146,24 @@ void turn(int degree, int speed){
 
 void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountDegrees) 
 {
-    float ratio = (outerRadius - AXLE_LENGTH/10)/(outerRadius);
-	float outerCircumference = 2 * PI * outerRadius * (1/13.57);
+    float ratio = (outerRadius - LEGOBOT_DIAMETER)/(outerRadius);
+	float outerCircumference = 2 * PI * outerRadius * (1/WHEEL_CIRCUMFERENCE);
     float innerCircumference = outerCircumference * ratio;
     float innerSpeed = outerSpeed * ratio; 
 	if(leftArc)
 	{
-           mrp(L_MOTOR, innerSpeed, innerCircumference*1020.4*(amountDegrees/360.0)); //1020.4 is ticks per rev
-           mrp(R_MOTOR, outerSpeed, outerCircumference*1020.4*(amountDegrees/360.0));
+           mrp(L_MOTOR, innerSpeed, innerCircumference*TICKS_PER_REV*(amountDegrees/360.0)); //1020.4 is ticks per rev
+           mrp(R_MOTOR, outerSpeed, outerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
 	}
     else
     {
-           mrp(R_MOTOR, innerSpeed, innerCircumference*1020.4*(amountDegrees/360.0));
-           mrp(L_MOTOR, outerSpeed, outerCircumference*1020.4*(amountDegrees/360.0));
+           mrp(R_MOTOR, innerSpeed, innerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
+           mrp(L_MOTOR, outerSpeed, outerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
     }
     bmdMotors();
 }
 
-
+//////Marked for Deletion
 /*  diameter of a wheel = 4.32
 	circumference = pi * 4.32 = 13.571
 	length of whole rotation with one wheel at center = 3.14159* 2 * 13.75 <- dist btw center of two wheels
@@ -192,8 +180,6 @@ void pivot(boolean aroundLeftWheel, float degrees, int speed)
 		mrp(L_MOTOR, speed, ticks);
 	}
 }	
-
-
 //6.366 = revs per big circle
 
 
