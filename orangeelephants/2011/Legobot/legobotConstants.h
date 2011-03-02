@@ -20,16 +20,22 @@ const int R_BLOCKER_SERVO_POSITION = 1575; //servo
 const int L_BLOCKER_MOTOR_DISTANCE = 190;
 const int L_BLOCKER_MOTOR_START = 160; 
 
-//Distances
-const float TICK_PER_CM = 79.7;
+
+//Gate
 const int GATE_MOTOR_SPEED = 350;
 const int GATE_OPEN_POS = -500; 
-const float TICKS_PER_DEGREE = 9.564; 
-const float AXLE_LENGTH = 137.5;
+
+//Distances
+const float TICKS_PER_REV = 1020.4;
+const float TICKS_PER_DEGREE = 2.83444; 
+
 
 //misc
 const float PI = 3.141592654;
-const float CIRCUMFERENCE = 3.141592654 * 2 * 13.75; 
+const float LEGOBOT_DIAMETER = 15.875; 
+const float LEGOBOT_CIRCUMFERENCE = 2*3.141592654*15.875; 
+const float WHEEL_CIRCUMFERENCE = 13.5648;
+const float TICKS_PER_CM = 75.224; 
 
 #endif
 
