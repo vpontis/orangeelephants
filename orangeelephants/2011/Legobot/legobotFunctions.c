@@ -147,7 +147,7 @@ void turn(int degree, int speed){
 void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountDegrees) 
 {
     float ratio = (outerRadius - LEGOBOT_DIAMETER)/(outerRadius);
-	float outerCircumference = 2 * PI * outerRadius * (1/WHEEL_CIRCUMFERENCE);
+	float outerCircumference = 2 * PI * outerRadius * (0.073343)*1.3;
     float innerCircumference = outerCircumference * ratio;
     float innerSpeed = outerSpeed * ratio; 
 	if(leftArc)
@@ -162,6 +162,7 @@ void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountD
     }
     bmdMotors();
 }
+//Inner: 3+, 4.5
 
 //////Marked for Deletion
 /*  diameter of a wheel = 4.32

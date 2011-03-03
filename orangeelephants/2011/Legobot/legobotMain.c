@@ -33,6 +33,8 @@ int main() {
         turnArc(0,26,500,60);
         turnArc(1,30,500,52); //52 is compensation
 	moveToDistance(105,1000); */
+	
+	/*
 	moveToDistance(-20,1000);
 	turn(-90,400);
 	moveToDistance(35,1000);
@@ -50,6 +52,14 @@ int main() {
 	turn(-90,500);
 	moveToDistance(60,1000);
 	gateOpen();
+	*/
+	
+	
+	moveToDistance(50, 1000);
+	sleep(2);
+	turnArc(1, 20, 500, 45);
+	sleep(2);
+	turnArc(1, 40, 500, 140);
 	
 	//code for left side
 	/*
