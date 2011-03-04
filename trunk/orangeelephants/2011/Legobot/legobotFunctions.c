@@ -176,11 +176,14 @@ void pivot(boolean aroundLeftWheel, float degrees, int speed)
 											   // 1 circle = circle with radius distance between middle of the wheels
 	if(aroundLeftWheel == 1) {
 		mrp(R_MOTOR, speed, ticks);
+		bmd(0);
 	}
 	else {
 		mrp(L_MOTOR, speed, ticks);
+		bmd(3);
 	}
 }	
 //6.366 = revs per big circle
+
 
 

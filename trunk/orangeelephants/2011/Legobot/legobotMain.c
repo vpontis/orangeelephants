@@ -34,32 +34,32 @@ int main() {
         turnArc(1,30,500,52); //52 is compensation
 	moveToDistance(105,1000); */
 	
-	/*
-	moveToDistance(-20,1000);
+	
+	
+	moveToDistance(-25,1000);
 	turn(-90,400);
 	moveToDistance(35,1000);
 	moveToDistance(-6.5,1000); //tested: moving back 7cm lines up with the wall best
-	turn(-90,400);
+	turn(-92,400);
 	moveToDistance(30,1000);
 	sleep(1);
 	moveToDistance(3.5,500); 
-	moveToDistance(-32,500);
-	turnArc(1,25,500,60); //100 is compensation
-	moveToDistance(30,500); 
-	turn(-45,500); 
-	moveToDistance(90,1000);
-	moveToDistance(-7,500);
-	turn(-90,500);
-	moveToDistance(60,1000);
+	moveToDistance(-42,500);
+	turnArc(1,25,500,90); //100 is compensation
+	moveToDistance(90,500);
+	pivot(0,-96,500); //runs into wall. 96 is compensation
+	moveToDistance(55,1000);
 	gateOpen();
-	*/
 	
 	
+	
+	/*
 	moveToDistance(50, 1000);
 	sleep(2);
 	turnArc(1, 20, 500, 45);
 	sleep(2);
 	turnArc(1, 40, 500, 140);
+	*/
 	
 	//code for left side
 	/*
@@ -88,4 +88,5 @@ int main() {
 	gateOpen();
 	*/
 }
+
 
