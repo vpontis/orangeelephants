@@ -25,7 +25,7 @@ int main() {
 	}
 	//code for right side
 	
-    //raiseBlockers();
+    raiseBlockers();
     moveToDistance(48.5,700);
     sleep(0.5);
     moveToDistance(3.5,500);
@@ -38,16 +38,18 @@ int main() {
 	
 	moveToDistance(-25,1000);
 	turn(-90,400);
-	moveToDistance(35,1000);
+	moveToDistance(50,1000);
 	moveToDistance(-9,1000); //tested: moving back 7cm lines up with the wall best
 	turn(-93,400);
 	moveToDistance(30,1000);
 	sleep(1);
 	moveToDistance(3.5,500); 
+	turnArc(1,50,-500,-10);
+	
 	moveToDistance(-55,500);
 	turnArc(1,20,500,90); //100 is compensation
 	moveToDistance(90,1000);
-	pivot(0,-99,500); //runs into wall. 96 is compensation
+	pivot(0,-101,500); //runs into wall. 96 is compensation
 	moveToDistance(55,1000);
 	moveStraight(200);
 	gateOpen();
