@@ -25,35 +25,29 @@ int main() {
 	}
 	//code for right side
 	
-    
-	raiseBlockers();
-	
+    //raiseBlockers();
     moveToDistance(48.5,700);
     sleep(0.5);
     moveToDistance(3.5,500);
     moveToDistance(-20,1000);
     turnArc(0,26,500,60);
     turnArc(1,30,500,52); //52 is compensation
-	moveToDistance(105,1000); //hits wall near the drop zone				
+	moveToDistance(105,1000);				
 	
 	
-	//backs away after aliging with PVC
+	
 	moveToDistance(-25,1000);
 	turn(-90,400);
-	moveToDistance(50,1000); //align with pvc on left
+	moveToDistance(35,1000);
 	moveToDistance(-9,1000); //tested: moving back 7cm lines up with the wall best
 	turn(-93,400);
 	moveToDistance(30,1000);
 	sleep(1);
-	moveToDistance(3.5,500);//got all the biofuels
-	turnArc(1,50,-500,-10);
-	
+	moveToDistance(3.5,500); 
 	moveToDistance(-55,500);
-	moveToDistance(4,400);
-	
-	turnArc(1,20,500,93); //100 is compensation
-	moveToDistance(100,1000);
-	pivot(0,-101,500); //runs into wall. 96 is compensation
+	turnArc(1,20,500,90); //100 is compensation
+	moveToDistance(90,1000);
+	pivot(0,-99,500); //runs into wall. 96 is compensation
 	moveToDistance(55,1000);
 	moveStraight(200);
 	gateOpen();
@@ -95,5 +89,6 @@ int main() {
 	gateOpen();
 	*/
 }
+
 
 
