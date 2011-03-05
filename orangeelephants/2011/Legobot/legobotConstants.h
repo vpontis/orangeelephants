@@ -11,7 +11,7 @@ const int L_BLOCKER_MOTOR = 2;
 const int GATE_MOTOR = 1;
 
 //speeds
-const int SLOW_SPEED = 700;
+const int SLOW_SPEED = 500;
 const int NORMAL_SPEED = 700;
 const int FAST_SPEED = 1000;
 
