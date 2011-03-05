@@ -70,7 +70,7 @@ int main() {
     raiseBlockers();
     moveToDistance(25.5,NORMAL_SPEED);
     sleep(0.5);
-    moveToDistance(3.5,SLOW_SPEED);SLOW_SPEED
+    moveToDistance(3.5,SLOW_SPEED);
     moveToDistance(-20,FAST_SPEED);
     turnArc(1,26,SLOW_SPEED,60);
     turnArc(0,30,SLOW_SPEED,52);
@@ -86,7 +86,7 @@ int main() {
 	turnArc(0,26,SLOW_SPEED,100);
 	moveToDistance(80,FAST_SPEED);
 	moveToDistance(-6,NORMAL_SPEED);
-	turn(90,500);
+	turn(90,NORMAL_SPEED);
 	moveToDistance(50,FAST_SPEED);
 	gateOpen();
 	*/
