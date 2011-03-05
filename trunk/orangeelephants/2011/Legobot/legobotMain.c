@@ -8,15 +8,15 @@
 int main() {
 /*	calibrateGate();
 	sleep(1);
-	moveToDistance(10,500);
+	moveToDistance(10,SLOW_SPEED);
 	gateOpen();
-	moveToDistance(10,500);
+	moveToDistance(10,SLOW_SPEED);
 	gateClose();
-	turnArc(1, 30, 400, 90);
+	turnArc(1, 30, SLOW_SPEED, 90);
 */
 	//THIS IS THE START OF THE ROUTINE... DONT DELETE IT
 	calibrateGate();
-	setStartingBlockers();
+	setStartingBlockers();FAST_SPEED
 	printf("press a button to start \n ");
 	while(1) {
 			if(a_button() == 1) {
@@ -26,68 +26,68 @@ int main() {
 	//code for right side
 	
     raiseBlockers();
-    moveToDistance(48.5,700);
+    moveToDistance(48.5,NORMAL_SPEED);
     sleep(0.5);
-    moveToDistance(3.5,500);
-    moveToDistance(-20,1000);
-    turnArc(0,26,500,60);
-    turnArc(1,30,500,52); //52 is compensation
-	moveToDistance(105,1000);				
+    moveToDistance(3.5,SLOW_SPEED);
+    moveToDistance(-20,FAST_SPEED);
+    turnArc(0,26,SLOW_SPEED,60);
+    turnArc(1,30,SLOW_SPEED,52); //52 is compensation
+	moveToDistance(105,FAST_SPEED);				
 	
 	
 	
-	moveToDistance(-25,1000);
+	moveToDistance(-25,FAST_SPEED);
 	turn(-90,400);
-	moveToDistance(50,1000);
-	moveToDistance(-9,1000); //tested: moving back 7cm lines up with the wall best
+	moveToDistance(50,FAST_SPEED);
+	moveToDistance(-9,FAST_SPEED); //tested: moving back 7cm lines up with the wall best
 	turn(-93,400);
-	moveToDistance(30,1000);
+	moveToDistance(30,FAST_SPEED);
 	sleep(1);
-	moveToDistance(3.5,500); 
-	turnArc(1,50,-500,-10);
+	moveToDistance(3.5,SLOW_SPEED); 
+	turnArc(1,50,-SLOW_SPEED,-10);
 	
-	moveToDistance(-55,500);
-	turnArc(1,20,500,90); //100 is compensation
-	moveToDistance(90,1000);
-	pivot(0,-101,500); //runs into wall. 96 is compensation
-	moveToDistance(55,1000);
+	moveToDistance(-55,SLOW_SPEED);
+	turnArc(1,20,SLOW_SPEED,90); //100 is compensation
+	moveToDistance(90,FAST_SPEED);
+	pivot(0,-101,SLOW_SPEED); //runs into wall. 96 is compensation
+	moveToDistance(55,FAST_SPEED);
 	moveStraight(200);
 	gateOpen();
 	
 	
 	
 	/*
-	moveToDistance(50, 1000);
+	moveToDistance(50, FAST_SPEED);
 	sleep(2);
-	turnArc(1, 20, 500, 45);
+	turnArc(1, 20, SLOW_SPEED, 45);
 	sleep(2);
-	turnArc(1, 40, 500, 140);
+	turnArc(1, 40, SLOW_SPEED, 140);
 	*/
 	
 	//code for left side
 	/*
-	moveToDistance(23,500);
+	moveToDistance(23,SLOW_SPEED);
     raiseBlockers();
-    moveToDistance(25.5,700);
+    moveToDistance(25.5,NORMAL_SPEED);
     sleep(0.5);
-    moveToDistance(3.5,500);
-    moveToDistance(-20,1000);
-    turnArc(1,26,500,60);
-    turnArc(0,30,500,52);
-	moveToDistance(105,1000);
-	moveToDistance(-20,1000);
-	turn(90,500);
-	moveToDistance(22,1000);
-	moveToDistance(-6,1000); //tested: moving back 6 lines up with the wall best
-	turn(90,500);
-	moveToDistance(30,700);
+    moveToDistance(3.5,SLOW_SPEED);SLOW_SPEED
+    moveToDistance(-20,FAST_SPEED);
+    turnArc(1,26,SLOW_SPEED,60);
+    turnArc(0,30,SLOW_SPEED,52);
+	moveToDistance(105,FAST_SPEED);
+	moveToDistance(-20,FAST_SPEED);
+	turn(90,SLOW_SPEED);
+	moveToDistance(22,FAST_SPEED);
+	moveToDistance(-6,FAST_SPEED); //tested: moving back 6 lines up with the wall best
+	turn(90,SLOW_SPEED);
+	moveToDistance(30,NORMAL_SPEED);
 	sleep(0.5);
-	moveToDistance(-20,700);
-	turnArc(0,26,500,100);
-	moveToDistance(80,1000);
-	moveToDistance(-6,500);
+	moveToDistance(-20,NORMAL_SPEED);
+	turnArc(0,26,SLOW_SPEED,100);
+	moveToDistance(80,FAST_SPEED);
+	moveToDistance(-6,NORMAL_SPEED);
 	turn(90,500);
-	moveToDistance(50,1000);
+	moveToDistance(50,FAST_SPEED);
 	gateOpen();
 	*/
 }
