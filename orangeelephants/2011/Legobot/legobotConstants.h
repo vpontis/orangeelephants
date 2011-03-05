@@ -10,14 +10,13 @@ const int R_MOTOR = 0;
 const int L_BLOCKER_MOTOR = 2;
 const int GATE_MOTOR = 1;
 
-//speeds
-const int SLOW_SPEED = 500;
-const int NORMAL_SPEED = 700;
-const int FAST_SPEED = 1000;
-
 //Servo ports
 const int R_BLOCKER_SERVO = 0;
  
+//Speeds
+const int FAST_SPEED = 1000;
+const int MED_SPEED = 700;
+const int SLOW_SPEED = 500;
 
 //Blocker speed(motor) and position(servo)
 const int L_BLOCKER_MOTOR_SPEED = 100; //motor
