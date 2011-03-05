@@ -36,21 +36,21 @@ void legobotAccel(int initSpeed,int finalSpeed){
         
 }
 
-void moveToDistance(float distance, int speed) {
+void moveToDistance(float distance, int speed) {	//moves for a certain distance
 	clear_motor_position_counter(L_MOTOR); 
 	clear_motor_position_counter(R_MOTOR); 
-    mrp(L_MOTOR, speed, cmToTicks(distance));    //left wheel
-    mrp(R_MOTOR, speed, cmToTicks(distance));    //right wheel
+    mrp(L_MOTOR, speed, cmToTicks(distance));		//left wheel
+    mrp(R_MOTOR, speed, cmToTicks(distance));		//right wheel
     bmdMotors();
 }
 
-void moveStraight(int speed)
+void moveStraight(int speed)		//move straight forward
 {
 	mav(L_MOTOR, speed); 
 	mav(R_MOTOR, speed); 
 }
 
-void stopMotors()
+void stopMotors()					//stops motors
 {
 	mav(L_MOTOR, 0); 
 	mav(R_MOTOR, 0); 
@@ -94,17 +94,17 @@ void calibrateGate()             	//open or close the gate holding the biofuels 
 	printf("Press up to open, down to close, black button to finish -- move it to the completely closed position");
 	while (1)						//loops forever until broken out of
 	{
-		if (up_button() == 1) {
+		if (up_button() == 1) {		//raise gate
 			 mrp(GATE_MOTOR,200,-20);
 		}
-		if(down_button() == 1) {
+		if(down_button() == 1) {	//lower gate
 			mrp(GATE_MOTOR,200,20);
 		}
-		if(black_button() == 1) {
+		if(black_button() == 1) {	//finish calibration
 			break;
 		}
 	}
-	mrp(GATE_MOTOR, GATE_MOTOR_SPEED,-400);
+	mrp(GATE_MOTOR, GATE_MOTOR_SPEED,-400);	//raise gate a bit
 }
 
 void gateOpen() 					//opens the gate to let out balls
@@ -119,7 +119,7 @@ void gateClose()					//closes gate
 	bmd(GATE_MOTOR);
 }
 
-void turn(int degree, int speed){ 
+void turn(int degree, int speed){ 	//turns using both wheels to rotate about the midpoint of the axle
     clear_motor_position_counter(L_MOTOR); 
     clear_motor_position_counter(R_MOTOR); 
     int ticks = degree*TICKS_PER_DEGREE; 
