@@ -15,7 +15,7 @@ int main()
 			enable_servos();
 			set_servo_position(CLAW_PORT,950);
 			
-			moveToDist(270, 200);
+			moveToDist(420, 200);
 			smoothTurn(-90, 200);
 			moveToDist(685, 400);
 			smoothTurn(-90, 200);
@@ -23,15 +23,15 @@ int main()
 			moveArm(ARM_POS_DOWN, ARM_DOWN_VELOCITY);
 			
 			//go in for first grab attempt
-			moveToDist(115, 100);
+			moveToDist(265, 100);
 			closeClaw();
 			moveToDist(-210, 100);
 			openClaw();
 			
 			moveToDist(60, 100);
 			
-			create_drive_straight(-20);
-			sleep(0.05);
+			create_drive_straight(100);
+			sleep(0.2);
 			create_stop();
 			closeClaw();
 			sleep(0.25);
@@ -40,14 +40,14 @@ int main()
 			moveToDist(-150, 200);
 			smoothTurn(90, 200);
 			
-			moveToDist(350, 400);
+			moveToDist(380, 400);
 			moveToDist(100, 100);
 			
 			moveToDist(-50, 100);
 			
 			smoothTurn(90, 100);
 			
-			moveToDist(120, 130);
+			moveToDist(150, 130);
 			moveToDist(-100, 300);
 			
 			moveArm(ARM_POS_START+1500, -100);
