@@ -17,60 +17,54 @@ int main()
 			
 			moveToDist(270, 200);
 			smoothTurn(-90, 200);
-			moveToDist(630, 400);
+			moveToDist(685, 400);
 			smoothTurn(-90, 200);
 			
-			moveArm(ARM_POS_DOWN);
+			moveArm(ARM_POS_DOWN, ARM_DOWN_VELOCITY);
 			
 			//go in for first grab attempt
-			moveToDist(130, 100);
+			moveToDist(115, 100);
 			closeClaw();
 			moveToDist(-210, 100);
 			openClaw();
 			
 			moveToDist(60, 100);
+			
+			create_drive_straight(-20);
+			sleep(0.05);
+			create_stop();
 			closeClaw();
+			sleep(0.25);
+			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
-			moveArm(ARM_POS_START+1000);//picked up blocks
-			
-			moveToDist(-240, 200);
+			moveToDist(-150, 200);
 			smoothTurn(90, 200);
 			
-			moveToDist(200, 400);
-			moveToDist(200, 100);
+			moveToDist(350, 400);
+			moveToDist(100, 100);
+			
 			moveToDist(-50, 100);
-			smoothTurn(90, 200);
 			
-			moveToDist(230, 300);
-			moveToDist(-240, 200);
+			smoothTurn(90, 100);
 			
-			moveArm(ARM_POS_START);
-			openClaw();
-			moveToDist(-680, 300);
+			moveToDist(120, 130);
+			moveToDist(-100, 300);
+			
+			moveArm(ARM_POS_START+1500, -100);
+			slowReleaseClaw();
+			
+			moveToDist(-200, 300);
 						
 		}
 		
 		if(right_button())
 		{
-			enable_servos();
-			printf("Servos enabled.\n");
-			sleep(3);
-			
-			set_servo_position(CLAW_PORT,500);
-			printf("Set servo position 500.\n");
-			sleep(3);
-			
-			closeClaw(0);
-			printf("Set servo position 0.\n");
-			sleep(3);
-	
-			closeClaw(500);
-			printf("Set servo position 500.\n");
-			sleep(3);
-	
-			closeClaw(900);
-			printf("Set servo position 900.\n");
-			sleep(3);
+			/*
+			while(1){
+				printf("CHARGE IS %d \n", get_create_battery_charge(.1));
+				printf("CAPACITY IS %d \n", get_create_battery_capacity(.1));
+				sleep(1);
+			}*/
 			
 		}
 		
@@ -86,7 +80,7 @@ int main()
 		if(up_button())//calibrates arm and opens claw
 		{
 			moveArmUp();
-			moveArm(ARM_POS_START);
+			moveArm(ARM_POS_START, ARM_DOWN_VELOCITY);
 					
 			enable_servos();
 			set_servo_position(CLAW_PORT, 1200);

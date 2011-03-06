@@ -30,13 +30,9 @@ void moveArmUp(){
 }
 
 
-void moveArm(int position)	{
-	if(position < get_motor_position_counter(ARM_MOTOR_PORT)){//moving down
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, position);
-		}
-	else{
-			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, position);
-		}	
+void moveArm(int position, int speed)	{
+	
+	mtp(ARM_MOTOR_PORT, speed, position);
 	bmd(ARM_MOTOR_PORT);
 }
 

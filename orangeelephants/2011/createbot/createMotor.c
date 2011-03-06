@@ -74,20 +74,14 @@ void moveToDist(int distance, int speed)
 	\param finalSpeed 
 */
 
-void moveToDistanceAccel(int distance, int initSpeed, int finalSpeed) 
+void moveToDistanceAccel(int distance, int finalSpeed) 
 { 
 	set_create_distance(0); 
-	if(initSpeed == 0){
-		if(distance < 0){
-			initSpeed = -50;
-		}
-		else{
-			initSpeed = 50;
-		}
-	}
+	
 	double numIncrements = 4.;
-	double increment = (finalSpeed - initSpeed)/numIncrements;
-	int currSpeed = initSpeed;
+	double increment = finalSpeed/numIncrements;
+	
+	int currSpeed = increment;
 	double totalDistance = 0;
 	createDrive(currSpeed);
 	if(distance > 0) {
@@ -148,12 +142,11 @@ void turn(float deg, int vel)	{
 	create_stop();
 }
 
-
+//Optimized at d = 90, v = 200. Test at other values. 
 void smoothTurn(float deg, int finalVel)	{
 	deg = -deg;
 	set_create_total_angle(0);
-	
-	float compRatio = .00405*finalVel; 
+	float compRatio = 0.81; //.00405*finalVel*(standardVel/finalVel)
 	
 	int increment = finalVel/10;
 	int currVel = increment;
@@ -164,7 +157,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel += increment;
-				sleep(.15);
+				sleep(.15*(deg/90));
 			}
 			currVel = finalVel;
 			create_drive_direct(currVel, -currVel);
@@ -174,7 +167,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel -= increment;
-				sleep(.15);
+				sleep(.15*(deg/90));
 			}
 			currVel = 0;
 			create_drive_direct(currVel, -currVel);
@@ -186,7 +179,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(-currVel, currVel);
 				currVel += increment;
-				sleep(.15);
+				sleep(.15*(deg/90));
 			}
 			currVel = finalVel;
 			create_drive_direct(-currVel, currVel);
@@ -196,14 +189,13 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(-currVel, currVel);
 				currVel -= increment;
-				sleep(.15);
+				sleep(.15*(deg/90));
 			}
 			currVel = 0;
 			create_drive_direct(-currVel, currVel);
 		}
 	}
 	create_stop();
-		
+	
 }
-
 
