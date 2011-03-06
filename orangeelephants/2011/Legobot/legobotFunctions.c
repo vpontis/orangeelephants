@@ -40,9 +40,23 @@ void legobotAccel(int initSpeed,int finalSpeed){
 void moveToDistance(float distance, int speed) {
 	clear_motor_position_counter(L_MOTOR); 
 	clear_motor_position_counter(R_MOTOR); 
-    mrp(L_MOTOR, speed, cmToTicks(distance));    //left wheel
-    mrp(R_MOTOR, speed, cmToTicks(distance));    //right wheel
-    bmdMotors();
+	if(distance>0)	{
+		while(get_motor_position_counter(R_MOTOR) < cmToTicks(distance))	{
+			mav(L_MOTOR, speed); 
+			mav(R_MOTOR, speed);
+			//mrp(R_MOTOR, speed, cmToTicks(distance));    
+		}
+	}
+	else	{
+		while(get_motor_position_counter(R_MOTOR) > cmToTicks(distance))	{
+			mav(L_MOTOR, -speed); 
+			mav(R_MOTOR, -speed);
+			//mrp(R_MOTOR, speed, cmToTicks(distance));    
+		}
+	}
+    //bmdMotors();
+	mav(L_MOTOR, 0);
+	mav(R_MOTOR, 0);
 }
 
 void moveStraight(int speed)
@@ -92,7 +106,7 @@ void raiseBlockers(){            //raise higher AFTER leaving the starting box
 
 void calibrateGate()                 //open or close the gate holding the biofuels (ping-pong balls)
 {
-	printf("Press up to open, down to close, black button to finish -- move it to the completely closed position");
+	printf("Press up to open, down to close, black button to finish -- move it to the perpendicular position");
 	while (1) 
 	{
 		if (up_button() == 1) {
@@ -105,7 +119,7 @@ void calibrateGate()                 //open or close the gate holding the biofue
 			break;
 		}
 	}
-	mrp(GATE_MOTOR, GATE_MOTOR_SPEED,-400);
+	//mrp(GATE_MOTOR, GATE_MOTOR_SPEED,-400);
 }
 
 void gateOpen() 
