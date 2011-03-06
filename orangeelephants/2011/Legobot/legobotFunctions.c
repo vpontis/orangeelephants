@@ -106,7 +106,7 @@ void raiseBlockers(){            //raise higher AFTER leaving the starting box
 
 void calibrateGate()                 //open or close the gate holding the biofuels (ping-pong balls)
 {
-	printf("Press up to open, down to close, black button to finish -- move it to the completely closed position");
+	printf("Press up to open, down to close, black button to finish -- move it to the perpendicular position");
 	while (1) 
 	{
 		if (up_button() == 1) {
