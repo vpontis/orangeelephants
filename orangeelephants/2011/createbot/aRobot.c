@@ -17,34 +17,35 @@ int main()
 			
 			moveToDist(270, 200);
 			smoothTurn(-90, 200);
-			moveToDist(730, 400);
+			moveToDist(630, 400);
 			smoothTurn(-90, 200);
 			
-			moveClaw(ARM_POS_DOWN);
+			moveArm(ARM_POS_DOWN);
 			
-			moveToDist(100, 100);
-			setClaw(0);
+			//go in for first grab attempt
+			moveToDist(130, 100);
+			closeClaw();
 			moveToDist(-210, 100);
+			openClaw();
 			
-			setClaw(400);
-			moveToDist(100, 100);
-
-			setClaw(0);
+			moveToDist(60, 100);
+			closeClaw();
 			
-			moveClaw(ARM_POS_START+1000);//picked up blocks
+			moveArm(ARM_POS_START+1000);//picked up blocks
 			
 			moveToDist(-240, 200);
-			turn(80, 200);
+			smoothTurn(90, 200);
 			
 			moveToDist(200, 400);
+			moveToDist(200, 100);
 			moveToDist(-50, 100);
-			turn(74, 200);
+			smoothTurn(90, 200);
 			
-			moveToDist(530, 300);
+			moveToDist(230, 300);
 			moveToDist(-240, 200);
 			
-			moveClaw(ARM_POS_START);
-			setClaw(800);
+			moveArm(ARM_POS_START);
+			openClaw();
 			moveToDist(-680, 300);
 						
 		}
@@ -84,8 +85,8 @@ int main()
 				
 		if(up_button())//calibrates arm and opens claw
 		{
-			moveClawUp();
-			moveClaw(ARM_POS_START);
+			moveArmUp();
+			moveArm(ARM_POS_START);
 					
 			enable_servos();
 			set_servo_position(CLAW_PORT, 1200);
@@ -93,22 +94,6 @@ int main()
 	}
 }
 		
-
-//decel test
-/*	int speed=500;
-			
-			while(speed>0)
-			{
-				createDrive(speed);
-				sleep(.5);
-				
-				set_create_distance(0);\
-				createDrive(0);
-				printf("Decel from %d, distance is %d.\n", speed, get_create_distance(.1));
-				speed -= 100;
-			}*/
-
-
 /*Stack Blocks
 			createInitialize();
 			enable_servos();
@@ -124,7 +109,7 @@ int main()
 			moveToDist(-5, 100);
 			printf("Moved back to original blocks. \n");
 			moveToDist(80, 100);
-			moveClawDown(ARM_PARTIAL_DOWN);
+			movearmDown(ARM_PARTIAL_DOWN);
 			slowReleaseClaw();
 			printf("Claw opened.\n");
 			moveToDist(200, 250);

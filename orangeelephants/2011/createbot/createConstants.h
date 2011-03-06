@@ -16,6 +16,7 @@ const int  ARM_PARTIAL_DOWN  = -600;
 
 //Opening/closing positions of the claw
 const int  CLAW_OPEN_POS = 700; 
+const int  CLAW_CLOSE_POS = 0; 
 const int  CLAW_TOTAL_OPEN = 1200;
 
 //Motor & Sensor ports

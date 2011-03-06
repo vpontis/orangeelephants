@@ -18,7 +18,7 @@ void createInitialize()
 
 
 //Moves the claw to pinch the blocks up until it hits the sensor
-void moveClawUp(){
+void moveArmUp(){
 	
 	mav(ARM_MOTOR_PORT, ARM_UP_VELOCITY);
 	while (digital(ARM_TOUCH_PORT) == 0) //keep moving up until the touch sensor is triggered
@@ -30,44 +30,15 @@ void moveClawUp(){
 }
 
 
-//Moves the claw down a certain distance
-void moveClawDown(int nDistance) {
-	clear_motor_position_counter(0);
-	mav(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY);
-	
-	while(get_motor_position_counter(0) >= nDistance) {
-		sleep(0.1);
-	}
-	mav(ARM_MOTOR_PORT,0);
-}
-
-
-void moveClaw(int position)	{
-	mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, position);
+void moveArm(int position)	{
+	if(position < get_motor_position_counter(ARM_MOTOR_PORT)){//moving down
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, position);
+		}
+	else{
+			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, position);
+		}	
 	bmd(ARM_MOTOR_PORT);
 }
-
-
-//picks up two blocks and lifts them to a height of two blocks then lets them go and puts the claw back down
-void stackBlocks() { 
-	
-	set_servo_position(CLAW_PORT,CLAW_OPEN_POS); //790 = default value to clench
-	sleep(.5);  //pause before clench 
-	
-	
-	slowCloseClaw();
-	sleep(1); //pause in between moving and clench
-	
-	moveClawUp();
-	moveClawDown(ARM_PARTIAL_DOWN);
-	
-	sleep(1); 
-	slowReleaseClaw();
-	sleep(1); 
-	
-	moveClawDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
-}
-
 
 
 void slowReleaseClaw()
@@ -101,13 +72,14 @@ void setClaw(int position)
 {		
 	int currPos = get_servo_position(CLAW_PORT);
 	printf("Init servo position is %d.\n", currPos);
-	int increment = abs(position-currPos)/10;
+	int numIncrements = 10;
+	int increment = abs(position-currPos)/numIncrements;
 	printf("The increment is %d.\n", increment);
 	
 	int counter = 1;
 	
 	if(position < currPos)	{//to close the claw
-		while(counter <= 10)	{
+		while(counter <= numIncrements)	{
 			currPos-=increment;
 			set_servo_position(CLAW_PORT, currPos);
 			sleep(.1);
@@ -115,7 +87,7 @@ void setClaw(int position)
 		}
 	}
 	else if(position > currPos)	{//to open the claw
-		while( counter <= 10){
+		while( counter <= numIncrements){
 			currPos += increment;
 			set_servo_position(CLAW_PORT, currPos);
 			sleep(.1);
@@ -125,59 +97,41 @@ void setClaw(int position)
 	
 	set_servo_position(CLAW_PORT, position);
 
-	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
+	printf("Final servo position is %d.\n", get_servo_position(CLAW_PORT));
 }
 
 void pickUpBlocks()
 {
 	slowCloseClaw();
+	moveArmUp();
+}
+
+void openClaw()	{
+	setClaw(CLAW_OPEN_POS);
+}
+
+void closeClaw()	{
+	setClaw(CLAW_CLOSE_POS);
+}
+
+/*
+//picks up two blocks and lifts them to a height of two blocks then lets them go and puts the claw back down
+void stackBlocks() { 
+	
+	set_servo_position(CLAW_PORT,CLAW_OPEN_POS); //790 = default value to clench
+	sleep(.5);  //pause before clench 
+	
+	
+	slowCloseClaw();
+	sleep(1); //pause in between moving and clench
+	
 	moveClawUp();
+	moveClawDown(ARM_PARTIAL_DOWN);
+	
+	sleep(1); 
+	slowReleaseClaw();
+	sleep(1); 
+	
+	moveClawDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
 }
-
-void openClaw(int position)	{
-	int currPos = get_servo_position(CLAW_PORT);
-	printf("Init servo position is %d.\n", currPos);
-	int increment = abs(position-currPos)/10;
-	
-	int counter = 1;
-	
-	while( counter <= 10){
-		currPos += increment;
-		set_servo_position(CLAW_PORT, currPos);
-		sleep(.1);
-		counter += 1;
-	}
-	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
-}
-
-void closeClaw(int position)	{
-	int currPos = get_servo_position(CLAW_PORT);
-	printf("Init servo position is %d.\n", currPos);
-	int increment = abs(position-currPos)/10;
-	printf("The increment is %d.\n", increment);
-	
-	int counter = 1;
-	
-	if(position < currPos)	{//to close the claw
-		while(counter <= 10)	{
-			currPos-=increment;
-			set_servo_position(CLAW_PORT, currPos);
-			sleep(.1);
-			counter += 1;
-		}
-	}
-	else if(position > currPos)	{//to open the claw
-		while( counter <= 10){
-			currPos += increment;
-			set_servo_position(CLAW_PORT, currPos);
-			sleep(.1);
-			counter += 1;
-		}
-	}
-	
-	set_servo_position(CLAW_PORT, position);
-
-	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
-}
-
-
+*/

@@ -9,11 +9,11 @@ void slowReleaseClaw();
 void slowCloseClaw();
 void pickUpBlocks();
 
-void moveClaw(int position);
+void moveArm(int position);
 void setClaw(int position);
 
-void openClaw(int position);
-void closeClaw(int position);
+void openClaw();
+void closeClaw();
 
 
 
