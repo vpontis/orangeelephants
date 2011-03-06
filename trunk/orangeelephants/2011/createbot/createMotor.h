@@ -8,9 +8,7 @@ void moveToDistance(int distance, int speed);
 void moveToDistanceAccel(int distance, int initSpeed, int finalSpeed);
 
 void turn(float deg, int vel);
-void accelTurn(float deg, int vel);
 void smoothTurn(float deg, int finalVel);
 
-void moveToShort(int distance, int speed);
 
 #endif
