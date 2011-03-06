@@ -119,7 +119,7 @@ void calibrateGate()                 //open or close the gate holding the biofue
 			break;
 		}
 	}
-	mrp(GATE_MOTOR, GATE_MOTOR_SPEED,-400);
+	//mrp(GATE_MOTOR, GATE_MOTOR_SPEED,-400);
 }
 
 void gateOpen() 
