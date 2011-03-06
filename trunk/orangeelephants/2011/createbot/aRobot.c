@@ -1,7 +1,5 @@
 #include "createFunctions.c"
-
-void openClaw(int position);
-void closeClaw(int position);
+#include "createMotor.c"
 
 int main()
 {
@@ -17,37 +15,37 @@ int main()
 			enable_servos();
 			set_servo_position(CLAW_PORT,950);
 			
-			moveToDist(-150, 200);
-			turn(-73, 200);
-			moveToDist(-930, 400);
-			turn(-78, 200);
+			moveToDist(270, 200);
+			smoothTurn(-90, 200);
+			moveToDist(730, 400);
+			smoothTurn(-90, 200);
 			
 			moveClaw(ARM_POS_DOWN);
 			
-			moveToShort(-50, 100);
+			moveToDist(100, 100);
 			setClaw(0);
-			moveToDist(150, 100);
+			moveToDist(-210, 100);
 			
 			setClaw(400);
-			moveToDist(-100, 100);
+			moveToDist(100, 100);
 
 			setClaw(0);
 			
 			moveClaw(ARM_POS_START+1000);//picked up blocks
 			
-			moveToDist(120, 200);
+			moveToDist(-240, 200);
 			turn(80, 200);
 			
-			moveToDist(-850, 400);
-			moveToShort(50, 100);
+			moveToDist(200, 400);
+			moveToDist(-50, 100);
 			turn(74, 200);
 			
-			moveToDist(-350, 300);
-			moveToDist(120, 200);
+			moveToDist(530, 300);
+			moveToDist(-240, 200);
 			
 			moveClaw(ARM_POS_START);
 			setClaw(800);
-			moveToDist(500, 300);
+			moveToDist(-680, 300);
 						
 		}
 		
@@ -95,51 +93,6 @@ int main()
 	}
 }
 		
-void openClaw(int position)	{
-	int currPos = get_servo_position(CLAW_PORT);
-	printf("Init servo position is %d.\n", currPos);
-	int increment = abs(position-currPos)/10;
-	
-	int counter = 1;
-	
-	while( counter <= 10){
-		currPos += increment;
-		set_servo_position(CLAW_PORT, currPos);
-		sleep(.1);
-		counter += 1;
-	}
-	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
-}
-
-void closeClaw(int position)	{
-	int currPos = get_servo_position(CLAW_PORT);
-	printf("Init servo position is %d.\n", currPos);
-	int increment = abs(position-currPos)/10;
-	printf("The increment is %d.\n", increment);
-	
-	int counter = 1;
-	
-	if(position < currPos)	{//to close the claw
-		while(counter <= 10)	{
-			currPos-=increment;
-			set_servo_position(CLAW_PORT, currPos);
-			sleep(.1);
-			counter += 1;
-		}
-	}
-	else if(position > currPos)	{//to open the claw
-		while( counter <= 10){
-			currPos += increment;
-			set_servo_position(CLAW_PORT, currPos);
-			sleep(.1);
-			counter += 1;
-		}
-	}
-	
-	set_servo_position(CLAW_PORT, position);
-
-	printf("Final servo posit is %d.\n", get_servo_position(CLAW_PORT));
-}
 
 //decel test
 /*	int speed=500;
