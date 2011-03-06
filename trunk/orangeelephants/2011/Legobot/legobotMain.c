@@ -25,7 +25,7 @@ int main() {
 	sleep(.7);
     moveToDistance(-20, FAST_SPEED);//moves back to move around blocks
     turnArc(0, 23, FAST_SPEED, 60);//arcs around blocks
-    turnArc(1, 30, FAST_SPEED, 54); 
+    turnArc(1, 30, FAST_SPEED, 52); 
 	moveToDistance(120, FAST_SPEED); //hits North wall near the drop zone				
 	
 	
