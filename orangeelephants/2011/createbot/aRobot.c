@@ -19,7 +19,7 @@ int main()
 			
 			//moveToDistance(140, 200);
 			
-			moveToDistAccel(-20, FAST_SPEED);
+			moveToDistAccel(-10, NORMAL_SPEED);
 			//moveArm(ARM_POS_START+500, ARM_UP_VELOCITY);
 			
 			smoothTurn(90, 200);
@@ -28,6 +28,7 @@ int main()
 			//moveToDist(150, NORMAL_SPEED);
 			create_drive_straight(200);
 			sleep(0.1);
+			
 			smoothTurn(-90, 200);
 			
 			moveToDist(-250, NORMAL_SPEED);

@@ -1,6 +1,6 @@
 #include "createMotor.h"
 #include "createConstants.h"
-
+#include "math.c"
 /**
 accel(int initSpeed, int finalSpeed)
 Accelerates or decelerates the robot from one speed to the next in 20 incremental speeds. 
@@ -163,19 +163,24 @@ void smoothTurn(float deg, int finalVel)	{
 }
 
 void moveToDistAccel(int distance, int finalSpeed) 
-{ 
+{
+	//Input velocity is ALWAYS positive
 	distance = -distance;
+	
 	set_create_distance(0); 
 	double numIncrements = 20.;
 	double increment = finalSpeed/numIncrements;
-	double initSpeed = increment;
-	int currSpeed = initSpeed;
+	double currSpeed;
+	
 	double totalDistance = 0;
-	create_drive_straight(currSpeed);
+	
+	
 	if(distance > 0) {
-		while((totalDistance) < (distance/2)) {   // WHY divide by 4? DONT FUCKING KNOW.
+		currSpeed = increment;
+		create_drive_straight(currSpeed);
+		while((totalDistance) < (distance/2)) {   
 			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/(numIncrements))){}
+			while(get_create_distance(.1) > (distance/(numIncrements))){}
 			totalDistance += (distance/(numIncrements));
 			currSpeed += increment;
 			create_drive_straight(currSpeed);
@@ -184,7 +189,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 		totalDistance = 0;
 		while((totalDistance) < (distance/2)) {   
 			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			while(get_create_distance(.1) > (distance/numIncrements)) {}
 			totalDistance += (distance/(numIncrements));
 			currSpeed -= increment;
 			create_drive_straight(currSpeed);
@@ -192,21 +197,23 @@ void moveToDistAccel(int distance, int finalSpeed)
 		
 	}
 	else{
-		while((totalDistance) > (distance/2)) { // WHY divide by 4? DONT FUCKING KNOW.
-			//WTF I DON'T KNOW WHY THIS WORKS BUT IT DOES.
-			set_create_distance(0);
-			while(get_create_distance(.1) > (distance/numIncrements)) {}
-			totalDistance += (distance/numIncrements);
-			currSpeed += increment;
-			create_drive_straight(-currSpeed);
-		}
-		totalDistance = 0;
-		while((totalDistance) > (distance/2)) {   //WTF I DON'T KNOW WHY THIS WORKS BUT IT DOES
+		currSpeed = -increment;
+		create_drive_straight(currSpeed);
+		while((totalDistance) > (distance/2)) { 
 			set_create_distance(0);
 			while(get_create_distance(.1) > (distance/numIncrements)) {}
 			totalDistance += (distance/numIncrements);
 			currSpeed -= increment;
-			create_drive_straight(-currSpeed);
+			create_drive_straight(currSpeed);
+		}
+		
+		totalDistance = 0;
+		while((totalDistance) > (distance/2)) {  
+			set_create_distance(0);
+			while(get_create_distance(.1) > (distance/numIncrements)) {}
+			totalDistance += (distance/numIncrements);
+			currSpeed += increment;
+			create_drive_straight(currSpeed);
 		}
 	}
 	create_stop();
