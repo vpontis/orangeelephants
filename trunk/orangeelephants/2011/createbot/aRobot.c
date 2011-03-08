@@ -13,44 +13,17 @@ int main()
 		if(a_button())
 		{
 			enable_servos();
-			//createInitialize();
-			//enable_servos();
-			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
-			
-			//moveToDistance(140, 200);
-			
-			moveToDistAccel(-10, NORMAL_SPEED);
-			//moveArm(ARM_POS_START+500, ARM_UP_VELOCITY);
-			
-			smoothTurn(90, 200);
-			
-			moveToDistAccel(580, FAST_SPEED);
-			//moveToDist(150, NORMAL_SPEED);
-			create_drive_straight(200);
-			sleep(0.1);
-			
-			smoothTurn(-90, 200);
-			
-			moveToDist(-250, NORMAL_SPEED);
-			
-			mtp(GRABBER_PORT, 300, 180);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, -1000, 0);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, 1000, 180);
-			bmd(GRABBER_PORT);
-			//Completed the airplane dropoff
 			set_servo_position(CLAW_PORT,950);
 			
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
-			moveToDist(320, FAST_SPEED);
+			moveToDist(420, 200);
 			smoothTurn(-90, 200);
-			moveToDist(675, FAST_SPEED);
+			moveToDist(685, 400);
 			smoothTurn(-90, 200);
 			
+			moveArm(ARM_POS_DOWN, ARM_DOWN_VELOCITY);
 			
 			//go in for first grab attempt
-			moveToDist(155, 100);
+			moveToDist(265, 100);
 			closeClaw();
 			moveToDist(-210, 100);
 			openClaw();
@@ -58,30 +31,27 @@ int main()
 			moveToDist(60, 100);
 			
 			create_drive_straight(100);
-			sleep(0.25);
+			sleep(0.2);
 			create_stop();
 			closeClaw();
-			//Second grab attempt
-			
 			sleep(0.25);
 			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
 			moveToDist(-150, 200);
 			smoothTurn(90, 200);
 			
-			moveToDist(300, 400);
-			create_drive_straight(-100);
-			sleep(3);
+			moveToDist(380, 400);
+			moveToDist(100, 100);
+			
 			moveToDist(-50, 100);
+			
 			smoothTurn(90, 100);
 			
-			create_drive_straight(-130);
-			sleep(2);
+			moveToDist(150, 130);
 			moveToDist(-100, 300);
+			
 			moveArm(ARM_POS_START+1500, -100);
 			slowReleaseClaw();
-			//Drop off first set
-			
 			
 			moveToDist(-200, 300);
 						
@@ -89,14 +59,12 @@ int main()
 		
 		if(right_button())
 		{
-			
-			
-		}
-		
-		if(black_button())
-		{
-			clear_motor_position_counter(GRABBER_PORT);
-			mtp(GRABBER_PORT, NORMAL_SPEED, 0);
+			/*
+			while(1){
+				printf("CHARGE IS %d \n", get_create_battery_charge(.1));
+				printf("CAPACITY IS %d \n", get_create_battery_capacity(.1));
+				sleep(1);
+			}*/
 			
 		}
 		
