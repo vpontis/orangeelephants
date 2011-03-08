@@ -53,7 +53,7 @@ int main() {
 	moveToDistance(4, FAST_SPEED);
 	//turnArc(1,50,-SLOW_SPEED,-10);
 	
-	pivot(1,90,FAST_SPEED); //pivots to final right PVC; check angle
+	pivot(1, 100, FAST_SPEED); //pivots to final right PVC; check angle
 	moveToDistance(100, FAST_SPEED);
 	pivot(0, -91, FAST_SPEED); //runs into wall. currently 91
 	moveToDistance(55, FAST_SPEED);
@@ -68,7 +68,7 @@ int main() {
 	pivot(0,-90,FAST_SPEED);
 	
 	moveToDistance(-35,FAST_SPEED);
-	pivot(1,-90,FAST_SPEED);
+	pivot(1,-100,FAST_SPEED);
 	
 	moveToDistance(-60,FAST_SPEED);
 	moveToDistance(-100,SUPER_SPEED);
