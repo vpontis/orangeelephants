@@ -125,13 +125,14 @@ void calibrateGate()                 //open or close the gate holding the biofue
 void gateOpen() 
 {
 	mrp(GATE_MOTOR, GATE_MOTOR_SPEED, GATE_OPEN_POS);
-	bmd(GATE_MOTOR);
+	sleep(2);
+	//bmd(GATE_MOTOR);
 }
 
 void gateClose()
 {
 	mrp(GATE_MOTOR, GATE_MOTOR_SPEED, -GATE_OPEN_POS);
-	bmd(GATE_MOTOR);
+	//bmd(GATE_MOTOR);
 }
 
 //        axle is 13.75 cm
