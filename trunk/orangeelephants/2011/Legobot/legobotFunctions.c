@@ -95,8 +95,8 @@ void lowerBlockerRight(){		//lower right blocker and move forward 20 cm (subject
 
 
 void setStartingBlockers() {         //angle the blockers to fit in the starting box
-	set_servo_position(0,930);       //angled value
-	mrp(L_BLOCKER_MOTOR,260,165);    //angled value
+	set_servo_position(0,990);       //angled value
+	mrp(L_BLOCKER_MOTOR,260,140);    //angled value
 }
 
 void raiseBlockers(){            //raise higher AFTER leaving the starting box
