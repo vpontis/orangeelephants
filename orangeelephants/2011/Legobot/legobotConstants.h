@@ -22,11 +22,11 @@ const int SLOW_SPEED = 500;
 const int L_BLOCKER_MOTOR_SPEED = 100; //motor
 const int R_BLOCKER_SERVO_POSITION = 1575; //servo
 const int L_BLOCKER_MOTOR_DISTANCE = 190;
-const int L_BLOCKER_MOTOR_START = 160; 
+const int L_BLOCKER_MOTOR_START = 160;
 
 
 //Gate
-const int GATE_MOTOR_SPEED = 350;
+const int GATE_MOTOR_SPEED = 1000;
 const int GATE_OPEN_POS = -500; 
 
 //Distances

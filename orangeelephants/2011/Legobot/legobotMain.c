@@ -37,7 +37,7 @@ int main() {
 	moveToDistance(-25,FAST_SPEED);//backs up to allow for turn
 	turn(-90,SLOW_SPEED);//turns to face West
 	moveToDistance(65, FAST_SPEED); //align with pvc on West
-	moveToDistance(-10, FAST_SPEED); //backs up to allow for turn. 10 is best.
+	moveToDistance(-11, FAST_SPEED); //backs up to allow for turn. 10 is best.
 	turn(-93, SLOW_SPEED);//turns to face blocks, South
 	moveToDistance(25, FAST_SPEED); //moves blocks out of the way
 	moveToDistance(3.5, FAST_SPEED);//got all the biofuels
@@ -49,7 +49,7 @@ int main() {
 	
 	turnArc(1, 20, FAST_SPEED, 92); //100 is compensation
 	moveToDistance(100, FAST_SPEED);
-	pivot(0, -94, SLOW_SPEED); //runs into wall. 96 is compensation
+	pivot(0, -94, FAST_SPEED); //runs into wall. 96 is compensation
 	moveToDistance(55, FAST_SPEED);
 	moveStraight(200);
 	gateOpen();
