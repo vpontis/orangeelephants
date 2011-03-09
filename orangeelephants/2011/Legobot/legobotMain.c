@@ -2,98 +2,72 @@
 #include "legobotConstants.h"
 #include "boolean.h"
 
-// BLOCKERS NEED TO START ON GROUND BEFORE ROUND, THEN CALL setStartingBlockers()
-// ADJUST THE GATE TO BE PERPENDICULAR TO THE HOPPER
+//**NOTE: adjust the gate to be perpendicular to the ground before presesing the black or 'A' button
 int main() {
+	
 	calibrateGate();
 	setStartingBlockers();
-	printf("press a button to start \n");
-	while(1) {
-			if(a_button() == 1) {
+	
+	printf("Press 'A' to start \n");
+	
+	while(1) 
+	{
+			if(a_button() == 1) 
+			{
 				break;
 			}
-			if(b_button() == 1) {
-				moveToDistance(200, SLOW_SPEED);
-				sleep(1);
-				moveToDistance(-200, SLOW_SPEED);
-			}
 	}
-	//code for right side
 	
+	//LEG 1: collects ping pong balls @ first station
 	
-    //raiseBlockers();                 
-    moveToDistance(52, FAST_SPEED);//moves forward, pushing away blocks and collecting ping pong balls
+    moveToDistance(52, FAST_SPEED);
 	sleep(.7);
-    moveToDistance(-6, FAST_SPEED);//moves back to move around blocks
+    
+	//LEG 2: navigates to north PVC
 	
-	pivot(0,-90,FAST_SPEED);
-	moveToDistance(-7,FAST_SPEED);
-	pivot(1,-86,FAST_SPEED);
-    //turnArc(0, 23, FAST_SPEED, 60);//arcs around blocks
+	moveToDistance(-6, FAST_SPEED); //moves back to avoid tampering the red towers	
+	pivot(0,-90,FAST_SPEED); //pivots -90 degrees CCW
+	moveToDistance(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
+	pivot(1,-86,FAST_SPEED); //pivots -90 degrees CW
+	moveToDistance(160, FAST_SPEED); //moves to and hits north PVC
 	
-	//CALIBRATE THIS VALUE!!!
-    //pivot(1,86,FAST_SPEED); //NEED TO CALIBRATE EVERY DAY; currently 88 degrees
+	//LEG 3: collects ping pong balls @ second station
 	
-	//turnArc(1, 30, FAST_SPEED, 52);
-	moveToDistance(160, FAST_SPEED); //hits North wall near the drop zone				
+	moveToDistance(-25,FAST_SPEED); //backs up to allow for turn
+	pivot(1,96,FAST_SPEED); //pivots to face west
+	moveToDistance(65,FAST_SPEED); //aligns with west PVC
+	moveToDistance(-9,FAST_SPEED); //backs up to allow for turn
+	pivot(1,100,FAST_SPEED); //pivots to face south PVC & ping pong balls
+	moveToDistance(25, FAST_SPEED); //collects all biofuels
+	sleep(.7);
 	
-	moveToDistance(-28,FAST_SPEED);//backs up to allow for turn
-	turn(-95,SLOW_SPEED);//turns to face West
-	moveToDistance(65,FAST_SPEED); //align with pvc on West
-	moveToDistance(-9,FAST_SPEED); //backs up to allow for turn. 10 is best.
+	//LEG 4: drop all biofuels
 	
-	//CALIBRATE THIS VALUE!!!
-	turn(-100,SLOW_SPEED);//turns to face blocks, South
+	turnArc(1, 50, -SLOW_SPEED, -10); //arcs back and hits north PVC
+	moveToDistance(-55,FAST_SPEED); //aligns with north PVC
+	moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
+	pivot(1, 100, FAST_SPEED); //pivots to face final east PVC
+	moveToDistance(100, FAST_SPEED); //moves and aligns with east PVC
+	pivot(0, -91, FAST_SPEED); //pivots to face drop zone
+	moveToDistance(100, FAST_SPEED); //drives to and aligns with drop zone
+	gateOpen(); //drops all biofuels
 	
-	moveToDistance(25, FAST_SPEED); //moves blocks out of the way
-	moveToDistance(3.5, FAST_SPEED);//got all the biofuels
-	turnArc(1, 50, -SLOW_SPEED, -10);
+	//LEG 5: navigate and drop blockers
 	
-	moveToDistance(-55,FAST_SPEED);
-	moveToDistance(4, FAST_SPEED);
-	//turnArc(1,50,-SLOW_SPEED,-10);
-	
-	pivot(1, 110, FAST_SPEED); //pivots to final right PVC; check angle
-	moveToDistance(100, FAST_SPEED);
-	pivot(0, -91, FAST_SPEED); //runs into wall. currently 91
-	moveToDistance(55, FAST_SPEED);
-	moveStraight(200);
-	gateOpen();
 	gateClose();
-
 	moveToDistance(-50,FAST_SPEED);
 	pivot(1, -90, FAST_SPEED);
+	
 	moveToDistance(30,FAST_SPEED);
 	moveToDistance(-22,FAST_SPEED);
 	pivot(0,-90,FAST_SPEED);
 	
 	moveToDistance(-35,FAST_SPEED);
-	pivot(1,-120,FAST_SPEED);
-	
+	pivot(1,-100,FAST_SPEED);
 	
 	moveToDistance(-60,FAST_SPEED);
-	moveToDistance(-100,SUPER_SPEED);//move back beyond black tape
+	moveToDistance(-100,SUPER_SPEED);
 	
-	moveToDistance(30, FAST_SPEED);
-	turn(-90, 200);
-	lowerBlockerLeft();
-	moveToDistance(30, FAST_SPEED); 
-	lowerBlockerRight();
-	moveToDistance(10, FAST_SPEED);
-	pivot(1, 90, FAST_SPEED);//pivot to face north
-	/*
-	pivot(0, -55, FAST_SPEED);
-	moveToDistance(-20,FAST_SPEED);
-	pivot(1,-60,FAST_SPEED);
-	
-	moveToDistance(30,FAST_SPEED);
-	sleep(0.5);
-	moveToDistance(-120,SUPER_SPEED);
-	
-	lowerBlockerLeft();
-	lowerBlockerRight();
-	*/
-
 }
 
 
