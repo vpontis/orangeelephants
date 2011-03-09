@@ -23,5 +23,10 @@ const int  CLAW_TOTAL_OPEN = 1200;
 const int  ARM_MOTOR_PORT = 0; 
 const int  CLAW_PORT = 2; 
 const int  ARM_TOUCH_PORT = 15;
+const int  GRABBER_PORT = 1;
+
+//speed
+const int FAST_SPEED = 15000;
+const int NORMAL_SPEED = 500;
 
 #endif

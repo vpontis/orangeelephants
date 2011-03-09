@@ -74,56 +74,64 @@ void moveToDist(int distance, int speed)
 	\param finalSpeed 
 */
 
-void moveToDistanceAccel(int distance, int finalSpeed) 
-{ 
+void moveToDistAccel(int distance, int finalSpeed) 
+{
+	//Input velocity is ALWAYS positive
+	distance = -distance;
+	
 	set_create_distance(0); 
-	
-	double numIncrements = 4.;
+	double numIncrements = 20.;
 	double increment = finalSpeed/numIncrements;
+	double currSpeed;
 	
-	int currSpeed = increment;
 	double totalDistance = 0;
-	createDrive(currSpeed);
+	
+	
 	if(distance > 0) {
-		while((totalDistance) < (distance/numIncrements)) {   // WHY divide by 4? DONT FUCKING KNOW.
+		currSpeed = increment;
+		create_drive_straight(currSpeed);
+		while((totalDistance) < (distance/2)) {   
 			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/(numIncrements))){}
+			while(get_create_distance(.1) > (distance/(numIncrements))){}
 			totalDistance += (distance/(numIncrements));
 			currSpeed += increment;
-			createDrive(currSpeed);
+			create_drive_straight(currSpeed);
 		}
 		
 		totalDistance = 0;
-		while((totalDistance) < (distance/numIncrements)) {   
+		while((totalDistance) < (distance/2)) {   
 			set_create_distance(0);
-			while(get_create_distance(.1) < (distance/numIncrements)) {}
+			while(get_create_distance(.1) > (distance/numIncrements)) {}
 			totalDistance += (distance/(numIncrements));
 			currSpeed -= increment;
-			createDrive(currSpeed);
+			create_drive_straight(currSpeed);
 		}
 		
 	}
 	else{
-		while((totalDistance) > (distance/numIncrements)) { // WHY divide by 4? DONT FUCKING KNOW.
-			//WTF I DON'T KNOW WHY THIS WORKS BUT IT DOES.
-			set_create_distance(0);
-			while(get_create_distance(.1) > (distance/numIncrements)) {}
-			totalDistance += (distance/numIncrements);
-			currSpeed += increment;
-			createDrive(currSpeed);
-		}
-		totalDistance = 0;
-		while((totalDistance) > (distance/numIncrements)) {   //WTF I DON'T KNOW WHY THIS WORKS BUT IT DOES
+		currSpeed = -increment;
+		create_drive_straight(currSpeed);
+		while((totalDistance) > (distance/2)) { 
 			set_create_distance(0);
 			while(get_create_distance(.1) > (distance/numIncrements)) {}
 			totalDistance += (distance/numIncrements);
 			currSpeed -= increment;
-			createDrive(currSpeed);
+			create_drive_straight(currSpeed);
+		}
+		
+		totalDistance = 0;
+		while((totalDistance) > (distance/2)) {  
+			set_create_distance(0);
+			while(get_create_distance(.1) > (distance/numIncrements)) {}
+			totalDistance += (distance/numIncrements);
+			currSpeed += increment;
+			create_drive_straight(currSpeed);
 		}
 	}
 	create_stop();
 	
 }
+
 
 
 void turn(float deg, int vel)	{
@@ -146,52 +154,55 @@ void turn(float deg, int vel)	{
 void smoothTurn(float deg, int finalVel)	{
 	deg = -deg;
 	set_create_total_angle(0);
-	float compRatio = .5*0.81; //.00405*finalVel*(standardVel/finalVel)
+	float compRatio = 1.7; //.00405*finalVel*(standardVel/finalVel)
 	
 	int increment = finalVel/10;
 	int currVel = increment;
 	if(deg > 0){
-		//CW: +deg, +vel
-		while(get_create_total_angle(.1) < (compRatio*deg))	{
+		//CCW: +deg, +vel
+		while(get_create_total_angle(.1) < 0.5*(compRatio*deg))	{
 			while(currVel < finalVel)
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel += increment;
-				sleep(.15*(deg/90));
+				sleep(.15);
 			}
 			currVel = finalVel;
 			create_drive_direct(currVel, -currVel);
 		}
+		
 		set_create_total_angle(0);
-		while(get_create_total_angle(.1) < compRatio*deg){
+		
+		while(get_create_total_angle(.1) < 0.5*(compRatio*deg)){
 			while(currVel > increment)
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel -= increment;
-				sleep(.15*(deg/90));
+				sleep(.15);
 			}
 			currVel = 0;
 			create_drive_direct(currVel, -currVel);
 		}
 	}
 	else{
-		while(get_create_total_angle(.1) > (compRatio*deg))	{
+		while(get_create_total_angle(.1) > 0.5*(compRatio*deg))	{
 			while(currVel < finalVel)
 			{
 				create_drive_direct(-currVel, currVel);
 				currVel += increment;
-				sleep(.15*(deg/90));
+				sleep(.15);
 			}
 			currVel = finalVel;
 			create_drive_direct(-currVel, currVel);
 		}
 		set_create_total_angle(0);
-		while(get_create_total_angle(.1) > compRatio*deg){
+		
+		while(get_create_total_angle(.1) > 0.5*(compRatio*deg)){
 			while(currVel > increment)
 			{
 				create_drive_direct(-currVel, currVel);
 				currVel -= increment;
-				sleep(.15*(deg/90));
+				sleep(.15);
 			}
 			currVel = 0;
 			create_drive_direct(-currVel, currVel);
