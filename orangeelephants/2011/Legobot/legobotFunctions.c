@@ -81,7 +81,7 @@ void bmdMotors() {                                 //wait until driving motors f
 }
 
 void lowerBlockerLeft(){		
-        mtp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, -100);
+        mtp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, -15);
         sleep(1);
 }
 
@@ -94,6 +94,7 @@ void lowerBlockerRight(){		//lower right blocker and move forward 20 cm (subject
 
 
 void setStartingBlockers() {         //angle the blockers to fit in the starting box
+	clear_motor_position_counter(L_BLOCKER_MOTOR);
 	set_servo_position(0,990);       //angled value
 	mrp(L_BLOCKER_MOTOR,260,165);    //angled value
 }
@@ -114,7 +115,7 @@ void calibrateGate()                 //open or close the gate holding the biofue
 		if(down_button() == 1) {
 			mrp(GATE_MOTOR,200,20);
 		}
-		if(black_button() == 1) {
+		if(black_button() == 1) {		
 			break;
 		}
 	}
