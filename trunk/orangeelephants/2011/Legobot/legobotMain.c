@@ -70,12 +70,14 @@ int main() {
 	moveToDistance(-35,FAST_SPEED);
 	pivot(1,-120,FAST_SPEED);
 	
+	
 	moveToDistance(-60,FAST_SPEED);
 	moveToDistance(-100,SUPER_SPEED);//move back beyond black tape
 	
-	
-	lowerBlockerLeft();
 	moveToDistance(30, FAST_SPEED);
+	turn(-90, 200);
+	lowerBlockerLeft();
+	moveToDistance(30, FAST_SPEED); 
 	lowerBlockerRight();
 	moveToDistance(10, FAST_SPEED);
 	pivot(1, 90, FAST_SPEED);//pivot to face north

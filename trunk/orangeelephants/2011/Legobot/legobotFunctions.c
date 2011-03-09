@@ -81,9 +81,8 @@ void bmdMotors() {                                 //wait until driving motors f
 }
 
 void lowerBlockerLeft(){		
-        mrp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, 0);
+        mtp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, -100);
         sleep(1);
-        off(L_BLOCKER_MOTOR);
 }
 
 void lowerBlockerRight(){		//lower right blocker and move forward 20 cm (subject to change)
