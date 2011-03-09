@@ -19,19 +19,22 @@ int main()
 			
 			//moveToDistance(140, 200);
 			
-			moveToDistAccel(-3, NORMAL_SPEED);	
+			moveToDistAccel(-5, NORMAL_SPEED);	
 			//moveArm(ARM_POS_START+500, ARM_UP_VELOCITY);
 			
 			smoothTurn(90, 200);
 			
-			moveToDistAccel(50, FAST_SPEED); //used to be 580
+			accel(0, -1500);
+			moveToDist(600, 1500);
+			accel(-1500, 0);
+			
 			//moveToDist(150, NORMAL_SPEED);
-			create_drive_straight(40);
-			sleep(0.1);
+			create_drive_straight(-60);
+			sleep(2);
 			create_drive_straight(-20);
 			smoothTurn(-90, 200);
 			
-			moveToDist(-100, NORMAL_SPEED);
+			moveToDistAccel(-20, NORMAL_SPEED);
 			
 			mtp(GRABBER_PORT, 300, 180);
 			bmd(GRABBER_PORT);

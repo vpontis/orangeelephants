@@ -9,9 +9,9 @@ Robot continues on driving straight at finalSpeed.
 void accel(int initSpeed, int finalSpeed)
 {
 	int speed = initSpeed;
-	int increm = (finalSpeed-initSpeed)/20;
+	int increm = (finalSpeed-initSpeed)/30;
 	
-	float time = abs((finalSpeed-initSpeed)/2500);//delay is .1 sec for accel from 0-500
+	float time = abs((finalSpeed-initSpeed)/10000);//delay is .1 sec for accel from 0-500
 	
 	if(speed<finalSpeed)//if you are accelerating
 	{
@@ -54,14 +54,12 @@ void moveToDist(int distance, int speed)
 	set_create_distance(0); 
 	
 	if(distance > 0) {   
-		createDrive(speed);
+		create_drive_straight(speed);
 		while (get_create_distance(.1) < distance) {}
-		createDrive(0);
 	}
 	else{ //backwards
-		createDrive(-speed);
+		create_drive_straight(-speed);
 		while (get_create_distance(.1) > distance) {}
-		createDrive(0);
 	}
 }
 
@@ -78,14 +76,14 @@ void moveToDistAccel(int distance, int finalSpeed)
 {
 	//Input velocity is ALWAYS positive
 	distance = -distance;
+	//double compRatio = finalSpeed/3000.;
+	double totalDistance = 0;
+	//distance = compRatio * distance;
 	
 	set_create_distance(0); 
-	double numIncrements = 100.;
-	float delay = 0.01;
+	double numIncrements = 50.;
 	double increment = finalSpeed/numIncrements;
 	double currSpeed;
-	
-	double totalDistance = 0;
 	
 	
 	if(distance > 0) {
@@ -97,7 +95,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 			totalDistance += (distance/(numIncrements));
 			currSpeed += increment;
 			create_drive_straight(currSpeed);
-			sleep(delay);
+			//sleep(delay);
 		}
 		
 		totalDistance = 0;
