@@ -156,8 +156,8 @@ void smoothTurn(float deg, int finalVel)	{
 	set_create_total_angle(0);
 	float compRatio = .85; //.00405*finalVel*(standardVel/finalVel)
 	
-	int increment = finalVel/10;
-	int currVel = increment;
+	float increment = (float) finalVel/10;
+	float currVel = increment;
 	if(deg > 0){
 		//CCW: +deg, +vel
 		while(get_create_total_angle(.1) < 0.5*(compRatio*deg))	{
@@ -165,7 +165,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel += increment;
-				sleep(.15);
+				sleep(.05);
 			}
 			currVel = finalVel;
 			create_drive_direct(currVel, -currVel);
@@ -178,7 +178,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel -= increment;
-				sleep(.15);
+				sleep(.05);
 			}
 			currVel = 0;
 			create_drive_direct(currVel, -currVel);
@@ -190,7 +190,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(-currVel, currVel);
 				currVel += increment;
-				sleep(.15);
+				sleep(.05);
 			}
 			currVel = finalVel;
 			create_drive_direct(-currVel, currVel);
@@ -202,7 +202,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(-currVel, currVel);
 				currVel -= increment;
-				sleep(.15);
+				sleep(.05);
 			}
 			currVel = 0;
 			create_drive_direct(-currVel, currVel);
