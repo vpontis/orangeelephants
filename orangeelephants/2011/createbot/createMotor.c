@@ -80,7 +80,8 @@ void moveToDistAccel(int distance, int finalSpeed)
 	distance = -distance;
 	
 	set_create_distance(0); 
-	double numIncrements = 20.;
+	double numIncrements = 100.;
+	float delay = 0.01;
 	double increment = finalSpeed/numIncrements;
 	double currSpeed;
 	
@@ -96,6 +97,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 			totalDistance += (distance/(numIncrements));
 			currSpeed += increment;
 			create_drive_straight(currSpeed);
+			sleep(delay);
 		}
 		
 		totalDistance = 0;
@@ -105,6 +107,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 			totalDistance += (distance/(numIncrements));
 			currSpeed -= increment;
 			create_drive_straight(currSpeed);
+			//sleep(delay);
 		}
 		
 	}
@@ -117,6 +120,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 			totalDistance += (distance/numIncrements);
 			currSpeed -= increment;
 			create_drive_straight(currSpeed);
+			//sleep(delay);
 		}
 		
 		totalDistance = 0;
@@ -126,6 +130,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 			totalDistance += (distance/numIncrements);
 			currSpeed += increment;
 			create_drive_straight(currSpeed);
+			//sleep(delay);
 		}
 	}
 	create_stop();
