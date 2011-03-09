@@ -20,7 +20,7 @@ const int SLOW_SPEED = 500;
 const int SUPER_SPEED = 1000;
 
 //Blocker speed(motor) and position(servo)
-const int L_BLOCKER_MOTOR_SPEED = 100; //motor
+const int L_BLOCKER_MOTOR_SPEED = -1000; //motor
 const int R_BLOCKER_SERVO_POSITION = 1575; //servo
 const int L_BLOCKER_MOTOR_DISTANCE = 175;
 const int L_BLOCKER_MOTOR_START = 160;
