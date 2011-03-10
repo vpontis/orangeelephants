@@ -22,7 +22,7 @@ int main()
 			smoothTurn(-90, 200);
 			
 			accel(0, -1500);
-			moveToDist(600, 1500);
+			moveToDist(630, 1500);
 			accel(-1500, 0);
 			
 			//moveToDist(150, NORMAL_SPEED);
@@ -58,7 +58,7 @@ int main()
 			bmd(ARM_MOTOR_PORT);
 			
 			//go in for first grab attempt
-			moveToDist(50, 100);
+			moveToDist(80, 100);
 			closeClaw();
 			moveToDist(-210, 100);
 			openClaw();
@@ -78,12 +78,12 @@ int main()
 			smoothTurn(-90, 200);
 			
 			moveToDist(300, 400);
-			create_drive_straight(-100);
+			create_drive_straight(-150);
 			sleep(3);
 			moveToDist(-50, 100);
 			smoothTurn(-90, 200);
 			
-			create_drive_straight(-130);
+			create_drive_straight(-150);
 			sleep(2);
 			moveToDist(-100, 300);
 			moveArm(ARM_POS_START+1500, -100);
