@@ -61,6 +61,7 @@ void moveToDist(int distance, int speed)
 		create_drive_straight(-speed);
 		while (get_create_distance(.1) > distance) {}
 	}
+	create_stop();
 }
 
 
