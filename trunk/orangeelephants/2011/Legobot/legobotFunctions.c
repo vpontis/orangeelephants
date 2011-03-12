@@ -3,6 +3,58 @@
 #include "boolean.h"
 // *******************USE CENTIMETERS*********************
 // **************Blockers start on ground, then call setStartingBlockers() ************************
+/*
+        -brief Turns legobot in an arc using the mrp command
+        -param True if going left, false if going right
+        -param outerRadius Sets outer radius of the arc in centimeters
+        -param outerSpeed Speed of outside wheel between 0-1000
+        -param amountDegrees Tells the robot how much of the circle to turn in degrees
+*/
+
+
+void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountDegrees) 
+{
+    float ratio = (outerRadius - LEGOBOT_DIAMETER)/(outerRadius);
+	float outerCircumference = 2 * PI * outerRadius * (0.073343)*1.3;
+    float innerCircumference = outerCircumference * ratio;
+    float innerSpeed = outerSpeed * ratio; 
+	if(leftArc)
+	{
+           mrp(L_MOTOR, innerSpeed, innerCircumference*TICKS_PER_REV*(amountDegrees/360.0)); //1020.4 is ticks per rev
+           mrp(R_MOTOR, outerSpeed, outerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
+	}
+    else
+    {
+           mrp(R_MOTOR, innerSpeed, innerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
+           mrp(L_MOTOR, outerSpeed, outerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
+    }
+    bmdMotors();
+}
+
+
+
+void moveToDistance(float distance, int speed) {
+	clear_motor_position_counter(L_MOTOR); 
+	clear_motor_position_counter(R_MOTOR); 
+	double compRatio = 0.93;
+	if(distance>0)	{
+		while(get_motor_position_counter(R_MOTOR) < cmToTicks(distance))	{
+			mav(L_MOTOR, (int) (compRatio * speed)); 
+			mav(R_MOTOR,  speed);
+			//mrp(R_MOTOR, speed, cmToTicks(distance));    
+		}
+	}
+	else	{
+		while(get_motor_position_counter(R_MOTOR) > cmToTicks(distance))	{
+			mav(L_MOTOR, -speed); 
+			mav(R_MOTOR, -speed);
+			//mrp(R_MOTOR, speed, cmToTicks(distance));    
+		}
+	}
+    //bmdMotors();
+	mav(L_MOTOR, 0);
+	mav(R_MOTOR, 0);
+}
 
 void legobotAccel(int initSpeed,int finalSpeed){
         
@@ -36,28 +88,6 @@ void legobotAccel(int initSpeed,int finalSpeed){
         
 }
 
-
-void moveToDistance(float distance, int speed) {
-	clear_motor_position_counter(L_MOTOR); 
-	clear_motor_position_counter(R_MOTOR); 
-	if(distance>0)	{
-		while(get_motor_position_counter(R_MOTOR) < cmToTicks(distance))	{
-			mav(L_MOTOR, speed); 
-			mav(R_MOTOR, speed);
-			//mrp(R_MOTOR, speed, cmToTicks(distance));    
-		}
-	}
-	else	{
-		while(get_motor_position_counter(R_MOTOR) > cmToTicks(distance))	{
-			mav(L_MOTOR, -speed); 
-			mav(R_MOTOR, -speed);
-			//mrp(R_MOTOR, speed, cmToTicks(distance));    
-		}
-	}
-    //bmdMotors();
-	mav(L_MOTOR, 0);
-	mav(R_MOTOR, 0);
-}
 
 void moveStraight(int speed)
 {
@@ -150,33 +180,7 @@ void turn(int degree, int speed){
 }
 
 
-/*
-        -brief Turns legobot in an arc using the mrp command
-        -param True if going left, false if going right
-        -param outerRadius Sets outer radius of the arc in centimeters
-        -param outerSpeed Speed of outside wheel between 0-1000
-        -param amountDegrees Tells the robot how much of the circle to turn in degrees
-*/
 
-
-void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountDegrees) 
-{
-    float ratio = (outerRadius - LEGOBOT_DIAMETER)/(outerRadius);
-	float outerCircumference = 2 * PI * outerRadius * (0.073343)*1.3;
-    float innerCircumference = outerCircumference * ratio;
-    float innerSpeed = outerSpeed * ratio; 
-	if(leftArc)
-	{
-           mrp(L_MOTOR, innerSpeed, innerCircumference*TICKS_PER_REV*(amountDegrees/360.0)); //1020.4 is ticks per rev
-           mrp(R_MOTOR, outerSpeed, outerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
-	}
-    else
-    {
-           mrp(R_MOTOR, innerSpeed, innerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
-           mrp(L_MOTOR, outerSpeed, outerCircumference*TICKS_PER_REV*(amountDegrees/360.0));
-    }
-    bmdMotors();
-}
 //Inner: 3+, 4.5
 
 //////Marked for Deletion
