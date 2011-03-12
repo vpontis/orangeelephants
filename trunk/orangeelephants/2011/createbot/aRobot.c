@@ -33,17 +33,8 @@ int main()
 			
 			//Going in for airplane dropoff
 			moveToDistAccel(-20, NORMAL_SPEED);
-			mtp(GRABBER_PORT, 150, 180);
-			bmd(GRABBER_PORT);
-			sleep(1.5);
-			mtp(GRABBER_PORT, -300, 150);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, 300, 180);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, -300, 150);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, 300, 180);
-			bmd(GRABBER_PORT);
+			mtp(GRABBER_PORT, 150, 250);
+			sleep(1.80);
 			//Completed the airplane dropoff
 			
 			moveToDist(200, NORMAL_SPEED);
@@ -59,7 +50,7 @@ int main()
 			bmd(ARM_MOTOR_PORT);
 			
 			//go in for first grab attempt
-			moveToDist(80, 100);
+			moveToDist(125, 100);
 			closeClaw();
 			moveToDist(-210, 100);
 			openClaw();
@@ -86,7 +77,7 @@ int main()
 			
 			create_drive_straight(-150);
 			sleep(2);
-			moveToDist(-130, 300);
+			moveToDist(-170, 300);
 			moveArm(ARM_POS_START+1500, -100);
 			slowReleaseClaw();
 			//Drop off first set
