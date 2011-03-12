@@ -17,7 +17,6 @@ int main()
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 			
 			moveToDistAccel(-5, NORMAL_SPEED);	
-			//moveArm(ARM_POS_START+500, ARM_UP_VELOCITY);
 			
 			smoothTurn(-90, 200);
 			
@@ -37,7 +36,7 @@ int main()
 			sleep(1.80);
 			//Completed the airplane dropoff
 			
-			moveToDist(200, NORMAL_SPEED);
+			moveToDist(300, NORMAL_SPEED);
 			smoothTurn(90, 200);
 			
 			accel(0, -1200);
@@ -50,7 +49,7 @@ int main()
 			bmd(ARM_MOTOR_PORT);
 			
 			//go in for first grab attempt
-			moveToDist(125, 100);
+			moveToDist(110, 100);
 			closeClaw();
 			moveToDist(-210, 100);
 			openClaw();
@@ -66,18 +65,18 @@ int main()
 			sleep(0.25);
 			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
-			moveToDist(-130, 200);
+			moveToDistAccel(-130, 200);
 			smoothTurn(-90, 200);
 			
-			moveToDist(300, 400);
+			moveToDistAccel(50, 200);
 			create_drive_straight(-150);
 			sleep(3);
-			moveToDist(-50, 100);
+			moveToDistAccel(-50, 100);
 			smoothTurn(-90, 200);
 			
 			create_drive_straight(-150);
 			sleep(2);
-			moveToDist(-170, 300);
+			moveToDistAccel(-170, 300);
 			moveArm(ARM_POS_START+1500, -100);
 			slowReleaseClaw();
 			//Drop off first set
