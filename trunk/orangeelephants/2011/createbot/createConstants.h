@@ -19,14 +19,28 @@ const int  CLAW_OPEN_POS = 700;
 const int  CLAW_CLOSE_POS = 0; 
 const int  CLAW_TOTAL_OPEN = 1200;
 
-//Motor & Sensor ports
+//Motor, Sensor, & Servo ports
 const int  ARM_MOTOR_PORT = 0; 
 const int  CLAW_PORT = 2; 
 const int  ARM_TOUCH_PORT = 15;
 const int  GRABBER_PORT = 1;
+const int SCRAPERL_SERVO = 1; 
+const int SCRAPERR_SERVO = 3;
 
 //speed
 const int FAST_SPEED = 15000;
 const int NORMAL_SPEED = 500;
+
+//positions at the start of game for scraper
+const int SCRAPERL_START = 0; 
+const int SCRAPERR_START = 1750; 
+
+//neutral positions for scraper during game
+const int SCRALERL_NEUTRAL = 920; 
+const int SCRAPERR_NEUTRAL = 850; 
+
+//positions for scraper when going for botguy
+const int SCRAPERL_DOWN = 1900;
+const int SCRAPERR_DOWN = 0;
 
 #endif
