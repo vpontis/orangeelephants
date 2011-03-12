@@ -33,23 +33,24 @@ int main()
 			
 			//Going in for airplane dropoff
 			moveToDistAccel(-20, NORMAL_SPEED);
+			mtp(GRABBER_PORT, 150, 180);
+			bmd(GRABBER_PORT);
+			sleep(1.5);
+			mtp(GRABBER_PORT, -300, 150);
+			bmd(GRABBER_PORT);
 			mtp(GRABBER_PORT, 300, 180);
 			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, -300, 0);
+			mtp(GRABBER_PORT, -300, 150);
 			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, 300, 100);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, -300, 0);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, 300, 100);
+			mtp(GRABBER_PORT, 300, 180);
 			bmd(GRABBER_PORT);
 			//Completed the airplane dropoff
 			
 			moveToDist(200, NORMAL_SPEED);
 			smoothTurn(90, 200);
 			
-			accel(0, -1300);
-			accel(-1300, 0);
+			accel(0, -1200);
+			accel(-1200, 0);
 			
 			smoothTurn(90, 200);
 			set_servo_position(CLAW_PORT,950);
@@ -85,7 +86,7 @@ int main()
 			
 			create_drive_straight(-150);
 			sleep(2);
-			moveToDist(-100, 300);
+			moveToDist(-130, 300);
 			moveArm(ARM_POS_START+1500, -100);
 			slowReleaseClaw();
 			//Drop off first set
