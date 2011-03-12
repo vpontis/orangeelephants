@@ -78,7 +78,7 @@ int main()
 	
 			moveStraight(-100);
 			sleep(.2);
-			smoothTurn(-90, 200);
+			smoothTurn(-93, 200);
 			accel(0, -150);
 			sleep(3);
 			accel(-150, 0);
