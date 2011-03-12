@@ -42,8 +42,8 @@ int main()
 			moveStraight(100);
 			sleep(1.25);
 			
-			accel(0, -1250);
-			accel(-1250, 0);
+			accel(0, -1300);
+			accel(-1300, 0);
 			
 			smoothTurn(-94, 200);
 			set_servo_position(CLAW_PORT,950);
@@ -78,24 +78,25 @@ int main()
 	
 			moveStraight(-100);
 			sleep(.2);
-			smoothTurn(-90, 200);
+			smoothTurn(-88, 200);
+			
 			accel(0,150);
-			sleep(3);
+			sleep(1);
 			accel(150,0);
+			
+			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			accel(0, -300);
-			sleep(4);
-			accel(-300, 0);
+			sleep(2.5);
+			accel(-300, 100);
+			sleep(3);
 			scraperDown();
 			
 			accel(0, 150);
 			sleep(2);
-			scraperNeutral();
 			accel(150, 100);
-			sleep(3);
+			scraperNeutral();	
+			moveToDistAccel(30, 300);
 			
-			
-			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
-			moveToDistAccel(-170, 300);
 			bmd(ARM_MOTOR_PORT);
 			slowReleaseClaw();
 			//Drop off first set
@@ -163,12 +164,12 @@ int main()
 			smoothTurn(90, 200);
 			
 			moveToDist(300, 400);
-			create_drive_straight(-100);
+			moveStraight(100);
 			sleep(3);
 			moveToDist(-50, 100);
 			smoothTurn(90, 200);
 			
-			create_drive_straight(-130);
+			moveStraight(130);
 			sleep(2);
 			moveToDist(-100, 300);
 			moveArm(ARM_POS_START+1500, -100);
