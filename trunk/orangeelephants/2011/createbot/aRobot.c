@@ -78,10 +78,13 @@ int main()
 	
 			moveStraight(-100);
 			sleep(.2);
-			smoothTurn(-93, 200);
-			accel(0, -150);
+			smoothTurn(-90, 200);
+			accel(0,150);
 			sleep(3);
-			accel(-150, 0);
+			accel(150,0);
+			accel(0, -300);
+			sleep(4);
+			accel(-300, 0);
 			scraperDown();
 			
 			accel(0, 150);
