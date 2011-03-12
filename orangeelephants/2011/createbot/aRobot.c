@@ -20,9 +20,9 @@ int main()
 			
 			smoothTurn(-90, 200);
 			
-			accel(0, -1500);
+			accel(0, 1500);
 			moveToDist(630, 1500);
-			accel(-1500, 0);
+			accel(1500, 0);
 			
 			//moveToDist(150, NORMAL_SPEED);
 			create_drive_straight(-60);
@@ -32,32 +32,34 @@ int main()
 			
 			//Going in for airplane dropoff
 			moveToDistAccel(-20, NORMAL_SPEED);
-			mtp(GRABBER_PORT, 150, 250);
+			mtp(GRABBER_PORT, 70, 250);
 			sleep(1.80);
 			//Completed the airplane dropoff
 			
-			moveToDist(300, NORMAL_SPEED);
-			smoothTurn(90, 200);
+			moveToDist(250, NORMAL_SPEED);
+			smoothTurn(-94, 200);
+			moveStraight(100);
+			sleep(0.5);
 			
 			accel(0, -1200);
 			accel(-1200, 0);
 			
-			smoothTurn(90, 200);
+			smoothTurn(-94, 200);
 			set_servo_position(CLAW_PORT,950);
 			
 			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT);
 			
 			//go in for first grab attempt
-			moveToDist(110, 100);
+			moveToDist(160, 100);
 			closeClaw();
-			moveToDist(-210, 100);
+			moveToDist(-200, 100);
 			openClaw();
 			
-			moveToDist(60, 100);
+			moveToDist(110, 100);
 			
 			create_drive_straight(100);
-			sleep(0.30);
+			sleep(0.40);
 			create_stop();
 			closeClaw();
 			//Second grab attempt
@@ -68,16 +70,19 @@ int main()
 			moveToDistAccel(-130, 200);
 			smoothTurn(-90, 200);
 			
-			moveToDistAccel(50, 200);
-			create_drive_straight(-150);
-			sleep(3);
+			accel(0, 300);
+			sleep(1.3);
+			accel(300, 50);
+			sleep(2.5);
+	
 			moveToDistAccel(-50, 100);
 			smoothTurn(-90, 200);
 			
-			create_drive_straight(-150);
-			sleep(2);
+			accel(0, 150);
+			accel(150, 100);
+			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			moveToDistAccel(-170, 300);
-			moveArm(ARM_POS_START+1500, -100);
+			bmd(ARM_MOTOR_PORT);
 			slowReleaseClaw();
 			//Drop off first set
 			

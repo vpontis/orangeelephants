@@ -8,6 +8,8 @@ Robot continues on driving straight at finalSpeed.
 */
 void accel(int initSpeed, int finalSpeed)
 {
+	initSpeed = -initSpeed;
+	finalSpeed = -finalSpeed;
 	int speed = initSpeed;
 	int increm = (finalSpeed-initSpeed)/30;
 	
@@ -214,5 +216,9 @@ void smoothTurn(float deg, int finalVel)	{
 	}
 	create_stop();
 	
+}
+
+void moveStraight(int speed){
+	create_drive_straight(-speed);
 }
 
