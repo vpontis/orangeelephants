@@ -40,7 +40,7 @@ int main()
 			moveToDist(250, NORMAL_SPEED);
 			smoothTurn(-94, 200);
 			moveStraight(100);
-			sleep(0.5);
+			sleep(1.25);
 			
 			accel(0, -1200);
 			accel(-1200, 0);
