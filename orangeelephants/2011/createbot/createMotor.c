@@ -158,7 +158,7 @@ void turn(float deg, int vel)	{
 void smoothTurn(float deg, int finalVel)	{
 	deg = -deg;
 	set_create_total_angle(0);
-	float compRatio = .85; //.00405*finalVel*(standardVel/finalVel)
+	float compRatio = .82; //.00405*finalVel*(standardVel/finalVel)
 	
 	float increment = (float) finalVel/10;
 	float currVel = increment;
