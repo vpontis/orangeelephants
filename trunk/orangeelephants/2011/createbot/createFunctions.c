@@ -13,6 +13,7 @@ void createInitialize()
 		printf("Connection failed.");
 	}
 	create_full();
+	scraperStart();
 }
 
 
@@ -110,24 +111,17 @@ void closeClaw()	{
 	setClaw(CLAW_CLOSE_POS);
 }
 
-/*
-//picks up two blocks and lifts them to a height of two blocks then lets them go and puts the claw back down
-void stackBlocks() { 
-	
-	set_servo_position(CLAW_PORT,CLAW_OPEN_POS); //790 = default value to clench
-	sleep(.5);  //pause before clench 
-	
-	
-	slowCloseClaw();
-	sleep(1); //pause in between moving and clench
-	
-	moveClawUp();
-	moveClawDown(ARM_PARTIAL_DOWN);
-	
-	sleep(1); 
-	slowReleaseClaw();
-	sleep(1); 
-	
-	moveClawDown(ARM_POS_DOWN - ARM_PARTIAL_DOWN); //Test this value. needs to go all the awy down. 
+void scraperStart(){
+	set_servo_position(SCRAPERL_SERVO, SCRAPERL_START);
+	set_servo_position(SCRAPERR_SERVO, SCRAPERR_START);
 }
-*/
+
+void scraperNeutral(){
+	set_servo_position(SCRAPERL_SERVO, SCRALERL_NEUTRAL);
+	set_servo_position(SCRAPERR_SERVO, SCRAPERR_NEUTRAL);
+}
+
+void scraperDown(){
+	set_servo_position(SCRAPERL_SERVO, SCRAPERL_DOWN);
+	set_servo_position(SCRAPERR_SERVO, SCRAPERR_DOWN);
+}

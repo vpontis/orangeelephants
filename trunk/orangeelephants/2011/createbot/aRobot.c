@@ -14,6 +14,7 @@ int main()
 		if(a_button())
 		{
 			enable_servos();
+			scraperNeutral();
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 			
 			moveToDistAccel(-5, NORMAL_SPEED);	
@@ -75,11 +76,20 @@ int main()
 			accel(300, 50);
 			sleep(2.5);
 	
-			moveToDistAccel(-50, 100);
+			moveStraight(-100);
+			sleep(.2);
 			smoothTurn(-90, 200);
+			accel(0, -150);
+			sleep(3);
+			accel(-150, 0);
+			scraperDown();
 			
 			accel(0, 150);
+			sleep(2);
 			accel(150, 100);
+			sleep(3);
+			scraperNeutral();
+			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			moveToDistAccel(-170, 300);
 			bmd(ARM_MOTOR_PORT);
