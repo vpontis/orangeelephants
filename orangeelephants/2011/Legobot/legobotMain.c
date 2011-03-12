@@ -42,7 +42,7 @@ int main() {
 				
 				//LEG 4: drop all biofuels
 				
-				turnArc(1, 50, -SLOW_SPEED, -10); //arcs back and hits north PVC
+				turnArc(1, 50, -FAST_SPEED, -10); //arcs back and hits north PVC
 				moveToDistance(-55,FAST_SPEED); //aligns with north PVC
 				moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 119, FAST_SPEED); //pivots to face final east PVC
@@ -88,17 +88,17 @@ int main() {
 				//LEG 3: collects ping pong balls @ second station
 				
 				moveToDistance(-25,FAST_SPEED); //backs up to allow for turn
-				turn(96,SLOW_SPEED); //pivots to face west
+				turn(100,SLOW_SPEED); //pivots to face west
 				moveToDistance(65,FAST_SPEED); //aligns with west PVC
 				moveToDistance(-9,FAST_SPEED); //backs up to allow for turn
-				turn(102,SLOW_SPEED); //pivots to face south PVC & ping pong balls
+				turn(105,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDistance(25, FAST_SPEED); //collects all biofuels
 				sleep(.7);
 			
 				//LEG 4: drop all biofuels
 			
-				turnArc(1, 50, -SLOW_SPEED, -14); //arcs back and hits north PVC
-				moveToDistance(-55,FAST_SPEED); //aligns with north PVC
+				turnArc(0, 50, -FAST_SPEED, -10); //arcs back and hits north PVC <-reverted
+				moveToDistance(-30,FAST_SPEED); //aligns with north PVC
 				moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 100, FAST_SPEED); //pivots to face final east PVC
 				moveToDistance(100, FAST_SPEED); //moves and aligns with east PVC
