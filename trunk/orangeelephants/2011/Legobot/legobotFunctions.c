@@ -36,18 +36,18 @@ void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountD
 void moveToDistance(float distance, int speed) {
 	clear_motor_position_counter(L_MOTOR); 
 	clear_motor_position_counter(R_MOTOR); 
-	double compRatio = 0.93;
+	double compRatio = .8;
 	if(distance>0)	{
 		while(get_motor_position_counter(R_MOTOR) < cmToTicks(distance))	{
-			mav(L_MOTOR, (int) (compRatio * speed)); 
-			mav(R_MOTOR,  speed);
+			mav(R_MOTOR, speed); 
+			mav(L_MOTOR,  (int) (compRatio * speed));
 			//mrp(R_MOTOR, speed, cmToTicks(distance));    
 		}
 	}
 	else	{
 		while(get_motor_position_counter(R_MOTOR) > cmToTicks(distance))	{
-			mav(L_MOTOR, -speed); 
-			mav(R_MOTOR, -speed);
+			mav(R_MOTOR, -speed); 
+			mav(L_MOTOR, (int) -(compRatio * speed));
 			//mrp(R_MOTOR, speed, cmToTicks(distance));    
 		}
 	}

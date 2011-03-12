@@ -9,6 +9,6 @@ void moveToDistanceAccel(int distance, int finalSpeed);
 
 void turn(float deg, int vel);
 void smoothTurn(float deg, int finalVel);
-
+void moveStraight(int speed);
 
 #endif
