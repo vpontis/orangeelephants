@@ -42,8 +42,8 @@ int main()
 			moveStraight(100);
 			sleep(1.25);
 			
-			accel(0, -1200);
-			accel(-1200, 0);
+			accel(0, -1250);
+			accel(-1250, 0);
 			
 			smoothTurn(-94, 200);
 			set_servo_position(CLAW_PORT,950);
@@ -86,9 +86,10 @@ int main()
 			
 			accel(0, 150);
 			sleep(2);
+			scraperNeutral();
 			accel(150, 100);
 			sleep(3);
-			scraperNeutral();
+			
 			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			moveToDistAccel(-170, 300);
