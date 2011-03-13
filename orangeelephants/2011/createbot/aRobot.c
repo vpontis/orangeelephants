@@ -113,30 +113,32 @@ int main()
 			moveStraight(500);
 			sleep(.45);
 			
+			
 			smoothTurn(-90, 200); 
 			moveStraight(500);
 			sleep(1);
-			
+			moveStraight(150);
+			sleep(.4);
 			
 			moveStraight(-100);
-			sleep(.4);
+			sleep(.7);
 			create_stop();
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
-			smoothTurn(90, 200);
-			bmd(ARM_MOTOR_PORT);
-			closeClaw();
 			
+			smoothTurn(83, 200);
+			
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
 			//go in for first grab attempt
 			moveToDist(180, 300);
 			openClaw();
 			moveToDist(400, 300);
-			smoothTurn(-15, 50);
+			smoothTurn(-20, 50);
 			//first grab
+			bmd(ARM_MOTOR_PORT);
 			closeClaw();
 			moveToDist(-150, 100);
 			openClaw();
 			
-			moveToDist(80, 100);
+			moveToDist(180, 100);
 			moveStraight(-100);
 			sleep(0.40);
 			create_stop();
@@ -148,6 +150,7 @@ int main()
 			
 			//Second grab attempt
 			accel(0, -300);
+			sleep(1);
 			accel(-300, 0);
 			turn(15, 50);
 			
@@ -157,11 +160,16 @@ int main()
 			sleep(.75);			
 			moveArmUp();
 			smoothTurn(90, 200);
-			accel(0, 300);
-			accel(300, 100);
+			accel(0, 200);
+			accel(200, 100);
+			sleep(.7);
+			
 			create_stop();
-			moveToDist(-40, 200);
+			
+			moveToDist(-50, 200);
 			slowReleaseClaw();
+			moveToDist(-200, 100);
+			
 
 		}
 		
