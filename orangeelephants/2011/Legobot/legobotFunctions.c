@@ -157,7 +157,7 @@ void calibrateGate()                 //open or close the gate holding the biofue
 void gateOpen() 
 {
 	mrp(GATE_MOTOR, GATE_MOTOR_SPEED, GATE_OPEN_POS);
-	sleep(2);
+	sleep(1.5);
 	//bmd(GATE_MOTOR);
 }
 

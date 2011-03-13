@@ -89,7 +89,7 @@ int main() {
 				moveToDistance(-24,FAST_SPEED); //backs up to allow for turn
 				turn(90,SLOW_SPEED); //pivots to face west
 				moveToDistance(65,FAST_SPEED); //aligns with west PVC
-				moveToDistance(-6,FAST_SPEED); //backs up to allow for turn
+				moveToDistance(-7,FAST_SPEED); //backs up to allow for turn
 				turn(89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDistance(20, FAST_SPEED); //collects all biofuels
 				sleep(.7);
@@ -124,7 +124,7 @@ int main() {
 				pivot(0,90, FAST_SPEED); //turn to face back of bot to north PVC
 				moveToDistance(20,FAST_SPEED); //backward wall align to north PVC
 				moveToDistance(-85,FAST_SPEED); //go to middle of board
-				pivot(0,-100,FAST_SPEED); //turn to face back to middle bump
+				pivot(0,-98,FAST_SPEED); //turn to face back to middle bump
 				gateOpen();
 				moveToDistance(-100,SUPER_SPEED); //go backward over bump
 				
