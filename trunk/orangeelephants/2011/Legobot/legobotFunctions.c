@@ -113,7 +113,7 @@ void bmdMotors() {                                 //wait until driving motors f
 }
 
 void lowerBlockerLeft(){		
-        mtp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, -15);
+        //mtp(L_BLOCKER_MOTOR, L_BLOCKER_MOTOR_SPEED, -15);
         sleep(1);
 }
 
@@ -126,14 +126,14 @@ void lowerBlockerRight(){		//lower right blocker and move forward 20 cm (subject
 
 
 void setStartingBlockers() {         //angle the blockers to fit in the starting box
-	clear_motor_position_counter(L_BLOCKER_MOTOR);
+	//clear_motor_position_counter(L_BLOCKER_MOTOR);
 	set_servo_position(0,990);       //angled value
-	mrp(L_BLOCKER_MOTOR,260,195);    //angled value
+	//mrp(L_BLOCKER_MOTOR,260,165);    //angled value
 }
 
 void raiseBlockers(){            //raise higher AFTER leaving the starting box
 	set_servo_position(0,775);       //move to highest angle possible
-	mrp(L_BLOCKER_MOTOR, 260, 25);   //move to highest angle possible
+	//mrp(L_BLOCKER_MOTOR, 260, 25);   //move to highest angle possible
 }
 
 void calibrateGate()                 //open or close the gate holding the biofuels (ping-pong balls)
