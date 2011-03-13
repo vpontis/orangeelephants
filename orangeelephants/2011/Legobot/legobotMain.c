@@ -73,8 +73,7 @@ int main() {
 			if(b_button())
 			{
 				//LEG 1: collects ping pong balls @ first station
-		
-				moveToDistance(55, FAST_SPEED);
+				moveToDistance(50, FAST_SPEED);
 				sleep(.7);
 			
 				//LEG 2: navigates to north PVC
@@ -87,27 +86,27 @@ int main() {
 				
 				//LEG 3: collects ping pong balls @ second station
 				
-				moveToDistance(-25,FAST_SPEED); //backs up to allow for turn
-				turn(100,SLOW_SPEED); //pivots to face west
+				moveToDistance(-24,FAST_SPEED); //backs up to allow for turn
+				turn(90,SLOW_SPEED); //pivots to face west
 				moveToDistance(65,FAST_SPEED); //aligns with west PVC
 				moveToDistance(-9,FAST_SPEED); //backs up to allow for turn
-				turn(105,SLOW_SPEED); //pivots to face south PVC & ping pong balls
+				turn(89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDistance(25, FAST_SPEED); //collects all biofuels
 				sleep(.7);
 			
 				//LEG 4: drop all biofuels
 			
-				turnArc(0, 50, -FAST_SPEED, -10); //arcs back and hits north PVC <-reverted
-				moveToDistance(-30,FAST_SPEED); //aligns with north PVC
+				turnArc(0, 50, -FAST_SPEED, -6); //arcs back and hits north PVC <-reverted
+				moveToDistance(-60,FAST_SPEED); //aligns with north PVC
 				moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
-				pivot(0, 100, FAST_SPEED); //pivots to face final east PVC
+				pivot(0, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDistance(100, FAST_SPEED); //moves and aligns with east PVC
-				pivot(1, -92, FAST_SPEED); //pivots to face drop zone
+				pivot(1, -87, FAST_SPEED); //pivots to face drop zone
 				moveToDistance(100, FAST_SPEED); //drives to and aligns with drop zone
 				gateOpen(); //drops all biofuels
 				
 				//LEG 5: navigate and drop blockers
-				
+				/*
 				gateClose();
 				moveToDistance(-50,FAST_SPEED);
 				pivot(0, -90, FAST_SPEED);
@@ -121,6 +120,7 @@ int main() {
 				
 				moveToDistance(-60,FAST_SPEED);
 				moveToDistance(-100,SUPER_SPEED);
+				*/
 			}
 					
 	}		
