@@ -127,7 +127,6 @@ int main()
 			openClaw();
 			moveToDist(400, 300);
 			smoothTurn(-15, 50);
-			moveToDist(20, 300);
 			closeClaw();
 			moveToDist(-200, 100);
 			openClaw();
