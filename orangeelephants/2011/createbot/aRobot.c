@@ -17,6 +17,7 @@ int main()
 			scraperNeutral();
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 			
+			/*
 			moveToDistAccel(-5, NORMAL_SPEED);	
 			
 			smoothTurn(-90, 200);
@@ -33,8 +34,8 @@ int main()
 			
 			//Going in for airplane dropoff
 			moveToDistAccel(-20, NORMAL_SPEED);
-			mtp(GRABBER_PORT, 70, 250);
-			sleep(1.80);
+			mtp(GRABBER_PORT, 70, 180);
+			bmd(GRABBER_PORT);
 			//Completed the airplane dropoff
 			
 			moveToDist(250, NORMAL_SPEED);
@@ -42,8 +43,9 @@ int main()
 			moveStraight(100);
 			sleep(1.25);
 			
-			accel(0, -1300);
-			accel(-1300, 0);
+			accel(0, -1400);
+			sleep(.02);
+			accel(-1400, 0);
 			
 			smoothTurn(-94, 200);
 			set_servo_position(CLAW_PORT,950);
@@ -69,7 +71,7 @@ int main()
 			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
 			moveToDistAccel(-130, 200);
-			smoothTurn(-90, 200);
+			smoothTurn(-85, 200);
 			
 			accel(0, 300);
 			sleep(1.3);
@@ -78,32 +80,66 @@ int main()
 	
 			moveStraight(-100);
 			sleep(.2);
-			smoothTurn(-88, 200);
+			smoothTurn(-83, 200);
 			
 			accel(0,150);
-			sleep(1);
+			sleep(1.4);
 			accel(150,0);
 			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			accel(0, -300);
-			sleep(2.5);
-			accel(-300, 100);
-			sleep(3);
+			sleep(1.5);
+			accel(-300, -100);
+			sleep(1);
 			scraperDown();
 			
 			accel(0, 150);
-			sleep(2);
+			sleep(1);
 			accel(150, 100);
 			scraperNeutral();	
-			moveToDistAccel(30, 300);
-			
+			create_stop();
 			bmd(ARM_MOTOR_PORT);
 			slowReleaseClaw();
 			//Drop off first set
 			
+			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
-			moveToDist(-200, 300);
-						
+			*/
+			moveToDist(-120, 300);
+			
+			
+			smoothTurn(-90, 200);
+			
+			moveStraight(500);
+			sleep(.75);
+			
+			smoothTurn(-90, 200); 
+			moveStraight(500);
+			sleep(1.5);
+			
+			moveStraight(-100);
+			sleep(.3);
+			
+			smoothTurn(90, 200);
+			closeClaw();
+			//go in for first grab attempt
+			moveToDist(180, 300);
+			openClaw();
+			moveToDist(400, 300);
+			smoothTurn(-15, 50);
+			moveToDist(20, 300);
+			closeClaw();
+			moveToDist(-200, 100);
+			openClaw();
+			
+			moveToDist(110, 100);
+			
+			create_drive_straight(100);
+			sleep(0.40);
+			create_stop();
+			closeClaw();
+			//Second grab attempt
+			
 		}
 		
 		if(b_button())
@@ -143,7 +179,7 @@ int main()
 			set_servo_position(CLAW_PORT,950);
 			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT);
-			//go in for first grab attempt
+			//go in for first attempt
 			moveToDist(155, 100);
 			closeClaw();
 			moveToDist(-210, 100);
@@ -178,15 +214,19 @@ int main()
 			
 			
 			moveToDist(-200, 300);
+			
+			
+			
 						
 		}
 	
 		
 		if(black_button())
 		{
+			beep();
 			clear_motor_position_counter(GRABBER_PORT);
 			mtp(GRABBER_PORT, NORMAL_SPEED, 0);
-			
+			beep();
 		}
 		
 		if(up_button())//calibrates arm and opens claw
