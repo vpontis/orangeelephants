@@ -99,7 +99,7 @@ int main() {
 				turnArc(0, 50, -FAST_SPEED, -6); //arcs back and hits north PVC <-reverted
 				moveToDistance(-60,FAST_SPEED); //aligns with north PVC
 				moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
-				pivot(0, 94, FAST_SPEED); //pivots to face final east PVC
+				pivot(0, 97, FAST_SPEED); //pivots to face final east PVC
 				moveToDistance(100, FAST_SPEED); //moves and aligns with east PVC
 				pivot(1, -87, FAST_SPEED); //pivots to face drop zone
 				moveToDistance(100, FAST_SPEED); //drives to and aligns with drop zone
