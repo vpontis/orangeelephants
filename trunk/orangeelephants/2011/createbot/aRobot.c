@@ -17,7 +17,6 @@ int main()
 			scraperNeutral();
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 			
-			/*
 			moveToDistAccel(-5, NORMAL_SPEED);	
 			
 			smoothTurn(-90, 200);
@@ -104,69 +103,67 @@ int main()
 			
 			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
-			*/
-			moveToDist(-120, 300);
+			openClawPartial();
+			moveToDist(-120, 300); //backing up
+			
+			smoothTurn(-90, 200); //turn left 90 degrees
+			
+			moveStraight(500); //go forward
+			sleep(.6);
 			
 			
-			smoothTurn(-90, 200);
-			
-			moveStraight(500);
-			sleep(.45);
-			
-			
-			smoothTurn(-90, 200); 
-			moveStraight(500);
+			smoothTurn(-90, 200); //turn left to wall align with west PVC
+			moveStraight(500); //wall align 1
 			sleep(1);
-			moveStraight(150);
+			moveStraight(150); //wall align 2 (slower, shorter)
 			sleep(.4);
 			
-			moveStraight(-100);
+			moveStraight(-115); //back up
 			sleep(.7);
 			create_stop();
 			
-			smoothTurn(83, 200);
+			smoothTurn(83, 200); //turn to face north
 			
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN); //lower arm
 			//go in for first grab attempt
-			moveToDist(180, 300);
-			openClaw();
-			moveToDist(400, 300);
-			smoothTurn(-20, 50);
+			moveToDist(185, 300); 
+			openClawPartial();
+			moveToDist(370, 300);  
+			smoothTurn(-20, 50); //turn to get blocks in claw range
 			//first grab
-			bmd(ARM_MOTOR_PORT);
+			bmd(ARM_MOTOR_PORT); 
 			closeClaw();
-			moveToDist(-150, 100);
-			openClaw();
+			moveToDist(-150, 100); //back up a bit
+			openClaw(); //open again
 			
-			moveToDist(180, 100);
-			moveStraight(-100);
+			moveToDist(180, 100); //go forward again
+			moveStraight(-100); //back up a bit
 			sleep(0.40);
 			create_stop();
-			closeClaw();
+			closeClaw(); 
 			
 			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 200);//picked up blocks
 			sleep(1);
 			
 			
-			//Second grab attempt
-			accel(0, -300);
+			accel(0, -300); //back up accelarate
 			sleep(1);
-			accel(-300, 0);
-			turn(15, 50);
+			accel(-300, 0); //back up decelarate
+			turn(15, 50); //turn back to be straight 
 			
-			accel(0, -300);
+			accel(0, -300); //go backward into PVC
 			sleep(.75);
 			accel(-300, -100);
 			sleep(.75);			
-			moveArmUp();
-			smoothTurn(90, 200);
+			moveArmUp(); 
+			smoothTurn(90, 200); //face other blocks
 			accel(0, 200);
 			accel(200, 100);
-			sleep(.7);
+			sleep(.3);
 			
 			create_stop();
 			
-			moveToDist(-50, 200);
+			moveToDist(-60, 200);
 			slowReleaseClaw();
 			moveToDist(-200, 100);
 			

@@ -14,6 +14,7 @@ void setClaw(int position);
 
 void openClaw();
 void closeClaw();
+void openClawPartial();
 
 void scraperStart();
 void scraperNeutral();

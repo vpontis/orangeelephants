@@ -107,7 +107,11 @@ void openClaw()	{
 	setClaw(CLAW_OPEN_POS);
 }
 
-void closeClaw()	{
+void openClawPartial() {
+	setClaw(CLAW_OPEN_PARTIAL);
+}
+
+void closeClaw(){
 	setClaw(CLAW_CLOSE_POS);
 }
 
