@@ -111,34 +111,58 @@ int main()
 			smoothTurn(-90, 200);
 			
 			moveStraight(500);
-			sleep(.75);
+			sleep(.45);
 			
 			smoothTurn(-90, 200); 
 			moveStraight(500);
-			sleep(1.5);
+			sleep(1);
+			
 			
 			moveStraight(-100);
-			sleep(.3);
-			
+			sleep(.4);
+			create_stop();
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
 			smoothTurn(90, 200);
+			bmd(ARM_MOTOR_PORT);
 			closeClaw();
+			
 			//go in for first grab attempt
 			moveToDist(180, 300);
 			openClaw();
 			moveToDist(400, 300);
 			smoothTurn(-15, 50);
+			//first grab
 			closeClaw();
-			moveToDist(-200, 100);
+			moveToDist(-150, 100);
 			openClaw();
 			
-			moveToDist(110, 100);
-			
-			create_drive_straight(100);
+			moveToDist(80, 100);
+			moveStraight(-100);
 			sleep(0.40);
 			create_stop();
 			closeClaw();
-			//Second grab attempt
 			
+			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 200);//picked up blocks
+			sleep(1);
+			
+			
+			//Second grab attempt
+			accel(0, -300);
+			accel(-300, 0);
+			turn(15, 50);
+			
+			accel(0, -300);
+			sleep(.75);
+			accel(-300, -100);
+			sleep(.75);			
+			moveArmUp();
+			smoothTurn(90, 200);
+			accel(0, 300);
+			accel(300, 100);
+			create_stop();
+			moveToDist(-40, 200);
+			slowReleaseClaw();
+
 		}
 		
 		if(b_button())
