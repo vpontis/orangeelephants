@@ -32,18 +32,16 @@ const int GATE_OPEN_POS = -500;
 
 //Distances
 const float TICKS_PER_REV = 1020.4;
-const float TICKS_PER_DEGREE = 8.98; 
+const float TICKS_PER_DEGREE = 7.034;
 
 
 //misc
 const float PI = 3.141592654;
-const float LEGOBOT_DIAMETER = 13.75; 
-const float LEGOBOT_CIRCUMFERENCE = 43.196899; 
-const float WHEEL_CIRCUMFERENCE = 13.6345;
-const float TICKS_PER_CM = 74.8396; 
+const float LEGOBOT_DIAMETER = 13.9; 
+const float LEGOBOT_CIRCUMFERENCE = 43.668137835;
+const float WHEEL_CIRCUMFERENCE = 17.5929;
+const float TICKS_PER_CM = 58;
 
 #endif
 
 // 13.571 = cirumference of wheel
-
-

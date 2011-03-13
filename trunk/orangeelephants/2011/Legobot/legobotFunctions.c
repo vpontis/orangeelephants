@@ -36,18 +36,20 @@ void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountD
 void moveToDistance(float distance, int speed) {
 	clear_motor_position_counter(L_MOTOR); 
 	clear_motor_position_counter(R_MOTOR); 
-	double compRatio = 1.00; 
+	double compRatio = 1;
 	if(distance>0)	{
 		while(get_motor_position_counter(R_MOTOR) < cmToTicks(distance))	{
-			mav(R_MOTOR, (int) (compRatio * speed)); 
-			mav(L_MOTOR, speed);
+			mav(R_MOTOR, speed);
+			mav(L_MOTOR, speed);	
+			//mav(L_MOTOR,  (int) (compRatio * speed));
 			//mrp(R_MOTOR, speed, cmToTicks(distance));    
 		}
 	}
 	else	{
 		while(get_motor_position_counter(R_MOTOR) > cmToTicks(distance))	{
-			mav(R_MOTOR, (int) (compRatio * -speed)); 
+			mav(R_MOTOR, -speed); 
 			mav(L_MOTOR, -speed);
+			//mav(L_MOTOR, (int) -(compRatio * speed));
 			//mrp(R_MOTOR, speed, cmToTicks(distance));    
 		}
 	}
@@ -126,7 +128,7 @@ void lowerBlockerRight(){		//lower right blocker and move forward 20 cm (subject
 void setStartingBlockers() {         //angle the blockers to fit in the starting box
 	clear_motor_position_counter(L_BLOCKER_MOTOR);
 	set_servo_position(0,990);       //angled value
-	mrp(L_BLOCKER_MOTOR,260,165);    //angled value
+	mrp(L_BLOCKER_MOTOR,260,195);    //angled value
 }
 
 void raiseBlockers(){            //raise higher AFTER leaving the starting box
@@ -191,7 +193,7 @@ void turn(int degree, int speed){
 
 void pivot(boolean aroundLeftWheel, float degrees, int speed) 
 {
-	int ticks = degrees /360 * 6646.166464987; // fraction of circle's circumference / ticks for a whole circle
+	int ticks = degrees /360 * 5065.50; // fraction of circle's circumference / ticks for a whole circle
 											   // 1 circle = circle with radius distance between middle of the wheels
 	if(aroundLeftWheel == 1) {
 		mrp(R_MOTOR, speed, ticks);
