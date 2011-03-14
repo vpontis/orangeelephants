@@ -19,7 +19,7 @@ int main()
 			
 			moveToDistAccel(-5, NORMAL_SPEED);	
 			
-			smoothTurn(-90, 200);
+			smoothTurn(-77, 200);
 			
 			accel(0, 1500);
 			moveToDist(630, 1500);
@@ -32,28 +32,29 @@ int main()
 			smoothTurn(90, 200);
 			
 			//Going in for airplane dropoff
-			moveToDistAccel(-20, NORMAL_SPEED);
-			mtp(GRABBER_PORT, 70, 180);
+			moveStraight(-250);
+			sleep(1.5);
+			mtp(GRABBER_PORT, 180, 180);
 			bmd(GRABBER_PORT);
 			//Completed the airplane dropoff
 			
-			moveToDist(250, NORMAL_SPEED);
+			moveToDist(225, NORMAL_SPEED);
 			smoothTurn(-94, 200);
-			moveStraight(100);
+
+			moveStraight(100);//wall alignment
 			sleep(1.25);
 			
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
+			openClawPartial();
 			accel(0, -1400);
-			sleep(.02);
 			accel(-1400, 0);
 			
 			smoothTurn(-94, 200);
-			set_servo_position(CLAW_PORT,950);
 			
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT);
 			
-			//go in for first grab attempt
-			moveToDist(160, 100);
+			//go in for first grab attempt of first set
+			moveToDist(90, 100);
 			closeClaw();
 			moveToDist(-200, 100);
 			openClaw();
@@ -64,32 +65,32 @@ int main()
 			sleep(0.40);
 			create_stop();
 			closeClaw();
-			//Second grab attempt
+			//Second grab attempt of first set 
 			
 			sleep(0.25);
 			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
 			
-			moveToDistAccel(-130, 200);
-			smoothTurn(-85, 200);
+			moveToDistAccel(-10, 300);
+			smoothTurn(-82, 200);
 			
 			accel(0, 300);
 			sleep(1.3);
 			accel(300, 50);
-			sleep(2.5);
+			sleep(1);
 	
 			moveStraight(-100);
 			sleep(.2);
-			smoothTurn(-83, 200);
+			smoothTurn(-73, 200);
 			
 			accel(0,150);
-			sleep(1.4);
+			sleep(0.6);
 			accel(150,0);
 			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			accel(0, -300);
 			sleep(1.5);
 			accel(-300, -100);
-			sleep(1);
+			sleep(0.4);
 			scraperDown();
 			
 			accel(0, 150);
@@ -101,35 +102,38 @@ int main()
 			slowReleaseClaw();
 			//Drop off first set
 			
-			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
+			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picked up blocks
 			
 			openClawPartial();
 			moveToDist(-120, 300); //backing up
+			//---------------------------------------------------------------------------//
+			//***************************************************************************//
+			//---------------------------------------------------------------------------//
 			
-			smoothTurn(-90, 200); //turn left 90 degrees
+			smoothTurn(-90, 200);
 			
-			moveStraight(500); //go forward
-			sleep(.6);
+			moveStraight(500); 
+			sleep(.75);
 			
 			
-			smoothTurn(-90, 200); //turn left to wall align with west PVC
+			smoothTurn(-90, 200); //turn left prior to alignment
 			moveStraight(500); //wall align 1
 			sleep(1);
 			moveStraight(150); //wall align 2 (slower, shorter)
 			sleep(.4);
 			
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN); //lower arm
 			moveStraight(-115); //back up
 			sleep(.7);
-			create_stop();
-			
 			smoothTurn(83, 200); //turn to face north
 			
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN); //lower arm
+			
 			//go in for first grab attempt
 			moveToDist(185, 300); 
 			openClawPartial();
-			moveToDist(370, 300);  
+			moveToDist(330, 300);  
 			smoothTurn(-20, 50); //turn to get blocks in claw range
+			moveToDist(20, 300);
 			//first grab
 			bmd(ARM_MOTOR_PORT); 
 			closeClaw();
@@ -138,7 +142,7 @@ int main()
 			
 			moveToDist(180, 100); //go forward again
 			moveStraight(-100); //back up a bit
-			sleep(0.40);
+			sleep(0.35);
 			create_stop();
 			closeClaw(); 
 			
@@ -156,7 +160,7 @@ int main()
 			accel(-300, -100);
 			sleep(.75);			
 			moveArmUp(); 
-			smoothTurn(90, 200); //face other blocks
+			turn(75, 200); //face other blocks
 			accel(0, 200);
 			accel(200, 100);
 			sleep(.3);
@@ -166,7 +170,8 @@ int main()
 			moveToDist(-60, 200);
 			slowReleaseClaw();
 			moveToDist(-200, 100);
-			
+			disable_servos();
+			ao();
 
 		}
 		
