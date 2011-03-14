@@ -5,7 +5,7 @@
 // **************Blockers start on ground, then call setStartingBlockers() ************************
 /*
         -brief Turns legobot in an arc using the mrp command
-        -param True if going left, false if going right
+        -param True (1) if going left, false (0) if going right
         -param outerRadius Sets outer radius of the arc in centimeters
         -param outerSpeed Speed of outside wheel between 0-1000
         -param amountDegrees Tells the robot how much of the circle to turn in degrees
