@@ -13,7 +13,7 @@ int main()
 		
 		if(a_button())
 		{
-			shut_down_in(120);
+			shut_down_in(117);
 			enable_servos();
 			scraperNeutral();
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
@@ -35,8 +35,9 @@ int main()
 			//Going in for airplane dropoff
 			moveStraight(-250);
 			sleep(1.5);
-			mtp(GRABBER_PORT, 1000, 180);
+			mtp(GRABBER_PORT, 300, 170);
 			bmd(GRABBER_PORT);
+			sleep(1);
 			//Completed the airplane dropoff
 			
 			moveToDist(225, NORMAL_SPEED);
@@ -84,7 +85,7 @@ int main()
 			smoothTurn(-73, 200);
 			
 			accel(0,150);
-			sleep(1);
+			sleep(1.7);
 			accel(150,0);
 			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
@@ -134,14 +135,14 @@ int main()
 			openClawPartial();
 			moveToDist(330, 300);  
 			smoothTurn(-20, 50); //turn to get blocks in claw range
-			moveToDist(20, 300);
+			moveToDist(5, 300);
 			//first grab
 			bmd(ARM_MOTOR_PORT); 
 			closeClaw();
 			moveToDist(-150, 100); //back up a bit
 			openClaw(); //open again
 			
-			moveToDist(180, 100); //go forward again
+			moveToDist(150, 100); //go forward again
 			moveStraight(-100); //back up a bit
 			sleep(0.35);
 			create_stop();
@@ -161,7 +162,7 @@ int main()
 			accel(-300, -100);
 			sleep(.75);			
 			moveArmUp(); 
-			turn(75, 200); //face other blocks
+			smoothTurn(90, 200); //face other blocks
 			accel(0, 200);
 			accel(200, 100);
 			sleep(.3);
