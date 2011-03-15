@@ -33,7 +33,7 @@ void turnArc(boolean leftArc, float outerRadius, float outerSpeed, float amountD
 
 
 
-void moveToDistance(float distance, int speed) {
+void moveToDist(float distance, int speed) {
 	clear_motor_position_counter(L_MOTOR); 
 	clear_motor_position_counter(R_MOTOR); 
 	double compRatio = 1;
