@@ -23,14 +23,14 @@ int main()
 			moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
 			smoothTurn(-90, 200);//Faces North
 			accel(0, 500);
-			moveToDist(1000, 500);//Travels North the length of the board
-			accel(500, 0);
+			moveToDist(1040, 500);//Travels North the length of the board
+			accel(500, 50);
 			//moveToDist(150, NORMAL_SPEED);
-			moveToDist(-6, 300);//Backs up from wall to allow turn
+			moveToDist(-7, 200);//Backs up from wall to allow turn
 			smoothTurn(90, 200);//Turns towards runway, robot faces West
 			//Going in for airplane dropoff
-			moveStraight(-250);//Runs into West PVC
-			sleep(1.5);
+			moveStraight(-150);//Runs into West PVC
+			sleep(1.75);
 			moveStraight(0);
 			mtp(GRABBER_PORT, 1000, 180);//drops off airplane
 			bmd(GRABBER_PORT);
@@ -40,7 +40,8 @@ int main()
 			//Leg 2, picks up first set of blocks
 			moveToDist(225+25, NORMAL_SPEED);//backs up before turning to head back 
 			smoothTurn(-94, 200);//Turns to face North
-			moveToDist(30, 100);moveStraight(100);//Wall alignment w/ North PVC
+			moveToDist(30, 100);
+			moveStraight(100);//Wall alignment w/ North PVC
 			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);//puts claw down on the ground
 			openClawPartial();//opens claws to grab blocks
 			accel(0, -1400);//drives back to align with blocks
@@ -66,21 +67,20 @@ int main()
 			bmd(ARM_MOTOR_PORT);
 			smoothTurn(-82, 200);//Turns to face South
 			accel(0, 300);
-			moveToDist(100, 300);//Runs into South PVC
+			moveToDist(250, 300);//Runs into South PVC
 			accel(300, 50);
 			sleep(1);
-			//moveStraight(-100);//backs up to allow for turn
-			//sleep(.2);
-			moveToDist(-3, 100);//replaces previous two lines
-			smoothTurn(-73, 200);
+			moveToDist(-4, 100);//replaces previous two lines
+			smoothTurn(-73, 200);//Face West
 			
 			accel(0,150);
-			sleep(1);
+			//sleep(1);
+			moveToDist(25, 150);//goes forward to align with West PVC
 			accel(150,0);
 			
-			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
+			mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);
 			accel(0, -300);
-			sleep(1.1);
+			sleep(1.1);//drives back to put scraper over botguy
 			accel(-300, -100);
 			sleep(0.4);
 			scraperDown();
