@@ -13,13 +13,14 @@ int main()
 		
 		if(a_button())
 		{
+			shut_down_in(120);
 			enable_servos();
 			scraperNeutral();
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 			
 			moveToDistAccel(-5, NORMAL_SPEED);	
 			
-			smoothTurn(-77, 200);
+			smoothTurn(-90, 200);
 			
 			accel(0, 1500);
 			moveToDist(630, 1500);
@@ -34,7 +35,7 @@ int main()
 			//Going in for airplane dropoff
 			moveStraight(-250);
 			sleep(1.5);
-			mtp(GRABBER_PORT, 180, 180);
+			mtp(GRABBER_PORT, 1000, 180);
 			bmd(GRABBER_PORT);
 			//Completed the airplane dropoff
 			
@@ -62,7 +63,7 @@ int main()
 			moveToDist(110, 100);
 			
 			create_drive_straight(100);
-			sleep(0.40);
+			sleep(0.35);
 			create_stop();
 			closeClaw();
 			//Second grab attempt of first set 
@@ -83,12 +84,12 @@ int main()
 			smoothTurn(-73, 200);
 			
 			accel(0,150);
-			sleep(0.6);
+			sleep(1);
 			accel(150,0);
 			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
 			accel(0, -300);
-			sleep(1.5);
+			sleep(1.1);
 			accel(-300, -100);
 			sleep(0.4);
 			scraperDown();
