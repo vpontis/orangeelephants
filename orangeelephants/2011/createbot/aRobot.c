@@ -3,7 +3,7 @@
 
 int main()
 {
-	printf("Press the B to run side B.\n");
+	printf("Press the A to run side A.\n");
 	printf("Press the up button to calibrate the claw.\n");
 	
 	createInitialize();
@@ -12,80 +12,70 @@ int main()
 	{
 		
 		if(a_button())
-		{
-			shut_down_in(117);
+		{	
+			//initialization
+			shut_down_in(120);
 			enable_servos();
-			scraperNeutral();
+			
+			//Leg 1, starts and drops off airplane
+			scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
-			
-			moveToDistAccel(-5, NORMAL_SPEED);	
-			
-			smoothTurn(-90, 200);
-			
-			accel(0, 1500);
-			moveToDist(630, 1500);
-			accel(1500, 0);
-			
+			moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
+			smoothTurn(-90, 200);//Faces North
+			accel(0, 500);
+			moveToDist(1000, 500);//Travels North the length of the board
+			accel(500, 0);
 			//moveToDist(150, NORMAL_SPEED);
-			create_drive_straight(-60);
-			sleep(2);
-			create_drive_straight(-20);
-			smoothTurn(90, 200);
-			
+			moveToDist(-6, 300);//Backs up from wall to allow turn
+			smoothTurn(90, 200);//Turns towards runway, robot faces West
 			//Going in for airplane dropoff
-			moveStraight(-250);
+			moveStraight(-250);//Runs into West PVC
 			sleep(1.5);
-			mtp(GRABBER_PORT, 300, 170);
+			moveStraight(0);
+			mtp(GRABBER_PORT, 1000, 180);//drops off airplane
 			bmd(GRABBER_PORT);
-			sleep(1);
+			sleep(.5);
 			//Completed the airplane dropoff
 			
-			moveToDist(225, NORMAL_SPEED);
-			smoothTurn(-94, 200);
-
-			moveStraight(100);//wall alignment
-			sleep(1.25);
-			
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
-			openClawPartial();
-			accel(0, -1400);
+			//Leg 2, picks up first set of blocks
+			moveToDist(225+25, NORMAL_SPEED);//backs up before turning to head back 
+			smoothTurn(-94, 200);//Turns to face North
+			moveToDist(30, 100);moveStraight(100);//Wall alignment w/ North PVC
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);//puts claw down on the ground
+			openClawPartial();//opens claws to grab blocks
+			accel(0, -1400);//drives back to align with blocks
 			accel(-1400, 0);
-			
-			smoothTurn(-94, 200);
-			
-			bmd(ARM_MOTOR_PORT);
-			
-			//go in for first grab attempt of first set
-			moveToDist(90, 100);
-			closeClaw();
-			moveToDist(-200, 100);
-			openClaw();
-			
-			moveToDist(110, 100);
-			
-			create_drive_straight(100);
+			smoothTurn(-94, 200);//turns West to face blocks
+			bmd(ARM_MOTOR_PORT);//wait for arm to be down
+			moveToDist(90+40, 100);//drive forward to pick up blocks
+			closeClaw();//close claw, grab blocks
+			moveToDist(-200, 100);//pulls blocks back
+			openClawPartial();//opens claw to allow for second grab
+			moveToDist(90, 100);//drives forward to align blocks
+			moveStraight(-100);//backs up to allow for pickup
 			sleep(0.35);
 			create_stop();
-			closeClaw();
-			//Second grab attempt of first set 
-			
+			closeClaw();//grabs the blocks 
 			sleep(0.25);
-			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
+			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up the blocks
 			
-			moveToDistAccel(-10, 300);
-			smoothTurn(-82, 200);
-			
+			//Leg 3, stacks blocks in starting zone
+			accel(0, -200);
+			moveToDist(-50,200);//backs up holding blocks
+			accel(-200, 0);
+			bmd(ARM_MOTOR_PORT);
+			smoothTurn(-82, 200);//Turns to face South
 			accel(0, 300);
-			sleep(1.3);
+			moveToDist(100, 300);//Runs into South PVC
 			accel(300, 50);
 			sleep(1);
-	
-			moveStraight(-100);
-			sleep(.2);
+			//moveStraight(-100);//backs up to allow for turn
+			//sleep(.2);
+			moveToDist(-3, 100);//replaces previous two lines
 			smoothTurn(-73, 200);
 			
 			accel(0,150);
-			sleep(1.7);
+			sleep(1);
 			accel(150,0);
 			
 			mtp(ARM_MOTOR_PORT,-100, ARM_POS_START+1000);
@@ -135,14 +125,14 @@ int main()
 			openClawPartial();
 			moveToDist(330, 300);  
 			smoothTurn(-20, 50); //turn to get blocks in claw range
-			moveToDist(5, 300);
+			moveToDist(20-10, 300);
 			//first grab
 			bmd(ARM_MOTOR_PORT); 
 			closeClaw();
 			moveToDist(-150, 100); //back up a bit
 			openClaw(); //open again
 			
-			moveToDist(150, 100); //go forward again
+			moveToDist(100, 100); //go forward again
 			moveStraight(-100); //back up a bit
 			sleep(0.35);
 			create_stop();
@@ -162,7 +152,7 @@ int main()
 			accel(-300, -100);
 			sleep(.75);			
 			moveArmUp(); 
-			smoothTurn(90, 200); //face other blocks
+			turn(71, 200); //face other blocks
 			accel(0, 200);
 			accel(200, 100);
 			sleep(.3);
@@ -177,92 +167,14 @@ int main()
 
 		}
 		
-		if(b_button())
-		{
-			enable_servos();
-			//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
-			
-			moveToDistAccel(-5, NORMAL_SPEED);	
-			//moveArm(ARM_POS_START+500, ARM_UP_VELOCITY);
-			
-			smoothTurn(90, 200);
-			
-			accel(0, -1500);
-			moveToDist(600, 1500);
-			accel(-1500, 0);
-			
-			//moveToDist(150, NORMAL_SPEED);
-			create_drive_straight(-60);
-			sleep(2);
-			create_drive_straight(-20);
-			smoothTurn(-90, 200);
-			
-			moveToDistAccel(-20, NORMAL_SPEED);
-			
-			mtp(GRABBER_PORT, 300, 180);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, -1000, 0);
-			bmd(GRABBER_PORT);
-			mtp(GRABBER_PORT, 1000, 100);
-			bmd(GRABBER_PORT);
-			//Completed the airplane dropoff
-			
-			moveToDist(200, NORMAL_SPEED);
-			smoothTurn(-90, 200);
-			moveToDist(530, NORMAL_SPEED);//used to be 550, normal
-			smoothTurn(-90, 200);
-			set_servo_position(CLAW_PORT,950);
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);
-			bmd(ARM_MOTOR_PORT);
-			//go in for first attempt
-			moveToDist(155, 100);
-			closeClaw();
-			moveToDist(-210, 100);
-			openClaw();
-			
-			moveToDist(60, 100);
-			
-			create_drive_straight(100);
-			sleep(0.25);
-			create_stop();
-			closeClaw();
-			//Second grab attempt
-			
-			sleep(0.25);
-			moveArm(ARM_POS_START+2000, ARM_UP_VELOCITY);//picked up blocks
-			
-			moveToDist(-130, 200);
-			smoothTurn(90, 200);
-			
-			moveToDist(300, 400);
-			moveStraight(100);
-			sleep(3);
-			moveToDist(-50, 100);
-			smoothTurn(90, 200);
-			
-			moveStraight(130);
-			sleep(2);
-			moveToDist(-100, 300);
-			moveArm(ARM_POS_START+1500, -100);
-			slowReleaseClaw();
-			//Drop off first set
-			
-			
-			moveToDist(-200, 300);
-			
-			
-			
-						
-		}
-	
-		
-		if(black_button())
+		if(black_button())//calibrates the airplane
 		{
 			beep();
 			clear_motor_position_counter(GRABBER_PORT);
 			mtp(GRABBER_PORT, NORMAL_SPEED, 0);
 			beep();
 		}
+
 		
 		if(up_button())//calibrates arm and opens claw
 		{

@@ -222,3 +222,19 @@ void moveStraight(int speed){
 	create_drive_straight(-speed);
 }
 
+void moveToVictor(int distance, int speed) 
+{ 
+        set_create_distance(0); 
+		distance = -distance;
+	
+        if(distance > 0) {   
+                createDrive(speed);
+                while (get_create_distance(.1) < distance) {}
+                createDrive(0);
+        }
+        else{ //backwards
+                createDrive(-speed);
+                while (get_create_distance(.1) > distance) {}
+                createDrive(0);
+        }
+}
