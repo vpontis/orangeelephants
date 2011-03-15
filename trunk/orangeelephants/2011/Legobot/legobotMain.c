@@ -28,7 +28,7 @@ int main() {
 				moveToDistance(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
 				pivot(1,-80,FAST_SPEED); //pivots -65 degrees CCW
 				turnArc(0,98,FAST_SPEED,10);
-				pivot(1,12,FAST_SPEED);
+				pivot(1,18,FAST_SPEED);
 				sleep(5);
 				moveToDistance(120,FAST_SPEED);
 				
@@ -51,7 +51,7 @@ int main() {
 				turnArc(1, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
 				moveToDistance(-55,MED_SPEED); //aligns with north PVC
 				moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
-				pivot(1, 96, FAST_SPEED); //pivots to face final west PVC
+				pivot(1, 100, FAST_SPEED); //pivots to face final west PVC
 				moveToDistance(100, FAST_SPEED); //moves and aligns with west PVC
 				pivot(0, -83, FAST_SPEED); //pivots to face drop zone
 				moveToDistance(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
