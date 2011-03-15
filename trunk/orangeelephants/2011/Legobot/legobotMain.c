@@ -14,6 +14,7 @@ int main() {
 	{
 			if(a_button()) 
 			{
+				shut_down_in(120);
 				printf("\n Starting side A");
 
 				sleep(5); //give create time
@@ -75,6 +76,7 @@ int main() {
 
 			if(b_button())
 			{
+				shut_down_in(120);
 				printf("\n Starting side B");
 				sleep(5); //wait for create
 				//LEG 1: collects ping pong balls @ first station
@@ -99,11 +101,11 @@ int main() {
 				//LEG 3: collects ping pong balls @ second station
 				
 				moveToDistance(-22,FAST_SPEED); //backs up to allow for turn
-				turn(90,SLOW_SPEED); //pivots to face east`PVC
+				turn(90,SLOW_SPEED); //pivots to face east PVC
 				moveToDistance(35,FAST_SPEED); //aligns with east PVC
 				moveToDistance(-7,FAST_SPEED); //backs up to allow for turn
 				turn(89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
-				moveToDistance(17, FAST_SPEED); //collects all biofuels
+				moveToDistance(20, FAST_SPEED); //collects all biofuels [used to be 17]
 				sleep(.7);
 				
 				//LEG 4: drop all biofuels
@@ -133,8 +135,7 @@ int main() {
 					
 				//LEG 6: screwing with the opponent bots
 				moveToDistance(-55,FAST_SPEED);
-				int x;
-				for(x = 0; x < 5; x++){
+				while(1){
 					moveToDistance(70,FAST_SPEED);
 					moveToDistance(-70,FAST_SPEED);
 				}
