@@ -16,20 +16,22 @@ int main() {
 			{
 				shut_down_in(117);
 				printf("\n Starting side A");
-				sleep(5); //wait for create
 				//LEG 1: collects ping pong balls @ first station
 				moveToDistance(49, MED_SPEED);
 				sleep(.7);
 				
 				//LEG 2: navigates to north PVC
 				moveToDistance(-2, FAST_SPEED); //moves back to avoid tampering the red towers	
+				sleep(2.5);
 				pivot(0,-90,FAST_SPEED); //pivots -90 degrees CW
 				moveToDistance(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
 				pivot(1,-80,FAST_SPEED); //pivots -65 degrees CCW
 				turnArc(0,98,FAST_SPEED,10);
 				//pivot(1,18,FAST_SPEED);
-				sleep(5);
-				moveToDistance(120,FAST_SPEED);
+				//moveToDistance(120,FAST_SPEED); //split into two distances in following lines
+				moveToDistance(30, FAST_SPEED);//head to North PVC, the two distances should add up to 120
+				sleep(2.5);//wait for Create to pass
+				moveToDistance(90, FAST_SPEED);
 				
 				//moveToDistance(80, FAST_SPEED); //starts distance to hit north PVC
 				//sleep(5); //to wait for the create to go past
@@ -38,7 +40,7 @@ int main() {
 				//LEG 3: collects ping pong balls @ second station				
 				moveToDistance(-22,FAST_SPEED); //backs up to allow for turn
 				turn(-90,SLOW_SPEED); //pivots to face west PVC
-				moveToDistance(35,FAST_SPEED); //aligns with west PVC
+				moveToDistance(40,FAST_SPEED); //aligns with west PVC
 				moveToDistance(-7,FAST_SPEED); //backs up to allow for turn
 				turn(-89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDistance(20, FAST_SPEED); //collects all biofuels
@@ -61,7 +63,7 @@ int main() {
 				moveToDistance(30,FAST_SPEED); //Wall align against east PVC
 				moveToDistance(-47,FAST_SPEED); //go back to wall align to middle pvc
 				pivot(1,90, FAST_SPEED); //turn to face front of bot to north PVC
-	/**/		moveToDistance(15, FAST_SPEED); //forward wall align to north PVC
+				moveToDistance(15, FAST_SPEED); //forward wall align to north PVC
 				gateOpen();
 				//gateClose();
 				moveToDistance(-85,FAST_SPEED); //go to middle of board
