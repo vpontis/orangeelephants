@@ -50,7 +50,7 @@ int main() {
 				moveToDistance(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 100, FAST_SPEED); //pivots to face final west PVC
 				moveToDistance(100, FAST_SPEED); //moves and aligns with west PVC
-				pivot(0, -83, FAST_SPEED); //pivots to face drop zone
+				pivot(0, -80, FAST_SPEED); //pivots to face drop zone
 				moveToDistance(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
 				
@@ -59,9 +59,9 @@ int main() {
 				moveToDistance(-20,FAST_SPEED); //back up
 				pivot(0, 90, FAST_SPEED); //pivot to face east PVC
 				moveToDistance(30,FAST_SPEED); //Wall align against east PVC
-				moveToDistance(-55,FAST_SPEED); //go back to wall align to middle pvc
+				moveToDistance(-47,FAST_SPEED); //go back to wall align to middle pvc
 				pivot(1,90, FAST_SPEED); //turn to face front of bot to north PVC
-	/**/		moveToDistance(6, FAST_SPEED); //forward wall align to north PVC
+	/**/		moveToDistance(15, FAST_SPEED); //forward wall align to north PVC
 				gateOpen();
 				//gateClose();
 				moveToDistance(-85,FAST_SPEED); //go to middle of board
