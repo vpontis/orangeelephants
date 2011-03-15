@@ -10,7 +10,7 @@ const int  ARM_UP_VELOCITY = 750; //needs callibration
 
 //Up/down positions for the claw on the forklift 
 //Top is 0 and as you descend the position is negative
-const int  ARM_POS_DOWN = -8250;
+const int  ARM_POS_DOWN = -8350;
 const int  ARM_POS_START = -6375;//up down position for the claw to start
 const int  ARM_PARTIAL_DOWN  = -600;
 
