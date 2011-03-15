@@ -63,13 +63,13 @@ int main() {
 				moveToDist(30,FAST_SPEED); //Wall align against east PVC
 				moveToDist(-47,FAST_SPEED); //go back to wall align to middle pvc
 				pivot(1,90, FAST_SPEED); //turn to face front of bot to north PVC
-				moveToDist(15, FAST_SPEED); //forward wall align to north PVC
+				moveToDist(12, FAST_SPEED); //forward wall align to north PVC
 				gateOpen();
 				//gateClose();
 				moveToDist(-85,FAST_SPEED); //go to middle of board
 				pivot(1,-98,FAST_SPEED); //turn to face back to middle bump
 				//gateOpen(); //incase the other dump didn't empty the balls
-				moveToDist(-100,SUPER_SPEED); //go backward over bump
+				moveToDist(-103,SUPER_SPEED); //go backward over bump
 					
 				//LEG 6: screwing with the opponent bots
 				moveToDist(-55,FAST_SPEED);
