@@ -20,6 +20,23 @@ int main()
 				break;
 			}
 			
+			if(down_button())	{
+				turn(-110 , 150); //turn to align totally Sotuh
+				accel(0, 300); //go backward into Sotuh PVC
+				sleep(.75);
+				accel(300, 100);
+				sleep(.75);	//wall align
+				moveArmUp(); //makes sure arm is totally up
+				smoothTurn(-72.5, 200); //face other blocks
+				accel(0, 100);//goes forwards towards other blocks and pushes them
+				sleep(.6);
+				accel(100, 60);
+				sleep(1);
+				create_stop();
+				moveToDist(-60, 130); //pulls back to drop off blocks
+				slowReleaseClaw(); //opens claw to drop off blocks
+				moveToDist(-100, 150);//backs away from structure
+			}
 		}
 		
 		while(1)	{
@@ -63,7 +80,7 @@ int main()
 			//Completed the airplane dropoff
 			
 			//Leg 2, picks up first set of blocks
-			moveToDist(225+25, NORMAL_SPEED);//backs up before turning to head back 
+			moveToDist(225+25, 500);//backs up before turning to head back 
 			smoothTurn(-94, 200);//Turns to face North
 			moveToDist(30, 100);
 			moveStraight(100);//Wall alignment w/ North PVC
@@ -99,11 +116,11 @@ int main()
 			//moveToDist(440, 250);//Runs into South PVC, passes over black tape
 			sleep(2.1);
 			accel(250, 50);
-			sleep(1);//Runs into South PVC
+			sleep(.4);//Runs into South PVC
 			moveToDist(-4, 100);//Backs up from South PVC to allow for turn
-			smoothTurn(-81, 200);//Face West to drop off first set of blocks
+			turn(-79, 150);//Face West to drop off first set of blocks
 			accel(0, 150);
-			sleep(1.2+1.5);//Run into west PVC wall to align
+			sleep(1.2+2.2);//Run into west PVC wall to align
 			accel(150, 0);
 			mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);//start lowering the blocks
 			accel(0, -300);//begin backing up
@@ -116,29 +133,30 @@ int main()
 			accel(150, 100);//slow down
 			scraperNeutral();//puts treads back up for future turning	
 			create_stop();
-			accel(0, -150);
+			accel(0, -150);//back up to set blocks down because it was hitting PVC
+			sleep(.8);
 			accel(-150,0);
 			bmd(ARM_MOTOR_PORT);//wait for blocks to be all the way lowered
 			slowReleaseClaw();//drop off first two blocks
 			
 			//Leg 4, picks up second set of blocks			
-			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
+			//mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
 			openClawPartial();//puts claw in open position, ready to get new blocks
-			moveToDist(-120-150, 300); //back up into botguy
+			moveToDist(-120-110, 300); //back up into botguy
 			smoothTurn(-90, 200); //turn North 
 			moveStraight(500); //drive North
 			sleep(.75);
 			smoothTurn(-90, 200); //turn to West to allow for PVC alignment
 			moveStraight(500); //algin with West PVC
-			sleep(1);
+			sleep(.7);
 			moveStraight(150); //continue aligning with the wall
-			sleep(.4);
+			sleep(.3);
 			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN); //lower arm to get ready to pick up blocks 
 			moveStraight(-115); //back up to allow for turn
 			sleep(.7);
 			smoothTurn(83, 200); //turn to face North and pursue blocks	
 			//go in for first grab attempt
-			moveToDist(185+330, 300); //drive towards blocks
+			moveToDist(185+330, 300); //drive towards blocks, old val 185
 			//openClawPartial();
 			//moveToDist(330, 300);  
 			smoothTurn(-20, 50); //turn to get blocks in claw range
@@ -158,19 +176,18 @@ int main()
 			
 			//Leg 5, stack second set of blocks
 			accel(0, -300); 
-			sleep(1); //back up towards the South PVC
+			sleep(2); //back up towards the South PVC
 			accel(-300, 0); 
-			turn(15, 50); //turn to align totally Sotuh
-			accel(0, -300); //go backward into Sotuh PVC
-			sleep(.75);
-			accel(-300, -100);
-			sleep(.75);	//wall align
+			turn(-152 , 150); //turn to align totally Sotuh
+			accel(0, 100); //go backward into Sotuh PVC
+			//sleep(.25);
+			accel(100, 20);
 			moveArmUp(); //makes sure arm is totally up
-			smoothTurn(72.5, 200); //face other blocks
+			smoothTurn(-72.5, 200); //face other blocks
 			accel(0, 100);//goes forwards towards other blocks and pushes them
-			sleep(.6);
+			sleep(.25);
 			accel(100, 60);
-			sleep(1);
+			sleep(.5);
 			create_stop();
 			moveToDist(-60, 130); //pulls back to drop off blocks
 			slowReleaseClaw(); //opens claw to drop off blocks
@@ -185,3 +202,4 @@ int main()
  
 	}
 }
+	
