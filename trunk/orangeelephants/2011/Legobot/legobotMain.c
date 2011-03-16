@@ -27,11 +27,15 @@ int main() {
 				moveToDist(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
 				pivot(1,-100,FAST_SPEED); //pivots -65 degrees CCW
 				//pivot(1,18,FAST_SPEED);
-				//moveToDist(120,FAST_SPEED); //split into two distances in following lines
-				moveToDist(30, FAST_SPEED);//head to North PVC, the two distances should add up to 120
-				sleep(2.5);//wait for Create to pass
-				moveToDist(110, FAST_SPEED);
 				
+				//moveToDist(120,FAST_SPEED); //split into two distances in following lines
+				moveToDist(85, FAST_SPEED);//head to North PVC, the two distances should add up to 140
+				pivot(1,-90,FAST_SPEED);//pivot out of the way
+				moveToDist(-10,FAST_SPEED);
+				sleep(6.5);
+				moveToDist(10,FAST_SPEED);
+				pivot(1,93,FAST_SPEED);
+				moveToDist(55,FAST_SPEED);
 				//moveToDist(80, FAST_SPEED); //starts distance to hit north PVC
 				//sleep(5); //to wait for the create to go past
 				//moveToDist(80,FAST_SPEED); //finish distance
@@ -40,8 +44,8 @@ int main() {
 				moveToDist(-22,FAST_SPEED); //backs up to allow for turn
 				turn(-90,SLOW_SPEED); //pivots to face west PVC
 				moveToDist(40,FAST_SPEED); //aligns with west PVC
-				moveToDist(-5.5,FAST_SPEED); //backs up to allow for turn
-				turn(-89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
+				moveToDist(-6,FAST_SPEED); //backs up to allow for turn
+				turn(-89,SLOW_SPEED); //pivots t0o face south PVC & ping pong balls
 				moveToDist(20, FAST_SPEED); //collects all biofuels
 				sleep(.7);
 				
@@ -59,8 +63,8 @@ int main() {
 				gateClose();
 				moveToDist(-20,FAST_SPEED); //back up
 				pivot(0, 90, FAST_SPEED); //pivot to face east PVC
-				moveToDist(30,FAST_SPEED); //Wall align against east PVC
-				moveToDist(-47,FAST_SPEED); //go back to wall align to middle pvc
+				//moveToDist(30,FAST_SPEED); //Wall align against east PVC
+				moveToDist(-45,FAST_SPEED); //go back to wall align to middle pvc
 				pivot(1,90, FAST_SPEED); //turn to face front of bot to north PVC
 				moveToDist(12, FAST_SPEED); //forward wall align to north PVC
 				gateOpen();
@@ -93,10 +97,15 @@ int main() {
 				sleep(2.5);
 				pivot(1,-90,FAST_SPEED); //pivots -90 degrees CCW
 				moveToDist(-5,FAST_SPEED);//moves back to avoid pivoting on black tape
-				pivot(0,-86,FAST_SPEED); //pivots -65 degrees CW
-				moveToDist(30, FAST_SPEED);//head to North PVC, the two distances should add up to 120
-				sleep(2.5);//wait for Create to pass
-				moveToDist(110, FAST_SPEED);
+				pivot(0,-90,FAST_SPEED); //pivots -65 degrees CW
+				
+				moveToDist(85, FAST_SPEED);//head to North PVC, the two distances should add up to 120
+				pivot(0,-90,FAST_SPEED);
+				moveToDist(-10,FAST_SPEED);
+				sleep(6.5);//wait for Create to pass
+				moveToDist(10,FAST_SPEED);
+				pivot(0,90,FAST_SPEED);
+				moveToDist(55, FAST_SPEED);
 				
 //				moveToDist(80, FAST_SPEED); //starts distance to hit north PVC
 //				sleep(5); //to wait for the create to go past
@@ -126,7 +135,7 @@ int main() {
 				gateClose();
 				moveToDist(-20,FAST_SPEED); //back up
 				pivot(1, 90, FAST_SPEED); //pivot to face west PVC
-				moveToDist(30,FAST_SPEED); //Wall align against west PVC
+				
 				moveToDist(-45,FAST_SPEED); //go back to wall align to middle pvc
 				pivot(0,90, FAST_SPEED); //turn to face front of bot to north PVC
 				moveToDist(12,FAST_SPEED);
