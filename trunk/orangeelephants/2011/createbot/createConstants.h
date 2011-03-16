@@ -10,15 +10,15 @@ const int  ARM_UP_VELOCITY = 750; //needs callibration
 
 //Up/down positions for the claw on the forklift 
 //Top is 0 and as you descend the position is negative
-const int  ARM_POS_DOWN = -8350;
+const int  ARM_POS_DOWN = -9050;
 const int  ARM_POS_START = -6375;//up down position for the claw to start
 const int  ARM_PARTIAL_DOWN  = -600;
 
 //Opening/closing positions of the claw
 const int  CLAW_OPEN_POS = 1000;
 const int  CLAW_OPEN_PARTIAL = 800;
-const int  CLAW_CLOSE_POS = 0;
-
+//const int  CLAW_CLOSE_POS = 0;
+const int  CLAW_CLOSE_POS = 100;
 //Motor, Sensor, & Servo ports
 const int  ARM_MOTOR_PORT = 0; 
 const int  CLAW_PORT = 2; 
@@ -28,7 +28,7 @@ const int SCRAPERL_SERVO = 1;
 const int SCRAPERR_SERVO = 3;
 
 //speed
-const int FAST_SPEED = 15000;
+const int FAST_SPEED = 1500;
 const int NORMAL_SPEED = 500;
 
 //positions at the start of game for scraper

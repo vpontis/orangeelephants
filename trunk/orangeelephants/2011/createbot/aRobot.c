@@ -30,9 +30,9 @@ int main()
 			smoothTurn(90, 200);//Turns towards runway, robot faces West
 			//Going in for airplane dropoff
 			moveStraight(-150);//Runs into West PVC
-			sleep(1.75);
+			sleep(2.75);
 			moveStraight(0);
-			mtp(GRABBER_PORT, 1000, 180);//drops off airplane
+			mtp(GRABBER_PORT, 300, 180);//drops off airplane
 			bmd(GRABBER_PORT);
 			sleep(.5);
 			//Completed the airplane dropoff
@@ -65,17 +65,16 @@ int main()
 			moveToDist(-50,200);//backs up holding blocks
 			accel(-200, 0);
 			bmd(ARM_MOTOR_PORT);
-			smoothTurn(-82, 200);//Turns to face South
+			smoothTurn(-90, 200);//Turns to face South
 			accel(0, 300);
-			moveToDist(250, 300);//Runs into South PVC
+			moveToDist(400, 300);//Runs into South PVC
 			accel(300, 50);
 			sleep(1);
 			moveToDist(-4, 100);//replaces previous two lines
-			smoothTurn(-73, 200);//Face West
+			smoothTurn(-80, 200);//Face West
 			
 			accel(0,150);
-			//sleep(1);
-			moveToDist(25, 150);//goes forward to align with West PVC
+			sleep(1);
 			accel(150,0);
 			
 			mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);
@@ -152,9 +151,10 @@ int main()
 			accel(-300, -100);
 			sleep(.75);			
 			moveArmUp(); 
-			turn(71, 200); //face other blocks
-			accel(0, 200);
-			accel(200, 100);
+			turn(81, 100); //face other blocks
+			accel(0, 120);
+			sleep(.4);
+			accel(120, 80);
 			sleep(.3);
 			
 			create_stop();
