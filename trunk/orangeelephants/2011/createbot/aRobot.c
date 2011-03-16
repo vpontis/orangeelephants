@@ -37,6 +37,7 @@ int main()
 		while(1)	{//keep in allows a button to run code w/o further indenting
 		if(a_button())
 		{	
+			int initSeconds = seconds();
 			//initialization
 			shut_down_in(120);
 			enable_servos();
@@ -111,17 +112,19 @@ int main()
 			sleep(0.4);
 			scraperDown();//puts down scraper
 			accel(0, 150);
-			sleep(1.2);//drives forward and scrapes down botguy
+			sleep(1.2+1.8);//drives forward and scrapes down botguy and aligns with west PVC
 			accel(150, 100);//slow down
 			scraperNeutral();//puts treads back up for future turning	
 			create_stop();
+			accel(0, -150);
+			accel(-150,0);
 			bmd(ARM_MOTOR_PORT);//wait for blocks to be all the way lowered
 			slowReleaseClaw();//drop off first two blocks
 			
 			//Leg 4, picks up second set of blocks			
 			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
 			openClawPartial();//puts claw in open position, ready to get new blocks
-			moveToDist(-120, 300); //back up into botguy
+			moveToDist(-120-150, 300); //back up into botguy
 			smoothTurn(-90, 200); //turn North 
 			moveStraight(500); //drive North
 			sleep(.75);
@@ -154,27 +157,27 @@ int main()
 			sleep(1);
 			
 			//Leg 5, stack second set of blocks
-			accel(0, -300); //back up accelarate
-			sleep(1);
-			accel(-300, 0); //back up decelarate
-			turn(15, 50); //turn back to be straight 
-			
-			accel(0, -300); //go backward into PVC
+			accel(0, -300); 
+			sleep(1); //back up towards the South PVC
+			accel(-300, 0); 
+			turn(15, 50); //turn to align totally Sotuh
+			accel(0, -300); //go backward into Sotuh PVC
 			sleep(.75);
 			accel(-300, -100);
-			sleep(.75);			
-			moveArmUp(); 
-			turn(81, 100); //face other blocks
-			accel(0, 100);
+			sleep(.75);	//wall align
+			moveArmUp(); //makes sure arm is totally up
+			smoothTurn(72.5, 200); //face other blocks
+			accel(0, 100);//goes forwards towards other blocks and pushes them
 			sleep(.6);
 			accel(100, 60);
 			sleep(1);
 			create_stop();
-			
-			moveToDist(-60, 200);
-			slowReleaseClaw();
-			moveToDist(-200, 100);
+			moveToDist(-60, 130); //pulls back to drop off blocks
+			slowReleaseClaw(); //opens claw to drop off blocks
+			moveToDist(-100, 150);//backs away from structure
 			disable_servos();
+			beep();
+			printf("The total time is %d.\n",initSeconds-seconds());
 			ao();
 
 		}
@@ -182,25 +185,3 @@ int main()
  
 	}
 }
-		
-/*Stack Blocks
-			createInitialize();
-			enable_servos();
-			set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
-			sleep(.5);
-			moveToDistanceAccel(-30, -100, -400);
-			pickUpBlocks();
-			sleep(.5);
-			turn(170, 100);
-			printf("Turn completed.\n");
-			sleep(.5);	
-			moveToDistanceAccel(-55, -100, -400);
-			moveToDist(-5, 100);
-			printf("Moved back to original blocks. \n");
-			moveToDist(80, 100);
-			movearmDown(ARM_PARTIAL_DOWN);
-			slowReleaseClaw();
-			printf("Claw opened.\n");
-			moveToDist(200, 250);
-			printf("Backed away, program done. \n");
-*/
