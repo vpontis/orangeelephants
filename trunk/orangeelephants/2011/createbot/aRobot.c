@@ -65,7 +65,7 @@ int main()
 			moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
 			smoothTurn(-90, 200);//Faces North
 			accel(0, 500);
-			moveToDist(1040, 500);//Travels North the length of the board
+			moveToDist(1100, 500);//Travels North the length of the board
 			accel(500, 50);
 			//moveToDist(150, NORMAL_SPEED);
 			moveToDist(-7, 200);//Backs up from wall to allow turn
@@ -73,18 +73,17 @@ int main()
 			//Going in for airplane dropoff
 			moveStraight(-150);//Runs into West PVC
 			sleep(2.75);
-			moveStraight(0);
+			create_stop();
 			mtp(GRABBER_PORT, 300, 160);//drops off airplane
 			bmd(GRABBER_PORT);
-			sleep(.5);
 			//Completed the airplane dropoff
 			
 			//Leg 2, picks up first set of blocks
 			moveToDist(225+25, 500);//backs up before turning to head back 
 			smoothTurn(-94, 200);//Turns to face North
-			moveToDist(30, 100);
-			moveStraight(100);//Wall alignment w/ North PVC
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);//puts claw down on the ground
+			moveToDist(50, 100);
+			//moveStraight(100);//Wall alignment w/ North PVC
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+200);//puts claw down on the ground
 			openClawPartial();//opens claws to grab blocks
 			accel(0, -1400+250);//drives back to align with blocks
 			accel(-1400+250, 0);
@@ -113,12 +112,11 @@ int main()
 			sleep(.8);
 			smoothTurn(-90, 200);//Turns to face South
 			accel(0, 250);
-			//moveToDist(440, 250);//Runs into South PVC, passes over black tape
-			sleep(2.1);
+			sleep(2.1); //Runs into South PVC, passes over black tape
 			accel(250, 50);
 			sleep(.4);//Runs into South PVC
 			moveToDist(-4, 100);//Backs up from South PVC to allow for turn
-			turn(-79, 150);//Face West to drop off first set of blocks
+			turn(-70, 130);//Face West to drop off first set of blocks
 			accel(0, 150);
 			sleep(1.2+2.2);//Run into west PVC wall to align
 			accel(150, 0);
@@ -152,15 +150,15 @@ int main()
 			moveStraight(150); //continue aligning with the wall
 			sleep(.3);
 			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN); //lower arm to get ready to pick up blocks 
-			moveStraight(-115); //back up to allow for turn
+			moveStraight(-250); //back up to allow for turn
 			sleep(.7);
 			smoothTurn(83, 200); //turn to face North and pursue blocks	
-			//go in for first grab attempt
+			//go in for first grab attempt of second set
 			moveToDist(185+330, 300); //drive towards blocks, old val 185
 			//openClawPartial();
 			//moveToDist(330, 300);  
-			smoothTurn(-20, 50); //turn to get blocks in claw range
-			moveToDist(20-10, 300);//drive at blocks
+			smoothTurn(-10, 100); //turn to get blocks in claw range
+			moveToDist(90, 300);//drive at blocks
 			//first grab
 			bmd(ARM_MOTOR_PORT); //wait until the claw is on the ground
 			closeClaw();//close the claw to grab the blocks
@@ -172,18 +170,18 @@ int main()
 			create_stop();
 			closeClaw();//close claw on the second set of blocks
 			mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 200);//pick up second set of blocks
-			sleep(1);
 			
 			//Leg 5, stack second set of blocks
-			accel(0, -300); 
-			sleep(2); //back up towards the South PVC
-			accel(-300, 0); 
-			turn(-152 , 150); //turn to align totally Sotuh
+			turn(190, 150);
+			accel(0, 300); 
+			sleep(1.8); //back up towards the South PVC
+			accel(300, 0); 
+			//turn(20, 150); //turn to align totally Sotuh
 			accel(0, 100); //go backward into Sotuh PVC
-			//sleep(.25);
+			sleep(.25);
 			accel(100, 20);
-			moveArmUp(); //makes sure arm is totally up
-			smoothTurn(-72.5, 200); //face other blocks
+			//run_for(3, moveArmUp()); //makes sure arm is totally up
+			smoothTurn(-90, 200); //face other blocks
 			accel(0, 100);//goes forwards towards other blocks and pushes them
 			sleep(.25);
 			accel(100, 60);
