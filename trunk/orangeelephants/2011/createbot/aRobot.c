@@ -158,7 +158,7 @@ int main()
 			//openClawPartial();
 			//moveToDist(330, 300);  
 			smoothTurn(-10, 100); //turn to get blocks in claw range
-			moveToDist(90, 300);//drive at blocks
+			moveToDist(110, 300);//drive at blocks
 			//first grab
 			bmd(ARM_MOTOR_PORT); //wait until the claw is on the ground
 			closeClaw();//close the claw to grab the blocks
