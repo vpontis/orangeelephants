@@ -81,9 +81,9 @@ int main()
 			//Leg 2, picks up first set of blocks
 			moveToDist(225+25, 500);//backs up before turning to head back 
 			smoothTurn(-94, 200);//Turns to face North
-			moveToDist(50, 100);
-			//moveStraight(100);//Wall alignment w/ North PVC
-			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+200);//puts claw down on the ground
+			moveStraight(100);//Wall alignment w/ North PVC
+			sleep(.6);
+			mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+700);//puts claw down on the ground
 			openClawPartial();//opens claws to grab blocks
 			accel(0, -1400+250);//drives back to align with blocks
 			accel(-1400+250, 0);
@@ -116,16 +116,17 @@ int main()
 			accel(250, 50);
 			sleep(.4);//Runs into South PVC
 			moveToDist(-4, 100);//Backs up from South PVC to allow for turn
+			mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);//start lowering the blocks
 			turn(-70, 130);//Face West to drop off first set of blocks
 			accel(0, 150);
 			sleep(1.2+2.2);//Run into west PVC wall to align
 			accel(150, 0);
-			mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);//start lowering the blocks
 			accel(0, -300);//begin backing up
 			sleep(1.1);//drives back to put scraper over botguy
 			accel(-300, -100);
 			sleep(0.4);
 			scraperDown();//puts down scraper
+			mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+400);//start lowering the blocks
 			accel(0, 150);
 			sleep(1.2+1.8);//drives forward and scrapes down botguy and aligns with west PVC
 			accel(150, 100);//slow down
@@ -174,22 +175,22 @@ int main()
 			//Leg 5, stack second set of blocks
 			turn(190, 150);
 			accel(0, 300); 
-			sleep(1.8); //back up towards the South PVC
-			accel(300, 0); 
-			//turn(20, 150); //turn to align totally Sotuh
+			sleep(2); //back up towards the South PVC
+			accel(300, 100); 
+			turn(5, 150); //turn to align totally Sotuh
 			accel(0, 100); //go backward into Sotuh PVC
 			sleep(.25);
 			accel(100, 20);
 			//run_for(3, moveArmUp()); //makes sure arm is totally up
-			smoothTurn(-90, 200); //face other blocks
+			smoothTurn(-100, 200); //face other blocks
 			accel(0, 100);//goes forwards towards other blocks and pushes them
-			sleep(.25);
+			sleep(.5);
 			accel(100, 60);
 			sleep(.5);
 			create_stop();
-			moveToDist(-60, 130); //pulls back to drop off blocks
+			moveToDist(-60, 130);n //pulls back to drop off blocks
 			slowReleaseClaw(); //opens claw to drop off blocks
-			moveToDist(-100, 150);//backs away from structure
+			moveToDist(-55, 150);//backs away from structure
 			disable_servos();
 			beep();
 			printf("The total time is %d.\n",initSeconds-seconds());
