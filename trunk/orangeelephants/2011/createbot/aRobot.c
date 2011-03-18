@@ -4,7 +4,6 @@
 int main()
 {
 	printf("Press the up button to calibrate the claw or down to test code.\n");	
-	createInitialize();
 	scraperStart();
 	set_servo_position(GRABBER_PORT, GRABBER_UP);
 	enable_servos();
@@ -47,6 +46,7 @@ int main()
 			{	
 				//initialization
 				wait_for_light(LIGHT_PORT);
+				createInitialize();
 				int initSeconds = seconds();
 				shut_down_in(120);
 				
@@ -60,9 +60,9 @@ int main()
 				accel(500, 50);
 				//moveToDist(150, NORMAL_SPEED);
 				moveToDist(-7, 200);//Backs up from wall to allow turn
-				smoothTurn(90, 200);//Turns towards runway, robot faces West
+				smoothTurn(90, 200);//Turns towards runway, robot faces middle PVC
 				//Going in for airplane dropoff
-				moveStraight(-150);//Runs into West PVC
+				moveStraight(-150);//Runs into middle PVC
 				sleep(2.75);
 				create_stop();
 				releasePlane();
@@ -77,7 +77,7 @@ int main()
 				openClawPartial();//opens claws to grab blocks
 				accel(0, -1400+250);//drives back to align with blocks
 				accel(-1400+250, 0);
-				smoothTurn(-94, 200);//turns West to face blocks
+				smoothTurn(-94, 200);//turns to middle PVC to face blocks
 				bmd(ARM_MOTOR_PORT);//wait for arm to be down
 				moveToDist(90+40, 100);//drive forward to pick up blocks
 				closeClaw();//close claw, grab blocks
@@ -107,9 +107,9 @@ int main()
 				sleep(.4);//Runs into South PVC
 				moveToDist(-4, 100);//Backs up from South PVC to allow for turn
 				mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);//start lowering the blocks
-				turn(-70, 130);//Face West to drop off first set of blocks
+				turn(-70, 130);//Face outer PVC
 				accel(0, 150);
-				sleep(1.2+2.2);//Run into west PVC wall to align
+				sleep(1.2+2.2);//Run into outer PVC wall to align
 				accel(150, 0);
 				accel(0, -300);//begin backing up
 				sleep(1.1);//drives back to put scraper over botguy
@@ -118,7 +118,7 @@ int main()
 				scraperDown();//puts down scraper
 				mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+400);//start lowering the blocks
 				accel(0, 150);
-				sleep(1.2+1.8);//drives forward and scrapes down botguy and aligns with west PVC
+				sleep(1.2+1.8);//drives forward and scrapes down botguy and aligns with outer PVC
 				accel(150, 100);//slow down
 				scraperNeutral();//puts treads back up for future turning	
 				create_stop();
@@ -135,8 +135,8 @@ int main()
 				smoothTurn(-90, 200); //turn North 
 				moveStraight(500); //drive North
 				sleep(.75);
-				smoothTurn(-90, 200); //turn to West to allow for PVC alignment
-				moveStraight(500); //algin with West PVC
+				smoothTurn(-90, 200); //turn to middle PVC to allow for PVC alignment
+				moveStraight(500); //algin with middle PVC
 				sleep(.7);
 				moveStraight(150); //continue aligning with the wall
 				sleep(.3);
@@ -192,6 +192,7 @@ int main()
 			{	
 				//initialization
 				wait_for_light(LIGHT_PORT);
+				createInitialize();
 				int initSeconds = seconds();
 				shut_down_in(120);
 				
@@ -206,9 +207,9 @@ int main()
 				accel(500, 50);
 				//moveToDist(150, NORMAL_SPEED);
 				moveToDist(-7, 200);//Backs up from wall to allow turn
-				smoothTurn(-90, 200);//Turns towards runway, robot faces East
+				smoothTurn(-90, 200);//Turns towards runway, robot faces middle PVC
 				//Going in for airplane dropoff
-				moveStraight(-250);//Runs into East PVC
+				moveStraight(-250);//Runs into middle PVC
 				sleep(2.75);
 				create_stop();
 				releasePlane();
@@ -223,7 +224,7 @@ int main()
 				openClawPartial();//opens claws to grab blocks
 				accel(0, -1400+250);//drives back to align with blocks
 				accel(-1400+250, 0);
-				smoothTurn(94, 200);//turns East to face blocks
+				smoothTurn(94, 200);//turns middle PVC to face blocks
 				bmd(ARM_MOTOR_PORT);//wait for arm to be down
 				moveToDist(150, 100);//drive forward to pick up blocks
 				closeClaw();//close claw, grab blocks
@@ -253,9 +254,9 @@ int main()
 				sleep(.4);//Runs into South PVC
 				moveToDist(-4, 100);//Backs up from South PVC to allow for turn
 				mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+1000);//start lowering the blocks
-				turn(70, 130);//Face West to drop off first set of blocks
+				turn(70, 130);//Face outer PVC to drop off first set of blocks
 				accel(0, 150);
-				sleep(1.2+2.2);//Run into East PVC wall to align
+				sleep(1.2+2.2);//Run into outer PVC wall to align
 				accel(150, 0);
 				accel(0, -300);//begin backing up
 				sleep(1.1);//drives back to put scraper over botguy
@@ -264,7 +265,7 @@ int main()
 				scraperDown();//puts down scraper
 				mtp(ARM_MOTOR_PORT, -100, ARM_POS_START+600);//start lowering the blocks
 				accel(0, 150);
-				sleep(1.2+1.8);//drives forward and scrapes down botguy and aligns with west PVC
+				sleep(1.2+1.8);//drives forward and scrapes down botguy and aligns with outer PVC
 				accel(150, 100);//slow down
 				scraperNeutral();//puts treads back up for future turning	
 				create_stop();
@@ -281,8 +282,8 @@ int main()
 				smoothTurn(90, 200); //turn North 
 				moveStraight(500); //drive North
 				sleep(.75);
-				smoothTurn(90, 200); //turn to East to allow for PVC alignment
-				moveStraight(500); //algin with East PVC
+				smoothTurn(90, 200); //turn to middle PVC to allow for PVC alignment
+				moveStraight(500); //algin with middle PVC
 				sleep(.7);
 				moveStraight(150); //continue aligning with the wall
 				sleep(.3);
@@ -299,10 +300,10 @@ int main()
 				//first grab
 				bmd(ARM_MOTOR_PORT); //wait until the claw is on the ground
 				closeClaw();//close the claw to grab the blocks
-				moveToDist(-150, 100); //back up a bit pulling the blocks for alignment
+				moveToDist(-180, 100); //back up a bit pulling the blocks for alignment
 				openClaw(); //open claw again to allow for grab
 				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);//puts claw down on the ground
-				moveToDist(100, 100); //go forward again pushing blocks for alignment
+				moveToDist(80, 100); //go forward again pushing blocks for alignment
 				moveStraight(-100); //back up a bit
 				sleep(0.35);
 				create_stop();
@@ -322,15 +323,15 @@ int main()
 				//run_for(3, moveArmUp()); //makes sure arm is totally up
 				smoothTurn(90, 200); //face other blocks
 				
-				accel(0, 100);//goes forwards towards other blocks and pushes them
-				sleep(1);
-				accel(100, 60);
+				accel(0, 120);//goes forwards towards other blocks and pushes them
+				sleep(1.25);
+				accel(120, 60);
 				sleep(.5);
 		
 				create_stop();
 				moveToDist(-80, 130); //pulls back to drop off blocks
 				slowReleaseClaw(); //opens claw to drop off blocks
-				moveToDist(-55, 150);//backs away from structure
+				moveToDist(-25, 300);//backs away from structure
 				disable_servos();
 				beep();
 				printf("The total time is %d.\n",initSeconds-seconds());
