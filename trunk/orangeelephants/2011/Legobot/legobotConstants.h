@@ -28,7 +28,7 @@ const int L_BLOCKER_MOTOR_START = 160;
 
 //Gate
 const int GATE_MOTOR_SPEED = 1000;
-const int GATE_OPEN_POS = -500; 
+const int GATE_OPEN_POS = -700; 
 
 //Distances
 const float TICKS_PER_REV = 1020.4;
