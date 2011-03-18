@@ -3,7 +3,7 @@
 #include "boolean.h"
 
 int main(){
-	int i = 1000;
+	/*int i = 1000;
 	while(i >= 100)
 	{
 		clear_motor_position_counter(L_MOTOR);
@@ -28,5 +28,10 @@ int main(){
 		mtp(R_MOTOR, i, 5000);
 		printf("The time in secs for right is %f.\n", seconds()-initSeconds);
 		i = i - 100;
-	}
+	}*/
+	while(1){
+	//test interference capabilities
+					moveToDist(60,FAST_SPEED);
+					moveToDist(-75,FAST_SPEED);
+				}	
 }

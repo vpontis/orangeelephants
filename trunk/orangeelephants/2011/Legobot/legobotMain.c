@@ -54,7 +54,7 @@ int main() {
 				turnArc(1, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
 				moveToDist(-45,SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
-				pivot(1, 100, FAST_SPEED); //pivots to face final east PVC
+				pivot(1, 95, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
 				moveToDist(-27, FAST_SPEED); //moves back to align with drop zone and avoid tape
 				pivot(0, -80, FAST_SPEED); //pivots to face drop zone
@@ -69,10 +69,10 @@ int main() {
 				moveToDist(-110,SUPER_SPEED); //go backward over bump
 					
 				//LEG 6: screwing with the opponent bots
-				moveToDist(-55,FAST_SPEED);
+				moveToDist(-70,FAST_SPEED);
 				while(1){
-					moveToDist(70,FAST_SPEED);
-					moveToDist(-70,FAST_SPEED);
+					moveToDist(60,FAST_SPEED);
+					moveToDist(-75,FAST_SPEED);
 				}
 			}
 
@@ -142,13 +142,11 @@ int main() {
 				moveToDist(-110,SUPER_SPEED); //go backward over bump
 					
 				//LEG 6: screwing with the opponent bots
-				moveToDist(-55,FAST_SPEED);
+				moveToDist(-70,FAST_SPEED);
 				while(1){
-					moveToDist(70,FAST_SPEED);
-					moveToDist(-70,FAST_SPEED);
-				}
-				
-			}
-					
+					moveToDist(60,FAST_SPEED);
+					moveToDist(-75,FAST_SPEED);
+				}	
+			}	
 	}		
 }
