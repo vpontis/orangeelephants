@@ -14,7 +14,8 @@ int main() {
 	{
 			if(a_button()) 
 			{
-				shut_down_in(117);
+				wait_for_light(LIGHT_PORT);
+				shut_down_in(119);
 				printf("\n Starting side A");
 				//LEG 1: collects ping pong balls @ first station
 				moveToDist(49, MED_SPEED);
@@ -78,6 +79,7 @@ int main() {
 
 			if(b_button())
 			{
+				wait_for_light(LIGHT_PORT);
 				shut_down_in(117);
 				printf("\n Starting side B");
 				//LEG 1: collects ping pong balls @ first station

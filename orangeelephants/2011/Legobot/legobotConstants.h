@@ -4,6 +4,9 @@
 /*Left and right positions are 
 from looking from the back*/
 
+//Sensor Ports
+const int LIGHT_PORT = 0;
+
 //Motor ports
 const int L_MOTOR = 1;
 const int R_MOTOR = 0;
