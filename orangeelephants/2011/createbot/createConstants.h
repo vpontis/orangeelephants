@@ -17,13 +17,12 @@ const int  ARM_PARTIAL_DOWN  = -600;
 //Opening/closing positions of the claw
 const int  CLAW_OPEN_POS = 1000;
 const int  CLAW_OPEN_PARTIAL = 800;
-//const int  CLAW_CLOSE_POS = 0;
-const int  CLAW_CLOSE_POS = 100;
+const int  CLAW_CLOSE_POS = 0;
 //Motor, Sensor, & Servo ports
 const int  ARM_MOTOR_PORT = 0; 
 const int  CLAW_PORT = 2; 
 const int  ARM_TOUCH_PORT = 15;
-const int  GRABBER_PORT = 1;
+const int  GRABBER_PORT = 0;
 const int SCRAPERL_SERVO = 1; 
 const int SCRAPERR_SERVO = 3;
 
@@ -42,5 +41,9 @@ const int SCRAPERR_NEUTRAL = 850;
 //positions for scraper when going for botguy
 const int SCRAPERL_DOWN = 1900;
 const int SCRAPERR_DOWN = 0;
+
+//positions for grabber
+const int GRABBER_UP = 1400;
+const int GRABBER_DOWN = 750;
 
 #endif

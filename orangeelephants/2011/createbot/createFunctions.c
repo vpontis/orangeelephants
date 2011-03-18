@@ -13,10 +13,20 @@ void createInitialize()
 		printf("Connection failed.");
 	}
 	create_full();
-	scraperStart();
+	
 }
 
-
+void releasePlane(){
+	int numIncrements = 10;
+	int increment = (GRABBER_DOWN - get_servo_position(GRABBER_PORT))/numIncrements;
+	int pos = get_servo_position(GRABBER_PORT);
+	int i;
+	for(i = 0; i < numIncrements; i++){
+		pos += increment;
+		set_servo_position(GRABBER_PORT, pos);
+		sleep(0.1);
+	}
+}
 
 //Moves the claw to pinch the blocks up until it hits the sensor
 void moveArmUp(){
