@@ -4,6 +4,9 @@
 //Constant for deceleration distance in the moveToDistance function
 const double  STOP_DISTANCE_RATIO = 0.6; //ratio of speed
 
+//light sensor
+const int LIGHT_PORT = 0;
+
 //Velocities to move the claw up and down the forklift
 const int  ARM_DOWN_VELOCITY = -400; //needs callibration
 const int  ARM_UP_VELOCITY = 750; //needs callibration
@@ -18,6 +21,7 @@ const int  ARM_PARTIAL_DOWN  = -600;
 const int  CLAW_OPEN_POS = 1000;
 const int  CLAW_OPEN_PARTIAL = 800;
 const int  CLAW_CLOSE_POS = 0;
+
 //Motor, Sensor, & Servo ports
 const int  ARM_MOTOR_PORT = 0; 
 const int  CLAW_PORT = 2; 
