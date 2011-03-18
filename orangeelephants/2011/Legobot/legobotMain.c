@@ -12,7 +12,7 @@ int main() {
 	
 	while(1) 
 	{
-			if(a_button()) 
+			/*if(a_button()) 
 			{
 				shut_down_in(117);
 				printf("\n Starting side A");
@@ -25,7 +25,7 @@ int main() {
 				sleep(2.5);
 				pivot(0,-90,FAST_SPEED); //pivots -90 degrees CW
 				moveToDist(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
-				pivot(1,-100,FAST_SPEED); //pivots -65 degrees CCW
+				pivot(1,-100,FAST_SPEED); //pivots -100 degrees CCW
 				//pivot(1,18,FAST_SPEED);
 				
 				//moveToDist(120,FAST_SPEED); //split into two distances in following lines
@@ -82,30 +82,32 @@ int main() {
 				}
 				
 				
-			}
+			}*/
 
 			if(b_button())
 			{
 				shut_down_in(117);
 				printf("\n Starting side B");
 				//LEG 1: collects ping pong balls @ first station
-				moveToDist(49, MED_SPEED);
+				moveToDist(50.5, MED_SPEED);
+				sleep(.2);
+				moveToDist(3, MED_SPEED);
 				sleep(.7);
 				
 				//LEG 2: navigates to north PVC
-				moveToDist(-4, FAST_SPEED); //moves back to avoid tampering the red towers	
+				moveToDist(-8, FAST_SPEED); //moves back to avoid tampering the red towers	
 				sleep(2.5);
 				pivot(1,-90,FAST_SPEED); //pivots -90 degrees CCW
 				moveToDist(-5,FAST_SPEED);//moves back to avoid pivoting on black tape
-				pivot(0,-90,FAST_SPEED); //pivots -65 degrees CW
+				pivot(0,-85,FAST_SPEED); //pivots -90 degrees CW
 				
-				moveToDist(85, FAST_SPEED);//head to North PVC, the two distances should add up to 120
-				pivot(0,-88,FAST_SPEED);
-				moveToDist(-9,FAST_SPEED);
+				moveToDist(82, FAST_SPEED);//head to North PVC, the two distances should add up to 120
+				pivot(0,-70,FAST_SPEED);//pivot and allow Create to pass
+				moveToDist(-13,FAST_SPEED);
 				sleep(6.5);//wait for Create to pass
-				moveToDist(9,FAST_SPEED);
-				pivot(0,93,FAST_SPEED);
-				moveToDist(65, FAST_SPEED);
+				moveToDist(13,FAST_SPEED);
+				pivot(0,85, FAST_SPEED);
+				moveToDist(72, FAST_SPEED);
 				
 //				moveToDist(80, FAST_SPEED); //starts distance to hit north PVC
 //				sleep(5); //to wait for the create to go past
@@ -113,12 +115,12 @@ int main() {
 				
 				//LEG 3: collects ping pong balls @ second station
 				
-				moveToDist(-22,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-19,FAST_SPEED); //backs up to allow for turn
 				turn(90,SLOW_SPEED); //pivots to face east PVC
 				moveToDist(60,FAST_SPEED); //aligns with east PVC
-				moveToDist(-7,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-6,FAST_SPEED); //backs up to allow for turn
 				turn(89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
-				moveToDist(21, FAST_SPEED); //collects all biofuels
+				moveToDist(18, FAST_SPEED); //collects all biofuels
 				sleep(.7);
 				
 				//LEG 4: drop all biofuels			
@@ -127,7 +129,7 @@ int main() {
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 96, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
-				pivot(1, -83, FAST_SPEED); //pivots to face drop zone
+				pivot(1, -85, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
 				
@@ -135,14 +137,15 @@ int main() {
 				gateClose();
 				moveToDist(-20,FAST_SPEED); //back up
 				pivot(1, 90, FAST_SPEED); //pivot to face west PVC
+				moveToDist(5, FAST_SPEED);
 				
 				moveToDist(-40,FAST_SPEED); //go back to wall align to middle pvc
 				pivot(0,90, FAST_SPEED); //turn to face front of bot to north PVC
-				moveToDist(15,FAST_SPEED);
+				moveToDist(20,FAST_SPEED);
 				gateOpen();
 				
-				moveToDist(-85,FAST_SPEED); //go to middle of board
-				pivot(0,-98,FAST_SPEED); //turn to face back to middle bump
+				moveToDist(-75,FAST_SPEED); //go to middle of board
+				pivot(0,-105,FAST_SPEED); //turn to face back to middle bump
 				//gateOpen(); //incase the other dump didn't empty the balls
 				moveToDist(-110,SUPER_SPEED); //go backward over bump
 					
