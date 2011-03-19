@@ -25,7 +25,9 @@ int main()
 			}
 			
 			if(down_button())	{
-				createInitialize();
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN + 1750);
+				bmd(ARM_MOTOR_PORT);
+				printf("POSITION 1");
 				
 			}
 		}
@@ -63,20 +65,22 @@ int main()
 				smoothTurn(-90, 200);//Turns to face North
 				moveStraight(100);//Wall alignment w/ North PVC
 				sleep(.6);
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+700);//puts claw down on the ground
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1700);//puts claw down on the ground
 				openClaw();//opens claws to grab blocks
 				accel(0, -1400+250);//drives back to align with blocks
 				accel(-1400+250, 0);
 				smoothTurn(-90, 200);//turns to middle PVC to face blocks
-				bmd(ARM_MOTOR_PORT);//wait for arm to be down
 				moveToDist(120, 100);//drive forward to pick up blocks
+				bmd(ARM_MOTOR_PORT);//wait for arm to be down
 				closeClaw();//close claw, grab blocks
 				moveToDist(-200, 100);//pulls blocks back
 				openClawPartial();//opens claw to allow for second grab
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+700);//puts claw down on the groun
 				moveToDist(90, 100);//drives forward to align blocks
 				//moveStraight(-100);//backs up to allow for pickup
 				//sleep(0.35);
 				create_stop();
+				bmd(ARM_MOTOR_PORT);
 				closeClaw();//grabs the blocks 
 				sleep(0.25);
 				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2500);//picks up the block
@@ -123,7 +127,7 @@ int main()
 				//Leg 4, picks up second set of blocks			
 				//mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
 				moveToDist(-60, 300); //back up into botguy
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1750);
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+2000);
 				
 				smoothTurn(90, 200);
 				moveStraight(150);
@@ -205,20 +209,22 @@ int main()
 				smoothTurn(94, 200);//Turns to face North
 				moveStraight(100);//Wall alignment w/ North PVC
 				sleep(.6);
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+700);//puts claw down on the ground
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1700);//puts claw down on the ground
 				openClaw();//opens claws to grab blocks
 				accel(0, -1400+250);//drives back to align with blocks
 				accel(-1400+250, 0);
 				smoothTurn(94, 200);//turns middle PVC to face blocks
-				bmd(ARM_MOTOR_PORT);//wait for arm to be down
 				moveToDist(150, 100);//drive forward to pick up blocks
+				bmd(ARM_MOTOR_PORT);//wait for arm to be down
 				closeClaw();//close claw, grab blocks
 				moveToDist(-200, 100);//pulls blocks back
 				openClawPartial();//opens claw to allow for second grab
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+700);//puts claw down on the groun
 				moveToDist(90, 100);//drives forward to align blocks
 				//moveStraight(-100);//backs up to allow for pickup
 				//sleep(0.35);
 				create_stop();
+				bmd(ARM_MOTOR_PORT);
 				closeClaw();//grabs the blocks 
 				sleep(0.25);
 				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2500);//picks up the blocks
