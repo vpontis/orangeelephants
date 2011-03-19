@@ -62,12 +62,12 @@ int main() {
 				
 				//LEG 4: drop all biofuels
 				turnArc(1, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-45,SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-55,SLOW_SPEED); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
 				moveToDist(-29, FAST_SPEED); //moves back to align with drop zone and avoid tape
-				pivot(0, -82, FAST_SPEED); //pivots to face drop zone
+				pivot(0, -83, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
 				int i;
@@ -110,7 +110,7 @@ int main() {
 				
 				//LEG 4: drop all biofuels			
 				turnArc(0, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-55,SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-60,SLOW_SPEED); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 100, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
