@@ -5,7 +5,8 @@
 const double  STOP_DISTANCE_RATIO = 0.6; //ratio of speed
 
 //light sensor
-const int LIGHT_PORT = 0;
+const int LIGHT_PORT_A = 1;
+const int LIGHT_PORT_B = 0;
 
 //Velocities to move the claw up and down the forklift
 const int  ARM_DOWN_VELOCITY = -400; //needs callibration
