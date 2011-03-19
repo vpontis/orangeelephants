@@ -25,6 +25,10 @@ int main()
 			}
 			
 			if(down_button())	{
+				moveArmUp();
+				moveArm(ARM_POS_START, ARM_DOWN_VELOCITY);
+				
+				set_servo_position(CLAW_PORT, 1200);
 				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN + 1750);
 				bmd(ARM_MOTOR_PORT);
 				printf("POSITION 1");
@@ -127,7 +131,7 @@ int main()
 				//Leg 4, picks up second set of blocks			
 				//mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
 				moveToDist(-60, 300); //back up into botguy
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+2000);
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1750);
 				
 				smoothTurn(90, 200);
 				moveStraight(150);
