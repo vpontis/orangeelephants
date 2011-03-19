@@ -70,7 +70,7 @@ int main() {
 				
 				//LEG 4: drop all biofuels
 				turnArc(1, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-45,SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-45-15, SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
@@ -78,6 +78,12 @@ int main() {
 				pivot(0, -80, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
+				int i;
+				for (i = 0; i < 7; i++)	{
+					moveToDist(-0.5,FAST_SPEED);
+					sleep(0.1);
+					moveToDist(2,SUPER_SPEED);
+				}
 				
 				//LEG 5: navigate
 				gateClose();
@@ -109,7 +115,7 @@ int main() {
 				moveToDist(-8, FAST_SPEED); //moves back to avoid tampering the red towers	
 				sleep(2.5);
 				pivot(1,-90,FAST_SPEED); //pivots -90 degrees CCW
-				moveToDist(-5,FAST_SPEED);//moves back to avoid pivoting on black tape
+				moveToDist(-6,FAST_SPEED);//moves back to avoid pivoting on black tape
 				pivot(0,-91,FAST_SPEED); //pivots -90 degrees CW
 				
 				moveToDist(82, FAST_SPEED);//head to North PVC, the two distances should add up to 120
@@ -145,11 +151,10 @@ int main() {
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
 				int i;
-				for (i = 0; i < 7; i++)
-				{
-				moveToDist(-0.5,FAST_SPEED);
-				sleep(0.1);
-				moveToDist(2,SUPER_SPEED);
+				for (i = 0; i < 7; i++)	{
+					moveToDist(-0.5,FAST_SPEED);
+					sleep(0.1);
+					moveToDist(2,SUPER_SPEED);
 				}
 				//LEG 5: navigate to other side				
 				gateClose();
