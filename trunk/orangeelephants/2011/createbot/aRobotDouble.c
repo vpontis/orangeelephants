@@ -31,6 +31,14 @@ int main()
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
 				moveToDist(1300, 500);//drive across the divider in the middle
+				sleep(8);
+				int i;
+				for(i=1; i<=10; i++)
+				{
+					moveToDist(150, 500);
+					sleep(.5);
+					moveToDist(-150,500);
+				}
 				ao();
 			}
 
@@ -54,8 +62,15 @@ int main()
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
 				moveToDist(1300, 500);//drive across the divider in the middle
-				//smoothTurn(-90, 200);
-				//moveToDist(200, 500);
+				sleep(8);
+				int i;
+				for(i=1; i<=10; i++)
+				{
+					moveToDist(150, 500);
+					sleep(.5);
+					moveToDist(-150,500);
+				}
+				ao();
 				ao();
 			}
 			
