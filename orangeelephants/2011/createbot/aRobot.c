@@ -144,7 +144,7 @@ int main()
 				create_stop();
 				bmd(ARM_MOTOR_PORT);
 				closeClaw();//close claw on the second set of blocks
-				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 100);//pick up second set of blocks
+				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 50);//pick up second set of blocks
 				sleep(.75);
 				
 				//Leg 5, stack second set of blocks
@@ -284,7 +284,7 @@ int main()
 				create_stop();
 				bmd(ARM_MOTOR_PORT);
 				closeClaw();//close claw on the second set of blocks
-				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 100);//pick up second set of blocks
+				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 50);//pick up second set of blocks
 				sleep(.75);
 				
 				
