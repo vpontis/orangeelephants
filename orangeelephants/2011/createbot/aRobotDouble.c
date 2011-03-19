@@ -29,9 +29,7 @@ int main()
 						break;					
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
-				moveToDist(1200, 500);//drive across the divider in the middle
-				smoothTurn(90, 200);//turn to face the north
-				moveToDist(200, 500);
+				moveToDist(1300, 500);//drive across the divider in the middle
 			}
 
 			if(b_button())
@@ -52,9 +50,7 @@ int main()
 						break;					
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
-				moveToDist(1200, 500);//drive across the divider in the middle
-				smoothTurn(-90, 200);//turn to face the north
-				moveToDist(200, 500);
+				moveToDist(1300, 500);//drive across the divider in the middle
 			}
 			/*
 			if(black_button())
