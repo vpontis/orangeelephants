@@ -15,7 +15,7 @@ int main() {
 			if(a_button()) 
 			{
 				wait_for_light(LIGHT_PORT);
-				shut_down_in(119);
+				shut_down_in(117);
 				printf("\n Starting side A");
 				//LEG 1: collects ping pong balls @ first station
 				moveToDist(49, MED_SPEED);
@@ -73,7 +73,7 @@ int main() {
 				moveToDist(-70,FAST_SPEED);
 				while(1){
 					moveToDist(60,FAST_SPEED);
-					moveToDist(-75,FAST_SPEED);
+					moveToDist(-70,FAST_SPEED);
 				}
 			}
 
@@ -109,7 +109,7 @@ int main() {
 				
 				//LEG 3: collects ping pong balls @ second station
 				
-				moveToDist(-19,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-20,FAST_SPEED); //backs up to allow for turn
 				turn(90,SLOW_SPEED); //pivots to face east PVC
 				moveToDist(60,FAST_SPEED); //aligns with east PVC
 				moveToDist(-6,FAST_SPEED); //backs up to allow for turn
@@ -121,22 +121,14 @@ int main() {
 				turnArc(0, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
 				moveToDist(-45,SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
-				pivot(0, 96, FAST_SPEED); //pivots to face final east PVC
+				pivot(0, 99, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
-				pivot(1, -85, FAST_SPEED); //pivots to face drop zone
+				moveToDist(-43,FAST_SPEED);
+				pivot(0, 85, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
 				
-				//LEG 5: navigate and drop blockers				
-				gateClose();
-				moveToDist(-20,FAST_SPEED); //back up
-				pivot(1, 90, FAST_SPEED); //pivot to face west PVC
-				moveToDist(5, FAST_SPEED);
-				
-				moveToDist(-40,FAST_SPEED); //go back to wall align to middle pvc
-				pivot(0,90, FAST_SPEED); //turn to face front of bot to north PVC
-				moveToDist(20,FAST_SPEED);
-				gateOpen();
+				//LEG 5: navigate to other side				
 				
 				moveToDist(-75,FAST_SPEED); //go to middle of board
 				pivot(0,-105,FAST_SPEED); //turn to face back to middle bump
@@ -147,7 +139,7 @@ int main() {
 				moveToDist(-70,FAST_SPEED);
 				while(1){
 					moveToDist(60,FAST_SPEED);
-					moveToDist(-75,FAST_SPEED);
+					moveToDist(-70,FAST_SPEED);
 				}	
 			}	
 	}		
