@@ -70,7 +70,7 @@ int main() {
 				
 				//LEG 4: drop all biofuels
 				turnArc(1, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-45-15, SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-60, SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
@@ -121,7 +121,7 @@ int main() {
 				moveToDist(82, FAST_SPEED);//head to North PVC, the two distances should add up to 120
 				pivot(0,-70,FAST_SPEED);//pivot and allow Create to pass
 				moveToDist(-13,FAST_SPEED);
-				sleep(10.5);//wait for Create to pass
+				sleep(10);//wait for Create to pass
 				moveToDist(13,FAST_SPEED);
 				pivot(0,85, FAST_SPEED);
 				moveToDist(72, FAST_SPEED);
@@ -142,7 +142,7 @@ int main() {
 				moveToDist(-5,FAST_SPEED);
 				//LEG 4: drop all biofuels			
 				turnArc(0, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-55,SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-50,SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 102, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
