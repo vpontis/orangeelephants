@@ -8,10 +8,10 @@ from looking from the back*/
 const int LIGHT_PORT = 0;
 
 //Motor ports
-const int L_MOTOR = 1;
-const int R_MOTOR = 0;
-const int L_BLOCKER_MOTOR = 2;
-const int GATE_MOTOR = 3;
+const int L_MOTOR = 3;
+const int R_MOTOR = 2;
+const int L_BLOCKER_MOTOR = 1;
+const int GATE_MOTOR = 0;
 
 //Servo ports
 const int R_BLOCKER_SERVO = 0;

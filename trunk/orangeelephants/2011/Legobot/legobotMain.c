@@ -16,15 +16,15 @@ int main() {
 			{
 					int initL = get_motor_position_counter(1);
 					int initR = get_motor_position_counter(0);
-					mav(1, 900);
-					mav(0, 900);
-					sleep(5);
-					freeze(0);
+					mav(3, 900);
+					mav(2, 900);
+					sleep(3);
+					freeze(2);
 					freeze(3);
-					int leftDist = initL-get_motor_position_counter(1);
-					int rightDist = initR-get_motor_position_counter(0);
-					printf("The left distance traveled is %d.\n", initL-get_motor_position_counter(1));
-					printf("The right distance traveled is %d.\n", initR-get_motor_position_counter(0));
+					int leftDist = initL-get_motor_position_counter(3);
+					int rightDist = initR-get_motor_position_counter(2);
+					printf("The left distance traveled is %d.\n", initL-get_motor_position_counter(3));
+					printf("The right distance traveled is %d.\n", initR-get_motor_position_counter(2));
 					float ratio = (float)leftDist/(float)rightDist;
 					printf("Comp ratio is %.3f or %.3f.\n", ratio, 1.0/ratio);
 			}
@@ -89,6 +89,8 @@ int main() {
 				sleep(0.5);
 				//LEG 5: navigate
 				gateClose();
+				
+			
 				moveToDist(-70,FAST_SPEED); //go to middle of board
 				pivot(1,-93,FAST_SPEED); //turn to face back to middle bump
 				//gateOpen(); //incase the other dump didn't empty the balls
@@ -100,6 +102,7 @@ int main() {
 					moveToDist(60,FAST_SPEED);
 					moveToDist(-70,FAST_SPEED);
 				}
+			
 			}
 
 			if(b_button()) //LEFT SIDE
@@ -163,6 +166,8 @@ int main() {
 				sleep(0.5);
 				//LEG 5: navigate to other side				
 				gateClose();
+				
+			
 				moveToDist(-75,FAST_SPEED); //go to middle of board
 				pivot(0,-98,FAST_SPEED); //turn to face back to middle bump
 				//gateOpen(); //incase the other dump didn't empty the balls
@@ -173,7 +178,9 @@ int main() {
 				while(1){
 					moveToDist(60,FAST_SPEED);
 					moveToDist(-70,FAST_SPEED);
-				}	
+				}
+				
+				
 			}	
 	}		
 }
