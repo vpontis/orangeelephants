@@ -16,7 +16,8 @@ void createInitialize()
 }
 
 void releasePlane(){
-	int numIncrements = 10;
+	int numIncrements = 30
+	;
 	int increment = (GRABBER_DOWN - get_servo_position(GRABBER_PORT))/numIncrements;
 	int pos = get_servo_position(GRABBER_PORT);
 	int i;
