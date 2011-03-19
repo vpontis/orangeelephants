@@ -110,7 +110,7 @@ int main() {
 				
 				//LEG 4: drop all biofuels			
 				turnArc(0, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-75,	SLOW_SPEED); //aligns with north PVC
+				moveToDist(-100,	SLOW_SPEED); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 100, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
