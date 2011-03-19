@@ -50,7 +50,7 @@ int main() {
 				moveToDist(87, FAST_SPEED);//head to North PVC, the two distances should add up to 140
 				pivot(1,-86,FAST_SPEED);//pivot out of the way
 				moveToDist(-15,FAST_SPEED);
-				sleep(8.5);//wait for create to pass bye
+				sleep(10.5);//wait for create to pass bye
 				moveToDist(10,FAST_SPEED);
 				pivot(1,84,FAST_SPEED);
 				moveToDist(65,FAST_SPEED);
@@ -121,7 +121,7 @@ int main() {
 				moveToDist(82, FAST_SPEED);//head to North PVC, the two distances should add up to 120
 				pivot(0,-70,FAST_SPEED);//pivot and allow Create to pass
 				moveToDist(-13,FAST_SPEED);
-				sleep(8.5);//wait for Create to pass
+				sleep(10.5);//wait for Create to pass
 				moveToDist(13,FAST_SPEED);
 				pivot(0,85, FAST_SPEED);
 				moveToDist(72, FAST_SPEED);
