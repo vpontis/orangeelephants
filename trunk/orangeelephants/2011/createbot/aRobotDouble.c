@@ -26,7 +26,7 @@ int main()
 				accel(500, 0);
 				smoothTurn(-90, 200);//Turns towards runway, robot faces West
 				while(1)	{
-					if(seconds() - initSeconds > 15) //wait 15 seconds before moving
+					if(seconds() - initSeconds > 14.5) //wait 15 seconds before moving
 						break;					
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
@@ -49,7 +49,7 @@ int main()
 				accel(500, 0);
 				smoothTurn(90, 200);//Turns towards runway, robot faces West
 				while(1)	{
-					if(seconds() - initSeconds > 15) //wait 15 seconds before moving
+					if(seconds() - initSeconds > 14.5) //wait 15 seconds before moving
 						break;					
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
