@@ -44,13 +44,13 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(-90, 185);//Faces North
+				smoothTurn(-90, 200);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
 				//moveToDist(150, NORMAL_SPEED);
 				moveToDist(-7, 200);//Backs up from wall to allow turn
-				smoothTurn(90, 200);//Turns towards runway, robot faces middle PVC
+				smoothTurn(90, 200);//Turns towards runway, roboct faces middle PVC
 				//Going in for airplane dropoff
 				moveStraight(-200);//Runs into middle PVC
 				sleep(2.75);
@@ -165,7 +165,7 @@ int main()
 				sleep(.5);
 		
 				create_stop();
-				moveToDist(-80, 130); //pulls back to drop off blocks
+				moveToDist(-65, 130); //pulls back to drop off blocks
 				slowReleaseClaw(); //opens claw to drop off blocks
 				moveToDist(-25, 150);//backs away from structure
 				disable_servos();
@@ -186,7 +186,7 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(90, 200);//Faces North
+				smoothTurn(93, 210);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
