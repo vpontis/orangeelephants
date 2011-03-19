@@ -44,14 +44,14 @@ int main() {
 				sleep(2.5);
 				pivot(0,-90,FAST_SPEED); //pivots -90 degrees CW
 				moveToDist(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
-				pivot(1,-91,FAST_SPEED); //pivots -91 (WITH NO ARC) WITH ARC: 100
+				pivot(1,-92,FAST_SPEED); //pivots -92(WITH NO ARC) WITH ARC: 100
 				//pivot(1,18,FAST_SPEED);
 				
 				//moveToDist(120,FAST_SPEED); //split into two distances in following lines
 				moveToDist(87, FAST_SPEED);//head to North PVC, the two distances should add up to 140
 				pivot(1,-86,FAST_SPEED);//pivot out of the way
 				moveToDist(-15,FAST_SPEED);
-				sleep(7);
+				sleep(7.5);
 				moveToDist(10,FAST_SPEED);
 				pivot(1,84,FAST_SPEED);
 				moveToDist(65,FAST_SPEED);
@@ -60,7 +60,7 @@ int main() {
 				//moveToDist(80,FAST_SPEED); //finish distance
 				
 				//LEG 3: collects ping pong balls @ second station				
-				moveToDist(-22,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-21,FAST_SPEED); //backs up to allow for turn
 				turn(-90,SLOW_SPEED); //pivots to face west PVC
 				moveToDist(40,FAST_SPEED); //aligns with west PVC
 				moveToDist(-5,FAST_SPEED); //backs up to allow for turn
@@ -76,10 +76,17 @@ int main() {
 				pivot(1, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
 				moveToDist(-29, FAST_SPEED); //moves back to align with drop zone and avoid tape
-				pivot(0, -80, FAST_SPEED); //pivots to face drop zone
+				pivot(0, -81, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
-				
+				int i;
+                for (i = 0; i < 7; i++)
+				{
+					moveToDist(-0.5,FAST_SPEED);
+					sleep(0.1);
+                    moveToDist(2,SUPER_SPEED);
+                }
+				sleep(0.5);
 				//LEG 5: navigate
 				gateClose();
 				moveToDist(-70,FAST_SPEED); //go to middle of board
@@ -116,7 +123,7 @@ int main() {
 				moveToDist(82, FAST_SPEED);//head to North PVC, the two distances should add up to 120
 				pivot(0,-70,FAST_SPEED);//pivot and allow Create to pass
 				moveToDist(-13,FAST_SPEED);
-				sleep(6.5);//wait for Create to pass
+				sleep(7);//wait for Create to pass
 				moveToDist(13,FAST_SPEED);
 				pivot(0,85, FAST_SPEED);
 				moveToDist(72, FAST_SPEED);
@@ -145,6 +152,14 @@ int main() {
 				pivot(0, 85, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
+				
+				int i;
+                for (i = 0; i < 7; i++)
+				{
+					moveToDist(-0.5,FAST_SPEED);
+					sleep(0.1);
+                    moveToDist(2,SUPER_SPEED);
+                }
 				sleep(0.5);
 				//LEG 5: navigate to other side				
 				gateClose();
@@ -152,7 +167,7 @@ int main() {
 				pivot(0,-98,FAST_SPEED); //turn to face back to middle bump
 				//gateOpen(); //incase the other dump didn't empty the balls
 				moveToDist(-110,SUPER_SPEED); //go backward over bump
-					
+
 				//LEG 6: screwing with the opponent bots
 				moveToDist(-70,FAST_SPEED);
 				while(1){
