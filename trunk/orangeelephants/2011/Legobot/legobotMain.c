@@ -28,15 +28,15 @@ int main() {
 					float ratio = (float)leftDist/(float)rightDist;
 					printf("Comp ratio is %.3f or %.3f.\n", ratio, 1.0/ratio);
 			}
-			if(a_button()) 
+			if(a_button()) //RIGHT SIDE
 			{
 				wait_for_light(LIGHT_PORT);
 				shut_down_in(117);
 				printf("\n Starting side A");
 				//LEG 1: collects ping pong balls @ first station
-				moveToDist(49, MED_SPEED);
+				moveToDist(48, MED_SPEED);
 				sleep(0.2);
-				moveToDist(3, MED_SPEED);
+				moveToDist(2.5, MED_SPEED);
 				sleep(.7);
 				
 				//LEG 2: navigates to north PVC
@@ -44,13 +44,14 @@ int main() {
 				sleep(2.5);
 				pivot(0,-90,FAST_SPEED); //pivots -90 degrees CW
 				moveToDist(-7,FAST_SPEED);//moves back to avoid pivoting on black tape
-				pivot(1,-100,FAST_SPEED); //pivots -100 degrees CCW
+				pivot(1,-91,FAST_SPEED); //pivots -91 (WITH NO ARC) WITH ARC: 100
 				//pivot(1,18,FAST_SPEED);
+				
 				//moveToDist(120,FAST_SPEED); //split into two distances in following lines
 				moveToDist(87, FAST_SPEED);//head to North PVC, the two distances should add up to 140
 				pivot(1,-86,FAST_SPEED);//pivot out of the way
 				moveToDist(-15,FAST_SPEED);
-				sleep(10.5);//wait for create to pass bye
+				sleep(7);
 				moveToDist(10,FAST_SPEED);
 				pivot(1,84,FAST_SPEED);
 				moveToDist(65,FAST_SPEED);
@@ -62,7 +63,7 @@ int main() {
 				moveToDist(-22,FAST_SPEED); //backs up to allow for turn
 				turn(-90,SLOW_SPEED); //pivots to face west PVC
 				moveToDist(40,FAST_SPEED); //aligns with west PVC
-				moveToDist(-6,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-5,FAST_SPEED); //backs up to allow for turn
 				turn(-87,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDist(20, FAST_SPEED); //collects all biofuels
 				sleep(.7);
@@ -70,7 +71,7 @@ int main() {
 				
 				//LEG 4: drop all biofuels
 				turnArc(1, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-60, SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-45,SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
@@ -78,12 +79,6 @@ int main() {
 				pivot(0, -80, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
-				int i;
-				for (i = 0; i < 7; i++)	{
-					moveToDist(-0.5,FAST_SPEED);
-					sleep(0.1);
-					moveToDist(2,SUPER_SPEED);
-				}
 				
 				//LEG 5: navigate
 				gateClose();
@@ -100,28 +95,28 @@ int main() {
 				}
 			}
 
-			if(b_button())
+			if(b_button()) //LEFT SIDE
 			{
 				wait_for_light(LIGHT_PORT);
 				shut_down_in(117);
 				printf("\n Starting side B");
 				//LEG 1: collects ping pong balls @ first station
-				moveToDist(50.5, MED_SPEED);
+				moveToDist(48, MED_SPEED);
 				sleep(.2);
-				moveToDist(3, MED_SPEED);
+				moveToDist(2, MED_SPEED);
 				sleep(.7);
 				
 				//LEG 2: navigates to north PVC
-				moveToDist(-8, FAST_SPEED); //moves back to avoid tampering the red towers	
+				moveToDist(-6, FAST_SPEED); //moves back to avoid tampering the red towers	
 				sleep(2.5);
 				pivot(1,-90,FAST_SPEED); //pivots -90 degrees CCW
-				moveToDist(-6,FAST_SPEED);//moves back to avoid pivoting on black tape
-				pivot(0,-91,FAST_SPEED); //pivots -90 degrees CW
+				moveToDist(-5,FAST_SPEED);//moves back to avoid pivoting on black tape
+				pivot(0,-90,FAST_SPEED); //pivots -90 degrees CW
 				
 				moveToDist(82, FAST_SPEED);//head to North PVC, the two distances should add up to 120
 				pivot(0,-70,FAST_SPEED);//pivot and allow Create to pass
 				moveToDist(-13,FAST_SPEED);
-				sleep(10);//wait for Create to pass
+				sleep(6.5);//wait for Create to pass
 				moveToDist(13,FAST_SPEED);
 				pivot(0,85, FAST_SPEED);
 				moveToDist(72, FAST_SPEED);
@@ -135,27 +130,22 @@ int main() {
 				moveToDist(-20,FAST_SPEED); //backs up to allow for turn
 				turn(90,SLOW_SPEED); //pivots to face east PVC
 				moveToDist(60,FAST_SPEED); //aligns with east PVC
-				moveToDist(-6,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-5,FAST_SPEED); //backs up to allow for turn
 				turn(89,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDist(21, FAST_SPEED); //collects all biofuels
 				sleep(.7);
 				moveToDist(-5,FAST_SPEED);
 				//LEG 4: drop all biofuels			
 				turnArc(0, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-50,SLOW_SPEED-100); //aligns with north PVC
+				moveToDist(-55,SLOW_SPEED-100); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 102, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
-				moveToDist(-42.5,FAST_SPEED);
+				moveToDist(-43,FAST_SPEED);
 				pivot(0, 85, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
-				int i;
-				for (i = 0; i < 7; i++)	{
-					moveToDist(-0.5,FAST_SPEED);
-					sleep(0.1);
-					moveToDist(2,SUPER_SPEED);
-				}
+				sleep(0.5);
 				//LEG 5: navigate to other side				
 				gateClose();
 				moveToDist(-75,FAST_SPEED); //go to middle of board
