@@ -186,7 +186,7 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(100, 220);//Faces North
+				smoothTurn(90, 200);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
@@ -298,7 +298,7 @@ int main()
 				sleep(.25);
 				accel(100, 20);
 				//run_for(3, moveArmUp()); //makes sure arm is totally up
-				smoothTurn(91, 200); //face other blocks
+				smoothTurn(91, 190); //face other blocks
 				
 				accel(0, 120);//goes forwards towards other blocks and pushes them
 				sleep(.3);
