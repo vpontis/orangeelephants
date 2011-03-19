@@ -13,7 +13,6 @@ void createInitialize()
 		printf("Connection failed.");
 	}
 	create_full();
-	
 }
 
 void releasePlane(){
