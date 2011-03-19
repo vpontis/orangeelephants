@@ -13,7 +13,7 @@ int main()
 		while(1)	{
 			if(a_button())
 			{					
-				//wait_for_light(LIGHT_PORT);
+				wait_for_light(LIGHT_PORT);
 				float initSeconds = seconds();
 				printf("Init seconds = %d.\n", initSeconds);
 				shut_down_in(120);
@@ -34,7 +34,7 @@ int main()
 
 			if(b_button())
 			{	
-				//wait_for_light(LIGHT_PORT);
+				wait_for_light(LIGHT_PORT);
 				float initSeconds = seconds();
 				printf("Init seconds = %d.\n", initSeconds);
 				shut_down_in(120);
@@ -51,6 +51,8 @@ int main()
 				}
 				printf("The time is %f.\n", seconds()-initSeconds);
 				moveToDist(1300, 500);//drive across the divider in the middle
+				//smoothTurn(-90, 200);
+				//moveToDist(200, 500);
 			}
 			
 		}//keep, ends while loop
