@@ -66,7 +66,7 @@ int main() {
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(1, 94, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
-				moveToDist(-29, FAST_SPEED); //moves back to align with drop zone and avoid tape
+				moveToDist(-30, FAST_SPEED); //moves back to align with drop zone and avoid tape
 				pivot(0, -83, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
@@ -102,7 +102,7 @@ int main() {
 				moveToDist(-19,FAST_SPEED); //backs up to allow for turn
 				turn(90, SLOW_SPEED); //pivots to face east PVC
 				moveToDist(60+10,FAST_SPEED); //aligns with east PVC
-				moveToDist(-6,FAST_SPEED); //backs up to allow for turn
+				moveToDist(-8,FAST_SPEED); //backs up to allow for turn
 				turn(88,SLOW_SPEED); //pivots to face south PVC & ping pong balls
 				moveToDist(21, FAST_SPEED); //collects all biofuels
 				sleep(.7);
@@ -110,11 +110,11 @@ int main() {
 				
 				//LEG 4: drop all biofuels			
 				turnArc(0, 50, -MED_SPEED, -4); //arcs back and hits north PVC <-reverted
-				moveToDist(-60,SLOW_SPEED); //aligns with north PVC
+				moveToDist(-75,	SLOW_SPEED); //aligns with north PVC
 				moveToDist(4, FAST_SPEED); //moves slightly forward to leave room for pivot
 				pivot(0, 100, FAST_SPEED); //pivots to face final east PVC
 				moveToDist(100, FAST_SPEED); //moves and aligns with east PVC
-				moveToDist(-42.5,FAST_SPEED);
+				moveToDist(-43.5,FAST_SPEED);//backs up before dropping off balls
 				pivot(0, 86, FAST_SPEED); //pivots to face drop zone
 				moveToDist(50, FAST_SPEED); //drives to and aligns with drop zone (north PVC)
 				gateOpen(); //drops all biofuels
