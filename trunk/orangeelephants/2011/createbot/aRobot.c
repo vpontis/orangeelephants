@@ -44,7 +44,7 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(-90, 200);//Faces North
+				smoothTurn(-86, 200);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
@@ -52,7 +52,7 @@ int main()
 				moveToDist(-7, 200);//Backs up from wall to allow turn
 				smoothTurn(90, 200);//Turns towards runway, robot faces middle PVC
 				//Going in for airplane dropoff
-				moveStraight(-150);//Runs into middle PVC
+				moveStraight(-200);//Runs into middle PVC
 				sleep(2.75);
 				create_stop();
 				releasePlane();
@@ -69,7 +69,7 @@ int main()
 				accel(-1400+250, 0);
 				smoothTurn(-90, 200);//turns to middle PVC to face blocks
 				bmd(ARM_MOTOR_PORT);//wait for arm to be down
-				moveToDist(90, 100);//drive forward to pick up blocks
+				moveToDist(120, 100);//drive forward to pick up blocks
 				closeClaw();//close claw, grab blocks
 				moveToDist(-200, 100);//pulls blocks back
 				openClawPartial();//opens claw to allow for second grab
@@ -137,14 +137,14 @@ int main()
 				closeClaw();//close the claw to grab the blocks
 				moveToDist(-350, 100); //back up a bit pulling the blocks for alignment
 				openClawPartial(); //open claw again to allow for grab
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);//puts claw down on the ground
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN-700);//puts claw down on the ground
 				moveToDist(150, 100); //go forward again pushing blocks for alignment
 				//moveStraight(-100); //back up a bit
 				//sleep(0.2);
 				create_stop();
 				bmd(ARM_MOTOR_PORT);
 				closeClaw();//close claw on the second set of blocks
-				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 200);//pick up second set of blocks
+				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 100);//pick up second set of blocks
 				sleep(.75);
 				
 				//Leg 5, stack second set of blocks
@@ -157,7 +157,7 @@ int main()
 				sleep(.25);
 				accel(100, 20);
 				//run_for(3, moveArmUp()); //makes sure arm is totally up
-				smoothTurn(-90, 200); //face other blocks
+				smoothTurn(-91, 200); //face other blocks
 				
 				accel(0, 100);//goes forwards towards other blocks and pushes them
 				sleep(.3);
@@ -186,7 +186,7 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(110, 200);//Faces North
+				smoothTurn(100, 200);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
@@ -263,7 +263,7 @@ int main()
 				//Leg 4, picks up second set of blocks			
 				//mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
 				moveToDist(-60, 300); //back up into botguy
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1500); //lower arm to get ready to pick up blocks 	
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1750); //lower arm to get ready to pick up blocks 	
 			
 				smoothTurn(-90, 200);
 				moveStraight(150);
@@ -277,14 +277,14 @@ int main()
 				closeClaw();//close the claw to grab the blocks
 				moveToDist(-350, 100); //back up a bit pulling the blocks for alignment
 				openClawPartial(); //open claw again to allow for grab
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN);//puts claw down on the ground
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN-700);//puts claw down on the ground
 				moveToDist(150, 100); //go forward again pushing blocks for alignment
 				//moveStraight(-100); //back up a bit
 				//sleep(0.2);
 				create_stop();
 				bmd(ARM_MOTOR_PORT);
 				closeClaw();//close claw on the second set of blocks
-				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 200);//pick up second set of blocks
+				mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, 100);//pick up second set of blocks
 				sleep(.75);
 				
 				
@@ -298,7 +298,7 @@ int main()
 				sleep(.25);
 				accel(100, 20);
 				//run_for(3, moveArmUp()); //makes sure arm is totally up
-				smoothTurn(90, 200); //face other blocks
+				smoothTurn(91, 200); //face other blocks
 				
 				accel(0, 120);//goes forwards towards other blocks and pushes them
 				sleep(.3);
