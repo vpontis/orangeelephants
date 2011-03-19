@@ -44,7 +44,7 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(-86, 200);//Faces North
+				smoothTurn(-90, 185);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
@@ -123,15 +123,15 @@ int main()
 				//Leg 4, picks up second set of blocks			
 				//mtp(ARM_MOTOR_PORT, ARM_UP_VELOCITY, ARM_POS_START+2000);//picks up arm after dropping off blocks
 				moveToDist(-60, 300); //back up into botguy
-				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1500);
+				mtp(ARM_MOTOR_PORT, ARM_DOWN_VELOCITY, ARM_POS_DOWN+1750);
 				
 				smoothTurn(90, 200);
 				moveStraight(150);
 				sleep(.6);
-				moveToDist(-1150, 500);
+				moveToDist(-1170, 500);
 				turn(85, 200);
 				
-				moveToDist(90, 300);//drive at blocks
+				moveToDist(95, 300);//drive at blocks
 				//first grab
 				bmd(ARM_MOTOR_PORT); //wait until the claw is on the ground
 				closeClaw();//close the claw to grab the blocks
@@ -157,7 +157,7 @@ int main()
 				sleep(.25);
 				accel(100, 20);
 				//run_for(3, moveArmUp()); //makes sure arm is totally up
-				smoothTurn(-91, 200); //face other blocks
+				smoothTurn(-90, 200); //face other blocks
 				
 				accel(0, 100);//goes forwards towards other blocks and pushes them
 				sleep(.3);
@@ -186,7 +186,7 @@ int main()
 				scraperNeutral();//puts treads up, so ready to scrape and not interfeing with claw
 				//set_servo_position(CLAW_PORT,CLAW_TOTAL_OPEN);
 				moveToDistAccel(-5, NORMAL_SPEED);//first movement, backs up to travel down lane
-				smoothTurn(100, 200);//Faces North
+				smoothTurn(100, 220);//Faces North
 				accel(0, 500);
 				moveToDist(1100, 500);//Travels North the length of the board
 				accel(500, 50);
