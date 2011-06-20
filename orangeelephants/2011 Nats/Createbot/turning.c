@@ -17,7 +17,7 @@ void turn(int degrees) {
 	}
 }
 
-void turnCCW() {
+void turnCCW() { //90 degree turn counterclockwise
 	set_create_total_angle(0); 
 	create_drive(101,1); 
 	sleep(2.057252314);
@@ -25,7 +25,7 @@ void turnCCW() {
 }
 
 
-void turnCW() {
+void turnCW() { //90 degree turn clockwise
 	set_create_total_angle(0); 
 	create_drive(-101,1); 
 	sleep(2.057252314);
