@@ -17,14 +17,14 @@ const int ARM_PORT = 0;
 const int CLAW_PORT = 2;
  
 //Speeds
-const int ARM_INCR = 15; //increments used for while loops
-const int CLAW_INCR = 15;
+const int ARM_INCR = 3; //increments used for while loops
+const int CLAW_INCR = 6;
 
 //Distances
 
 
 //Positions
-const int ARM_VERTICAL = 250;
+const int ARM_VERTICAL = 400;
 const int ARM_HORIZONTAL = 1200;
 const int CLAW_OPEN = 1900;
 const int CLAW_CLOSE = 1200;
