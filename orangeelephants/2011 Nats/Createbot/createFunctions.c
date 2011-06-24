@@ -31,3 +31,36 @@ void moveSlider(int pos, int speed){
 void closeHopper(){
 	set_servo_position(HOPPER, HOPPER_CLOSE);
 }
+
+void openClaw() {
+	set_servo_position(CLAWL_SERVO_PORT, CLAWL_OPEN_POS); 
+	set_servo_position(CLAWR_SERVO_PORT, CLAWR_OPEN_POS); 
+}
+
+void closeClaw() {
+	set_servo_position(CLAWL_SERVO_PORT, CLAWL_CLOSE_POS); 
+	set_servo_position(CLAWR_SERVO_PORT, CLAWR_CLOSE_POS); 
+}
+
+void calibrateArm() { //beginning of game
+	printf("Set arm at the bottom. Black Button to break"); 
+	while (1) {	
+		if (up_button()) {
+			mrp(ARM_MOTOR_PORT, 500, 20); 
+		}
+		if (down_button()) {
+			mrp(ARM_MOTOR_PORT, -500, -20); 
+		}
+		if (black_button()) {
+			moveArm(ARM_POS_START);  
+			clear_motor_position_counter(ARM_MOTOR_PORT); 
+			break; 
+		}
+	}
+}
+
+void moveArm(int pos) {
+	printf("moving arm"); 
+	mtp(ARM_MOTOR_PORT, 850, pos); //850 needs to be calibrated
+	bmd(ARM_MOTOR_PORT); 
+}
