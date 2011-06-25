@@ -9,9 +9,8 @@ int main()
 	
 	printf("A Button to start"); 
 	while (1) {
-		if (a_button()) {
+		if (a_buttton()) {
 			raiseArm(); 
-			openClaw();  
 			moveToDist(60, 500); 
 			lowerArm(); 
 			closeClaw(); 
@@ -19,4 +18,3 @@ int main()
 		}
 	}
 }
-	
