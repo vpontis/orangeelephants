@@ -8,8 +8,8 @@ from looking from the back*/
 
 
 //Motor ports
-const int LEFT_MOTOR = 3;
-const int RIGHT_MOTOR = 2;
+const int L_MOTOR = 3;
+const int R_MOTOR = 0;
 
 
 //Servo ports
@@ -21,7 +21,7 @@ const int ARM_INCR = 3; //increments used for while loops
 const int CLAW_INCR = 6;
 
 //Distances
-
+const float TICKS_PER_CM = 58;
 
 //Positions
 const int ARM_VERTICAL = 400;
