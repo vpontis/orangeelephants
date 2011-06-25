@@ -52,7 +52,7 @@ void calibrateArm() { //beginning of game
 			mrp(ARM_MOTOR_PORT, -500, -20); 
 		}
 		if (black_button()) {
-			moveArm(ARM_POS_START);  
+			mrp(ARM_MOTOR_PORT, 800, 6195);  
 			clear_motor_position_counter(ARM_MOTOR_PORT); 
 			break; 
 		}
