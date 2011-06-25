@@ -2,22 +2,34 @@
 #include "legobotConstants.h"
 
 int main() {
-	set_servo_position(CLAW_PORT,1800);
-	set_servo_position(ARM_PORT,1100);
+	set_servo_position(CLAW_PORT,1200); //initialize closed
+	set_servo_position(ARM_PORT,500); // initialize up
 	enable_servos();
 
+//	closeClaw();
+//	printf("closing");
+//	sleep(2);		
+//	raiseArm();
+//	printf("raising");	
+//	sleep(2);
+
+	interArm();
+	sleep(2);
+
 	openClaw();
-	printf("sleep");
-	sleep(4);
-	raiseArm();
-	printf("sleeping");
-	sleep(4);
+	sleep(2);
+
 	lowerArm();
-	printf("sleeping");
-	sleep(4);
+	sleep(2);
+
 	closeClaw();
-	printf("sleep");
-	sleep(4);
+	sleep(2);
+
 	raiseArm();
+	printf("done");	
+	sleep(4);
+
+	moveToDist(30,1000);
+
 }
 
