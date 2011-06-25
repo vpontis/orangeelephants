@@ -239,3 +239,7 @@ void moveToVictor(int distance, int speed)
                 createDrive(0);
         }
 }
+
+void createStop(){
+	moveStraight(0);
+}
