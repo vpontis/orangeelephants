@@ -1,12 +1,12 @@
 #include "createFunctions.c"
-//#include "createMotor.c"
+
 
 int main()
 {
 	
 	enable_servos();
 	createInitialize();
-	printf("Press B to callibrate slider. \n");
+	printf("Press B to callibrate slider. Press A to run. \n");
 	while(1){
 		if(b_button()){
 			printf("Press B when done. \n");
@@ -32,6 +32,10 @@ int main()
 					break;
 				}
 			}
+		}
+		if(a_button()){
+			printf("Running... \n");
+			createCenter(0);
 		}
 	}
 	
