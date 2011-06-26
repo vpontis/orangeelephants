@@ -24,4 +24,9 @@ const int NORMAL_SPEED = 500;
 //hopper positions
 const int  HOPPER_CLOSE = 1850;
 
+//vision constants
+const int MIN_CONFIDENCE = 10;
+const int X_MAX = 159;
+const int MIN_BLOB_AREA = 1500;
+
 #endif
