@@ -27,7 +27,7 @@ const int  HOPPER = 0;
 const int  SLIDER_BACK = 3;
 const int  SLIDER_FRONT = 0;
 const int  ARM_MOTOR_PORT = 1; 
-const int  CLAWL_SERVO_PORT = 0; 
+const int  CLAWL_SERVO_PORT = 1; 
 const int  CLAWR_SERVO_PORT = 3; 
 
 //speed
@@ -36,5 +36,10 @@ const int NORMAL_SPEED = 500;
 
 //hopper positions
 const int  HOPPER_CLOSE = 1850;
+
+//vision constants
+const int MIN_CONFIDENCE = 10;
+const int X_MAX = 159;
+const int MIN_BLOB_AREA = 1500;
 
 #endif

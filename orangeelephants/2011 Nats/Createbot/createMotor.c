@@ -1,10 +1,22 @@
+/**
+** \file createMotor.c
+** \brief Functions for controlling create movement. 
+**
+** Create movement methods 
+**
+*/
+
+
 #include "createMotor.h"
 #include "createConstants.h"
 
-/**
-accel(int initSpeed, int finalSpeed)
-Accelerates or decelerates the robot from one speed to the next in 20 incremental speeds. 
-Robot continues on driving straight at finalSpeed.
+
+/** \brief Experimental acceleration function
+
+	Accelerates or decelerates the robot from one speed to the next in 20 incremental speeds. 
+	Robot continues on driving straight at finalSpeed.
+	\param initSpeed Velocity to begin accelerating at
+	\param finalSpeed Final velocity to accelerate to
 */
 void accel(int initSpeed, int finalSpeed)
 {
@@ -37,6 +49,12 @@ void accel(int initSpeed, int finalSpeed)
 	create_drive_straight(finalSpeed);
 }
 
+
+/** \brief Accelerate from current speed to specified speed
+	
+	Utilizes the accel function and uses current speed as initSpeed.
+	\param finalSpeed Final speed to accelerate to
+*/
 void createDrive(int finalSpeed)
 {
 	int initSpeed = get_create_requested_velocity(.1);
@@ -44,11 +62,12 @@ void createDrive(int finalSpeed)
 	accel(initSpeed, finalSpeed);
 }
 
+
 /** \brief Moves the robot a distance at a constant speed
 
 	Does not work well for very short distances.
 	\param distance Desired distance in mm
-	\param speed Desired speed in ??
+	\param speed Desired speed in mm/sec
 */
 void moveToDist(int distance, int speed) 
 { 
@@ -73,8 +92,8 @@ void moveToDist(int distance, int speed)
 	\param distance Desired distance in mm
 	\param initSpeed 
 	\param finalSpeed 
+	\deprecated Requires refinement and is inaccurate. Use \ref accel or \ref moveToVictor
 */
-
 void moveToDistAccel(int distance, int finalSpeed) 
 {
 	//Input velocity is ALWAYS positive
@@ -139,7 +158,10 @@ void moveToDistAccel(int distance, int finalSpeed)
 }
 
 
-/*
+/** \brief Function to turn the create a specified degree.
+	\param deg Relative degrees to turn. Positive is CW
+	\param vel Speed to turn at. Always positive.
+*/
 void turn(float deg, int vel)	{
 	deg = -deg; 
 	set_create_total_angle(0);
@@ -156,7 +178,14 @@ void turn(float deg, int vel)	{
 	create_stop();
 }
 
-//Optimized at d = 90, v = 200. Test at other values. 
+
+/** \brief Smooth turn function to turn a specified degree. 
+	Create will accelerate to finalVel at totaltime/2 and then decelerate to 0. 
+	Optimized at deg = 90, vel = 200.  
+	\param deg Relative degrees to turn. Positive is CW
+	\param vel Speed to turn at. Always positive.
+	\todo Testing needed at other values.
+*/
 void smoothTurn(float deg, int finalVel)	{
 	deg = -deg;
 	set_create_total_angle(0);
@@ -217,11 +246,23 @@ void smoothTurn(float deg, int finalVel)	{
 	create_stop();
 	
 }
+
+
+/** \brief Move straight a specified velocity
+
+	Create will accelerate to finalVel at totaltime/2 and then decelerate to 0. 
+	Optimized at deg = 90, vel = 200.  
+	\param speed Speed in mm/sec to move at
 */
 void moveStraight(int speed){
 	create_drive_straight(-speed);
 }
 
+/** \brief Experimental acceleration function
+	
+	\param distance
+	\param speed
+*/
 void moveToVictor(int distance, int speed) 
 { 
         set_create_distance(0); 	
@@ -238,4 +279,41 @@ void moveToVictor(int distance, int speed)
                 while (get_create_distance(.1) > distance) {}
                 createDrive(0);
         }
+}
+
+/** \brief Stops create movement
+*/
+void createStop(){
+	moveStraight(0);
+}
+
+/** \brief Uses vision to center create on a colored blob
+	\todo Clean up to allow for easier editing
+	
+	Utilizes visionAvgX to target the center of the blob. Moves left
+	or right depending in order to center. Callibrated for red blocks.
+	\param ch Color channel to use. 
+*/
+void createCenter(int ch){
+	printf("Centering... \n");
+	int avgX = visionAvgX(ch);
+	int threshold = 1;
+	while(avgX != 0){
+		printf("Readjusting... \n");
+		avgX = visionAvgX(ch);
+		if(avgX > threshold){
+			create_drive_direct(-100, 100);
+			sleep(.01);
+			createStop();
+			sleep(.1);
+			
+		}
+		else{
+			create_drive_direct(100, -100);
+			sleep(.01);
+			createStop();
+			sleep(.1);
+		}
+	}
+	printf("Centered!");
 }
