@@ -26,9 +26,10 @@ float cmToTicks(float cmDistance) {         // return ticks the motors need to t
         return (float) (cmDistance * TICKS_PER_CM);        
 }
 
-void raiseArm() {
+/* #####obsolete with moveArm; just feed in the required constant#####
+void raiseArm() {	
 	int position = get_servo_position(ARM_PORT);
-	while (position >= ARM_VERTICAL) {
+	while (position >= ARM_VERT) {
 		set_servo_position(ARM_PORT,position);
 		position -= ARM_INCR;
 	}
@@ -39,6 +40,18 @@ void lowerArm() {
 	while (position <= ARM_HORIZONTAL) {
 		set_servo_position(ARM_PORT,position);
 		position += ARM_INCR;
+	}
+} */
+
+void moveArm(pos) {
+	int position = get_servo_position(ARM_PORT);
+	while (position < pos) {
+		set_servo_position(ARM_PORT,position);
+		position += ARM_INCR;
+	}
+	while (position > pos) {
+		set_servo_position(ARM_PORT,position);
+		position -= ARM_INCR;
 	}
 }
 
@@ -55,13 +68,5 @@ void closeClaw() {
 	while (position >= CLAW_CLOSE) {
 		set_servo_position(CLAW_PORT, position);
 		position -= CLAW_INCR;
-	}
-}
-
-void interArm() {
-	int position = get_servo_position(ARM_PORT);
-	while (position < ARM_INTERMEDIATE) {
-		set_servo_position(ARM_PORT,position);
-		position += ARM_INCR;
 	}
 }
