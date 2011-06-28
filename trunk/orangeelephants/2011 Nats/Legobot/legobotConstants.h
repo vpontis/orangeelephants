@@ -23,9 +23,9 @@ const int CLAW_INCR = 6;
 const float TICKS_PER_CM = 58;
 
 //Positions
-const int ARM_VERTICAL = 500;
+const int ARM_VERT = 400;
 const int ARM_HORIZONTAL = 1200;
-const int ARM_INTERMEDIATE = 1000;
+//const int ARM_INTERMEDIATE = 550;
 const int CLAW_OPEN = 1800;
 const int CLAW_CLOSE = 1200;
 
