@@ -1,5 +1,6 @@
 #include "createFunctions.h"
-#include "createConstants.h"
+#include "createVision.c"
+#include "createMotor.c"
 
 void createInitialize()
 {
@@ -46,10 +47,10 @@ void calibrateArm() { //beginning of game
 	printf("Set arm at the bottom. Black Button to break"); 
 	while (1) {	
 		if (up_button()) {
-			mrp(ARM_MOTOR_PORT, 500, 20); 
+			mrp(ARM_MOTOR_PORT, 800, 20); 
 		}
 		if (down_button()) {
-			mrp(ARM_MOTOR_PORT, -500, -20); 
+			mrp(ARM_MOTOR_PORT, -800, -20); 
 		}
 		if (black_button()) {
 			mrp(ARM_MOTOR_PORT, 800, 6195);  
