@@ -162,20 +162,19 @@ void moveToDistAccel(int distance, int finalSpeed)
 	\param deg Relative degrees to turn. Positive is CW
 	\param vel Speed to turn at. Always positive.
 */
-void turn(float deg, int vel)	{
-	deg = -deg; 
-	set_create_total_angle(0);
-	if(deg > 0)	{
-		//create_spin_CCW(vel);
-		create_drive_direct(vel, -vel); //turns CCW
-		while(get_create_total_angle(.05) < deg){}
+void turn(int degrees) {
+	double ratio = degrees/90.0;
+	if (degrees < 0) { 
+		ratio = -ratio;
+		create_drive(101, 1); 
+		sleep(2.057252314*ratio);
+		create_stop(); 
 	}
-	else{	
-		//create_spin_CW(vel);
-		create_drive_direct(-vel, vel);
-		while(get_create_total_angle(.05) > deg){}
+	else {
+		create_drive(-101,1); 
+		sleep(2.057252314*ratio);
+		create_stop(); 
 	}
-	create_stop();
 }
 
 
@@ -317,3 +316,5 @@ void createCenter(int ch){
 	}
 	printf("Centered!");
 }
+
+
