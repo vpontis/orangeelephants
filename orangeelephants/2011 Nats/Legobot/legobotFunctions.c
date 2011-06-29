@@ -70,3 +70,17 @@ void closeClaw() {
 		position -= CLAW_INCR;
 	}
 }
+
+void pivot(int aroundLeftWheel, float degrees, int speed) 
+{
+	int ticks = (degrees/360) * TICKS_PER_REV; // fraction of circle's circumference * ticks for a whole circle
+											   // 1 circle = circle with radius distance between middle of the wheels
+	if(aroundLeftWheel == 1) {
+		mrp(R_MOTOR, speed, ticks);
+		bmd(R_MOTOR);
+	}
+	else {
+		mrp(L_MOTOR, speed, ticks);
+		bmd(L_MOTOR);
+	}
+}	

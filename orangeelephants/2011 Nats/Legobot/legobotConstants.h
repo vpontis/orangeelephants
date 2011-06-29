@@ -30,5 +30,5 @@ const int CLAW_OPEN = 1800;
 const int CLAW_CLOSE = 1200;
 
 //misc
-
+const float TICKS_PER_REV = 4373.10; //( 3.14159* 2 * 12 <- dist btw center of two wheels ) * TICKS_PER_CM (58) = 4373.10
 #endif
