@@ -1,4 +1,5 @@
 #include "createFunctions.h"
+#include "createConstants.h"
 #include "createVision.c"
 #include "createMotor.c"
 
@@ -54,6 +55,7 @@ void calibrateArm() { //beginning of game
 		}
 		if (black_button()) {
 			mrp(ARM_MOTOR_PORT, 800, 6195);  
+			bmd(ARM_MOTOR_PORT); 
 			clear_motor_position_counter(ARM_MOTOR_PORT); 
 			break; 
 		}
@@ -63,5 +65,5 @@ void calibrateArm() { //beginning of game
 void moveArm(int pos) {
 	printf("moving arm"); 
 	mtp(ARM_MOTOR_PORT, 850, pos); //850 needs to be calibrated
-	bmd(ARM_MOTOR_PORT); 
+	//bmd(ARM_MOTOR_PORT); 
 }
