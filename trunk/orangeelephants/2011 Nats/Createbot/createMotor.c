@@ -167,12 +167,12 @@ void turn(int degrees) {
 	if (degrees < 0) { 
 		ratio = -ratio;
 		create_drive(101, 1); 
-		sleep(2.057252314*ratio);
+		sleep(1.983*ratio); //2.057252314 w/o camera
 		create_stop(); 
 	}
 	else {
 		create_drive(-101,1); 
-		sleep(2.057252314*ratio);
+		sleep(1.983*ratio);
 		create_stop(); 
 	}
 }
