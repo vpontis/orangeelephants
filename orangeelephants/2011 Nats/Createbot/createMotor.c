@@ -160,7 +160,6 @@ void moveToDistAccel(int distance, int finalSpeed)
 
 /** \brief Function to turn the create a specified degree.
 	\param deg Relative degrees to turn. Positive is CW
-	\param vel Speed to turn at. Always positive.
 */
 void turn(int degrees) {
 	double ratio = degrees/90.0;
@@ -317,4 +316,8 @@ void createCenter(int ch){
 	printf("Centered!");
 }
 
-
+void createMove(int vel, float time) {
+	moveStraight(vel); 
+	sleep(time); 
+	createStop(); 
+}

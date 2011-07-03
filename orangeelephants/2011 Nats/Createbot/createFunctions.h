@@ -6,6 +6,7 @@ void moveArm(int pos);
 void calibrateArm(); 
 void closeClaw(); 
 void openClaw(); 
+void closeClawIncrement(); 
 
 
 #endif
