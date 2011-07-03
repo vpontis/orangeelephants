@@ -6,72 +6,58 @@ int main()
 	createInitialize();
 	calibrateArm();
 	openClaw(); 
-	moveArm(ARM_POS_UP);
+	moveArm(ARM_POS_DOWN); 
 	while (1) {
 		if (a_button()) {
-			createCenter(0); 
-		}
-		if (left_button()) {
-			turn(-90); 
-		}
-		if (right_button()) {
-			turn(90); 
+			createMove(NORMAL_SPEED, 1.54); 
 		}
 		if (b_button()) {
 			closeClaw(); 
 			
-			moveStraight(400); //55cm
-			sleep(1.5); 
-			createStop(); 
-				
+			createMove(NORMAL_SPEED, 1.59); 	
 			turn(90); 
-			openClaw();
+			openClaw();		 
+			createMove(NORMAL_SPEED, 1.00); 	
+			//createCenter(0);
 				
-			moveStraight(400); //50cm
-			sleep(1); 
-			createStop();  
-				
-			createCenter(0);
-			moveArm(ARM_POS_START); 
-			bmd(ARM_MOTOR_PORT); 
-				
-			moveStraight(100); //20cm
-			sleep(1.9); 
-			createStop(); 
-			
-			sleep(1); 
+			createMove(SLOW_SPEED, 1.8); 
+			sleep(.5); 
 			closeClaw(); 
 			sleep(1); 
-			moveArm(ARM_POS_UP);
-			
-			moveStraight(-400); //-35cm
-			sleep(1.05); 
-			createStop();   
-			
+			moveArm(ARM_POS_UP);  
+			createMove(-NORMAL_SPEED, 1.05); 
 			turn(-90); 
-			
-			moveStraight(400); //75cm
-			sleep(2.0); 
-			createStop(); 
-			
+			createMove(NORMAL_SPEED, 1.84); 
 			turn(90); 
-			
-			moveStraight(400); //75cm
-			sleep(1); 
-			createStop();  
-			
-			createCenter(0); 
-			
-			moveStraight(100); 
-			sleep(1.2); 
-			createStop();
-			
-			moveStraight(-100); 
-			sleep(.75); 
-			createStop(); 
-						
+			 
+			createMove(NORMAL_SPEED, .7); 
+			//createCenter(0); 
+			createMove(SLOW_SPEED, .9);  		
 			sleep(1); 
 			openClaw(); 
+	
+			createMove(-SLOW_SPEED, .85); 
+			moveArm(ARM_POS_MID); 
+			bmd(ARM_MOTOR_PORT); 
+			closeClawIncrement(); 
+			sleep(.5); 
+			openClaw(); 
+			 
+			createMove(-NORMAL_SPEED, .85); 
+			turn(90); 
+			createMove(NORMAL_SPEED, 1.05); 
+			turn(-90); 
+			createMove(NORMAL_SPEED, 4); 
+			turn(-90); 
+			createMove(NORMAL_SPEED, 1.05); 
+			moveArm(ARM_POS_DOWN); 
+			turn(-90); 
+			createMove(NORMAL_SPEED, .5); 
+			
+			createCenter(0); 
+			createMove(SLOW_SPEED, 1); 
+			closeClaw(); 
+			
 		}
 	}
 }
