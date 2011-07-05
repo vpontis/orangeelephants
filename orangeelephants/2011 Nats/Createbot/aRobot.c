@@ -10,7 +10,7 @@ int main()
 	while (1) {
 		if (b_button()) {
 			closeClaw(); 
-			
+	
 			//move towards first set of blocks
 			createMove(NORMAL_SPEED, 1.60); 	
 			turn(90); 
@@ -36,7 +36,10 @@ int main()
 			sleep(.5); 
 			openClaw(); 
 			sleep(.5); 
-	
+			
+			//********Perfect up until here*****************\\
+			
+			
 			//aligns first two sets of blocks on top of each other
 			createMove(-SLOW_SPEED, .9); 
 			moveArm(ARM_POS_MID); 
@@ -49,24 +52,18 @@ int main()
 			//move to other side of board
 			moveArm(ARM_POS_UP); 
 			createMove(-NORMAL_SPEED, .85); 
-			turn(-90); 
-			sleep(.25); 
-			turn(-90); 
-			createMove(SLOW_SPEED, 3); 
-			createMove(-NORMAL_SPEED, .6); 
 			turn(90); 
-			createMove(-NORMAL_SPEED, .95); 
-			turn(90); 
-			createMove(FAST_SPEED, 2.9); 
+			createMove(NORMAL_SPEED, .95); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, 1.5); 
-			createMove(25, 2.5);  
+			createMove(FAST_SPEED, 3.1); 
+			turn(-90); 
+			createMove(NORMAL_SPEED, 2.3); 
 			
 			//picks up third set of blocks
-			createMove(-NORMAL_SPEED, .67); 
+			createMove(-NORMAL_SPEED, .72); 
 			turn(-90); 
-			createMove(-NORMAL_SPEED, 2.00); 
-			createMove(NORMAL_SPEED, 1.2); 
+			createMove(-NORMAL_SPEED, 2.2); 
+			createMove(NORMAL_SPEED, 1.1); 
 			createCenter(0,5); 
 			moveArm(ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT); 
@@ -74,17 +71,22 @@ int main()
 			sleep(.5); 
 			closeClaw(); 
 			sleep(1); 
+			
 			moveArm(ARM_POS_UP); 
-			createMove(-NORMAL_SPEED, 1.00); 
 			
 			//goes back to side B
+			createMove(-NORMAL_SPEED, 1.00); 
+			turn(90); 
+			createMove(-NORMAL_SPEED, 1.2); 
 			turn(-90);
-			createMove(NORMAL_SPEED,0.67);
-			turn(90);
 			createMove(FAST_SPEED, 2.9);
 			turn(90);
-			createMove(NORMAL_SPEED, 2.00); 
-			
+			/* createMove(NORMAL_SPEED, 1); 
+			createMove(25, 3); 
+			createMove(-NORMAL_SPEED, .67); 
+			*/
+			createMove(NORMAL_SPEED,.95);
+			turn(-90); 		
 		}
 	}
 }
