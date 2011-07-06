@@ -53,7 +53,7 @@ int main()
 			turn(90); 
 			createMove(NORMAL_SPEED, .88); 
 			turn(-90); 
-			createMove(FAST_SPEED, 3.1); 
+			createMove(FAST_SPEED, 3.2); 
 			
 			//wall allignment
 			turn(90); 
@@ -65,7 +65,7 @@ int main()
 			createMove(-NORMAL_SPEED, 2.2); */
 			
 			//pick up third set of blocks
-			createMove(NORMAL_SPEED, .75); //backs up so distance matches that of the blocks
+			createMove(NORMAL_SPEED, .7); //backs up so distance matches that of the blocks
 			turn(90); 			
 			createCenter(0,5); 
 			moveArm(ARM_POS_DOWN);
@@ -81,7 +81,7 @@ int main()
 			turn(90); 
 			createMove(-NORMAL_SPEED, 1.05); 
 			turn(-90);
-			createMove(FAST_SPEED, 3.22);
+			createMove(FAST_SPEED, 2.9);
 
 			/* createMove(NORMAL_SPEED, 1); 
 			createMove(25, 3); 					//wall allignment
@@ -98,12 +98,12 @@ int main()
 			
 			//Move to and pick up stack of four
 			createMove(-NORMAL_SPEED, 3.49); //wall allignment
-			createMove(NORMAL_SPEED, .7); 
+			createMove(NORMAL_SPEED, .60); 
 			turn(90); 
 			createMove(NORMAL_SPEED, 1.9); //wall allignment
 			
-			createMove(-NORMAL_SPEED, 1.29); 
-			moveArm(ARM_POS_MID); 
+			createMove(-NORMAL_SPEED, 1.15); 
+			moveArm(2/3*(ARM_POS_UP)); 
 			turn(-90); 
 			turn(-90); 
 			createCenter(0,5); 
@@ -119,7 +119,9 @@ int main()
 			createMove(-SLOW_SPEED, 2); 
 			smoothTurn(90,188);   
 			accel(0,400); 
-			sleep(2.2); 
+			sleep(1.0); 
+			accel(400,0); 
+			sleep(1); 
 			createStop(); 
 		}
 	}
