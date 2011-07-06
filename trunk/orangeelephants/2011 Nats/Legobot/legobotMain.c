@@ -49,7 +49,10 @@ if(a_button())
 	moveArm(950);
 	openClaw();
 	moveArm(ARM_VERT);
+	moveToDist(-2,500);
+	moveArm(ARM_VERT);
 	closeClaw();
+	moveToDist(3,500);
 }
 
 if(b_button())
@@ -96,7 +99,10 @@ if(b_button())
 	moveArm(950);
 	openClaw();
 	moveArm(ARM_VERT);
+	moveToDist(-2,500);
+	moveArm(ARM_VERT);
 	closeClaw();
+	moveToDist(3,500);
 } //end if b_button
 } //end while loop
 } //end main
