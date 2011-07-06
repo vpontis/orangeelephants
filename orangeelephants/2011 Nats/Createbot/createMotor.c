@@ -187,7 +187,7 @@ void turn(int degrees) {
 void smoothTurn(float deg, int finalVel)	{
 	deg = -deg;
 	set_create_total_angle(0);
-	float compRatio = .75; //.00405*finalVel*(standardVel/finalVel)
+	float compRatio = .0001; //.00405*finalVel*(standardVel/finalVel)
 	
 	float increment = (float) finalVel/10;
 	float currVel = increment;
@@ -198,7 +198,7 @@ void smoothTurn(float deg, int finalVel)	{
 			{
 				create_drive_direct(currVel, -currVel);
 				currVel += increment;
-				sleep(.05);
+				sleep(.01);
 			}
 			currVel = finalVel;
 			create_drive_direct(currVel, -currVel);
