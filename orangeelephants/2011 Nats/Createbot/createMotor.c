@@ -161,8 +161,9 @@ void moveToDistAccel(int distance, int finalSpeed)
 /** \brief Function to turn the create a specified degree.
 	\param deg Relative degrees to turn. Positive is CW
 */
+	
 void turn(int degrees) {
-	double ratio = degrees/90.0;
+	double ratio = TURN_COMP_RATIO*(degrees/90.0);
 	if (degrees < 0) { 
 		ratio = -ratio;
 		create_drive(101, 1); 

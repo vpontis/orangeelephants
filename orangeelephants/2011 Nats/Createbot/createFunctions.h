@@ -9,5 +9,4 @@ void openClaw();
 void closeClawIncrement(); 
 void openClawIncrement(); 
 
-
 #endif
