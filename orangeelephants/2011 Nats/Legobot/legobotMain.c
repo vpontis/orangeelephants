@@ -7,6 +7,11 @@ while(1)
 {	
 if(a_button())
 {
+	wait_for_light(LIGHT_PORT);
+	shut_down_in(117);
+	printf("\n Starting side A");
+	
+	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
 	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
 	enable_servos();
@@ -57,6 +62,12 @@ if(a_button())
 
 if(b_button())
 {
+
+	wait_for_light(LIGHT_PORT);
+	shut_down_in(117);
+	printf("\n Starting side B");
+
+	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
 	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
 	enable_servos();
