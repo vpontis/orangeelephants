@@ -292,28 +292,37 @@ void createStop(){
 	or right depending in order to center. Callibrated for red blocks.
 	\param ch Color channel to use. 
 */
-void createCenter(int ch, int speed){
+void createCenter(int ch, int speed, int confidence){
+	int initTime = seconds(); 
+
 	printf("Centering... \n");
-	int avgX = visionAvgX(ch);
-	int threshold = 1;
+	int avgX = visionAvgX(ch, confidence);
+	int threshold = confidence == MIN_CONFIDENCE_SHORT ? 1 : 10; 
 	if(avgX != 0){
 		printf("Readjusting... \n");
-		avgX = visionAvgX(ch);
+		avgX = visionAvgX(ch, confidence);
 		if (avgX > threshold) {
 			create_drive_direct(-speed, speed);
 			while (avgX > threshold) {
-				avgX = visionAvgX(ch); 
+				avgX = visionAvgX(ch, confidence); 
+				if ((seconds()-initTime)>8) {
+					beep(); 
+					break; 
+				}
 			}
-			createStop(); 
 		}
 		else {
 			create_drive_direct(speed, -speed);
 			while (avgX < threshold) {
-				avgX = visionAvgX(ch); 
+				avgX = visionAvgX(ch, confidence);  
+				if ((seconds()-initTime)>8) {
+					beep(); 
+					break; 
+				}
 			}
-			createStop(); 
 		}
 	}
+	createStop(); 
 	printf("Centered!");
 }
 

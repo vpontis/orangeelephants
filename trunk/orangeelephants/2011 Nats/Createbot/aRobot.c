@@ -9,15 +9,19 @@ int main()
 	moveArm(ARM_POS_DOWN); 
 	while (1) {
 		if (a_button()) {
-			closeClaw(); 
-			moveArm(ARM_POS_UP); 
-			smoothTurn(90,188); 
+			createCenter(0,20,MIN_CONFIDENCE_LONG); 
+		}
+		if (left_button()) {
+			turn(90); 
+		}
+		if (right_button()) {
+			turn(-90); 
 		}
 		if (b_button()) {
 			closeClaw(); 
 	
 			//move towards first set of blocks
-			createMove(NORMAL_SPEED, 1.60); //
+			createMove(NORMAL_SPEED, 1.585); //
 			turn(90); 
 			openClaw();		 
 			createMove(NORMAL_SPEED, 1.00); 	
@@ -25,7 +29,6 @@ int main()
 			
 			//pick up first set of blocks
 			createMove(SLOW_SPEED, 1.8); 
-			sleep(.5); 
 			closeClaw(); 
 			sleep(1); 
 			moveArm(ARM_POS_UP);  
@@ -33,14 +36,14 @@ int main()
 			//move towards second set of blocks
 			createMove(-NORMAL_SPEED, 1.1); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, 1.84); 
+			createMove(NORMAL_SPEED, 1.815); 
 			turn(90); 
 			
 			//drop first set of blocks on top of second
 			createMove(NORMAL_SPEED, .8); 
-			createCenter(0,5); 
-			createMove(SLOW_SPEED, 1.05);  		
-			sleep(.5); 
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
+			createMove(SLOW_SPEED, 1.15);  	
+			createMove(-SLOW_SPEED,.6); 
 			openClaw(); 
 			sleep(.5); 
 			
@@ -53,11 +56,16 @@ int main()
 			turn(90); 
 			createMove(NORMAL_SPEED, .88); 
 			turn(-90); 
-			createMove(FAST_SPEED, 3.2); 
+			createMove(FAST_SPEED, 3.3); 
 			
 			//wall allignment
 			turn(90); 
-			createMove(-NORMAL_SPEED, 2.3); 
+			/*while( get_create_rbump(.01) != 1) {
+				moveStraight(-FAST_SPEED);
+			}
+			createStop(); */
+			createMove(-NORMAL_SPEED,.9); 
+			//createMove(-NORMAL_SPEED, 2.25); 
 			
 			/*//2nd wall allignment
 			createMove(NORMAL_SPEED, .795); //backs up so distance matches that of the blocks
@@ -65,23 +73,24 @@ int main()
 			createMove(-NORMAL_SPEED, 2.2); */
 			
 			//pick up third set of blocks
-			createMove(NORMAL_SPEED, .7); //backs up so distance matches that of the blocks
+			//createMove(NORMAL_SPEED, .68); //backs up so distance matches that of the blocks
 			turn(90); 			
-			createCenter(0,5); 
+			moveArm(ARM_POS_MID); 
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT); 
-			createMove(SLOW_SPEED, 1); 
-			sleep(.5); 
+			createMove(SLOW_SPEED, 2.2);  
 			closeClaw(); 
 			sleep(.5); 		
 
 			//goes back to side B
-			moveArm(ARM_POS_UP); 
-			createMove(-NORMAL_SPEED, 1.00); 
+			moveArm(ARM_POS_MID); 
+			createMove(-NORMAL_SPEED, .88); 
 			turn(90); 
 			createMove(-NORMAL_SPEED, 1.05); 
 			turn(-90);
-			createMove(FAST_SPEED, 2.9);
+			createMove(FAST_SPEED, 3.79);
+			createMove(-NORMAL_SPEED, .1); 
 
 			/* createMove(NORMAL_SPEED, 1); 
 			createMove(25, 3); 					//wall allignment
@@ -90,39 +99,51 @@ int main()
 			
 			//Drop off blocks near starting box.
 			moveArm(ARM_POS_DOWN); //save time
-			turn(-90);
-			createMove(NORMAL_SPEED,1.2);
+			turn(-84);
+			createMove(NORMAL_SPEED,1.3);
 			bmd(ARM_MOTOR_PORT); 
 			openClaw(); 
+			sleep(.5); 
 			moveArm(ARM_POS_UP); 
 			
 			//Move to and pick up stack of four
-			createMove(-NORMAL_SPEED, 3.49); //wall allignment
+			while( get_create_rbump(.01) != 1) {
+				moveStraight(-FAST_SPEED);
+			}
+			createStop(); 
+			//createMove(-FAST_SPEED, 3.0); //wall allignment
 			createMove(NORMAL_SPEED, .60); 
-			turn(90); 
-			createMove(NORMAL_SPEED, 1.9); //wall allignment
+			turn(-90); 
+			//createMove(NORMAL_SPEED, 1.9); //wall allignment
 			
-			createMove(-NORMAL_SPEED, 1.15); 
-			moveArm(2/3*(ARM_POS_UP)); 
-			turn(-90); 
-			turn(-90); 
-			createCenter(0,5); 
+			createMove(NORMAL_SPEED, .3); 
+			moveArm(ARM_POS_MID); 
+			//turn(-90); 
+			//turn(-90); 
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN); 
 			bmd(ARM_MOTOR_PORT); 
-			createMove(SLOW_SPEED, 1); 
-			sleep(.5); 
-			closeClaw(); 
+			createMove(SLOW_SPEED, 3); 
+			closeClawIncrement(); 
 			sleep(.5); 
 			
 			//Drop off stack of four on stack of two
 			moveArm(ARM_POS_UP); 
 			createMove(-SLOW_SPEED, 2); 
-			smoothTurn(90,188);   
-			accel(0,400); 
-			sleep(1.0); 
-			accel(400,0); 
-			sleep(1); 
+			smoothTurn(90,200);   
+			createMove(SLOW_SPEED, 2.9); 
 			createStop(); 
+			createCenter(0,15,MIN_CONFIDENCE_LONG); 
+			accel(0,270);  
+			accel(270,0); 
+			createStop(); 
+			createCenter(0,8,MIN_CONFIDENCE_SHORT); 
+			createMove(SLOW_SPEED, 2); 
+			createMove(-SLOW_SPEED, .43); 
+			sleep(.5); 
+			openClaw(); 
+			sleep(.5); 
+			createMove(-FAST_SPEED, .6); 
 		}
 	}
 }
