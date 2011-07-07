@@ -5,7 +5,7 @@
 from looking from the back*/
 
 //Sensor Ports
-const int LIGHT_SENS = 0;
+const int LIGHT_PORT = 0; //You need a light sensor plugged into port 0
 
 //Motor ports
 const int L_MOTOR = 3;
