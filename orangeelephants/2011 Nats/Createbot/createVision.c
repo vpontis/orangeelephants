@@ -1,9 +1,9 @@
 #include "createVision.h"
 
 
-int visionAvgX(int ch){
+int visionAvgX(int ch, int confidence){
 	track_update();
-	while(getTotalConfidence(ch) < MIN_CONFIDENCE){
+	while(getTotalConfidence(ch) < confidence){
 		track_update();
 		printf("Low Confidence. Reupdating... \n");
 	}

@@ -12,7 +12,7 @@ void turn(int degrees);
 void smoothTurn(float deg, int finalVel);
 void moveStraight(int speed);
 void createStop();
-void createCenter(int ch, int speed);
+void createCenter(int ch, int speed, int confidence);
 void createMove(int vel, float time); //distance function based on time
 
 

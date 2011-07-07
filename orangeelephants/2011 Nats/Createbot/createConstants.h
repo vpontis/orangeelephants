@@ -13,9 +13,9 @@ const int  ARM_DOWN_VELOCITY = -400; //needs callibration
 const int  ARM_UP_VELOCITY = 750; //needs callibration
 
 //Up/down positions for claw on the arm
-const int  ARM_POS_UP = 5550;
+const int  ARM_POS_UP = 6300;
 const int  ARM_POS_DOWN = 0;
-const int  ARM_POS_MID = 2600; 
+const int  ARM_POS_MID = 5280; 
 
 //Opening/closing positions of the claw
 const int  CLAWL_OPEN_POS = 1835;
@@ -34,7 +34,8 @@ const int NORMAL_SPEED = 400;
 const int SLOW_SPEED = 100; 
 
 //vision constants
-const int MIN_CONFIDENCE = 10;
+const int MIN_CONFIDENCE_SHORT = 10;
+const int MIN_CONFIDENCE_LONG = 0;
 const int X_MAX = 159;
 const int MIN_BLOB_AREA = 1500;
 
