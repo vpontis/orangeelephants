@@ -2,11 +2,15 @@
 
 
 int visionAvgX(int ch, int confidence){
+	int initTime = seconds(); 
 	track_update();
 	while(getTotalConfidence(ch) < confidence){
 		track_update();
 		printf("Low Confidence. Reupdating... \n");
-		return 0; 
+		if ((seconds()-initTime)>3) {
+			beep(); 
+			return 0; 
+		}
 	}
 	int largestBlob = getLargestBlob(ch);
 	int largestArea = getLargestArea(ch);

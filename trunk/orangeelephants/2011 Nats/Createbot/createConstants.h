@@ -34,6 +34,7 @@ const int FAST_SPEED = 500;
 const int NORMAL_SPEED = 400;
 const int SLOW_SPEED = 100; 
 
+
 //vision constants
 const int MIN_CONFIDENCE_SHORT = 10;
 const int MIN_CONFIDENCE_LONG = 0;

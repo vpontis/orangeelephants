@@ -23,6 +23,7 @@ int main()
 			turn(90); 
 		}
 		if (b_button()) {
+			shut_down_in(119.5); 
 			closeClaw(); 
 	
 			//move towards first set of blocks
@@ -35,7 +36,7 @@ int main()
 			//pick up first set of blocks
 			createMove(SLOW_SPEED, 1.8); 
 			closeClaw(); 
-			sleep(1); 
+			sleep(.5); 
 			moveArm(ARM_POS_UP);  
 			
 			//move towards second set of blocks
@@ -46,9 +47,9 @@ int main()
 			
 			//drop first set of blocks on top of second
 			createMove(NORMAL_SPEED, .8); 
-			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
+			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
 			createMove(SLOW_SPEED, 1.15);  	
-			createMove(-SLOW_SPEED,.6); 
+			createMove(-SLOW_SPEED,.7); 
 			openClaw(); 
 			sleep(.5); 
 			
@@ -57,11 +58,11 @@ int main()
 			
 			//move to other side of board
 			moveArm(ARM_POS_UP); 
-			createMove(-NORMAL_SPEED, 1.2); 
+			createMove(-NORMAL_SPEED, .3); 
 			turn(90); 
-			createMove(NORMAL_SPEED, .88); 
+			createMove(NORMAL_SPEED, .7); 
 			turn(-90); 
-			createMove(FAST_SPEED, 3.3); 
+			createMove(FAST_SPEED, 2.5); 
 			
 			//wall allignment
 			turn(90); 
@@ -69,7 +70,7 @@ int main()
 				moveStraight(-FAST_SPEED);
 			}
 			createStop(); */
-			createMove(-NORMAL_SPEED,.9); 
+			createMove(-NORMAL_SPEED,.85); 
 			//createMove(-NORMAL_SPEED, 2.25); 
 			
 			/*//2nd wall allignment
@@ -81,7 +82,7 @@ int main()
 			//createMove(NORMAL_SPEED, .68); //backs up so distance matches that of the blocks
 			turn(90); 			
 			moveArm(ARM_POS_MID); 
-			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
+			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT); 
 			createMove(SLOW_SPEED, 2.2);  
@@ -90,12 +91,12 @@ int main()
 
 			//goes back to side B
 			moveArm(ARM_POS_MID); 
-			createMove(-NORMAL_SPEED, .88); 
+			createMove(-NORMAL_SPEED, .4); 
 			turn(90); 
-			createMove(-NORMAL_SPEED, 1.05); 
+			createMove(-NORMAL_SPEED, 1.1); 
 			turn(-90);
-			createMove(FAST_SPEED, 3.79);
-			createMove(-NORMAL_SPEED, .1); 
+			createMove(FAST_SPEED, 3.69);
+			createMove(-NORMAL_SPEED, .2); 
 
 			/* createMove(NORMAL_SPEED, 1); 
 			createMove(25, 3); 					//wall allignment
@@ -125,7 +126,8 @@ int main()
 			moveArm(ARM_POS_MID); 
 			//turn(-90); 
 			//turn(-90); 
-			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
+			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
+			createMove(NORMAL_SPEED, .4); 
 			moveArm(ARM_POS_DOWN); 
 			bmd(ARM_MOTOR_PORT); 
 			createMove(SLOW_SPEED, 3); 
@@ -135,16 +137,17 @@ int main()
 			//Drop off stack of four on stack of two
 			moveArm(ARM_POS_UP); 
 			createMove(-SLOW_SPEED, 2); 
-			smoothTurn(90,200);   
+			smoothTurn(90,180);   
 			createMove(SLOW_SPEED, 2.9); 
 			createStop(); 
 			createCenter(0,15,MIN_CONFIDENCE_LONG); 
-			accel(0,270);  
-			accel(270,0); 
+			accel(0,200);  
+			accel(200,0); 
 			createStop(); 
-			createCenter(0,8,MIN_CONFIDENCE_SHORT); 
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			createMove(SLOW_SPEED, 2); 
-			createMove(-SLOW_SPEED, .43); 
+			createMove(-SLOW_SPEED, .5); 
+			moveArm(ARM_POS_DOWN); 
 			sleep(.5); 
 			openClawIncrement(); 
 			sleep(.5); 

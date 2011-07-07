@@ -164,6 +164,7 @@ void moveToDistAccel(int distance, int finalSpeed)
 	
 void turn(int degrees) {
 	double ratio = TURN_COMP_RATIO*(degrees/90.0);
+	set_create_total_angle(0); 
 	if (degrees < 0) { 
 		ratio = -ratio;
 		create_drive(101, 1); 
@@ -175,6 +176,7 @@ void turn(int degrees) {
 		sleep(1.983*ratio);
 		create_stop(); 
 	}
+	
 }
 
 
@@ -295,7 +297,7 @@ void createStop(){
 */
 void createCenter(int ch, int speed, int confidence){
 	int initTime = seconds(); 
-
+	set_create_total_angle(0); 
 	printf("Centering... \n");
 	int avgX = visionAvgX(ch, confidence);
 	int threshold = confidence == MIN_CONFIDENCE_SHORT ? 1 : 10; 
