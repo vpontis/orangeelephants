@@ -36,7 +36,7 @@ int main()
 			//move towards second set of blocks
 			createMove(-NORMAL_SPEED, 1.1); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, 1.815); 
+			createMove(NORMAL_SPEED, 1.84); 
 			turn(90); 
 			
 			//drop first set of blocks on top of second
@@ -141,7 +141,7 @@ int main()
 			createMove(SLOW_SPEED, 2); 
 			createMove(-SLOW_SPEED, .43); 
 			sleep(.5); 
-			openClaw(); 
+			openClawIncrement(); 
 			sleep(.5); 
 			createMove(-FAST_SPEED, .6); 
 		}

@@ -7,6 +7,7 @@ void calibrateArm();
 void closeClaw(); 
 void openClaw(); 
 void closeClawIncrement(); 
+void openClawIncrement(); 
 
 
 #endif
