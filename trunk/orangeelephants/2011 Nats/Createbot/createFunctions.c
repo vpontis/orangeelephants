@@ -52,6 +52,7 @@ void openClawIncrement() {
 	openClaw(); 
 }
 
+
 void calibrateArm() { //beginning of game
 	printf("Set arm at the bottom. Black Button to break.\n"); 
 	while (1) {     

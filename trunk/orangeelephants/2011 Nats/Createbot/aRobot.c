@@ -4,18 +4,23 @@ int main()
 {  
 	enable_servos();
 	createInitialize();
+	
 	calibrateArm();
 	openClaw(); 
-	moveArm(ARM_POS_DOWN); 
+	moveArm(ARM_POS_DOWN);
+	printf("Main Menu \n Press B to execute code. Press L/R or A for testing.");
 	while (1) {
+		
 		if (a_button()) {
-			createCenter(0,20,MIN_CONFIDENCE_LONG); 
+			beep();
 		}
 		if (left_button()) {
-			turn(90); 
+			printf("Turning Compensation Ratio: %f \n", TURN_COMP_RATIO); 
+			turn(-90); 
 		}
 		if (right_button()) {
-			turn(-90); 
+			printf("Turning Compensation Ratio: %f \n", TURN_COMP_RATIO); 
+			turn(90); 
 		}
 		if (b_button()) {
 			closeClaw(); 

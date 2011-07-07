@@ -27,6 +27,7 @@ const int  CLAWL_CLOSE_POS = 790;
 const int  ARM_MOTOR_PORT = 1; 
 const int  CLAWL_SERVO_PORT = 0; 
 const int  CLAWR_SERVO_PORT = 3; 
+const double  TURN_COMP_RATIO = 1.0;
 
 //speed
 const int FAST_SPEED = 500;
