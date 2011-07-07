@@ -7,7 +7,6 @@ while(1)
 {	
 if(a_button())
 {
-	wait_for_light(LIGHT_PORT);
 	shut_down_in(117);
 	printf("\n Starting side A");
 	
@@ -63,7 +62,6 @@ if(a_button())
 if(b_button())
 {
 
-	wait_for_light(LIGHT_PORT);
 	shut_down_in(117);
 	printf("\n Starting side B");
 
@@ -72,9 +70,9 @@ if(b_button())
 	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
 	enable_servos();
 	
-	
+	sleep(3);
 	//pick up second airplane
-	moveToDist(54,500);
+	moveToDist(56,500);
 	moveArm(550); //pos where to open claw
 	openClaw();
 	moveArm(900); //pos where to grab both at once
@@ -84,11 +82,12 @@ if(b_button())
 	//move to the side of the board opposite to the starting boxes
 	moveToDist(-3,500);
 	pivot(0,85,500);
+	sleep(19);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
 	moveToDist(-5,500);
-	pivot(0,90,500);
+	pivot(0,85,500);
 	moveToDist(80,500);
 	moveArm(950);
 	openClaw();
@@ -113,7 +112,7 @@ if(b_button())
 	moveToDist(-2,500);
 	moveArm(ARM_VERT);
 	closeClaw();
-	moveToDist(3,500);
+	moveStraight(500);
 } //end if b_button
 } //end while loop
 } //end main

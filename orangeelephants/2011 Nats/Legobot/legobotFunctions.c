@@ -83,4 +83,10 @@ void pivot(int aroundLeftWheel, float degrees, int speed)
 		mrp(L_MOTOR, speed, ticks);
 		bmd(L_MOTOR);
 	}
-}	
+}
+
+void moveStraight(int speed	)
+{
+	mav(R_MOTOR, speed);
+	mav(L_MOTOR, speed);
+}
