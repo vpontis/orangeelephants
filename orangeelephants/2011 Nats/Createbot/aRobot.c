@@ -31,7 +31,6 @@ int main()
 			turn(90); 
 			openClaw();		 
 			createMove(NORMAL_SPEED, 1.00); 	
-			//createCenter(0);
 			
 			//pick up first set of blocks
 			createMove(SLOW_SPEED, 1.8); 
@@ -51,10 +50,7 @@ int main()
 			createMove(SLOW_SPEED, 1.15);  	
 			createMove(-SLOW_SPEED,.7); 
 			openClaw(); 
-			sleep(.5); 
-			
-			//********Perfect up until here*****************\\
-			
+			sleep(.5);
 			
 			//move to other side of board
 			moveArm(ARM_POS_UP); 
@@ -62,24 +58,11 @@ int main()
 			turn(90); 
 			createMove(NORMAL_SPEED, .7); 
 			turn(-90); 
-			createMove(FAST_SPEED, 2.5); 
-			
-			//wall allignment
-			turn(90); 
-			/*while( get_create_rbump(.01) != 1) {
-				moveStraight(-FAST_SPEED);
-			}
-			createStop(); */
-			createMove(-NORMAL_SPEED,.85); 
-			//createMove(-NORMAL_SPEED, 2.25); 
-			
-			/*//2nd wall allignment
-			createMove(NORMAL_SPEED, .795); //backs up so distance matches that of the blocks
-			turn(90); 
-			createMove(-NORMAL_SPEED, 2.2); */
+			createMove(FAST_SPEED, 2.45); 
 			
 			//pick up third set of blocks
-			//createMove(NORMAL_SPEED, .68); //backs up so distance matches that of the blocks
+			turn(90); 
+			createMove(-NORMAL_SPEED,.85); 
 			turn(90); 			
 			moveArm(ARM_POS_MID); 
 			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
@@ -93,18 +76,13 @@ int main()
 			moveArm(ARM_POS_MID); 
 			createMove(-NORMAL_SPEED, .4); 
 			turn(90); 
-			createMove(-NORMAL_SPEED, 1.1); 
+			createMove(-NORMAL_SPEED, 1.25); 
 			turn(-90);
 			createMove(FAST_SPEED, 3.69);
 			createMove(-NORMAL_SPEED, .2); 
-
-			/* createMove(NORMAL_SPEED, 1); 
-			createMove(25, 3); 					//wall allignment
-			createMove(-NORMAL_SPEED, .67); 
-			*/
 			
 			//Drop off blocks near starting box.
-			moveArm(ARM_POS_DOWN); //save time
+			moveArm(ARM_POS_DOWN); 
 			turn(-84);
 			createMove(NORMAL_SPEED,1.3);
 			bmd(ARM_MOTOR_PORT); 
@@ -112,22 +90,18 @@ int main()
 			sleep(.5); 
 			moveArm(ARM_POS_UP); 
 			
-			//Move to and pick up stack of four
-			while( get_create_rbump(.01) != 1) {
+			//Move to stack of four
+			while( get_create_rbump(.01) != 1) { 
 				moveStraight(-FAST_SPEED);
 			}
 			createStop(); 
-			//createMove(-FAST_SPEED, 3.0); //wall allignment
 			createMove(NORMAL_SPEED, .60); 
 			turn(-90); 
-			//createMove(NORMAL_SPEED, 1.9); //wall allignment
-			
-			createMove(NORMAL_SPEED, .3); 
+			createMove(NORMAL_SPEED, .7); 
 			moveArm(ARM_POS_MID); 
-			//turn(-90); 
-			//turn(-90); 
+			
+			//pick up stack of four
 			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
-			createMove(NORMAL_SPEED, .4); 
 			moveArm(ARM_POS_DOWN); 
 			bmd(ARM_MOTOR_PORT); 
 			createMove(SLOW_SPEED, 3); 
