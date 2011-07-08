@@ -12,7 +12,9 @@ int main()
 	while (1) {
 		
 		if (a_button()) {
-			beep();
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
+			sleep(5); 
+			adjustTurn(); 
 		}
 		if (left_button()) {
 			printf("Turning Compensation Ratio: %f \n", TURN_COMP_RATIO); 
@@ -39,16 +41,17 @@ int main()
 			moveArm(ARM_POS_UP);  
 			
 			//move towards second set of blocks
-			createMove(-NORMAL_SPEED, 1.1); 
+			createMove(-NORMAL_SPEED, .6); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, 1.84); 
+			createMove(NORMAL_SPEED, 1.86); 
 			turn(90); 
 			
 			//drop first set of blocks on top of second
-			createMove(NORMAL_SPEED, .8); 
-			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
-			createMove(SLOW_SPEED, 1.15);  	
-			createMove(-SLOW_SPEED,.7); 
+			createMove(NORMAL_SPEED, .1); 
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
+			createMove(SLOW_SPEED, 1.5);  	
+			createMove(-SLOW_SPEED,.4); 
+			sleep(.5); 
 			openClaw(); 
 			sleep(.5);
 			
@@ -58,27 +61,28 @@ int main()
 			turn(90); 
 			createMove(NORMAL_SPEED, .7); 
 			turn(-90); 
-			createMove(FAST_SPEED, 2.45); 
+			createMove(FAST_SPEED, 2.37); 
 			
 			//pick up third set of blocks
 			turn(90); 
-			createMove(-NORMAL_SPEED,.85); 
+			createMove(-NORMAL_SPEED,.79); 
 			turn(90); 			
 			moveArm(ARM_POS_MID); 
-			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
+			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT); 
-			createMove(SLOW_SPEED, 2.2);  
+			createMove(SLOW_SPEED, 2.0);  
 			closeClaw(); 
 			sleep(.5); 		
 
 			//goes back to side B
 			moveArm(ARM_POS_MID); 
-			createMove(-NORMAL_SPEED, .4); 
+			createMove(-NORMAL_SPEED, .4);
+			adjustTurn(); 
 			turn(90); 
 			createMove(-NORMAL_SPEED, 1.25); 
 			turn(-90);
-			createMove(FAST_SPEED, 3.69);
+			createMove(FAST_SPEED, 3.33);
 			createMove(-NORMAL_SPEED, .2); 
 			
 			//Drop off blocks near starting box.
@@ -91,40 +95,47 @@ int main()
 			moveArm(ARM_POS_UP); 
 			
 			//Move to stack of four
+			int x = seconds(); 
 			while( get_create_rbump(.01) != 1) { 
 				moveStraight(-FAST_SPEED);
+				if ((seconds()-x)>5) {
+					break; 
+				}
 			}
 			createStop(); 
-			createMove(NORMAL_SPEED, .60); 
+			createMove(NORMAL_SPEED, .69); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, .7); 
+			createMove(NORMAL_SPEED, .4); 
 			moveArm(ARM_POS_MID); 
 			
 			//pick up stack of four
-			//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
+			createCenter(0,8,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN); 
 			bmd(ARM_MOTOR_PORT); 
-			createMove(SLOW_SPEED, 3); 
+			createMove(SLOW_SPEED, 2.7); 
 			closeClawIncrement(); 
 			sleep(.5); 
 			
 			//Drop off stack of four on stack of two
 			moveArm(ARM_POS_UP); 
 			createMove(-SLOW_SPEED, 2); 
-			smoothTurn(90,180);   
+			smoothTurn(100,190);   
 			createMove(SLOW_SPEED, 2.9); 
 			createStop(); 
 			createCenter(0,15,MIN_CONFIDENCE_LONG); 
-			accel(0,200);  
-			accel(200,0); 
+			accel(0,240);  
+			accel(240,0); 
 			createStop(); 
-			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
-			createMove(SLOW_SPEED, 2); 
-			createMove(-SLOW_SPEED, .5); 
-			moveArm(ARM_POS_DOWN); 
+			createCenter(0,6,MIN_CONFIDENCE_SHORT); 
+			createMove(SLOW_SPEED, 3); 
+			createMove(-SLOW_SPEED, .3); 
+			moveArm(ARM_POS_MID); 
+			bmd(ARM_MOTOR_PORT); 
 			sleep(.5); 
 			openClawIncrement(); 
 			sleep(.5); 
+			moveArm(ARM_POS_UP);
+			bmd(ARM_MOTOR_PORT); 
 			createMove(-FAST_SPEED, .6); 
 		}
 	}

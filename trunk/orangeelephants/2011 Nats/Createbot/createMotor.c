@@ -179,7 +179,24 @@ void turn(int degrees) {
 	
 }
 
-
+/** \brief Function to adjust turn based on how much it turned with 
+	\param deg Relative degrees to turn. Positive is CW
+*/
+	
+void adjustTurn() {
+	int compAngle = get_create_total_angle(.01); 
+	set_create_total_angle(0); 
+	if (compAngle < 0) {
+		create_spin_CCW(100); //CCW 
+		while (get_create_total_angle(.01) > -compAngle) {}
+		createStop(); 
+	}
+	if (compAngle > 0) {
+		create_spin_CW(100);  //CW 
+		while (get_create_total_angle(.01) < -compAngle) {}
+		createStop(); 
+	}
+}
 /** \brief Smooth turn function to turn a specified degree. 
 	Create will accelerate to finalVel at totaltime/2 and then decelerate to 0. 
 	Optimized at deg = 90, vel = 200.  
