@@ -325,7 +325,7 @@ void createCenter(int ch, int speed, int confidence){
 			create_drive_direct(-speed, speed);
 			while (avgX > threshold) {
 				avgX = visionAvgX(ch, confidence); 
-				if ((seconds()-initTime)>8) {
+				if ((seconds()-initTime)>9) {
 					beep(); 
 					break; 
 				}
@@ -335,7 +335,7 @@ void createCenter(int ch, int speed, int confidence){
 			create_drive_direct(speed, -speed);
 			while (avgX < threshold) {
 				avgX = visionAvgX(ch, confidence);  
-				if ((seconds()-initTime)>8) {
+				if ((seconds()-initTime)>9) {
 					beep(); 
 					break; 
 				}
