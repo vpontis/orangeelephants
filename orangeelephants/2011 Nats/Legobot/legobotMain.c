@@ -9,24 +9,18 @@ if(a_button())
 {
 	shut_down_in(117);
 	printf("\n Starting side A");
-	
+	sleep(3);
 	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
 	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
 	enable_servos();
 	
-	
-	//pick up second airplane
-	moveToDist(54,500);
-	moveArm(550); //pos where to open claw
-	openClaw();
-	moveArm(850); //pos where to grab both at once
-	closeClaw();
-	moveArm(130);
-	
 	//move to the side of the board opposite to the starting boxes
+	moveToDist(54,500);
+	moveArm(130);
 	moveToDist(-10,500);
 	pivot(1,90,500);
+	sleep(26);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
@@ -56,7 +50,7 @@ if(a_button())
 	moveToDist(-2,500);
 	moveArm(ARM_VERT);
 	closeClaw();
-	moveToDist(3,500);
+	moveStraight(500);
 }
 
 if(b_button())
@@ -70,19 +64,13 @@ if(b_button())
 	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
 	enable_servos();
 	
-	sleep(3);
-	//pick up second airplane
-	moveToDist(56,500);
-	moveArm(550); //pos where to open claw
-	openClaw();
-	moveArm(900); //pos where to grab both at once
-	closeClaw();
-	moveArm(130);
-	
 	//move to the side of the board opposite to the starting boxes
+	sleep(3);
+	moveToDist(56,500);
+	moveArm(130);
 	moveToDist(-3,500);
 	pivot(0,85,500);
-	sleep(19);
+	sleep(26);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
