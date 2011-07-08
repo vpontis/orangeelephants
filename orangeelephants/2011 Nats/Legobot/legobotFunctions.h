@@ -9,7 +9,8 @@ float cmToTicks(float cmDistance);
 void moveArm();
 void openClaw();
 void closeClaw();
-
+void pivot(int aroundLeftWheel, float degrees, int speed);
+void moveStraight(int speed	);
 
 #endif
 
