@@ -187,13 +187,13 @@ void adjustTurn() {
 	int compAngle = get_create_total_angle(.01); 
 	set_create_total_angle(0); 
 	if (compAngle < 0) {
-		create_spin_CCW(100); //CCW 
-		while (get_create_total_angle(.01) > -compAngle) {}
+		create_spin_CCW(40); //CCW 
+		while (get_create_total_angle(.01) < -compAngle) {}
 		createStop(); 
 	}
 	if (compAngle > 0) {
-		create_spin_CW(100);  //CW 
-		while (get_create_total_angle(.01) < -compAngle) {}
+		create_spin_CW(40);  //CW 
+		while (get_create_total_angle(.01) > -compAngle) {}
 		createStop(); 
 	}
 }
