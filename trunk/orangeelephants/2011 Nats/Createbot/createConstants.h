@@ -45,4 +45,7 @@ const int MIN_CONFIDENCE_LONG = 0;
 const int X_MAX = 159;
 const int MIN_BLOB_AREA = 1500;
 
+//misc 
+
+
 #endif

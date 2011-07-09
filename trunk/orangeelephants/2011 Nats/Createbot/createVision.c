@@ -1,5 +1,7 @@
 #include "createVision.h"
+#include "boolean.h"
 
+boolean CANT_SEE = false; 
 
 int visionAvgX(int ch, int confidence){
 	int initTime = seconds(); 
@@ -9,6 +11,7 @@ int visionAvgX(int ch, int confidence){
 		printf("Low Confidence. Reupdating... \n");
 		if ((seconds()-initTime)>3) {
 			beep(); 
+			CANT_SEE = 1; 
 			return 0; 
 		}
 	}
@@ -25,7 +28,7 @@ int visionAvgX(int ch, int confidence){
 	}
 	
 	return (int) (sumX/track_count(ch));*/
-	
+	CANT_SEE = false; 
 	return track_bbox_left(ch, largestBlob)+ 0.5*track_bbox_width(ch, largestBlob) - 0.5*X_MAX;
 }
 

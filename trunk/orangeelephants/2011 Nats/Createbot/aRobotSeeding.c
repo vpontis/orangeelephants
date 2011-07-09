@@ -22,7 +22,7 @@ int main()
 			shut_down_in(117.5); 
 			int startTime = seconds(); 
 			closeClaw(); 
-			
+	
 			//move towards first set of blocks
 			createMove(NORMAL_SPEED, 1.569); //
 			turn(-90); 
@@ -34,11 +34,11 @@ int main()
 			closeClaw(); 
 			sleep(.5); 
 			moveArm(ARM_POS_UP);  
-		
+			
 			//move towards second set of blocks
 			createMove(-NORMAL_SPEED, .6); 
 			turn(90); 
-			createMove(NORMAL_SPEED, 1.915); 
+			createMove(NORMAL_SPEED, 1.885); 
 			turn(-90); 
 			
 			//drop first set of blocks on top of second
@@ -55,9 +55,9 @@ int main()
 			createMove(-FAST_SPEED, .25); 
 			//adjustTurn(); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, .7); 
+			createMove(NORMAL_SPEED, .8); 
 			turn(90); 
-			while((seconds()-startTime)<30) {}
+			while((seconds()-startTime)<29.6) {}
 			createMove(FAST_SPEED, 2.37); 
 			
 			//pick up third set of blocks
@@ -79,13 +79,11 @@ int main()
 			turn(-90); 
 			createMove(-FAST_SPEED, .92); 
 			turn(90);
-			createMove(FAST_SPEED, 3.09);
-			createMove(SLOW_SPEED, 1.2); 
-			createMove(-NORMAL_SPEED, .15); 
+			createMove(FAST_SPEED, 2.99);
 			
 			//Drop off blocks near starting box.
-			turn(-90);
 			moveArm(ARM_POS_DOWN); 
+			turn(80);
 			createMove(FAST_SPEED, 1.2);
 			bmd(ARM_MOTOR_PORT); 
 			openClaw(); 
@@ -102,9 +100,9 @@ int main()
 			createStop(); 
 			createMove(NORMAL_SPEED, .69); 
 			turn(90); 
-			createMove(NORMAL_SPEED, .7); 
+			createMove(NORMAL_SPEED, .3); 
 			moveArm(ARM_POS_MID); 
-		
+			
 			//pick up stack of four
 			createCenter(0,6,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN); 
@@ -116,24 +114,32 @@ int main()
 			//Drop off stack of four on stack of two
 			moveArm(ARM_POS_UP); 
 			createMove(-SLOW_SPEED, 2); 
+			moveSupport(SUPPORT_POS_UP); 
 			smoothTurn(-110,210);   
-			createMove(SLOW_SPEED, 2.9); 
+			createMove(SLOW_SPEED, 3.1);  
 			createStop(); 
 			createCenter(0,15,MIN_CONFIDENCE_LONG); 
-			accel(0,250);  
-			accel(250,0); 
+			accel(0,245);  
+			accel(245,0); 
 			createStop(); 
 			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			createMove(SLOW_SPEED, 3.5);  
 			createMove(-SLOW_SPEED, .3); 
-			moveArm(ARM_POS_MID); 
+			if (CANT_SEE==false) {
+				moveArm(ARM_POS_MID); 
+			}
+			else {
+				moveArm(ARM_POS_DOWN); 
+			}
 			bmd(ARM_MOTOR_PORT); 
 			sleep(.5); 
 			openClawIncrement(); 
 			sleep(.5); 
-			moveArm(ARM_POS_UP);
-			bmd(ARM_MOTOR_PORT); 
-			createMove(-FAST_SPEED, .6);
+			if (CANT_SEE==false) {
+				moveArm(ARM_POS_UP);
+				bmd(ARM_MOTOR_PORT); 
+			}
+			createMove(-FAST_SPEED, .6); 
 		}
 
 		if (b_button()) {
@@ -173,9 +179,9 @@ int main()
 			createMove(-FAST_SPEED, .25); 
 			//adjustTurn(); 
 			turn(90); 
-			createMove(NORMAL_SPEED, .7); 
+			createMove(NORMAL_SPEED, .8); 
 			turn(-90); 
-			while((seconds()-startTime)<29.2) {}
+			while((seconds()-startTime)<29.6) {}
 			createMove(FAST_SPEED, 2.37); 
 			
 			//pick up third set of blocks
@@ -197,11 +203,11 @@ int main()
 			turn(90); 
 			createMove(-FAST_SPEED, .92); 
 			turn(-90);
-			createMove(FAST_SPEED, 3.04);
+			createMove(FAST_SPEED, 2.99);
 			
 			//Drop off blocks near starting box.
 			moveArm(ARM_POS_DOWN); 
-			turn(-90);
+			turn(-80);
 			createMove(FAST_SPEED, 1.2);
 			bmd(ARM_MOTOR_PORT); 
 			openClaw(); 
@@ -218,7 +224,7 @@ int main()
 			createStop(); 
 			createMove(NORMAL_SPEED, .69); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, .7); 
+			createMove(NORMAL_SPEED, .3); 
 			moveArm(ARM_POS_MID); 
 			
 			//pick up stack of four
@@ -234,7 +240,7 @@ int main()
 			createMove(-SLOW_SPEED, 2); 
 			moveSupport(SUPPORT_POS_UP); 
 			smoothTurn(110,210);   
-			createMove(SLOW_SPEED, 3.1); 
+			createMove(SLOW_SPEED, 3.1);  
 			createStop(); 
 			createCenter(0,15,MIN_CONFIDENCE_LONG); 
 			accel(0,245);  
@@ -243,13 +249,20 @@ int main()
 			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			createMove(SLOW_SPEED, 3.5);  
 			createMove(-SLOW_SPEED, .3); 
-			moveArm(ARM_POS_MID); 
+			if (CANT_SEE==false) {
+				moveArm(ARM_POS_MID); 
+			}
+			else {
+				moveArm(ARM_POS_DOWN); 
+			}
 			bmd(ARM_MOTOR_PORT); 
 			sleep(.5); 
 			openClawIncrement(); 
 			sleep(.5); 
-			moveArm(ARM_POS_UP);
-			bmd(ARM_MOTOR_PORT); 
+			if (CANT_SEE==false) {
+				moveArm(ARM_POS_UP);
+				bmd(ARM_MOTOR_PORT); 
+			}
 			createMove(-FAST_SPEED, .6); 
 		}
 	}
