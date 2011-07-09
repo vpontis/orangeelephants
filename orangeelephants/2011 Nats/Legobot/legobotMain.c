@@ -17,10 +17,10 @@ if(b_button())
 	
 	//move to the side of the board opposite to the starting boxes
 	moveToDist(20,500);
-	pivot(0,100,500);
+	pivot(0,90,500);
 	moveToDist(35,500);
 	moveArm(130);
-	pivot(1,390,500);
+	pivot(1,100,500);
 	sleep(12);
 	moveToDist(150,800);
 	moveToDist(50,500);
