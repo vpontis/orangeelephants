@@ -3,12 +3,12 @@
 void sideA();
 void sideB();
 
-void sideA() {
+void sideB() {
 	int startTime = seconds(); 
 	closeClaw(); 
 
 	//move towards first set of blocks
-	createMove(NORMAL_SPEED, 1.569); //
+	createMove(NORMAL_SPEED, 1.569); 
 	turn(-90); 
 	openClaw();		 
 	createMove(NORMAL_SPEED, 1.00); 	 
@@ -145,10 +145,26 @@ void sideA() {
 
 
 
+/*******************************************************/
 
 
 
-void sideB() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void sideA() {
 	int startTime = seconds(); 
 	closeClaw(); 
 
@@ -169,7 +185,7 @@ void sideB() {
 	//move towards second set of blocks
 	createMove(-NORMAL_SPEED, .6); 
 	turn(-90); 
-	createMove(NORMAL_SPEED, 1.895); 
+	createMove(NORMAL_SPEED, 1.905); 
 	turn(90); 
 		
 	//drop first set of blocks on top of second
@@ -244,6 +260,7 @@ void sideB() {
 	touchSensorMovement(); 
 	closeClawIncrement(); 
 	sleep(.5); 
+	
 	if ((seconds()-startTime)>130) {
 		moveArm(ARM_POS_UP); 
 		createMove(-SLOW_SPEED, 2); 
@@ -258,6 +275,7 @@ void sideB() {
 		sleep(.5); 
 		createMove(-FAST_SPEED, .8); 
 	}
+	
 	//Drop off stack of four on stack of two
 	moveArm(ARM_POS_UP); 
 	createMove(-SLOW_SPEED, 2); 
