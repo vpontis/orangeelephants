@@ -16,7 +16,7 @@ const int  ARM_UP_VELOCITY = 750; //needs callibration
 //Up/down positions for claw on the arm
 const int  ARM_POS_UP = 6300;
 const int  ARM_POS_DOWN = 0;
-const int  ARM_POS_MID = 5600; 
+const int  ARM_POS_MID = 5750; 
 const int  SUPPORT_POS_DOWN = 1900;
 const int  SUPPORT_POS_UP = 500; 
 
@@ -28,9 +28,10 @@ const int  CLAWL_CLOSE_POS = 790;
 
 //Motor, Sensor, & Servo ports
 const int  ARM_MOTOR_PORT = 1; 
-const int  CLAWL_SERVO_PORT = 0; 
+const int  CLAWL_SERVO_PORT = 0; //servo port 1 fried
 const int  CLAWR_SERVO_PORT = 3; 
 const int  SUPPORT_SERVO_PORT = 2; 
+const int  TOUCH_SENSOR_PORT = 14; //digital port 8 fried
 
 
 //speed
