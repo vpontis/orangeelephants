@@ -8,7 +8,7 @@ while(1)
 if(b_button())
 {
 	shut_down_in(117);
-	printf("\n Starting side A\nSleeping 10 seconds.");
+	printf("\n Starting side B\nSleeping 10 seconds.");
 	sleep(10);
 	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
@@ -59,7 +59,7 @@ if(a_button())
 {
 
 	shut_down_in(117);
-	printf("\n Starting side B\nSleeping 10 seconds");
+	printf("\n Starting side A\nSleeping 10 seconds");
 
 	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
