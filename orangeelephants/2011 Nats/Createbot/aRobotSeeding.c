@@ -127,7 +127,7 @@ void sideB() {
 	create_stop();    
 	createMove(SLOW_SPEED, 3.5);  
 	createStop(); 
-	createCenter(0,10,MIN_CONFIDENCE_LONG); 
+	createCenter(0,7,MIN_CONFIDENCE_LONG); 
 	accel(0,220);  
 	accel(220,0); 
 	createStop(); 
@@ -297,7 +297,7 @@ void sideA() {
 	create_stop();    
 	createMove(SLOW_SPEED, 3.5);  
 	createStop(); 
-	createCenter(0,10,MIN_CONFIDENCE_LONG); 
+	createCenter(0,7,MIN_CONFIDENCE_LONG); 
 	accel(0,220);  
 	accel(220,0); 
 	createStop(); 
