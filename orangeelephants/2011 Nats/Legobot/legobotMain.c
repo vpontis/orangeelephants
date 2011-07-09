@@ -8,19 +8,20 @@ while(1)
 if(a_button())
 {
 	shut_down_in(117);
-	printf("\n Starting side A");
-	sleep(3);
+	printf("\n Starting side A\nSleeping 10 seconds.");
+	sleep(10);
 	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
 	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
 	enable_servos();
 	
 	//move to the side of the board opposite to the starting boxes
-	moveToDist(54,500);
+	moveToDist(20,500);
+	pivot(0,90,500);
+	moveToDist(35,500);
 	moveArm(130);
-	moveToDist(-10,500);
 	pivot(1,90,500);
-	sleep(26);
+	sleep(21);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
@@ -57,7 +58,7 @@ if(b_button())
 {
 
 	shut_down_in(117);
-	printf("\n Starting side B");
+	printf("\n Starting side B\nSleeping 10 seconds");
 
 	//init
 	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
@@ -65,12 +66,14 @@ if(b_button())
 	enable_servos();
 	
 	//move to the side of the board opposite to the starting boxes
-	sleep(3);
-	moveToDist(56,500);
+	sleep(10);
+	moveToDist(20,500);
+	pivot(1,90,500);
+	moveToDist(35,500);
 	moveArm(130);
 	moveToDist(-3,500);
 	pivot(0,85,500);
-	sleep(26);
+	sleep(21);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
