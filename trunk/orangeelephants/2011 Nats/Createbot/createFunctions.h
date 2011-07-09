@@ -8,6 +8,7 @@ void calibrateArm();
 void closeClaw(); 
 void openClaw(); 
 void closeClawIncrement(); 
-void openClawIncrement(); 
+void openClawIncrement();
+void touchSensorMovement(); 
 
 #endif

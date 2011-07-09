@@ -77,3 +77,13 @@ void moveSupport(int pos) {
 	printf("Moving support.\n"); 
 	set_servo_position(SUPPORT_SERVO_PORT, pos); 
 }
+
+void touchSensorMovement() {
+
+	while (digital(TOUCH_SENSOR_PORT) == 0) {
+		moveStraight(SLOW_SPEED); 
+		sleep(0.05); 
+	}
+	beep(); 
+	createStop(); 
+}
