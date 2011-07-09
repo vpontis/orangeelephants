@@ -21,7 +21,7 @@ if(a_button())
 	moveToDist(35,500);
 	moveArm(130);
 	pivot(1,90,500);
-	sleep(21);
+	sleep(10);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
@@ -51,7 +51,7 @@ if(a_button())
 	moveToDist(-2,500);
 	moveArm(ARM_VERT);
 	closeClaw();
-	moveStraight(500);
+	moveToDist(10,500);
 }
 
 if(b_button())
@@ -73,7 +73,7 @@ if(b_button())
 	moveArm(130);
 	moveToDist(-3,500);
 	pivot(0,85,500);
-	sleep(21);
+	sleep(10);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
@@ -103,7 +103,7 @@ if(b_button())
 	moveToDist(-2,500);
 	moveArm(ARM_VERT);
 	closeClaw();
-	moveStraight(500);
+	moveToDist(10,500);
 } //end if b_button
 } //end while loop
 } //end main
