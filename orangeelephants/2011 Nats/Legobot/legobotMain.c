@@ -21,7 +21,7 @@ if(a_button())
 	moveToDist(35,500);
 	moveArm(130);
 	pivot(1,90,500);
-	sleep(10);
+	sleep(12);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
@@ -73,7 +73,7 @@ if(b_button())
 	moveArm(130);
 	moveToDist(-3,500);
 	pivot(0,85,500);
-	sleep(10);
+	sleep(12);
 	moveToDist(200,800);
 	
 	//drop off first two airplanes
