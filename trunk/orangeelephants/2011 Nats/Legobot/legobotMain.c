@@ -43,7 +43,7 @@ if(a_button())
 	moveArm(ARM_VERT);
 	
 	//drop off third airplane
-	moveToDist(-6,500);
+	moveToDist(-2,500);
 	pivot(1,45,500);
 	moveToDist(20,500);
 	moveArm(950);
@@ -81,7 +81,7 @@ if(b_button())
 	//drop off first two airplanes
 	moveToDist(-5,500);
 	pivot(0,85,500);
-	moveToDist(80,500);
+	moveToDist(80,300);
 	moveArm(950);
 	openClaw();
 	moveArm(ARM_VERT);
@@ -89,16 +89,16 @@ if(b_button())
 	
 	//pick up third airplane
 	pivot(0,-90,500);
-	moveToDist(15,500);
+	moveToDist(15,300);
 	openClaw();
 	moveArm(ARM_HORIZONTAL);
 	closeClaw();
 	moveArm(ARM_VERT);
 	
 	//drop off third airplane
-	moveToDist(-6,500);
+	moveToDist(-2,500);
 	pivot(0,45,500);
-	moveToDist(20,500);
+	moveToDist(20,300);
 	moveArm(950);
 	openClaw();
 	moveArm(ARM_VERT);
