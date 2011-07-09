@@ -5,7 +5,7 @@ int main() {
 printf("Press A for Side A or B for Side B");
 while(1)
 {	
-if(a_button())
+if(b_button())
 {
 	shut_down_in(117);
 	printf("\n Starting side A\nSleeping 10 seconds.");
@@ -55,7 +55,7 @@ if(a_button())
 	moveToDist(10,500);
 }
 
-if(b_button())
+if(a_button())
 {
 
 	shut_down_in(117);
