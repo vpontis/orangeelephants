@@ -35,8 +35,7 @@ void closeClawIncrement() {
 		set_servo_position(CLAWL_SERVO_PORT, positionL); 
 		positionL -= CLAW_INCR; 
 	}
-	set_servo_position(CLAWR_SERVO_PORT, CLAWR_CLOSE_POS); 
-	set_servo_position(CLAWL_SERVO_PORT, CLAWL_CLOSE_POS); 
+	closeClaw();  
 }
 
 void openClawIncrement() {
@@ -72,4 +71,9 @@ void calibrateArm() { //beginning of game
 void moveArm(int pos) {
 	printf("Moving arm.\n"); 
 	mtp(ARM_MOTOR_PORT, 1000, pos);  
+}
+
+void moveSupport(int pos) {
+	printf("Moving support.\n"); 
+	set_servo_position(SUPPORT_SERVO_PORT, pos); 
 }

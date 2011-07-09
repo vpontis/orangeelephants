@@ -7,6 +7,7 @@ int main()
 	calibrateArm();
 	openClaw(); 
 	moveArm(ARM_POS_DOWN);
+	moveSupport(SUPPORT_POS_DOWN); 
 	printf("Main Menu \n Press B to execute code. Press L/R or A for testing.");
 	while (1) {
 		if (left_button()) {
@@ -155,7 +156,7 @@ int main()
 			//move towards second set of blocks
 			createMove(-NORMAL_SPEED, .6); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, 1.915); 
+			createMove(NORMAL_SPEED, 1.885); 
 			turn(90); 
 			
 			//drop first set of blocks on top of second
@@ -174,7 +175,7 @@ int main()
 			turn(90); 
 			createMove(NORMAL_SPEED, .7); 
 			turn(-90); 
-			while((seconds()-startTime)<29.7) {}
+			while((seconds()-startTime)<29.2) {}
 			createMove(FAST_SPEED, 2.37); 
 			
 			//pick up third set of blocks
@@ -196,7 +197,7 @@ int main()
 			turn(90); 
 			createMove(-FAST_SPEED, .92); 
 			turn(-90);
-			createMove(FAST_SPEED, 3.09);
+			createMove(FAST_SPEED, 3.04);
 			
 			//Drop off blocks near starting box.
 			moveArm(ARM_POS_DOWN); 
@@ -231,12 +232,13 @@ int main()
 			//Drop off stack of four on stack of two
 			moveArm(ARM_POS_UP); 
 			createMove(-SLOW_SPEED, 2); 
+			moveSupport(SUPPORT_POS_UP); 
 			smoothTurn(110,210);   
-			createMove(SLOW_SPEED, 2.9); 
+			createMove(SLOW_SPEED, 3.1); 
 			createStop(); 
 			createCenter(0,15,MIN_CONFIDENCE_LONG); 
-			accel(0,250);  
-			accel(250,0); 
+			accel(0,245);  
+			accel(245,0); 
 			createStop(); 
 			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			createMove(SLOW_SPEED, 3.5);  

@@ -3,6 +3,7 @@
 
 void createInitialize();
 void moveArm(int pos); 
+void moveSupport(int pos); 
 void calibrateArm(); 
 void closeClaw(); 
 void openClaw(); 
