@@ -68,7 +68,7 @@ int main()
 			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT); 
-			createMove(SLOW_SPEED, 2.2);  
+			createMove(SLOW_SPEED, 1);  
 			closeClaw(); 
 			sleep(.5); 		
 
@@ -162,7 +162,7 @@ int main()
 			//move towards second set of blocks
 			createMove(-NORMAL_SPEED, .6); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, 1.92); 
+			createMove(NORMAL_SPEED, 1.90); 
 			turn(90); 
 			
 			//drop first set of blocks on top of second
@@ -187,12 +187,12 @@ int main()
 			
 			//pick up third set of blocks
 			turn(90); 
-			createMove(-NORMAL_SPEED,.82); 
+			createMove(-NORMAL_SPEED,.77); 
 			turn(90); 			
 			createCenter(0,7,MIN_CONFIDENCE_SHORT); 
 			moveArm(ARM_POS_DOWN);
 			bmd(ARM_MOTOR_PORT); 
-			createMove(SLOW_SPEED, 2.2);  
+			createMove(SLOW_SPEED, 1);  
 			closeClaw(); 
 			sleep(.5); 		
 
@@ -207,7 +207,7 @@ int main()
 			
 			//Drop off blocks near starting box.
 			moveArm(ARM_POS_DOWN); 
-			turn(-81);
+			turn(-84);
 			createMove(FAST_SPEED, 1.0);
 			bmd(ARM_MOTOR_PORT); 
 			openClaw(); 
@@ -224,7 +224,7 @@ int main()
 			createStop(); 
 			createMove(NORMAL_SPEED, .69); 
 			turn(-90); 
-			createMove(NORMAL_SPEED, .6); 
+			createMove(NORMAL_SPEED, .5); 
 			moveArm(ARM_POS_MID); 
 			
 			//pick up stack of four
@@ -239,7 +239,7 @@ int main()
 			moveArm(ARM_POS_UP); 
 			createMove(-SLOW_SPEED, 2); 
 			moveSupport(SUPPORT_POS_UP); 
-			smoothTurn(130,220);   
+			smoothTurn(130,280);   
 			createMove(SLOW_SPEED, 3.5);  
 			createStop(); 
 			createCenter(0,15,MIN_CONFIDENCE_LONG); 
