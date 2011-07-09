@@ -3,6 +3,7 @@
 
 //Constant for deceleration distance in the moveToDistance function
 const double  STOP_DISTANCE_RATIO = 0.6; //ratio of speed
+const double  TURN_COMP_RATIO = 1.0; //ratio for turning
 
 //light sensor
 const int LIGHT_PORT_A = 1;
@@ -16,6 +17,8 @@ const int  ARM_UP_VELOCITY = 750; //needs callibration
 const int  ARM_POS_UP = 6300;
 const int  ARM_POS_DOWN = 0;
 const int  ARM_POS_MID = 5600; 
+const int  SUPPORT_POS_DOWN = 1900;
+const int  SUPPORT_POS_UP = 500; 
 
 //Opening/closing positions of the claw
 const int  CLAWL_OPEN_POS = 1835;
@@ -27,7 +30,8 @@ const int  CLAWL_CLOSE_POS = 790;
 const int  ARM_MOTOR_PORT = 1; 
 const int  CLAWL_SERVO_PORT = 0; 
 const int  CLAWR_SERVO_PORT = 3; 
-const double  TURN_COMP_RATIO = 1.0;
+const int  SUPPORT_SERVO_PORT = 2; 
+
 
 //speed
 const int FAST_SPEED = 500;
