@@ -88,7 +88,7 @@ void sideB() {
 		}
 	}
 	createStop(); 
-	createMove(NORMAL_SPEED, .69); 
+	createMove(NORMAL_SPEED, .6); 
 	turn(90); 
 	createMove(NORMAL_SPEED, .3); 
 	moveArm(ARM_POS_MID); 
@@ -127,11 +127,11 @@ void sideB() {
 	create_stop();    
 	createMove(SLOW_SPEED, 3.5);  
 	createStop(); 
-	createCenter(0,15,MIN_CONFIDENCE_LONG); 
+	createCenter(0,10,MIN_CONFIDENCE_LONG); 
 	accel(0,220);  
 	accel(220,0); 
 	createStop(); 
-	createCenter(0,6,MIN_CONFIDENCE_SHORT); 
+	//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
 	createMove(SLOW_SPEED, 2.0);  
 	createMove(-SLOW_SPEED, .6); 
 	if (CANT_SEE==false) {
@@ -258,7 +258,7 @@ void sideA() {
 		}
 	}
 	createStop(); 
-	createMove(NORMAL_SPEED, .69); 
+	createMove(NORMAL_SPEED, .6); 
 	turn(-90); 
 	createMove(NORMAL_SPEED, .3); 
 	moveArm(ARM_POS_MID); 
@@ -297,11 +297,11 @@ void sideA() {
 	create_stop();    
 	createMove(SLOW_SPEED, 3.5);  
 	createStop(); 
-	createCenter(0,15,MIN_CONFIDENCE_LONG); 
+	createCenter(0,10,MIN_CONFIDENCE_LONG); 
 	accel(0,220);  
 	accel(220,0); 
 	createStop(); 
-	createCenter(0,6,MIN_CONFIDENCE_SHORT); 
+	//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
 	createMove(SLOW_SPEED, 2.0);  
 	createMove(-SLOW_SPEED, .6); 
 	if (CANT_SEE==false) {
