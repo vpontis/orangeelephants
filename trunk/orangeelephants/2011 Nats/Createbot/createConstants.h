@@ -16,9 +16,9 @@ const int  ARM_UP_VELOCITY = 750; //needs callibration
 //Up/down positions for claw on the arm
 const int  ARM_POS_UP = 6300;
 const int  ARM_POS_DOWN = 0;
-const int  ARM_POS_MID = 5750; 
+const int  ARM_POS_MID = 5600; 
 const int  SUPPORT_POS_DOWN = 1900;
-const int  SUPPORT_POS_UP = 500; 
+const int  SUPPORT_POS_UP = 650; 
 
 //Opening/closing positions of the claw
 const int  CLAWL_OPEN_POS = 1835;
