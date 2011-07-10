@@ -7,14 +7,14 @@ while(1)
 {	
 if(b_button())
 {
+	enable_servos();
+	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
+	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
+	
 	wait_for_light(LIGHT_PORT);
 	shut_down_in(117);
 	printf("\n Starting side B\nSleeping 10 seconds.");
 	sleep(10);
-	//init
-	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
-	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
-	enable_servos();
 	
 	//move to the side of the board opposite to the starting boxes
 	moveToDist(20,500);
@@ -58,14 +58,13 @@ if(b_button())
 
 if(a_button())
 {
+	enable_servos();
+	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
+	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
+	
 	wait_for_light(LIGHT_PORT);
 	shut_down_in(117);
 	printf("\n Starting side A\nSleeping 10 seconds");
-
-	//init
-	set_servo_position(CLAW_PORT,CLAW_CLOSE); //initialize closed
-	set_servo_position(ARM_PORT,ARM_VERT); // initialize up
-	enable_servos();
 	
 	//move to the side of the board opposite to the starting boxes
 	sleep(10);
