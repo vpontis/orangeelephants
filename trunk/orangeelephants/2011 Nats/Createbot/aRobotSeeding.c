@@ -8,7 +8,7 @@ void sideB() {
 	closeClaw(); 
 
 	//move towards first set of blocks
-	createMove(NORMAL_SPEED, 1.493); 
+	createMove(NORMAL_SPEED, 1.49); 
 	turn(-90); 
 	openClaw();		 
 	createMove(NORMAL_SPEED, 1.00); 	
@@ -146,7 +146,7 @@ void sideA() {
 	closeClaw(); 
 
 	//move towards first set of blocks
-	createMove(NORMAL_SPEED, 1.493); 
+	createMove(NORMAL_SPEED, 1.49); 
 	turn(90); 
 	openClaw();		 
 	createMove(NORMAL_SPEED, 1.00); 	
