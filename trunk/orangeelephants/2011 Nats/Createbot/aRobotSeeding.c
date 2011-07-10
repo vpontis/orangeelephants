@@ -8,7 +8,7 @@ void sideB() {
 	closeClaw(); 
 
 	//move towards first set of blocks
-	createMove(NORMAL_SPEED, 1.49); 
+	createMove(NORMAL_SPEED, 1.493); 
 	turn(-90); 
 	openClaw();		 
 	createMove(NORMAL_SPEED, 1.00); 	
@@ -22,7 +22,7 @@ void sideB() {
 	//move towards second set of blocks
 	createMove(-NORMAL_SPEED, .6); 
 	turn(90); 
-	createMove(NORMAL_SPEED, 1.94); 
+	createMove(NORMAL_SPEED, 1.95); 
 	turn(-90); 
 		
 	//drop first set of blocks on top of second
@@ -64,7 +64,7 @@ void sideB() {
 	turn(-90); 
 	createMove(-FAST_SPEED, .6); 
 	turn(90);
-	createMove(FAST_SPEED, 2.68);
+	createMove(FAST_SPEED, 2.66);
 		
 	//Drop off blocks near starting box.
 	moveArm(ARM_POS_DOWN); 
@@ -105,7 +105,7 @@ void sideB() {
 	create_drive(50, 1); 
 	sleep(4.4); 
 	create_stop();    
-	createMove(SLOW_SPEED, 3.5);
+	createMove(SLOW_SPEED, 4);
 	
 	//Incase not enough time, move forward and drop completely down. 
 	if ((seconds()-startTime)>140) {
@@ -126,7 +126,7 @@ void sideB() {
 		accel(220,0); 
 		createStop(); 
 		//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
-		createMove(SLOW_SPEED, 2.0);  
+		createMove(SLOW_SPEED, 1.6);  
 		createMove(-SLOW_SPEED, .6); 
 		moveArm(ARM_POS_MID); 
 		bmd(ARM_MOTOR_PORT); 
@@ -146,7 +146,7 @@ void sideA() {
 	closeClaw(); 
 
 	//move towards first set of blocks
-	createMove(NORMAL_SPEED, 1.49); 
+	createMove(NORMAL_SPEED, 1.493); 
 	turn(90); 
 	openClaw();		 
 	createMove(NORMAL_SPEED, 1.00); 	
@@ -160,7 +160,7 @@ void sideA() {
 	//move towards second set of blocks
 	createMove(-NORMAL_SPEED, .6); 
 	turn(-90); 
-	createMove(NORMAL_SPEED, 1.94); 
+	createMove(NORMAL_SPEED, 1.92); 
 	turn(90); 
 		
 	//drop first set of blocks on top of second
@@ -200,9 +200,9 @@ void sideA() {
 	createMove(-FAST_SPEED, .3);
 	adjustTurn(); 
 	turn(90); 
-	createMove(-FAST_SPEED, .6); 
+	createMove(-FAST_SPEED, .65); 
 	turn(-90);
-	createMove(FAST_SPEED, 2.68);
+	createMove(FAST_SPEED, 2.66);
 		
 	//Drop off blocks near starting box.
 	moveArm(ARM_POS_DOWN); 
@@ -243,7 +243,7 @@ void sideA() {
 	create_drive(-50, 1); 
 	sleep(4.4); 
 	create_stop();    
-	createMove(SLOW_SPEED, 3.5);
+	createMove(SLOW_SPEED, 4);
 	
 	//Incase not enough time, move forward and drop completely down. 
 	if ((seconds()-startTime)>145) {
@@ -264,7 +264,7 @@ void sideA() {
 		accel(220,0); 
 		createStop(); 
 		//createCenter(0,6,MIN_CONFIDENCE_SHORT); 
-		createMove(SLOW_SPEED, 2.0);  
+		createMove(SLOW_SPEED, 1.6);  
 		createMove(-SLOW_SPEED, .6); 
 		moveArm(ARM_POS_MID); 
 		bmd(ARM_MOTOR_PORT); 
@@ -291,7 +291,7 @@ int main() {
 		
 		if (a_button()) {
 			wait_for_light(LIGHT_PORT); 
-			run_for(119.3,sideA); 
+			run_for(116,sideA); 
 			create_stop(); 
 			disable_servos(); 
 			beep(); 
@@ -300,7 +300,7 @@ int main() {
 
 		if (b_button()) {
 			wait_for_light(LIGHT_PORT); 
-			run_for(119.3, sideB); 
+			run_for(116, sideB); 
 			create_stop(); 
 			disable_servos(); 
 			beep(); 
