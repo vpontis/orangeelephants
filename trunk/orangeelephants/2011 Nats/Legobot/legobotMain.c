@@ -7,6 +7,7 @@ while(1)
 {	
 if(b_button())
 {
+	wait_for_light(LIGHT_PORT);
 	shut_down_in(117);
 	printf("\n Starting side B\nSleeping 10 seconds.");
 	sleep(10);
@@ -57,7 +58,7 @@ if(b_button())
 
 if(a_button())
 {
-
+	wait_for_light(LIGHT_PORT);
 	shut_down_in(117);
 	printf("\n Starting side A\nSleeping 10 seconds");
 
