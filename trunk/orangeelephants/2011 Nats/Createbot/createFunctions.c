@@ -70,6 +70,7 @@ void calibrateArm() { //beginning of game
 
 void moveArm(int pos) {
 	printf("Moving arm.\n"); 
+	mtp(ARM_MOTOR_PORT, 1000, pos); 
 }
 
 void moveSupport(int pos) {
