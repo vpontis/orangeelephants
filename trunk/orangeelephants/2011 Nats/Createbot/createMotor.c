@@ -179,6 +179,23 @@ void turn(int degrees) {
 	
 }
 
+void fastTurn(int degrees) {
+	double ratio = TURN_COMP_RATIO*(degrees/90.0);
+	set_create_total_angle(0); 
+	if (degrees < 0) { 
+		ratio = -ratio;
+		create_drive(202, 1); 
+		sleep(.9915*ratio); //calibrate sleeps
+		create_stop(); 
+	}
+	else {
+		create_drive(-202,1); 
+		sleep(.9915*ratio);
+		create_stop(); 
+	}
+	
+}
+
 /** \brief Function to adjust turn based on how much it turned with 
 	\param deg Relative degrees to turn. Positive is CW
 */
