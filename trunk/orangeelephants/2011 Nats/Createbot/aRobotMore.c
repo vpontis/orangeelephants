@@ -5,12 +5,12 @@ void sideB();
 
 void sideA() {
 	int startTime = seconds(); 
-
+	moveSupport(SUPPORT_POS_UP); 
 	//move towards far blocks
 	createMove(FAST_SPEED, .7); 
 	turn(90); 
 	moveArm(ARM_POS_DOWN); 
-	while( get_create_rbump(.01) != 1) { 
+	while((get_create_rbump(.01) != 1)&&(get_create_lbump(.01) != 1)) { 
 		moveStraight(-FAST_SPEED);
 	} 
 	createStop(); 
@@ -20,7 +20,7 @@ void sideA() {
 	//pick up blocks
 	touchSensorMovement(); 
 	closeClaw(); 
-	sleep(.1); 
+	sleep(.1); //test this value <- may remove
 	moveArm(ARM_POS_UP);  
 		
 	//move towards blocks close to starting box
@@ -30,17 +30,16 @@ void sideA() {
 	turn(-90); 
 		
 	//stack 2 on 2
-	createCenter(0, 6, MIN_CONFIDENCE_LONG); 
+	createCenter(0, 6, MIN_CONFIDENCE_LONG); //look at this tomorrow
 	createMove(SLOW_SPEED, .5);
 	moveArm(ARM_POS_MID); 	
 	createMove(-SLOW_SPEED, .2); 
-	openClawIncrement(); 
+	openClaw(); 
 	moveArm(ARM_POS_DOWN);
-	createMove(-FAST_SPEED, .4); 
+	createMove(-FAST_SPEED, .2); 
 	bmd(ARM_MOTOR_PORT); 
-	moveSupport(SUPPORT_POS_UP); 
 	touchSensorMovement();
-	closeClawIncrement(); 
+	closeClaw(); 
 	
 	//move to startingbox
 	createMove(-SLOW_SPEED, .2); 
@@ -62,7 +61,7 @@ int main() {
 	createInitialize();
 	calibrateArm();
 	openClaw(); 
-	moveArm(ARM_POS_LOW);
+	moveArm(ARM_ABOVE_PVC);
 	moveSupport(SUPPORT_POS_DOWN); 
 	
 	printf("Main Menu \n Press A for side A and B for side B.\n");

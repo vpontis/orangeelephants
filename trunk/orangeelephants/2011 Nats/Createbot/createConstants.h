@@ -16,7 +16,7 @@ const int  ARM_UP_VELOCITY = 750; //needs callibration
 const int  ARM_POS_UP = 6300;
 const int  ARM_POS_DOWN = 0;
 const int  ARM_POS_MID = 5600; 
-const int  ARM_POS_LOW = 600;
+const int  ARM_ABOVE_PVC = 600;
 const int  SUPPORT_POS_DOWN = 1900;
 const int  SUPPORT_POS_UP = 650; 
 
