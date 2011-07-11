@@ -32,76 +32,31 @@ void sideA() {
 		
 	//stack 2 on 2
 	createCenter(0, 6, MIN_CONFIDENCE_SHORT); 
-	createMove(SLOW_SPEED, 1.2); 
+	createMove(SLOW_SPEED, 1.6); 
 	createMove(-SLOW_SPEED, .4); 
 	moveArm(ARM_POS_MID); 
 	bmd(ARM_MOTOR_PORT); 
 	openClawIncrement(); 
-	
-	//allign with center
-	createMove(-FAST_SPEED, .5); 
-	moveArm(ARM_POS_UP); 
-	turn(-90); 
-	createMove(NORMAL_SPEED, .8); 
-	turn(90); 
-	while ((seconds()-startTime)<29.6) {}
-	createMove(FAST_SPEED, 3);
-}
-
-void sideB() {
-	int startTime = seconds(); 
-
-	//move towards far blocks
-	createMove(FAST_SPEED, .5); 
-	turn(-90); 
-	moveArm(ARM_POS_DOWN); 
-	while( get_create_rbump(.01) != 1) { 
-		moveStraight(-FAST_SPEED);
-	} 
-	createStop(); 
-	createMove(NORMAL_SPEED, .6); 
-	turn(90); 
-	createMove(NORMAL_SPEED, .2); 
-		
-	//pick up blocks
-	touchSensorMovement(); 
-	closeClaw(); 
-	sleep(.5); 
-	moveArm(ARM_POS_UP);  
-		
-	//move towards blocks close to starting box
 	createMove(-NORMAL_SPEED, .3); 
-	turn(-90); 
-	createMove(NORMAL_SPEED, 1.95); 
-	turn(90); 
-		
-	//drop stack of two on four
-	createCenter(0, 6, MIN_CONFIDENCE_SHORT); 
-	createMove(SLOW_SPEED, 1.2); 
-	createMove(-SLOW_SPEED, .4); 
-	moveArm(ARM_POS_MID); 
+	moveArm(ARM_POS_DOWN); 
 	bmd(ARM_MOTOR_PORT); 
-	openClawIncrement(); 
-	sleep(.5); 
-	createMove(-NORMAL_SPEED, .2); 
-	touchSensorMovement(); 
+	touchSensorMovement();
+	closeClawIncrement(); 
 	
-	while( get_create_rbump(.01) != 1) { 
-		moveStraight(-SLOW_SPEED);
-	}  
+	createMove(-SLOW_SPEED, .2); 
+	create_drive(-50, 1); 
+	sleep(4); 
+	createMove(SLOW_SPEED, 1.2); 
+	moveArm(ARM_POS_DOWN); 
+	bmd(ARM_MOTOR_PORT); 
 	
-	createMove(SLOW_SPEED, .2); 
-	turn(90); 
-	
-	//allign with center
-	createMove(-FAST_SPEED, .5); 
+	createMove(-FAST_SPEED,1.5); 
 	moveArm(ARM_POS_UP); 
 	turn(-90); 
-	createMove(NORMAL_SPEED, .8); 
-	turn(90); 
 	while ((seconds()-startTime)<29.6) {}
 	createMove(FAST_SPEED, 3);
 }
+
 int main() {
 	enable_servos();
 	createInitialize();
@@ -123,13 +78,13 @@ int main() {
 			ao(); 
 		}
 
-		if (b_button()) {
+	/*	if (b_button()) {
 			//wait_for_light(LIGHT_PORT); 
 			run_for(110, sideB); 
 			create_stop(); 
 			disable_servos(); 
 			beep(); 
 			ao(); 
-		}
+		} */
 	}
 }
