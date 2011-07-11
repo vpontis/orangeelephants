@@ -81,7 +81,7 @@ void moveSupport(int pos) {
 void touchSensorMovement() {
 
 	while (digital(TOUCH_SENSOR_PORT) == 0) {
-		moveStraight(NORMAL_SPEED); 
+		moveStraight(200); 
 		sleep(0.05); 
 	}
 	beep(); 
