@@ -21,7 +21,7 @@ void sideA() {
 	//pick up blocks
 	touchSensorMovement(); 
 	closeClaw(); 
-	sleep(.5); 
+	//sleep(.5); 
 	moveArm(ARM_POS_UP);  
 		
 	//move towards blocks close to starting box
@@ -31,7 +31,7 @@ void sideA() {
 	turn(-90); 
 		
 	//stack 2 on 2
-	createCenter(0, 6, MIN_CONFIDENCE_SHORT); 
+	createCenter(0, 6, MIN_CONFIDENCE_LONG); 
 	createMove(SLOW_SPEED, 1.6); 
 	createMove(-SLOW_SPEED, .4); 
 	moveArm(ARM_POS_MID); 
@@ -78,13 +78,13 @@ int main() {
 			ao(); 
 		}
 
-	/*	if (b_button()) {
+		if (b_button()) {
 			//wait_for_light(LIGHT_PORT); 
 			run_for(110, sideB); 
 			create_stop(); 
 			disable_servos(); 
 			beep(); 
 			ao(); 
-		} */
+		} 
 	}
 }
