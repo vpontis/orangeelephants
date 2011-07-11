@@ -33,19 +33,22 @@ void sideA() {
 	createCenter(0, 6, MIN_CONFIDENCE_LONG); 
 	createMove(SLOW_SPEED, .5);
 	moveArm(ARM_POS_MID); 	
+	createMove(-SLOW_SPEED, .2); 
 	openClawIncrement(); 
-	createMove(-SLOW_SPEED, .6); 
-	moveArm(ARM_POS_DOWN); 
+	moveArm(ARM_POS_DOWN);
+	createMove(-SLOW_SPEED, 1); 
 	bmd(ARM_MOTOR_PORT); 
 	touchSensorMovement();
 	closeClawIncrement(); 
 	
+	//move to startingbox
 	createMove(-SLOW_SPEED, .2); 
 	create_drive(-50, 1); 
 	sleep(4); 
 	createMove(NORMAL_SPEED, .6); 
 	openClawIncrement(); 
 
+	//move to the other side
 	moveArm(ARM_POS_UP);
 	createMove(-FAST_SPEED, 1); 
 	turn(-90); 
