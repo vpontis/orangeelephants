@@ -9,7 +9,7 @@ void sideA() {
 	//move towards far blocks
 	createMove(FAST_SPEED, .7); 
 	turn(90); 
-	moveArm(ARM_POS_LOW); 
+	moveArm(ARM_POS_DOWN); 
 	while( get_create_rbump(.01) != 1) { 
 		moveStraight(-FAST_SPEED);
 	} 
@@ -36,8 +36,9 @@ void sideA() {
 	createMove(-SLOW_SPEED, .2); 
 	openClawIncrement(); 
 	moveArm(ARM_POS_DOWN);
-	createMove(-SLOW_SPEED, 1); 
+	createMove(-FAST_SPEED, .4); 
 	bmd(ARM_MOTOR_PORT); 
+	moveSupport(SUPPORT_POS_UP); 
 	touchSensorMovement();
 	closeClawIncrement(); 
 	
@@ -52,7 +53,7 @@ void sideA() {
 	moveArm(ARM_POS_UP);
 	createMove(-FAST_SPEED, 1); 
 	turn(-90); 
-	while ((seconds()-startTime)<29.6) {}
+	while ((seconds()-startTime)<29.8) {}
 	createMove(FAST_SPEED, 3);
 }
 
@@ -61,7 +62,7 @@ int main() {
 	createInitialize();
 	calibrateArm();
 	openClaw(); 
-	moveArm(ARM_POS_MID);
+	moveArm(ARM_POS_LOW);
 	moveSupport(SUPPORT_POS_DOWN); 
 	
 	printf("Main Menu \n Press A for side A and B for side B.\n");
