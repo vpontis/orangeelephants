@@ -8,7 +8,7 @@ void sideB() {
 	closeClaw(); 
 
 	//move towards first set of blocks
-	createMove(NORMAL_SPEED, 1.49); 
+	createMove(NORMAL_SPEED, 1.51); 
 	turn(-90); 
 	openClaw();		 
 	createMove(NORMAL_SPEED, 1.00); 	
@@ -22,13 +22,13 @@ void sideB() {
 	//move towards second set of blocks
 	createMove(-NORMAL_SPEED, .3); 
 	turn(90); 
-	createMove(NORMAL_SPEED, 1.95); 
+	createMove(NORMAL_SPEED, 1.96); 
 	turn(-90); 
 		
 	//drop first set of blocks on top of second
 	createMove(NORMAL_SPEED, .1); 
 	createCenter(0,6,MIN_CONFIDENCE_SHORT); 
-	createMove(SLOW_SPEED, 1.0);  	
+	createMove(SLOW_SPEED, 1.6);  	
 	createMove(-SLOW_SPEED,.69); 
 	moveArm(ARM_POS_MID); 
 	sleep(.5); 
@@ -43,7 +43,7 @@ void sideB() {
 	createMove(NORMAL_SPEED, .8); 
 	turn(90); 
 	moveArm(ARM_POS_MID); 
-	while((seconds()-startTime)<29.6) {}
+	while((seconds()-startTime)<30.5) {}
 	createMove(FAST_SPEED, 3); 
 	while(1) {
 		createMove(-FAST_SPEED, 1.5); 
@@ -92,7 +92,7 @@ void sideA() {
 	createMove(NORMAL_SPEED, .8); 
 	turn(-90); 
 	moveArm(ARM_POS_MID); 
-	while ((seconds()-startTime)<29.6) {}
+	while ((seconds()-startTime)30.5) {}
 	createMove(FAST_SPEED, 3); 
 	while(1) {
 		createMove(-FAST_SPEED, 1.5); 
@@ -104,11 +104,14 @@ int main() {
 	enable_servos();
 	createInitialize();
 	calibrateArm();
+	sleep(.05); 
 	openClaw(); 
 	moveArm(ARM_POS_DOWN);
 	moveSupport(SUPPORT_POS_DOWN); 
 	
-	printf("Main Menu \n Press A for side A and B for side B.\n");
+	printf("Main Menu \n Press A for side A and B for side B. Black for voltage. \n");
+	sleep(.05); 
+	printf("Voltage: %d", get_create_battery_voltage(.1)); 
 	
 	while (1) {
 		
@@ -128,6 +131,10 @@ int main() {
 			disable_servos(); 
 			beep(); 
 			ao(); 
+		}
+		
+		if (black_button()) {
+			printf("Voltage: %d", get_create_battery_voltage(.1)); 
 		}
 	}
 }

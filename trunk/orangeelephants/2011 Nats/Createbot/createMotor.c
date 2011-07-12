@@ -184,13 +184,13 @@ void fastTurn(int degrees) {
 	set_create_total_angle(0); 
 	if (degrees < 0) { 
 		ratio = -ratio;
-		create_drive(202, 1); 
-		sleep(.9915*ratio); //calibrate sleeps
+		create_drive(160, 1); 
+		sleep(1.2354*ratio); //calibrate sleeps
 		create_stop(); 
 	}
 	else {
-		create_drive(-202,1); 
-		sleep(.9915*ratio);
+		create_drive(-160,1); 
+		sleep(1.2354*ratio);
 		create_stop(); 
 	}
 	
@@ -334,14 +334,15 @@ void createCenter(int ch, int speed, int confidence){
 	set_create_total_angle(0); 
 	printf("Centering... \n");
 	int avgX = visionAvgX(ch, confidence);
-	int threshold = confidence == MIN_CONFIDENCE_SHORT ? 1 : 10; 
+	int threshold = confidence == MIN_CONFIDENCE_SHORT ? 1 : 15; 
 	if(avgX != 0){
 		printf("Readjusting... \n");
 		avgX = visionAvgX(ch, confidence);
 		if (avgX > threshold) {
 			create_drive_direct(-speed, speed);
 			while (avgX > threshold) {
-				avgX = visionAvgX(ch, confidence); 
+				avgX = visionAvgX(ch, confidence);
+				printf("%d", avgX); 
 				if ((seconds()-initTime)>9) {
 					beep(); 
 					break; 

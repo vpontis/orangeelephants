@@ -65,6 +65,7 @@ void calibrateArm() { //beginning of game
 			clear_motor_position_counter(ARM_MOTOR_PORT); 
 			break; 
 		}
+		sleep(.05); 
 	}
 }
 
@@ -81,7 +82,7 @@ void moveSupport(int pos) {
 void touchSensorMovement() {
 
 	while (digital(TOUCH_SENSOR_PORT) == 0) {
-		moveStraight(200); 
+		moveStraight(150); 
 		sleep(0.05); 
 	}
 	beep(); 
